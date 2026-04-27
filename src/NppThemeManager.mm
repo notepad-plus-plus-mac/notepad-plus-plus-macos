@@ -1,12 +1,14 @@
 #import "NppThemeManager.h"
 
 NSNotificationName const NPPDarkModeChangedNotification = @"NPPDarkModeChangedNotification";
+NSNotificationName const NPPToolbarIconStyleChangedNotification = @"NPPToolbarIconStyleChangedNotification";
 NSString *const kPrefDarkMode = @"NPPDarkMode";
+NSString *const kPrefToolbarIconStyle = @"NPPToolbarIconStyle";
 
-// ── Toolbar icon name mapping: standard name → dark name ─────────────────────
+// ── Toolbar icon name mapping: standard name → Fluent name ──────────────────
 // To remap an icon: change the right-hand value only.
-// Standard icons live in icons/standard/toolbar/{name}.png
-// Dark icons live in icons/dark/toolbar/regular/{darkName}.png
+// Fluent icons live in icons/{light,dark}/toolbar/regular/{fluentName}.png
+// Classic icons live in icons/standard/toolbar/{standardName}.png
 static NSDictionary<NSString *, NSString *> *toolbarIconMapping(void) {
     static NSDictionary *map;
     static dispatch_once_t once;
@@ -53,6 +55,7 @@ static NSDictionary<NSString *, NSString *> *toolbarIconMapping(void) {
 
 @implementation NppThemeManager {
     BOOL _cachedIsDark;
+    NppToolbarIconStyle _cachedToolbarIconStyle;
 }
 
 + (instancetype)shared {
@@ -65,9 +68,11 @@ static NSDictionary<NSString *, NSString *> *toolbarIconMapping(void) {
 - (instancetype)init {
     self = [super init];
     if (self) {
-        // Load saved preference (default = Auto)
+        // Load saved preferences
         NSInteger saved = [[NSUserDefaults standardUserDefaults] integerForKey:kPrefDarkMode];
         _mode = (NppDarkModeOption)saved;
+        _cachedToolbarIconStyle = (NppToolbarIconStyle)
+            [[NSUserDefaults standardUserDefaults] integerForKey:kPrefToolbarIconStyle];
         [self _recalcIsDark];
         [self _applyAppearance];
 
@@ -133,6 +138,16 @@ static NSDictionary<NSString *, NSString *> *toolbarIconMapping(void) {
 }
 
 - (BOOL)isDark { return _cachedIsDark; }
+
+- (NppToolbarIconStyle)toolbarIconStyle { return _cachedToolbarIconStyle; }
+
+- (void)setToolbarIconStyle:(NppToolbarIconStyle)style {
+    if (_cachedToolbarIconStyle == style) return;
+    _cachedToolbarIconStyle = style;
+    [[NSUserDefaults standardUserDefaults] setInteger:style forKey:kPrefToolbarIconStyle];
+    [[NSNotificationCenter defaultCenter]
+        postNotificationName:NPPToolbarIconStyleChangedNotification object:nil];
+}
 
 // ── Tab Bar Colors ───────────────────────────────────────────────────────────
 
@@ -243,7 +258,9 @@ static NSDictionary<NSString *, NSString *> *toolbarIconMapping(void) {
 // ── Icon Paths ───────────────────────────────────────────────────────────────
 
 - (NSString *)toolbarIconDir {
-    return _cachedIsDark ? @"icons/dark/toolbar/regular" : @"icons/standard/toolbar";
+    if (_cachedToolbarIconStyle == NppToolbarIconStyleClassic)
+        return @"icons/standard/toolbar";
+    return _cachedIsDark ? @"icons/dark/toolbar/regular" : @"icons/light/toolbar/regular";
 }
 
 - (NSString *)tabbarIconDir {
@@ -258,9 +275,10 @@ static NSDictionary<NSString *, NSString *> *toolbarIconMapping(void) {
     NSString *dir = self.toolbarIconDir;
     NSString *fileName = standardName;
 
-    if (_cachedIsDark) {
-        NSString *darkName = toolbarIconMapping()[standardName];
-        if (darkName) fileName = darkName;
+    // Classic style uses standard names directly; Fluent needs mapping.
+    if (_cachedToolbarIconStyle != NppToolbarIconStyleClassic) {
+        NSString *fluentName = toolbarIconMapping()[standardName];
+        if (fluentName) fileName = fluentName;
     }
 
     NSString *path = [[NSBundle mainBundle] pathForResource:fileName ofType:@"png"

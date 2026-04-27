@@ -8,10 +8,21 @@ extern NSNotificationName const NPPDarkModeChangedNotification;
 /// Preference key for dark mode setting (Auto/Light/Dark).
 extern NSString *const kPrefDarkMode;
 
+/// Posted when toolbar icon style changes. MainWindowController reloads icons.
+extern NSNotificationName const NPPToolbarIconStyleChangedNotification;
+
+/// Preference key for toolbar icon style (Fluent/Classic).
+extern NSString *const kPrefToolbarIconStyle;
+
 typedef NS_ENUM(NSInteger, NppDarkModeOption) {
     NppDarkModeAuto  = 0,  // Follow macOS system appearance
     NppDarkModeLight = 1,  // Always light
     NppDarkModeDark  = 2,  // Always dark
+};
+
+typedef NS_ENUM(NSInteger, NppToolbarIconStyle) {
+    NppToolbarIconStyleFluent  = 0,  // Modern Fluent icons (96x96, light/dark variants)
+    NppToolbarIconStyleClassic = 1,  // Original Windows-style pixel-art icons (32x32)
 };
 
 /// Centralized theme manager. All UI components query this for colors and icon paths.
@@ -25,6 +36,9 @@ typedef NS_ENUM(NSInteger, NppDarkModeOption) {
 
 /// YES if the effective appearance is currently dark.
 @property (nonatomic, readonly) BOOL isDark;
+
+/// Toolbar icon style (Fluent/Classic). Setting this posts NPPToolbarIconStyleChangedNotification.
+@property (nonatomic) NppToolbarIconStyle toolbarIconStyle;
 
 // ── UI Colors ────────────────────────────────────────────────────────────────
 
@@ -56,7 +70,7 @@ typedef NS_ENUM(NSInteger, NppDarkModeOption) {
 
 // ── Icon Paths ───────────────────────────────────────────────────────────────
 
-/// Returns the toolbar icon directory: "icons/standard/toolbar" or "icons/dark/toolbar/regular"
+/// Returns the toolbar icon directory based on dark mode and icon style.
 @property (nonatomic, readonly) NSString *toolbarIconDir;
 
 /// Returns the tabbar icon directory: "icons/standard/tabbar" or "icons/dark/tabbar"

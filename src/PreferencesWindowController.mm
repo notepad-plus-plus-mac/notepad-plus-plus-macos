@@ -167,6 +167,7 @@ NSString *const kPrefStyleFontSize      = @"styleFontSize";
         kPrefInSelThreshold:       @1024,
         kPrefFuncListUseXML:       @YES,
         kPrefDarkMode:             @0,   // 0=Auto, 1=Light, 2=Dark
+        kPrefToolbarIconStyle:     @0,   // 0=Fluent, 1=Classic
     }];
     // Force-upgrade any stale @NO value stored by earlier builds.
     NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
@@ -223,6 +224,7 @@ NSString *const kPrefStyleFontSize      = @"styleFontSize";
         [loc translate:@"Indentation"],
         [loc translate:@"Tab Bar"],
         [loc translate:@"Dark Mode"],
+        [loc translate:@"Toolbar"],
         [loc translate:@"Margins"],
         [loc translate:@"New Document"],
         [loc translate:@"Backup"],
@@ -268,6 +270,7 @@ NSString *const kPrefStyleFontSize      = @"styleFontSize";
         [[NppLocalizer shared] translate:@"Indentation"],
         [[NppLocalizer shared] translate:@"Tab Bar"],
         [[NppLocalizer shared] translate:@"Dark Mode"],
+        [[NppLocalizer shared] translate:@"Toolbar"],
         [[NppLocalizer shared] translate:@"Margins"],
         [[NppLocalizer shared] translate:@"New Document"],
         [[NppLocalizer shared] translate:@"Backup"],
@@ -501,6 +504,7 @@ NSString *const kPrefStyleFontSize      = @"styleFontSize";
     if ([name isEqualToString:[loc translate:@"Indentation"]])    return [self _buildIndentationPage];
     if ([name isEqualToString:[loc translate:@"Tab Bar"]])         return [self _buildTabBarPage];
     if ([name isEqualToString:[loc translate:@"Dark Mode"]])       return [self _buildDarkModePage];
+    if ([name isEqualToString:[loc translate:@"Toolbar"]])        return [self _buildToolbarPage];
     if ([name isEqualToString:[loc translate:@"Margins"]])          return [self _buildMarginsPage];
     if ([name isEqualToString:[loc translate:@"New Document"]])     return [self _buildNewDocPage];
     if ([name isEqualToString:[loc translate:@"Backup"]])           return [self _buildBackupPage];
@@ -1213,6 +1217,45 @@ static NSDictionary<NSString *, NSString *> *_langDisplayNames() {
         NSArray *lexers = [store lexersForTheme:targetTheme];
         [store commitLexers:lexers themeName:targetTheme];
     }
+}
+
+#pragma mark - Toolbar Page
+
+- (NSView *)_buildToolbarPage {
+    NSView *v = [[NSView alloc] init];
+    CGFloat y = 380;
+
+    NppLocalizer *loc = [NppLocalizer shared];
+    NSTextField *label = [NSTextField labelWithString:[loc translate:@"Toolbar Icon Style"]];
+    label.font = [NSFont boldSystemFontOfSize:NSFont.systemFontSize];
+    label.frame = NSMakeRect(20, y, 300, 20);
+    [v addSubview:label];
+    y -= 32;
+
+    NSArray *titles = @[[loc translate:@"Fluent (Modern)"], [loc translate:@"Classic (Windows)"]];
+    NppToolbarIconStyle current = [NppThemeManager shared].toolbarIconStyle;
+    for (NSInteger i = 0; i < 2; i++) {
+        NSButton *radio = [NSButton radioButtonWithTitle:titles[i] target:self action:@selector(_toolbarIconStyleRadioChanged:)];
+        radio.frame = NSMakeRect(20, y, 300, 20);
+        radio.tag = 600 + i;
+        radio.state = (current == i) ? NSControlStateValueOn : NSControlStateValueOff;
+        [v addSubview:radio];
+        y -= 24;
+    }
+
+    return v;
+}
+
+- (void)_toolbarIconStyleRadioChanged:(id)sender {
+    NSInteger style = [(NSButton *)sender tag] - 600;
+    NSView *page = [(NSButton *)sender superview];
+    for (NSView *sub in page.subviews) {
+        if ([sub isKindOfClass:[NSButton class]] && [(NSButton *)sub tag] >= 600 && [(NSButton *)sub tag] <= 601) {
+            [(NSButton *)sub setState:((NSButton *)sub).tag == [(NSButton *)sender tag]
+                ? NSControlStateValueOn : NSControlStateValueOff];
+        }
+    }
+    [NppThemeManager shared].toolbarIconStyle = (NppToolbarIconStyle)style;
 }
 
 #pragma mark - New Document Page
