@@ -3,10 +3,10 @@
 NSNotificationName const NPPDarkModeChangedNotification = @"NPPDarkModeChangedNotification";
 NSString *const kPrefDarkMode = @"NPPDarkMode";
 
-// ── Toolbar icon name mapping: standard name → dark name ─────────────────────
+// ── Toolbar icon name mapping: standard name → Fluent name ──────────────────
 // To remap an icon: change the right-hand value only.
-// Standard icons live in icons/standard/toolbar/{name}.png
-// Dark icons live in icons/dark/toolbar/regular/{darkName}.png
+// Light icons live in icons/light/toolbar/regular/{fluentName}.png
+// Dark icons live in icons/dark/toolbar/regular/{fluentName}.png
 static NSDictionary<NSString *, NSString *> *toolbarIconMapping(void) {
     static NSDictionary *map;
     static dispatch_once_t once;
@@ -243,7 +243,7 @@ static NSDictionary<NSString *, NSString *> *toolbarIconMapping(void) {
 // ── Icon Paths ───────────────────────────────────────────────────────────────
 
 - (NSString *)toolbarIconDir {
-    return _cachedIsDark ? @"icons/dark/toolbar/regular" : @"icons/standard/toolbar";
+    return _cachedIsDark ? @"icons/dark/toolbar/regular" : @"icons/light/toolbar/regular";
 }
 
 - (NSString *)tabbarIconDir {
@@ -256,12 +256,10 @@ static NSDictionary<NSString *, NSString *> *toolbarIconMapping(void) {
 
 - (nullable NSImage *)toolbarIconNamed:(NSString *)standardName {
     NSString *dir = self.toolbarIconDir;
-    NSString *fileName = standardName;
 
-    if (_cachedIsDark) {
-        NSString *darkName = toolbarIconMapping()[standardName];
-        if (darkName) fileName = darkName;
-    }
+    // Both light and dark dirs use Fluent naming — always map.
+    NSString *fileName = toolbarIconMapping()[standardName];
+    if (!fileName) fileName = standardName;
 
     NSString *path = [[NSBundle mainBundle] pathForResource:fileName ofType:@"png"
                                                inDirectory:dir];

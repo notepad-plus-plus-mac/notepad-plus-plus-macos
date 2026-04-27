@@ -885,9 +885,16 @@ static NSToolbarItemIdentifier const kTBGroup9  = @"TB_G9";  // monitoring
 static NSToolbarItemIdentifier const kTBGroup10 = @"TB_G10"; // macro
 
 // Load a toolbar icon using NppThemeManager (auto-switches light/dark).
+// Sets the image's logical size to 26×26 pt so AppKit uses up to 52×52 px
+// from the 96×96 source on Retina — crisp at the 28 pt button size.
+static const CGFloat kToolbarIconSize = 26.0;
+
 static NSImage *nppToolbarIcon(NSString *fileName) {
     NSImage *img = [[NppThemeManager shared] toolbarIconNamed:fileName];
-    if (img) img.cacheMode = NSImageCacheNever;
+    if (img) {
+        img.size = NSMakeSize(kToolbarIconSize, kToolbarIconSize);
+        img.cacheMode = NSImageCacheNever;
+    }
     return img;
 }
 
@@ -903,7 +910,7 @@ static NSImage *_customToolbarIcon(NSString *buttonId, NSDictionary *toolbarConf
         [buttonId stringByAppendingString:@".png"]];
     if ([[NSFileManager defaultManager] fileExistsAtPath:flatPath]) {
         NSImage *img = [[NSImage alloc] initWithContentsOfFile:flatPath];
-        if (img) { img.size = NSMakeSize(16, 16); return img; }
+        if (img) { img.size = NSMakeSize(kToolbarIconSize, kToolbarIconSize); return img; }
     }
 
     // Check in toolbarIcons/default/ subfolder
@@ -911,14 +918,13 @@ static NSImage *_customToolbarIcon(NSString *buttonId, NSDictionary *toolbarConf
         stringByAppendingPathComponent:[buttonId stringByAppendingString:@".png"]];
     if ([[NSFileManager defaultManager] fileExistsAtPath:defaultPath]) {
         NSImage *img = [[NSImage alloc] initWithContentsOfFile:defaultPath];
-        if (img) { img.size = NSMakeSize(16, 16); return img; }
+        if (img) { img.size = NSMakeSize(kToolbarIconSize, kToolbarIconSize); return img; }
     }
 
     return nil;
 }
 
-// ── Compact flat toolbar button (16×16 pt, 1-px rounded hover border) ───────
-// Mirrors NPP's TBSTYLE_FLAT + TB_SETBUTTONSIZE(16,16) + CDIS_HOT paintRoundRect.
+// ── Flat toolbar button (28×28 pt, rounded hover border) ────────────────────
 @interface NppToolbarButton : NSButton {
     BOOL _hovering;
 }
@@ -963,10 +969,10 @@ static NSImage *_customToolbarIcon(NSString *buttonId, NSDictionary *toolbarConf
                 : [NSColor colorWithRed:0xE5/255.0 green:0xF3/255.0 blue:0xFF/255.0 alpha:1.0];
             bdr = [NSColor colorWithRed:0xD0/255.0 green:0xEA/255.0 blue:0xFF/255.0 alpha:1.0];
         }
-        NSBezierPath *fill = [NSBezierPath bezierPathWithRoundedRect:self.bounds xRadius:2.0 yRadius:2.0];
+        NSBezierPath *fill = [NSBezierPath bezierPathWithRoundedRect:self.bounds xRadius:3.0 yRadius:3.0];
         [bg setFill]; [fill fill];
         NSBezierPath *border = [NSBezierPath bezierPathWithRoundedRect:NSInsetRect(self.bounds, 0.5, 0.5)
-                                                               xRadius:2.0 yRadius:2.0];
+                                                               xRadius:3.0 yRadius:3.0];
         border.lineWidth = 1.0; [bdr setStroke]; [border stroke];
     }
     if (self.image) {
@@ -1004,10 +1010,10 @@ static NSImage *_customToolbarIcon(NSString *buttonId, NSDictionary *toolbarConf
             bg  = [NSColor colorWithRed:0xCC/255.0 green:0xE8/255.0 blue:0xFF/255.0 alpha:0.65];
             bdr = [NSColor colorWithRed:0x80/255.0 green:0xC0/255.0 blue:0xFF/255.0 alpha:0.80];
         }
-        NSBezierPath *fill = [NSBezierPath bezierPathWithRoundedRect:self.bounds xRadius:2 yRadius:2];
+        NSBezierPath *fill = [NSBezierPath bezierPathWithRoundedRect:self.bounds xRadius:3 yRadius:3];
         [bg setFill]; [fill fill];
         NSBezierPath *border = [NSBezierPath bezierPathWithRoundedRect:NSInsetRect(self.bounds, 0.5, 0.5)
-                                                               xRadius:2 yRadius:2];
+                                                               xRadius:3 yRadius:3];
         border.lineWidth = 1.0; [bdr setStroke]; [border stroke];
     } else if (pressed || _hovering) {
         NSColor *bg, *bdr;
@@ -1022,10 +1028,10 @@ static NSImage *_customToolbarIcon(NSString *buttonId, NSDictionary *toolbarConf
                 : [NSColor colorWithRed:0xE5/255.0 green:0xF3/255.0 blue:0xFF/255.0 alpha:1.0];
             bdr = [NSColor colorWithRed:0xD0/255.0 green:0xEA/255.0 blue:0xFF/255.0 alpha:1.0];
         }
-        NSBezierPath *fill = [NSBezierPath bezierPathWithRoundedRect:self.bounds xRadius:2 yRadius:2];
+        NSBezierPath *fill = [NSBezierPath bezierPathWithRoundedRect:self.bounds xRadius:3 yRadius:3];
         [bg setFill]; [fill fill];
         NSBezierPath *border = [NSBezierPath bezierPathWithRoundedRect:NSInsetRect(self.bounds, 0.5, 0.5)
-                                                               xRadius:2 yRadius:2];
+                                                               xRadius:3 yRadius:3];
         border.lineWidth = 1.0; [bdr setStroke]; [border stroke];
     }
 
@@ -1055,7 +1061,7 @@ static NSImage *_customToolbarIcon(NSString *buttonId, NSDictionary *toolbarConf
         NSColor *bg = [NppThemeManager shared].isDark
             ? [NSColor colorWithRed:0x21/255.0 green:0x21/255.0 blue:0x21/255.0 alpha:1.0]
             : [NSColor colorWithRed:0xCC/255.0 green:0xE8/255.0 blue:0xFF/255.0 alpha:1.0];
-        NSBezierPath *p = [NSBezierPath bezierPathWithRoundedRect:self.bounds xRadius:2.0 yRadius:2.0];
+        NSBezierPath *p = [NSBezierPath bezierPathWithRoundedRect:self.bounds xRadius:3.0 yRadius:3.0];
         [bg setFill]; [p fill];
     }
     if (self.image)
@@ -1076,7 +1082,7 @@ static NSImage *_customToolbarIcon(NSString *buttonId, NSDictionary *toolbarConf
         NSColor *bg = [NppThemeManager shared].isDark
             ? [NSColor colorWithRed:0x21/255.0 green:0x21/255.0 blue:0x21/255.0 alpha:1.0]
             : [NSColor colorWithRed:0xCC/255.0 green:0xE8/255.0 blue:0xFF/255.0 alpha:1.0];
-        NSBezierPath *p = [NSBezierPath bezierPathWithRoundedRect:self.bounds xRadius:2.0 yRadius:2.0];
+        NSBezierPath *p = [NSBezierPath bezierPathWithRoundedRect:self.bounds xRadius:3.0 yRadius:3.0];
         [bg setFill]; [p fill];
     }
     static NSDictionary *attrs;
@@ -1127,10 +1133,10 @@ static NSImage *_customToolbarIcon(NSString *buttonId, NSDictionary *toolbarConf
     // so on/off feedback stays signalled via the icon glyph as today.
     if (_toggledOn && isDark) {
         NSColor *bg = [NSColor colorWithRed:0x00/255.0 green:0x00/255.0 blue:0x00/255.0 alpha:1.0];
-        NSBezierPath *p = [NSBezierPath bezierPathWithRoundedRect:self.bounds xRadius:2 yRadius:2];
+        NSBezierPath *p = [NSBezierPath bezierPathWithRoundedRect:self.bounds xRadius:3 yRadius:3];
         [bg setFill]; [p fill];
         NSBezierPath *q = [NSBezierPath bezierPathWithRoundedRect:NSInsetRect(self.bounds, 0.5, 0.5)
-                                                          xRadius:2 yRadius:2];
+                                                          xRadius:3 yRadius:3];
         q.lineWidth = 1.0; [bg setStroke]; [q stroke];
     } else if (_hovering) {
         NSColor *bg, *bdr;
@@ -1141,11 +1147,11 @@ static NSImage *_customToolbarIcon(NSString *buttonId, NSDictionary *toolbarConf
             bg  = [NSColor colorWithRed:0xE5/255.0 green:0xF3/255.0 blue:0xFF/255.0 alpha:1.0];
             bdr = [NSColor colorWithRed:0xD0/255.0 green:0xEA/255.0 blue:0xFF/255.0 alpha:1.0];
         }
-        NSBezierPath *p = [NSBezierPath bezierPathWithRoundedRect:self.bounds xRadius:2 yRadius:2];
+        NSBezierPath *p = [NSBezierPath bezierPathWithRoundedRect:self.bounds xRadius:3 yRadius:3];
         [bg setFill];
         [p fill];
         NSBezierPath *q = [NSBezierPath bezierPathWithRoundedRect:NSInsetRect(self.bounds, 0.5, 0.5)
-                                                          xRadius:2 yRadius:2];
+                                                          xRadius:3 yRadius:3];
         q.lineWidth = 1.0;
         [bdr setStroke];
         [q stroke];
@@ -1155,7 +1161,7 @@ static NSImage *_customToolbarIcon(NSString *buttonId, NSDictionary *toolbarConf
 @end
 
 // ── Thin vertical | separator between toolbar groups ─────────────────────────
-// 1 logical pixel wide (#b9b9b9), 80% of icon height, vertically centered.
+// 1 logical pixel wide (#b9b9b9), 80% of button height, vertically centered.
 @interface NppSeparatorView : NSView @end
 @implementation NppSeparatorView
 - (void)drawRect:(NSRect)dirtyRect {
@@ -1638,7 +1644,7 @@ static NSDictionary<NSString *, NSArray *> *toolbarGroupMap(void) {
         }
     }
 
-    if (icon) icon.size = NSMakeSize(16, 16);
+    if (icon) icon.size = NSMakeSize(kToolbarIconSize, kToolbarIconSize);
     return icon;
 }
 
@@ -1669,8 +1675,8 @@ static NSDictionary<NSString *, NSArray *> *toolbarGroupMap(void) {
             NSView *v = item.view;
             if (![v isKindOfClass:[NSButton class]]) continue;
             NSButton *btn = (NSButton *)v;
-            // Match the size that makePluginToolbarItem: applies (kBtnSize=17).
-            newIcon.size = NSMakeSize(17, 17);
+            // Match the logical size that makePluginToolbarItem: applies.
+            newIcon.size = NSMakeSize(kToolbarIconSize, kToolbarIconSize);
             btn.image = newIcon;
             break;
         }
@@ -1678,7 +1684,7 @@ static NSDictionary<NSString *, NSArray *> *toolbarGroupMap(void) {
 }
 
 - (NSToolbarItem *)makePluginToolbarItem:(NSDictionary *)pti {
-    static const CGFloat kBtnSize = 17.0;
+    static const CGFloat kBtnSize = 28.0;
 
     NSToolbarItem *item = [[NSToolbarItem alloc] initWithItemIdentifier:pti[@"id"]];
 
@@ -1689,7 +1695,7 @@ static NSDictionary<NSString *, NSArray *> *toolbarGroupMap(void) {
     // identical — only the visual feedback changes.
     NppToolbarButton *btn = [[NppToolbarButton alloc] initWithFrame:NSMakeRect(0, 0, kBtnSize, kBtnSize)];
     btn.image = pti[@"icon"];
-    btn.image.size = NSMakeSize(kBtnSize, kBtnSize);
+    btn.image.size = NSMakeSize(kToolbarIconSize, kToolbarIconSize);
     btn.toolTip = pti[@"tooltip"];
     btn.tag = [pti[@"cmdID"] intValue];
     btn.target = self;
@@ -1781,9 +1787,9 @@ static NSToolbarItemIdentifier const kTBUserConfig = @"TB_UserConfig";
 /// Build a single toolbar item containing all visible buttons from the user's XML config,
 /// in document order, with separator lines at default group boundaries.
 - (NSToolbarItem *)makeUserConfigToolbarItem {
-    static const CGFloat kBtnSize = 17.0;
-    static const CGFloat kSpacing = 1.0;
-    static const CGFloat kSepGap  = 6.0; // total gap for a separator (padL + 1px line + padR)
+    static const CGFloat kBtnSize = 28.0;
+    static const CGFloat kSpacing = 2.0;
+    static const CGFloat kSepGap  = 10.0; // total gap for a separator (padL + 1px line + padR)
 
     NSArray *visibleButtons = _toolbarConfig[@"visibleButtons"];
     if (!visibleButtons.count) return nil;
@@ -1967,9 +1973,9 @@ static BOOL groupHasTrailingSep(NSString *ident) {
 
 // Pack a set of buttons into a single NSToolbarItem view with 1pt spacing.
 - (NSToolbarItem *)makeGroupToolbarItem:(NSString *)ident identifiers:(NSArray *)idents {
-    static const CGFloat kBtnSize = 17.0;
-    static const CGFloat kSpacing =  1.0;
-    static const CGFloat kSepPadL =  3.0; // padding left of separator
+    static const CGFloat kBtnSize = 28.0;
+    static const CGFloat kSpacing =  2.0;
+    static const CGFloat kSepPadL =  5.0; // padding left of separator
     static const CGFloat kSepPadR = -4.0; // negative to compensate NSToolbar inter-item gap
 
     // Filter out hidden buttons from toolbar config
@@ -2059,11 +2065,11 @@ static BOOL groupHasTrailingSep(NSString *ident) {
 
 // Group 7: Word Wrap | [Show All Characters + dropdown arrow] | Indent Guide
 - (NSToolbarItem *)makeViewTogglesGroupToolbarItem {
-    static const CGFloat kBtnSize  = 17.0;
+    static const CGFloat kBtnSize  = 28.0;
     static const CGFloat kDropW    = 29.0;
-    static const CGFloat kGap      = 1.0;
+    static const CGFloat kGap      = 2.0;
     static const CGFloat kInnerGap = 2.0;   // gap between chars button and dropdown arrow
-    static const CGFloat kSepPadL = 3.0;
+    static const CGFloat kSepPadL = 5.0;
     static const CGFloat kSepPadR = -4.0;
     CGFloat hoverW  = kBtnSize + kInnerGap + kDropW;
     CGFloat buttonsW = kBtnSize + kGap + hoverW + kGap + kBtnSize; // wrap + allchars group + indent
@@ -2139,7 +2145,7 @@ static BOOL groupHasTrailingSep(NSString *ident) {
 
 // Builds the right-aligned +  ▾  × tab-control group.
 - (NSToolbarItem *)makeTabControlsToolbarItem {
-    static const CGFloat kW = 20.0, kH = 17.0, kSpc = 1.0;
+    static const CGFloat kW = 28.0, kH = 28.0, kSpc = 1.0;
     CGFloat totalW = 3 * kW + 2 * kSpc;
 
     NSView *groupView = [[NSView alloc] initWithFrame:NSMakeRect(0, 0, totalW, kH)];
@@ -2156,7 +2162,7 @@ static BOOL groupHasTrailingSep(NSString *ident) {
         [btn setBordered:NO];
         btn.buttonType = NSButtonTypeMomentaryChange;
         btn.title      = btns[i].title;
-        btn.font       = [NSFont systemFontOfSize:13 weight:NSFontWeightMedium];
+        btn.font       = [NSFont systemFontOfSize:16 weight:NSFontWeightMedium];
         btn.toolTip    = btns[i].tip;
         btn.action     = btns[i].action;
         btn.target     = self;
