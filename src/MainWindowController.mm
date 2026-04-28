@@ -3094,7 +3094,8 @@ static void removeMacroFromShortcutsXML(NSString *name) {
 #pragma mark - File menu actions
 
 - (void)newDocument:(id)sender {
-    [_tabManager addNewTab];
+    EditorView *ed = [_tabManager addNewTab];
+    [self.window makeFirstResponder:ed.scintillaView];
     [self updateTitle];
 }
 
