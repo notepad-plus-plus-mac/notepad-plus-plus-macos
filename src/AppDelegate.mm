@@ -698,7 +698,7 @@ static NSString *const kUpdateMenuItemTag = @"checkForUpdatesMenuItem";
                                            assets:json[@"assets"]];
                 }
             } else {
-                // Up to date — leave the menu item plain (no badge / icon).
+u                // Up to date — leave the menu item plain (no badge / icon).
                 NSMenuItem *mi = [self _updateMenuItem];
                 if (mi) {
                     mi.title = @"Check for Updates…";
