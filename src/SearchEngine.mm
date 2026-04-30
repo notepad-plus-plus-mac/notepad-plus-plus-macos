@@ -423,101 +423,108 @@
     NSInteger filesScanned = 0;
     NSString *rel;
 
+    NSRegularExpression *regex = nil;
+    if (opts.searchType == NPPSearchRegex) {
+        NSRegularExpressionOptions reOpts = 0;
+        if (!opts.matchCase) reOpts |= NSRegularExpressionCaseInsensitive;
+        if (opts.dotMatchesNewline) reOpts |= NSRegularExpressionDotMatchesLineSeparators;
+        regex = [NSRegularExpression regularExpressionWithPattern:searchText
+                                                          options:reOpts error:nil];
+        if (!regex) { if (totalFilesScanned) *totalFilesScanned = 0; return allResults; }
+    }
+
     while ((rel = [en nextObject])) {
-        if (cancelFlag && *cancelFlag) break;
-
-        NSString *full = [directory stringByAppendingPathComponent:rel];
-        BOOL isDir = NO;
-        [fm fileExistsAtPath:full isDirectory:&isDir];
-        if (isDir) {
-            // Skip hidden directories
-            if (!opts.isInHiddenDirs && [rel.lastPathComponent hasPrefix:@"."]) {
-                [en skipDescendants];
-            }
-            continue;
-        }
-
-        // Skip hidden files
-        if (!opts.isInHiddenDirs && [rel.lastPathComponent hasPrefix:@"."]) continue;
-
-        // Apply file filter
-        NSString *name = rel.lastPathComponent;
-        BOOL pass = (preds.count == 0);
-        for (NSPredicate *p in preds) {
-            if ([p evaluateWithObject:name]) { pass = YES; break; }
-        }
-        if (!pass) continue;
-
-        filesScanned++;
-
-        // Read file
-        NSString *content = [NSString stringWithContentsOfFile:full
-                                                     encoding:NSUTF8StringEncoding error:nil];
-        if (!content) continue;
-
-        NSArray<NSString *> *lines = [content componentsSeparatedByString:@"\n"];
-        NPPFileResults *fileRes = nil;
-
-        for (NSInteger ln = 0; ln < (NSInteger)lines.count; ln++) {
+        @autoreleasepool {
             if (cancelFlag && *cancelFlag) break;
 
-            NSString *line = lines[ln];
-            NSRange range;
-
-            if (opts.searchType == NPPSearchRegex) {
-                NSRegularExpressionOptions reOpts = 0;
-                if (!opts.matchCase) reOpts |= NSRegularExpressionCaseInsensitive;
-                if (opts.dotMatchesNewline) reOpts |= NSRegularExpressionDotMatchesLineSeparators;
-                NSRegularExpression *re = [NSRegularExpression regularExpressionWithPattern:searchText
-                                                                                   options:reOpts error:nil];
-                if (!re) { if (totalFilesScanned) *totalFilesScanned = filesScanned; return allResults; }
-                NSTextCheckingResult *m = [re firstMatchInString:line options:0
-                                                          range:NSMakeRange(0, line.length)];
-                if (!m) continue;
-                range = m.range;
-            } else {
-                range = [line rangeOfString:searchText options:cmpOpts];
-                if (range.location == NSNotFound) continue;
-            }
-
-            // Whole word check for non-regex
-            if (opts.wholeWord && opts.searchType != NPPSearchRegex) {
-                if (range.location > 0) {
-                    unichar c = [line characterAtIndex:range.location - 1];
-                    if ([[NSCharacterSet alphanumericCharacterSet] characterIsMember:c] || c == '_')
-                        continue;
+            NSString *full = [directory stringByAppendingPathComponent:rel];
+            BOOL isDir = NO;
+            [fm fileExistsAtPath:full isDirectory:&isDir];
+            if (isDir) {
+                // Skip hidden directories
+                if (!opts.isInHiddenDirs && [rel.lastPathComponent hasPrefix:@"."]) {
+                    [en skipDescendants];
                 }
-                NSUInteger endPos = range.location + range.length;
-                if (endPos < line.length) {
-                    unichar c = [line characterAtIndex:endPos];
-                    if ([[NSCharacterSet alphanumericCharacterSet] characterIsMember:c] || c == '_')
-                        continue;
+                continue;
+            }
+
+            // Skip hidden files
+            if (!opts.isInHiddenDirs && [rel.lastPathComponent hasPrefix:@"."]) continue;
+
+            // Apply file filter
+            NSString *name = rel.lastPathComponent;
+            BOOL pass = (preds.count == 0);
+            for (NSPredicate *p in preds) {
+                if ([p evaluateWithObject:name]) { pass = YES; break; }
+            }
+            if (!pass) continue;
+
+            filesScanned++;
+
+            // Read file
+            NSStringEncoding enc;
+            NSString *content = [NSString stringWithContentsOfFile:full
+                                                      usedEncoding:&enc error:nil];
+            if (!content) continue;
+
+            NSArray<NSString *> *lines = [content componentsSeparatedByString:@"\n"];
+            NPPFileResults *fileRes = nil;
+
+            for (NSInteger ln = 0; ln < (NSInteger)lines.count; ln++) {
+                if (cancelFlag && *cancelFlag) break;
+
+                NSString *line = lines[ln];
+                NSRange range;
+
+                if (opts.searchType == NPPSearchRegex) {
+                    NSTextCheckingResult *m = [regex firstMatchInString:line options:0
+                                                              range:NSMakeRange(0, line.length)];
+                    if (!m) continue;
+                    range = m.range;
+                } else {
+                    range = [line rangeOfString:searchText options:cmpOpts];
+                    if (range.location == NSNotFound) continue;
                 }
+
+                // Whole word check for non-regex
+                if (opts.wholeWord && opts.searchType != NPPSearchRegex) {
+                    if (range.location > 0) {
+                        unichar c = [line characterAtIndex:range.location - 1];
+                        if ([[NSCharacterSet alphanumericCharacterSet] characterIsMember:c] || c == '_')
+                            continue;
+                    }
+                    NSUInteger endPos = range.location + range.length;
+                    if (endPos < line.length) {
+                        unichar c = [line characterAtIndex:endPos];
+                        if ([[NSCharacterSet alphanumericCharacterSet] characterIsMember:c] || c == '_')
+                            continue;
+                    }
+                }
+
+                if (!fileRes) {
+                    fileRes = [[NPPFileResults alloc] init];
+                    fileRes.filePath = full;
+                }
+
+                NPPSearchResult *r = [[NPPSearchResult alloc] init];
+                r.filePath    = full;
+                r.lineNumber  = ln + 1;
+                r.lineText    = line;
+                r.matchStart  = (NSInteger)range.location;
+                r.matchLength = (NSInteger)range.length;
+                [fileRes.results addObject:r];
             }
 
-            if (!fileRes) {
-                fileRes = [[NPPFileResults alloc] init];
-                fileRes.filePath = full;
-            }
-
-            NPPSearchResult *r = [[NPPSearchResult alloc] init];
-            r.filePath    = full;
-            r.lineNumber  = ln + 1;
-            r.lineText    = line;
-            r.matchStart  = (NSInteger)range.location;
-            r.matchLength = (NSInteger)range.length;
-            [fileRes.results addObject:r];
-        }
-
-        if (fileRes) {
-            totalHits += (NSInteger)fileRes.results.count;
-            [allResults addObject:fileRes];
-            if (progressBlock) {
-                NSInteger h = totalHits;
-                NSString *f = full;
-                dispatch_async(dispatch_get_main_queue(), ^{
-                    progressBlock(f, h);
-                });
+            if (fileRes) {
+                totalHits += (NSInteger)fileRes.results.count;
+                [allResults addObject:fileRes];
+                if (progressBlock) {
+                    NSInteger h = totalHits;
+                    NSString *f = full;
+                    dispatch_async(dispatch_get_main_queue(), ^{
+                        progressBlock(f, h);
+                    });
+                }
             }
         }
     }
@@ -550,90 +557,97 @@
     __block NSInteger totalHits = 0;
     NSInteger filesScanned = 0;
 
+    NSRegularExpression *regex = nil;
+    if (opts.searchType == NPPSearchRegex) {
+        NSRegularExpressionOptions reOpts = 0;
+        if (!opts.matchCase) reOpts |= NSRegularExpressionCaseInsensitive;
+        if (opts.dotMatchesNewline) reOpts |= NSRegularExpressionDotMatchesLineSeparators;
+        regex = [NSRegularExpression regularExpressionWithPattern:searchText
+                                                          options:reOpts error:nil];
+        if (!regex) { if (totalFilesScanned) *totalFilesScanned = 0; return allResults; }
+    }
+
     for (NSString *full in filePaths) {
-        if (cancelFlag && *cancelFlag) break;
-
-        // Check file exists
-        if (![fm fileExistsAtPath:full]) continue;
-
-        // Apply file filter
-        NSString *name = full.lastPathComponent;
-        BOOL pass = (preds.count == 0);
-        for (NSPredicate *p in preds) {
-            if ([p evaluateWithObject:name]) { pass = YES; break; }
-        }
-        if (!pass) continue;
-
-        filesScanned++;
-
-        // Read file
-        NSString *content = [NSString stringWithContentsOfFile:full
-                                                     encoding:NSUTF8StringEncoding error:nil];
-        if (!content) continue;
-
-        NSArray<NSString *> *lines = [content componentsSeparatedByString:@"\n"];
-        NPPFileResults *fileRes = nil;
-
-        for (NSInteger ln = 0; ln < (NSInteger)lines.count; ln++) {
+        @autoreleasepool {
             if (cancelFlag && *cancelFlag) break;
 
-            NSString *line = lines[ln];
-            NSRange range;
+            // Check file exists
+            if (![fm fileExistsAtPath:full]) continue;
 
-            if (opts.searchType == NPPSearchRegex) {
-                NSRegularExpressionOptions reOpts = 0;
-                if (!opts.matchCase) reOpts |= NSRegularExpressionCaseInsensitive;
-                if (opts.dotMatchesNewline) reOpts |= NSRegularExpressionDotMatchesLineSeparators;
-                NSRegularExpression *re = [NSRegularExpression regularExpressionWithPattern:searchText
-                                                                                   options:reOpts error:nil];
-                if (!re) { if (totalFilesScanned) *totalFilesScanned = filesScanned; return allResults; }
-                NSTextCheckingResult *m = [re firstMatchInString:line options:0
-                                                          range:NSMakeRange(0, line.length)];
-                if (!m) continue;
-                range = m.range;
-            } else {
-                range = [line rangeOfString:searchText options:cmpOpts];
-                if (range.location == NSNotFound) continue;
+            // Apply file filter
+            NSString *name = full.lastPathComponent;
+            BOOL pass = (preds.count == 0);
+            for (NSPredicate *p in preds) {
+                if ([p evaluateWithObject:name]) { pass = YES; break; }
             }
+            if (!pass) continue;
 
-            // Whole word check for non-regex
-            if (opts.wholeWord && opts.searchType != NPPSearchRegex) {
-                if (range.location > 0) {
-                    unichar c = [line characterAtIndex:range.location - 1];
-                    if ([[NSCharacterSet alphanumericCharacterSet] characterIsMember:c] || c == '_')
-                        continue;
+            filesScanned++;
+
+            // Read file
+            NSStringEncoding enc;
+            NSString *content = [NSString stringWithContentsOfFile:full
+                                                      usedEncoding:&enc error:nil];
+            if (!content) continue;
+
+            NSArray<NSString *> *lines = [content componentsSeparatedByString:@"\n"];
+            NPPFileResults *fileRes = nil;
+
+            for (NSInteger ln = 0; ln < (NSInteger)lines.count; ln++) {
+                if (cancelFlag && *cancelFlag) break;
+
+                NSString *line = lines[ln];
+                NSRange range;
+
+                if (opts.searchType == NPPSearchRegex) {
+                    NSTextCheckingResult *m = [regex firstMatchInString:line options:0
+                                                              range:NSMakeRange(0, line.length)];
+                    if (!m) continue;
+                    range = m.range;
+                } else {
+                    range = [line rangeOfString:searchText options:cmpOpts];
+                    if (range.location == NSNotFound) continue;
                 }
-                NSUInteger endPos = range.location + range.length;
-                if (endPos < line.length) {
-                    unichar c = [line characterAtIndex:endPos];
-                    if ([[NSCharacterSet alphanumericCharacterSet] characterIsMember:c] || c == '_')
-                        continue;
+
+                // Whole word check for non-regex
+                if (opts.wholeWord && opts.searchType != NPPSearchRegex) {
+                    if (range.location > 0) {
+                        unichar c = [line characterAtIndex:range.location - 1];
+                        if ([[NSCharacterSet alphanumericCharacterSet] characterIsMember:c] || c == '_')
+                            continue;
+                    }
+                    NSUInteger endPos = range.location + range.length;
+                    if (endPos < line.length) {
+                        unichar c = [line characterAtIndex:endPos];
+                        if ([[NSCharacterSet alphanumericCharacterSet] characterIsMember:c] || c == '_')
+                            continue;
+                    }
                 }
+
+                if (!fileRes) {
+                    fileRes = [[NPPFileResults alloc] init];
+                    fileRes.filePath = full;
+                }
+
+                NPPSearchResult *r = [[NPPSearchResult alloc] init];
+                r.filePath    = full;
+                r.lineNumber  = ln + 1;
+                r.lineText    = line;
+                r.matchStart  = (NSInteger)range.location;
+                r.matchLength = (NSInteger)range.length;
+                [fileRes.results addObject:r];
             }
 
-            if (!fileRes) {
-                fileRes = [[NPPFileResults alloc] init];
-                fileRes.filePath = full;
-            }
-
-            NPPSearchResult *r = [[NPPSearchResult alloc] init];
-            r.filePath    = full;
-            r.lineNumber  = ln + 1;
-            r.lineText    = line;
-            r.matchStart  = (NSInteger)range.location;
-            r.matchLength = (NSInteger)range.length;
-            [fileRes.results addObject:r];
-        }
-
-        if (fileRes) {
-            totalHits += (NSInteger)fileRes.results.count;
-            [allResults addObject:fileRes];
-            if (progressBlock) {
-                NSInteger h = totalHits;
-                NSString *f = full;
-                dispatch_async(dispatch_get_main_queue(), ^{
-                    progressBlock(f, h);
-                });
+            if (fileRes) {
+                totalHits += (NSInteger)fileRes.results.count;
+                [allResults addObject:fileRes];
+                if (progressBlock) {
+                    NSInteger h = totalHits;
+                    NSString *f = full;
+                    dispatch_async(dispatch_get_main_queue(), ^{
+                        progressBlock(f, h);
+                    });
+                }
             }
         }
     }

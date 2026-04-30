@@ -859,29 +859,37 @@ static CGFloat _fromTop(NSView *container, CGFloat topOffset, CGFloat height) {
     [self _showStatus:[[NppLocalizer shared] translate:@"Searching..."] found:YES];
 
     dispatch_async(dispatch_get_global_queue(QOS_CLASS_USER_INITIATED, 0), ^{
+        __weak typeof(self) weakSelf = self;
+        typeof(self) strongSelf = weakSelf;
+        if (!strongSelf) return;
+
         NSInteger scannedCount = 0;
         NSArray<NPPFileResults *> *results = [SearchEngine findInDirectory:opts.directory
             options:opts
             progressBlock:^(NSString *file, NSInteger hits) {
                 dispatch_async(dispatch_get_main_queue(), ^{
-                    [self _showStatus:[NSString stringWithFormat:[[NppLocalizer shared] translate:@"Searching... %ld hit(s) — %@"],
+                    typeof(self) strongInner = weakSelf;
+                    if (!strongInner) return;
+                    [strongInner _showStatus:[NSString stringWithFormat:[[NppLocalizer shared] translate:@"Searching... %ld hit(s) — %@"],
                         (long)hits, file.lastPathComponent] found:YES];
                 });
             }
-            cancelFlag:&self->_cancelSearch
+            cancelFlag:&strongSelf->_cancelSearch
             totalFilesScanned:&scannedCount];
 
         dispatch_async(dispatch_get_main_queue(), ^{
+            typeof(self) strongFinal = weakSelf;
+            if (!strongFinal) return;
             if (results.count) {
-                [self->_delegate findWindow:self showResults:results forSearchText:opts.searchText
+                [strongFinal->_delegate findWindow:strongFinal showResults:results forSearchText:opts.searchText
                               options:opts filesSearched:scannedCount];
-                [self->_delegate findWindowShowSearchResultsPanel:self];
+                [strongFinal->_delegate findWindowShowSearchResultsPanel:strongFinal];
                 NSInteger totalHits = 0;
                 for (NPPFileResults *fr in results) totalHits += (NSInteger)fr.results.count;
-                [self _showStatus:[NSString stringWithFormat:[[NppLocalizer shared] translate:@"Find in Files: %ld hit(s) in %ld file(s)."],
+                [strongFinal _showStatus:[NSString stringWithFormat:[[NppLocalizer shared] translate:@"Find in Files: %ld hit(s) in %ld file(s)."],
                     (long)totalHits, (long)results.count] found:YES];
             } else {
-                [self _showStatus:[[NppLocalizer shared] translate:@"Find in Files: 0 hits."] found:NO];
+                [strongFinal _showStatus:[[NppLocalizer shared] translate:@"Find in Files: 0 hits."] found:NO];
             }
         });
     });
@@ -906,29 +914,51 @@ static CGFloat _fromTop(NSView *container, CGFloat topOffset, CGFloat height) {
     [self _showStatus:[[NppLocalizer shared] translate:@"Replacing in files..."] found:YES];
 
     dispatch_async(dispatch_get_global_queue(QOS_CLASS_USER_INITIATED, 0), ^{
+        __weak typeof(self) weakSelf = self;
+        typeof(self) strongSelf = weakSelf;
+        if (!strongSelf) return;
+
         NSArray<NPPFileResults *> *results = [SearchEngine findInDirectory:opts.directory
             options:opts progressBlock:nil cancelFlag:NULL totalFilesScanned:NULL];
-        __block NSInteger totalReplacements = 0;
-        dispatch_async(dispatch_get_main_queue(), ^{
-            for (NPPFileResults *fr in results) {
-                NSString *content = [NSString stringWithContentsOfFile:fr.filePath
-                                                             encoding:NSUTF8StringEncoding error:nil];
-                if (!content) continue;
-                NSString *search = opts.searchText;
-                NSString *repl = opts.replaceText ?: @"";
-                if (opts.searchType == NPPSearchExtended) {
-                    search = [SearchEngine expandExtendedString:search];
-                    repl = [SearchEngine expandExtendedString:repl];
-                }
-                NSStringCompareOptions cmp = opts.matchCase ? 0 : NSCaseInsensitiveSearch;
-                NSString *replaced = [content stringByReplacingOccurrencesOfString:search withString:repl
-                                                                          options:cmp range:NSMakeRange(0, content.length)];
-                if (![replaced isEqualToString:content]) {
-                    [replaced writeToFile:fr.filePath atomically:YES encoding:NSUTF8StringEncoding error:nil];
-                    totalReplacements += (NSInteger)fr.results.count;
-                }
+        NSInteger totalReplacements = 0;
+        
+        for (NPPFileResults *fr in results) {
+            NSStringEncoding enc;
+            NSString *content = [NSString stringWithContentsOfFile:fr.filePath
+                                                      usedEncoding:&enc error:nil];
+            if (!content) continue;
+            NSString *search = opts.searchText;
+            NSString *repl = opts.replaceText ?: @"";
+            if (opts.searchType == NPPSearchExtended) {
+                search = [SearchEngine expandExtendedString:search];
+                repl = [SearchEngine expandExtendedString:repl];
             }
-            [self _showStatus:[NSString stringWithFormat:[[NppLocalizer shared] translate:@"Replace in Files: %ld replacement(s) in %ld file(s)."],
+            
+            NSString *replaced = content;
+            if (opts.searchType == NPPSearchRegex) {
+                NSRegularExpressionOptions reOpts = 0;
+                if (!opts.matchCase) reOpts |= NSRegularExpressionCaseInsensitive;
+                if (opts.dotMatchesNewline) reOpts |= NSRegularExpressionDotMatchesLineSeparators;
+                NSRegularExpression *re = [NSRegularExpression regularExpressionWithPattern:search options:reOpts error:nil];
+                if (re) {
+                    replaced = [re stringByReplacingMatchesInString:content options:0 range:NSMakeRange(0, content.length) withTemplate:repl];
+                }
+            } else {
+                NSStringCompareOptions cmp = opts.matchCase ? 0 : NSCaseInsensitiveSearch;
+                replaced = [content stringByReplacingOccurrencesOfString:search withString:repl
+                                                                 options:cmp range:NSMakeRange(0, content.length)];
+            }
+            
+            if (![replaced isEqualToString:content]) {
+                [replaced writeToFile:fr.filePath atomically:YES encoding:enc error:nil];
+                totalReplacements += (NSInteger)fr.results.count;
+            }
+        }
+
+        dispatch_async(dispatch_get_main_queue(), ^{
+            typeof(self) strongFinal = weakSelf;
+            if (!strongFinal) return;
+            [strongFinal _showStatus:[NSString stringWithFormat:[[NppLocalizer shared] translate:@"Replace in Files: %ld replacement(s) in %ld file(s)."],
                 (long)totalReplacements, (long)results.count] found:(totalReplacements > 0)];
         });
     });
@@ -985,31 +1015,39 @@ static CGFloat _fromTop(NSView *container, CGFloat topOffset, CGFloat height) {
     [self _showStatus:[loc translate:@"Searching..."] found:YES];
 
     dispatch_async(dispatch_get_global_queue(QOS_CLASS_USER_INITIATED, 0), ^{
+        __weak typeof(self) weakSelf = self;
+        typeof(self) strongSelf = weakSelf;
+        if (!strongSelf) return;
+
         NSInteger scannedCount = 0;
         NSArray<NPPFileResults *> *results = [SearchEngine findInFilePaths:allPaths
             options:opts
             progressBlock:^(NSString *file, NSInteger hits) {
                 dispatch_async(dispatch_get_main_queue(), ^{
-                    [self _showStatus:[NSString stringWithFormat:
+                    typeof(self) strongInner = weakSelf;
+                    if (!strongInner) return;
+                    [strongInner _showStatus:[NSString stringWithFormat:
                         [[NppLocalizer shared] translate:@"Searching... %ld hit(s) — %@"],
                         (long)hits, file.lastPathComponent] found:YES];
                 });
             }
-            cancelFlag:&self->_cancelSearch
+            cancelFlag:&strongSelf->_cancelSearch
             totalFilesScanned:&scannedCount];
 
         dispatch_async(dispatch_get_main_queue(), ^{
+            typeof(self) strongFinal = weakSelf;
+            if (!strongFinal) return;
             if (results.count) {
-                [self->_delegate findWindow:self showResults:results forSearchText:opts.searchText
+                [strongFinal->_delegate findWindow:strongFinal showResults:results forSearchText:opts.searchText
                               options:opts filesSearched:scannedCount];
-                [self->_delegate findWindowShowSearchResultsPanel:self];
+                [strongFinal->_delegate findWindowShowSearchResultsPanel:strongFinal];
                 NSInteger totalHits = 0;
                 for (NPPFileResults *fr in results) totalHits += (NSInteger)fr.results.count;
-                [self _showStatus:[NSString stringWithFormat:
+                [strongFinal _showStatus:[NSString stringWithFormat:
                     [[NppLocalizer shared] translate:@"Find in Projects: %ld hit(s) in %ld file(s)."],
                     (long)totalHits, (long)results.count] found:YES];
             } else {
-                [self _showStatus:[[NppLocalizer shared] translate:@"Find in Projects: 0 hits."] found:NO];
+                [strongFinal _showStatus:[[NppLocalizer shared] translate:@"Find in Projects: 0 hits."] found:NO];
             }
         });
     });
@@ -1061,29 +1099,51 @@ static CGFloat _fromTop(NSView *container, CGFloat topOffset, CGFloat height) {
     [self _showStatus:[loc translate:@"Replacing in files..."] found:YES];
 
     dispatch_async(dispatch_get_global_queue(QOS_CLASS_USER_INITIATED, 0), ^{
+        __weak typeof(self) weakSelf = self;
+        typeof(self) strongSelf = weakSelf;
+        if (!strongSelf) return;
+
         NSArray<NPPFileResults *> *results = [SearchEngine findInFilePaths:allPaths
             options:opts progressBlock:nil cancelFlag:NULL totalFilesScanned:NULL];
-        __block NSInteger totalReplacements = 0;
-        dispatch_async(dispatch_get_main_queue(), ^{
-            for (NPPFileResults *fr in results) {
-                NSString *content = [NSString stringWithContentsOfFile:fr.filePath
-                                                             encoding:NSUTF8StringEncoding error:nil];
-                if (!content) continue;
-                NSString *search = opts.searchText;
-                NSString *repl = opts.replaceText ?: @"";
-                if (opts.searchType == NPPSearchExtended) {
-                    search = [SearchEngine expandExtendedString:search];
-                    repl = [SearchEngine expandExtendedString:repl];
-                }
-                NSStringCompareOptions cmp = opts.matchCase ? 0 : NSCaseInsensitiveSearch;
-                NSString *replaced = [content stringByReplacingOccurrencesOfString:search withString:repl
-                                                                          options:cmp range:NSMakeRange(0, content.length)];
-                if (![replaced isEqualToString:content]) {
-                    [replaced writeToFile:fr.filePath atomically:YES encoding:NSUTF8StringEncoding error:nil];
-                    totalReplacements += (NSInteger)fr.results.count;
-                }
+        NSInteger totalReplacements = 0;
+
+        for (NPPFileResults *fr in results) {
+            NSStringEncoding enc;
+            NSString *content = [NSString stringWithContentsOfFile:fr.filePath
+                                                      usedEncoding:&enc error:nil];
+            if (!content) continue;
+            NSString *search = opts.searchText;
+            NSString *repl = opts.replaceText ?: @"";
+            if (opts.searchType == NPPSearchExtended) {
+                search = [SearchEngine expandExtendedString:search];
+                repl = [SearchEngine expandExtendedString:repl];
             }
-            [self _showStatus:[NSString stringWithFormat:
+            
+            NSString *replaced = content;
+            if (opts.searchType == NPPSearchRegex) {
+                NSRegularExpressionOptions reOpts = 0;
+                if (!opts.matchCase) reOpts |= NSRegularExpressionCaseInsensitive;
+                if (opts.dotMatchesNewline) reOpts |= NSRegularExpressionDotMatchesLineSeparators;
+                NSRegularExpression *re = [NSRegularExpression regularExpressionWithPattern:search options:reOpts error:nil];
+                if (re) {
+                    replaced = [re stringByReplacingMatchesInString:content options:0 range:NSMakeRange(0, content.length) withTemplate:repl];
+                }
+            } else {
+                NSStringCompareOptions cmp = opts.matchCase ? 0 : NSCaseInsensitiveSearch;
+                replaced = [content stringByReplacingOccurrencesOfString:search withString:repl
+                                                                 options:cmp range:NSMakeRange(0, content.length)];
+            }
+            
+            if (![replaced isEqualToString:content]) {
+                [replaced writeToFile:fr.filePath atomically:YES encoding:enc error:nil];
+                totalReplacements += (NSInteger)fr.results.count;
+            }
+        }
+
+        dispatch_async(dispatch_get_main_queue(), ^{
+            typeof(self) strongFinal = weakSelf;
+            if (!strongFinal) return;
+            [strongFinal _showStatus:[NSString stringWithFormat:
                 [[NppLocalizer shared] translate:@"Replace in Projects: %ld replacement(s) in %ld file(s)."],
                 (long)totalReplacements, (long)results.count] found:(totalReplacements > 0)];
         });
