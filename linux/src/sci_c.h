@@ -165,6 +165,24 @@ typedef struct SCNotification {
 #define SC_MARGIN_SYMBOL        0
 #define SC_MARGIN_NUMBER        1
 
+/* Column / rectangular selection */
+#define SCI_SETSELECTIONMODE            2422
+#define SCI_GETSELECTIONMODE            2423
+#define SC_SEL_STREAM                   0
+#define SC_SEL_RECTANGLE                1
+#define SCI_GETLINESELSTARTPOSITION     2424
+#define SCI_GETLINESELENDPOSITION       2425
+#define SCI_SETVIRTUALSPACEOPTIONS      2596
+#define SCVS_RECTANGULARSELECTION       1
+#define SCVS_USERACCESSIBLE             2
+
+/* Undo grouping */
+#define SCI_BEGINUNDOACTION             2078
+#define SCI_ENDUNDOACTION               2079
+
+/* Text insertion */
+#define SCI_INSERTTEXT                  2003
+
 /* Word wrap */
 #define SCI_SETWRAPMODE         2268
 #define SCI_GETWRAPMODE         2269

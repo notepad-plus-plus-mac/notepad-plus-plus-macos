@@ -7,6 +7,7 @@
 #include "statusbar.h"
 #include "findreplace.h"
 #include "findinfiles.h"
+#include "columneditor.h"
 #include "toolbar.h"
 #include "styleeditor.h"
 #include "lexer.h"
@@ -238,6 +239,12 @@ static void cb_find_in_files(GtkMenuItem *i, gpointer d)
 }
 
 static void cb_goto(GtkMenuItem *i, gpointer d)   { (void)i;(void)d; editor_goto_line_dialog(); }
+
+static void cb_column_editor(GtkMenuItem *i, gpointer d)
+{
+    (void)i; (void)d;
+    columneditor_show(s_main_window);
+}
 
 /* Settings */
 static void cb_style_editor(GtkMenuItem *i, gpointer d)
@@ -2126,6 +2133,10 @@ static GtkWidget *build_menubar(GtkWindow *window, GApplication *app)
     APPEND(edit, smi("cmd.paste", TM("cmd.42005", "_Paste"),      G_CALLBACK(cb_paste),  NULL, accel, GDK_KEY_v, GDK_CONTROL_MASK));
     APPEND(edit, sep_item());
     APPEND(edit, smi("cmd.selall",TM("cmd.42007", "Select _All"), G_CALLBACK(cb_selall), NULL, accel, GDK_KEY_a, GDK_CONTROL_MASK));
+    APPEND(edit, sep_item());
+    APPEND(edit, menu_item(TM("menu.columneditor", "_Column Editor…"),
+                           G_CALLBACK(cb_column_editor), NULL, accel,
+                           GDK_KEY_c, GDK_MOD1_MASK));
     APPEND(edit, sep_item());
 
     /* EOL Conversion submenu */

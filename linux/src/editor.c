@@ -66,6 +66,8 @@ static void setup_sci(GtkWidget *sci)
         sci_msg(sci, SCI_INDICSETFORE,  (uptr_t)k, mark_colors[k]);
         sci_msg(sci, SCI_INDICSETALPHA, (uptr_t)k, 100);
     }
+    sci_msg(sci, SCI_SETVIRTUALSPACEOPTIONS,
+            SCVS_RECTANGULARSELECTION | SCVS_USERACCESSIBLE, 0);
     sci_msg(sci, SCI_SETTABWIDTH,        (uptr_t)g_prefs.tab_width,  0);
     sci_msg(sci, SCI_SETUSETABS,         (uptr_t)g_prefs.use_tabs,   0);
     sci_msg(sci, SCI_SETCARETLINEVISIBLE,(uptr_t)g_prefs.highlight_current_line, 0);
