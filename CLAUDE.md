@@ -37,6 +37,7 @@ cmake -B build && cmake --build build
 | `prefs.c/h` | Preferences struct (`NppPrefs`), XML load/save, 4-page Preferences dialog |
 | `findinfiles.c/h` | Find in Files dialog: directory walk, GThread search, collapsible GtkTreeView results |
 | `columneditor.c/h` | Column Editor dialog: insert text or number sequence into each line of a selection |
+| `autocomplete.c/h` | Word+keyword auto-completion: `SCI_AUTOCSHOW` driven by `SCN_CHARADDED`; sources keywords from `lexer_get_keywords()` and scans the document (first 100 KB) |
 
 **User config location (Linux port):** `~/.config/npp/`
 - `stylers.xml` — user style overrides (saved by Style Configurator)
@@ -143,8 +144,7 @@ Changes to vendored code should be minimal and clearly marked so they survive up
 
 ### High effort
 
-28. **Auto-completion** — `SCI_AUTOCSHOW` from word list built per language; `SCI_CALLTIPSHOW` for param hints.
-32. **User-defined languages (UDL)** — parse `~/.config/npp/userDefineLangs/*.xml`; build a runtime `ILexer5` equivalent or use Lexilla's `LexerModule` API.
+29. **User-defined languages (UDL)** — parse `~/.config/npp/userDefineLangs/*.xml`; build a runtime `ILexer5` equivalent or use Lexilla's `LexerModule` API.
 33. **Change history / git gutter** — run `git diff` in background; parse unified diff; set `SCI_MARKERDEFINE` symbols in margin.
 34. **Session save / restore** — serialize open file paths + scroll/caret positions to `~/.config/npp/session.xml`; restore on launch.
 35. **Auto-backup** — `g_timeout_add_seconds()` writes current doc to `~/.config/npp/backup/<name>~`; clean on clean save.

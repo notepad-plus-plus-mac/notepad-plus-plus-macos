@@ -15,6 +15,7 @@ The macOS port and this Linux port share a common foundation: both macOS and Lin
 ## Features
 
 ### Editing
+- **Auto-completion** — word and keyword completion triggered after N characters (configurable in Preferences → Editor); sources: language keywords (C/C++, Python, JavaScript, TypeScript, SQL, Rust, Bash, Lua, PHP, Ruby, Perl) and all words in the current document; accept with Tab/Enter, cancel with Escape; enabled/min-chars configurable in Settings → Preferences
 - Multi-tab editing with reorderable tabs and close buttons
 - File operations: New, Open (multi-file), Save, Save As, Close
 - Undo / Redo, Cut / Copy / Paste, Select All
@@ -102,7 +103,6 @@ Ordered by implementation effort (low → high).
 > **Note:** All the features with low and medium effort required are marked as completed. No intermediate release are planned. This software will be released when all the points in this list will be successfully completed.
 
 ### High effort
-- **Auto-completion** — word, function, and path completion with parameter hints
 - **User-defined languages (UDL)** — custom syntax highlighting via XML definitions
 - **Change history / git gutter** — diff markers in margin, next/prev change navigation
 - **Session save / restore** — persist and reopen tab sets
