@@ -340,12 +340,31 @@ static void apply_view_symbols(GtkWidget *sci)
         s_show_whitespace ? SC_WS_VISIBLEALWAYS : SC_WS_INVISIBLE, 0);
     scintilla_send_message(SCINTILLA(sci), SCI_SETVIEWEOL,
         s_show_eol_marks, 0);
+
+    /* Compute line-number margin width from actual font metrics */
+    if (s_show_linenums) {
+        int n = (int)scintilla_send_message(SCINTILLA(sci), SCI_GETLINECOUNT, 0, 0);
+        /* Ensure room for at least 4 digits; "_" provides side padding */
+        char buf[24];
+        snprintf(buf, sizeof(buf), "_%d_", n < 9999 ? 9999 : n);
+        int w = (int)scintilla_send_message(SCINTILLA(sci), SCI_TEXTWIDTH,
+                                            STYLE_LINENUMBER, (sptr_t)buf);
+        if (w < 32) w = 32; /* fallback before widget is realized */
+        scintilla_send_message(SCINTILLA(sci), SCI_SETMARGINWIDTHN, 0, w);
+    } else {
+        scintilla_send_message(SCINTILLA(sci), SCI_SETMARGINWIDTHN, 0, 0);
+    }
+
     scintilla_send_message(SCINTILLA(sci), SCI_SETMARGINWIDTHN,
-        0, s_show_linenums ? 44 : 0);
-    scintilla_send_message(SCINTILLA(sci), SCI_SETMARGINWIDTHN,
-        2, s_show_fold ? 14 : 0);
+        2, s_show_fold ? 16 : 0);
     scintilla_send_message(SCINTILLA(sci), SCI_SETMARGINWIDTHN,
         1, s_show_bookmarks ? 16 : 0);
+}
+
+/* Called from editor.c after setup_sci so new tabs get correct widths */
+void main_apply_view_symbols(GtkWidget *sci)
+{
+    apply_view_symbols(sci);
 }
 
 /* Apply to every open tab. */

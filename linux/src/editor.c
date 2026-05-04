@@ -49,10 +49,19 @@ static void setup_sci(GtkWidget *sci)
     sci_msg(sci, SCI_MARKERDEFINE, SC_MARKNUM_BOOKMARK, SC_MARK_BOOKMARK);
     sci_msg(sci, SCI_MARKERSETFORE, SC_MARKNUM_BOOKMARK, 0x0000FF); /* blue */
     sci_msg(sci, SCI_MARKERSETBACK, SC_MARKNUM_BOOKMARK, 0x0080FF);
-    /* Margin 2: fold */
+    /* Margin 2: fold — box +/- tree markers */
     sci_msg(sci, SCI_SETMARGINTYPE,      2, SC_MARGIN_SYMBOL);
     sci_msg(sci, SCI_SETMARGINSENSITIVE, 2, 1);
-    sci_msg(sci, SCI_SETMARGINWIDTHN,    2, 14);
+    sci_msg(sci, SCI_SETMARGINWIDTHN,    2, 16);
+    sci_msg(sci, SCI_MARKERDEFINE, SC_MARKNUM_FOLDER,       SC_MARK_BOXPLUS);
+    sci_msg(sci, SCI_MARKERDEFINE, SC_MARKNUM_FOLDEROPEN,   SC_MARK_BOXMINUS);
+    sci_msg(sci, SCI_MARKERDEFINE, SC_MARKNUM_FOLDEREND,    SC_MARK_BOXPLUSCONNECTED);
+    sci_msg(sci, SCI_MARKERDEFINE, SC_MARKNUM_FOLDEROPENMID,SC_MARK_BOXMINUSCONNECTED);
+    sci_msg(sci, SCI_MARKERDEFINE, SC_MARKNUM_FOLDERSUB,    SC_MARK_VLINE);
+    sci_msg(sci, SCI_MARKERDEFINE, SC_MARKNUM_FOLDERMIDTAIL,SC_MARK_TCORNER);
+    sci_msg(sci, SCI_MARKERDEFINE, SC_MARKNUM_FOLDERTAIL,   SC_MARK_LCORNER);
+    /* Show a line below contracted folds */
+    sci_msg(sci, SCI_SETFOLDFLAGS, SC_FOLDFLAG_LINEAFTER_CONTRACTED, 0);
     /* Mark-style indicators 0–4: ROUNDBOX with semi-transparent fill */
     static const int mark_colors[5] = {
         0x00FFFF, /* yellow  (BGR) */
@@ -81,6 +90,8 @@ static void setup_sci(GtkWidget *sci)
     stylestore_apply_default(sci);
     sci_msg(sci, SCI_STYLECLEARALL, 0, 0);
     stylestore_apply_global(sci);
+    /* Apply correct margin widths now that fonts/styles are set */
+    main_apply_view_symbols(sci);
 }
 
 /* ------------------------------------------------------------------ */
@@ -217,8 +228,14 @@ static void on_sci_notify(GtkWidget *sci, gint unused,
             sci_msg(sci, SCI_BRACEHIGHLIGHT, (uptr_t)-1, (sptr_t)-1);
         }
     } else if (code == SCN_MARGINCLICK) {
-        if (n->margin == 1)
+        if (n->margin == 1) {
             main_toggle_bookmark_at_line(sci, (int)n->line);
+        } else if (n->margin == 2) {
+            int line = (int)n->line;
+            int lvl  = (int)sci_msg(sci, SCI_GETFOLDLEVEL, (uptr_t)line, 0);
+            if (lvl & SC_FOLDLEVELHEADERFLAG)
+                sci_msg(sci, SCI_TOGGLEFOLD, (uptr_t)line, 0);
+        }
     } else if (code == SCN_CHARADDED && g_prefs.auto_indent != AUTO_INDENT_NONE) {
         if (n->ch == '\n' || n->ch == '\r') {
             Sci_Position cur_line = (Sci_Position)sci_msg(sci, SCI_LINEFROMPOSITION,

@@ -217,20 +217,40 @@ typedef struct SCNotification {
 #define STYLE_BRACELIGHT        34
 #define STYLE_BRACEBAD          35
 
-/* Fold marker numbers */
-#define SC_MARKNUM_FOLDER       30
-#define SC_MARKNUM_FOLDEROPEN   31
+/* Fold marker numbers (the full 7-level tree hierarchy) */
+#define SC_MARKNUM_FOLDEREND        25
+#define SC_MARKNUM_FOLDEROPENMID    26
+#define SC_MARKNUM_FOLDERMIDTAIL    27
+#define SC_MARKNUM_FOLDERTAIL       28
+#define SC_MARKNUM_FOLDERSUB        29
+#define SC_MARKNUM_FOLDER           30
+#define SC_MARKNUM_FOLDEROPEN       31
+
+/* Fold mark shapes */
+#define SC_MARK_VLINE               20
+#define SC_MARK_LCORNER             21
+#define SC_MARK_TCORNER             22
+#define SC_MARK_BOXPLUS             23
+#define SC_MARK_BOXPLUSCONNECTED    24
+#define SC_MARK_BOXMINUS            25
+#define SC_MARK_BOXMINUSCONNECTED   26
 
 /* Fold messages and constants */
 #define SCI_GETFOLDLEVEL        2223
 #define SCI_FOLDLINE            2237
 #define SCI_FOLDCHILDREN        2238
+#define SCI_TOGGLEFOLD          2231
 #define SCI_FOLDALL             2662
+#define SCI_SETFOLDFLAGS        2233
 #define SC_FOLDACTION_CONTRACT  0
 #define SC_FOLDACTION_EXPAND    1
 #define SC_FOLDLEVELBASE        0x400
 #define SC_FOLDLEVELHEADERFLAG  0x2000
 #define SC_FOLDLEVELNUMBERMASK  0x0FFF
+#define SC_FOLDFLAG_LINEAFTER_CONTRACTED 0x010
+
+/* Line number margin dynamic width */
+#define SCI_TEXTWIDTH           2276
 
 /* Indicators (mark styles) */
 #define SCI_INDICSETSTYLE       2080
