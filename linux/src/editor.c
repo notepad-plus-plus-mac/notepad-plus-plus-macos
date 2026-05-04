@@ -7,6 +7,7 @@
 #include "toolbar.h"
 #include "stylestore.h"
 #include "i18n.h"
+#include "autocomplete.h"
 #include <string.h>
 #include <stdio.h>
 
@@ -92,6 +93,7 @@ static void setup_sci(GtkWidget *sci)
     stylestore_apply_global(sci);
     /* Apply correct margin widths now that fonts/styles are set */
     main_apply_view_symbols(sci);
+    autocomplete_setup(sci);
 }
 
 /* ------------------------------------------------------------------ */
@@ -236,8 +238,9 @@ static void on_sci_notify(GtkWidget *sci, gint unused,
             if (lvl & SC_FOLDLEVELHEADERFLAG)
                 sci_msg(sci, SCI_TOGGLEFOLD, (uptr_t)line, 0);
         }
-    } else if (code == SCN_CHARADDED && g_prefs.auto_indent != AUTO_INDENT_NONE) {
-        if (n->ch == '\n' || n->ch == '\r') {
+    } else if (code == SCN_CHARADDED) {
+        autocomplete_on_char_added(sci, n->ch);
+        if (g_prefs.auto_indent != AUTO_INDENT_NONE && (n->ch == '\n' || n->ch == '\r')) {
             Sci_Position cur_line = (Sci_Position)sci_msg(sci, SCI_LINEFROMPOSITION,
                 (uptr_t)sci_msg(sci, SCI_GETCURRENTPOS, 0, 0), 0);
             Sci_Position prev_line = cur_line - 1;

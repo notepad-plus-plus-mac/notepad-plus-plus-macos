@@ -16,6 +16,10 @@ void lexer_apply(GtkWidget *sci, const char *lang_name);
 /* Human-readable display name for a language (returns "Normal Text" if unknown/NULL) */
 const char *lexer_display_name(const char *lang_name);
 
+/* Keyword string for a language (space-separated), or NULL if none defined.
+   Applies aliases: c/objc → cpp, typescript → javascript. */
+const char *lexer_get_keywords(const char *lang_name);
+
 #ifdef __cplusplus
 }
 #endif

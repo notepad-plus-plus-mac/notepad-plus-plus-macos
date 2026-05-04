@@ -295,4 +295,16 @@ typedef struct SCNotification {
 /* SCN_MARGINCLICK notification */
 #define SCN_MARGINCLICK         2006
 
+/* Auto-completion */
+#define SCI_AUTOCSHOW                   2100
+#define SCI_AUTOCCANCEL                 2101
+#define SCI_AUTOCACTIVE                 2102
+#define SCI_AUTOCSETDROPRESTOFWORD      2106
+#define SCI_AUTOCSETSEPARATOR           2108
+#define SCI_AUTOCSETAUTOHIDE            2110
+#define SCI_AUTOCSETIGNORECASE          2115
+#define SCI_AUTOCSETMAXHEIGHT           2190
+#define SCI_AUTOCSETORDER               2660
+#define SC_ORDER_PERFORMSORT            1
+
 #endif /* SCI_C_H */

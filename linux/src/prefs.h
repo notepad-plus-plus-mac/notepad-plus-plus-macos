@@ -33,6 +33,10 @@ typedef struct {
     /* General */
     gboolean show_full_path_in_title; /* default FALSE */
     gboolean copy_line_no_selection;  /* copy/cut whole line, default TRUE */
+
+    /* Auto-completion */
+    gboolean autocomplete_enabled;    /* default TRUE */
+    int      autocomplete_min_chars;  /* trigger after N chars, default 1 */
 } NppPrefs;
 
 extern NppPrefs g_prefs;

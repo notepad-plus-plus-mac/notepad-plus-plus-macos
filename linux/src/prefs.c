@@ -21,6 +21,8 @@ NppPrefs g_prefs = {
     .default_encoding        = "UTF-8",
     .show_full_path_in_title = FALSE,
     .copy_line_no_selection  = TRUE,
+    .autocomplete_enabled    = TRUE,
+    .autocomplete_min_chars  = 1,
 };
 
 /* ------------------------------------------------------------------ */
@@ -53,6 +55,8 @@ static void xml_start(GMarkupParseContext *ctx, const gchar *el,
     else if (strcmp(name, "defaultEncoding")       == 0) { strncpy(g_prefs.default_encoding, value, 31); g_prefs.default_encoding[31] = '\0'; }
     else if (strcmp(name, "showFullPathInTitle")   == 0) g_prefs.show_full_path_in_title = atoi(value) != 0;
     else if (strcmp(name, "copyLineNoSelection")   == 0) g_prefs.copy_line_no_selection  = atoi(value) != 0;
+    else if (strcmp(name, "autocompleteEnabled")   == 0) g_prefs.autocomplete_enabled    = atoi(value) != 0;
+    else if (strcmp(name, "autocompleteMinChars")  == 0) g_prefs.autocomplete_min_chars  = atoi(value);
 }
 
 static GMarkupParser s_parser = { xml_start, NULL, NULL, NULL, NULL };
@@ -77,6 +81,8 @@ void prefs_load(void)
     if (g_prefs.caret_blink_rate < 0)    g_prefs.caret_blink_rate = 0;
     if (g_prefs.caret_blink_rate > 2000) g_prefs.caret_blink_rate = 2000;
     if (g_prefs.default_eol < 0 || g_prefs.default_eol > 2) g_prefs.default_eol = 2;
+    if (g_prefs.autocomplete_min_chars < 1)  g_prefs.autocomplete_min_chars = 1;
+    if (g_prefs.autocomplete_min_chars > 10) g_prefs.autocomplete_min_chars = 10;
     if (g_prefs.default_encoding[0] == '\0')
         strncpy(g_prefs.default_encoding, "UTF-8", sizeof(g_prefs.default_encoding) - 1);
 }
@@ -113,6 +119,8 @@ void prefs_save(void)
     WPREF_S("defaultEncoding",       g_prefs.default_encoding);
     WPREF_I("showFullPathInTitle",   g_prefs.show_full_path_in_title);
     WPREF_I("copyLineNoSelection",   g_prefs.copy_line_no_selection);
+    WPREF_I("autocompleteEnabled",   g_prefs.autocomplete_enabled);
+    WPREF_I("autocompleteMinChars",  g_prefs.autocomplete_min_chars);
 
 #undef WPREF_I
 #undef WPREF_S
@@ -171,6 +179,8 @@ static void on_ai_none(GtkToggleButton *b, gpointer d)      { (void)d; if (gtk_t
 static void on_ai_basic(GtkToggleButton *b, gpointer d)     { (void)d; if (gtk_toggle_button_get_active(b)) { g_prefs.auto_indent = AUTO_INDENT_BASIC;    prefs_save(); } }
 static void on_ai_adv(GtkToggleButton *b, gpointer d)       { (void)d; if (gtk_toggle_button_get_active(b)) { g_prefs.auto_indent = AUTO_INDENT_ADVANCED; prefs_save(); } }
 static void on_bs_unindent(GtkToggleButton *b, gpointer d)  { (void)d; g_prefs.backspace_unindent = gtk_toggle_button_get_active(b); prefs_save(); }
+static void on_ac_enable(GtkToggleButton *b, gpointer d)    { (void)d; g_prefs.autocomplete_enabled = gtk_toggle_button_get_active(b); prefs_save(); }
+static void on_ac_min(GtkSpinButton *s, gpointer d)         { (void)d; g_prefs.autocomplete_min_chars = (int)gtk_spin_button_get_value(s); prefs_save(); }
 
 static void on_hl_line(GtkToggleButton *b, gpointer d)      { (void)d; g_prefs.highlight_current_line = gtk_toggle_button_get_active(b); editor_apply_prefs(); prefs_save(); }
 static void on_caret_w(GtkComboBox *c, gpointer d)          { (void)d; g_prefs.caret_width = gtk_combo_box_get_active(c) + 1; editor_apply_prefs(); prefs_save(); }
@@ -245,6 +255,17 @@ static GtkWidget *page_editor(void)
     gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(chk_bs), g_prefs.backspace_unindent);
     gtk_grid_attach(GTK_GRID(g), chk_bs, 0, 3, 2, 1);
     g_signal_connect(chk_bs, "toggled", G_CALLBACK(on_bs_unindent), NULL);
+
+    /* Auto-completion */
+    GtkWidget *chk_ac = gtk_check_button_new_with_label("Enable auto-completion (keywords + document words)");
+    gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(chk_ac), g_prefs.autocomplete_enabled);
+    gtk_grid_attach(GTK_GRID(g), chk_ac, 0, 4, 2, 1);
+    g_signal_connect(chk_ac, "toggled", G_CALLBACK(on_ac_enable), NULL);
+
+    GtkWidget *spin_ac = gtk_spin_button_new_with_range(1, 10, 1);
+    gtk_spin_button_set_value(GTK_SPIN_BUTTON(spin_ac), g_prefs.autocomplete_min_chars);
+    row(g, 5, "Auto-complete from N characters:", spin_ac);
+    g_signal_connect(spin_ac, "value-changed", G_CALLBACK(on_ac_min), NULL);
 
     return g;
 }
