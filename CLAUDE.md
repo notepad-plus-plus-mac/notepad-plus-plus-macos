@@ -143,8 +143,7 @@ Changes to vendored code should be minimal and clearly marked so they survive up
 
 ### High effort
 
-28. **Multi-select** — `SCI_ADDSELECTION`, `SCI_MULTIPLESELECTADDNEXT`, `SCI_MULTIPLESELECTADDEACH`.
-31. **Auto-completion** — `SCI_AUTOCSHOW` from word list built per language; `SCI_CALLTIPSHOW` for param hints.
+28. **Auto-completion** — `SCI_AUTOCSHOW` from word list built per language; `SCI_CALLTIPSHOW` for param hints.
 32. **User-defined languages (UDL)** — parse `~/.config/npp/userDefineLangs/*.xml`; build a runtime `ILexer5` equivalent or use Lexilla's `LexerModule` API.
 33. **Change history / git gutter** — run `git diff` in background; parse unified diff; set `SCI_MARKERDEFINE` symbols in margin.
 34. **Session save / restore** — serialize open file paths + scroll/caret positions to `~/.config/npp/session.xml`; restore on launch.

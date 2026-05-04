@@ -42,6 +42,7 @@ The macOS port and this Linux port share a common foundation: both macOS and Lin
 - Go To Line
 - **Find in Files** — Search → Find in Files… (Ctrl+Shift+F): searches files in a chosen directory with optional subdirectory recursion; file filter (e.g. `*.c;*.h`), match-case, whole-word options; results shown in a collapsible two-level tree (file → matching line); double-click a line to open the file and jump directly to it; background `GThread` keeps the UI responsive; pre-fills the search term from the current selection
 - **Column / block selection** — rectangular selection via Alt+drag or Alt+Shift+arrows (enabled by `SCVS_RECTANGULARSELECTION | SCVS_USERACCESSIBLE`); **Column Editor** dialog (Edit → Column Editor…, Alt+C): two-mode notebook — "Insert Text" (inserts a string at the selection's left edge on every covered line) and "Insert Number" (inserts an incrementing number sequence: configurable initial value, step, decimal/hex/octal format, optional leading-zero padding); processes lines bottom-to-top to avoid position drift
+- **Multi-select** — `SCI_SETMULTIPLESELECTION` + `SCI_SETADDITIONALSELECTIONTYPING` + `SC_MULTIPASTE_EACH` enabled globally; **Select All Occurrences** (Search → Select All Occurrences, Ctrl+Alt+A): selects the word under the cursor if nothing is selected, then calls `SCI_MULTIPLESELECTADDEACH` to highlight every instance simultaneously; **Add Next Occurrence** (Search → Add Next Occurrence, Ctrl+Alt+D): adds the next match as an additional selection one at a time; typing or pasting applies to all selections at once
 
 ### Interface
 - GTK3 toolbar with Fluent icon set
@@ -101,7 +102,6 @@ Ordered by implementation effort (low → high).
 > **Note:** All the features with low and medium effort required are marked as completed. No intermediate release are planned. This software will be released when all the points in this list will be successfully completed.
 
 ### High effort
-- **Multi-select** — select all occurrences, next occurrence, match-case/whole-word variants
 - **Auto-completion** — word, function, and path completion with parameter hints
 - **User-defined languages (UDL)** — custom syntax highlighting via XML definitions
 - **Change history / git gutter** — diff markers in margin, next/prev change navigation
