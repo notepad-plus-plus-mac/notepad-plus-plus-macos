@@ -40,6 +40,7 @@ The macOS port and this Linux port share a common foundation: both macOS and Lin
 ### Search
 - Find / Replace dialog with forward/backward search, match-case, whole-word options
 - Go To Line
+- **Find in Files** — Search → Find in Files… (Ctrl+Shift+F): searches files in a chosen directory with optional subdirectory recursion; file filter (e.g. `*.c;*.h`), match-case, whole-word options; results shown in a collapsible two-level tree (file → matching line); double-click a line to open the file and jump directly to it; background `GThread` keeps the UI responsive; pre-fills the search term from the current selection
 
 ### Interface
 - GTK3 toolbar with Fluent icon set
@@ -99,7 +100,6 @@ Ordered by implementation effort (low → high).
 > **Note:** All the features with low and medium effort required are marked as completed. No intermediate release are planned. This software will be released when all the points in this list will be successfully completed.
 
 ### High effort
-- **Find in Files** — recursive directory search with collapsible results tree
 - **Column / block selection** — Alt-drag rectangular selection and column editor
 - **Multi-select** — select all occurrences, next occurrence, match-case/whole-word variants
 - **Auto-completion** — word, function, and path completion with parameter hints
