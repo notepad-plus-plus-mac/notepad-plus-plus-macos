@@ -68,6 +68,9 @@ static void setup_sci(GtkWidget *sci)
     }
     sci_msg(sci, SCI_SETVIRTUALSPACEOPTIONS,
             SCVS_RECTANGULARSELECTION | SCVS_USERACCESSIBLE, 0);
+    sci_msg(sci, SCI_SETMULTIPLESELECTION,         1, 0);
+    sci_msg(sci, SCI_SETADDITIONALSELECTIONTYPING, 1, 0);
+    sci_msg(sci, SCI_SETMULTIPASTE,  SC_MULTIPASTE_EACH, 0);
     sci_msg(sci, SCI_SETTABWIDTH,        (uptr_t)g_prefs.tab_width,  0);
     sci_msg(sci, SCI_SETUSETABS,         (uptr_t)g_prefs.use_tabs,   0);
     sci_msg(sci, SCI_SETCARETLINEVISIBLE,(uptr_t)g_prefs.highlight_current_line, 0);

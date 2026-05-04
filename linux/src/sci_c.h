@@ -165,6 +165,18 @@ typedef struct SCNotification {
 #define SC_MARGIN_SYMBOL        0
 #define SC_MARGIN_NUMBER        1
 
+/* Multi-selection */
+#define SCI_SETMULTIPLESELECTION         2563
+#define SCI_GETMULTIPLESELECTION         2564
+#define SCI_SETADDITIONALSELECTIONTYPING 2565
+#define SCI_GETSELECTIONS                2570
+#define SCI_MULTIPLESELECTADDNEXT        2688
+#define SCI_MULTIPLESELECTADDEACH        2689
+#define SCI_SETMULTIPASTE                2614
+#define SC_MULTIPASTE_EACH               1
+#define SCI_WORDSTARTPOSITION            2266
+#define SCI_WORDENDPOSITION              2267
+
 /* Column / rectangular selection */
 #define SCI_SETSELECTIONMODE            2422
 #define SCI_GETSELECTIONMODE            2423

@@ -246,6 +246,38 @@ static void cb_column_editor(GtkMenuItem *i, gpointer d)
     columneditor_show(s_main_window);
 }
 
+/* Multi-select helpers */
+static void ensure_word_selected(void)
+{
+    sptr_t ss = editor_send(SCI_GETSELECTIONSTART, 0, 0);
+    sptr_t se = editor_send(SCI_GETSELECTIONEND,   0, 0);
+    if (ss == se) {
+        sptr_t pos    = editor_send(SCI_GETCURRENTPOS,     0, 0);
+        sptr_t wstart = editor_send(SCI_WORDSTARTPOSITION, (uptr_t)pos, 1);
+        sptr_t wend   = editor_send(SCI_WORDENDPOSITION,   (uptr_t)pos, 1);
+        if (wend > wstart)
+            editor_send(SCI_SETSEL, (uptr_t)wstart, (sptr_t)wend);
+    }
+}
+
+static void cb_select_all_occurrences(GtkMenuItem *i, gpointer d)
+{
+    (void)i; (void)d;
+    ensure_word_selected();
+    if (editor_send(SCI_GETSELECTIONSTART, 0, 0) ==
+        editor_send(SCI_GETSELECTIONEND,   0, 0)) return;
+    editor_send(SCI_MULTIPLESELECTADDEACH, 0, 0);
+}
+
+static void cb_add_next_occurrence(GtkMenuItem *i, gpointer d)
+{
+    (void)i; (void)d;
+    ensure_word_selected();
+    if (editor_send(SCI_GETSELECTIONSTART, 0, 0) ==
+        editor_send(SCI_GETSELECTIONEND,   0, 0)) return;
+    editor_send(SCI_MULTIPLESELECTADDNEXT, 0, 0);
+}
+
 /* Settings */
 static void cb_style_editor(GtkMenuItem *i, gpointer d)
 {
@@ -2285,6 +2317,13 @@ static GtkWidget *build_menubar(GtkWindow *window, GApplication *app)
     APPEND(search, smi("cmd.find",       TM("cmd.43001", "_Find…"),          G_CALLBACK(cb_find),         NULL, accel, GDK_KEY_f, GDK_CONTROL_MASK));
     APPEND(search, smi("cmd.replace",    TM("cmd.43003", "_Replace…"),       G_CALLBACK(cb_replace),      NULL, accel, GDK_KEY_h, GDK_CONTROL_MASK));
     APPEND(search, smi("cmd.findinfiles",TM("cmd.findinfiles","Find in _Files…"), G_CALLBACK(cb_find_in_files), NULL, accel, GDK_KEY_f, GDK_CONTROL_MASK | GDK_SHIFT_MASK));
+    APPEND(search, sep_item());
+    APPEND(search, smi("cmd.selectall.occ", TM("cmd.selectall.occ", "Select _All Occurrences"),
+                       G_CALLBACK(cb_select_all_occurrences), NULL, accel,
+                       GDK_KEY_a, GDK_CONTROL_MASK | GDK_MOD1_MASK));
+    APPEND(search, smi("cmd.addnext.occ",   TM("cmd.addnext.occ",   "Add _Next Occurrence"),
+                       G_CALLBACK(cb_add_next_occurrence),    NULL, accel,
+                       GDK_KEY_d, GDK_CONTROL_MASK | GDK_MOD1_MASK));
     APPEND(search, sep_item());
     APPEND(search, smi("cmd.goto",   TM("cmd.43004", "_Go To Line…"), G_CALLBACK(cb_goto),    NULL, accel, GDK_KEY_g, GDK_CONTROL_MASK));
     APPEND(search, smi("cmd.brace",  TM("cmd.brace", "Go to _Matching Brace"), G_CALLBACK(cb_goto_matching_brace), NULL, accel, GDK_KEY_bracketright, GDK_CONTROL_MASK));
