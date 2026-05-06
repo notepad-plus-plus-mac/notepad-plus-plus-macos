@@ -74,6 +74,7 @@ add_executable(notepad++
     src/columneditor.c
     src/autocomplete.c
     src/udl.c
+    src/gitgutter.c
     src/toolbar.c
     src/stylestore.c
     src/styleeditor.c
