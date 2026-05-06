@@ -38,6 +38,7 @@ cmake -B build && cmake --build build
 | `findinfiles.c/h` | Find in Files dialog: directory walk, GThread search, collapsible GtkTreeView results |
 | `columneditor.c/h` | Column Editor dialog: insert text or number sequence into each line of a selection |
 | `autocomplete.c/h` | Word+keyword auto-completion: `SCI_AUTOCSHOW` driven by `SCN_CHARADDED`; sources keywords from `lexer_get_keywords()` and scans the document (first 100 KB) |
+| `udl.c/h` | User Defined Language manager: scan and parse NPP UDL XML files; `udl_apply()` routes 28 kwlist slots to `SCI_SETPROPERTY` (comments, numbers, operators1, folders-in-code1, delimiters) or `SCI_SETKEYWORDS` (operators2, folders-in-code2/comment, keywords1-8); applies per-style colors/fonts; multi-word tokens preprocessed (`"a b"` → `a\vb`, `'a b'` → `a\bb`) |
 
 **User config location (Linux port):** `~/.config/npp/`
 - `stylers.xml` — user style overrides (saved by Style Configurator)
@@ -45,9 +46,10 @@ cmake -B build && cmake --build build
 - `recentfiles.txt` — recently opened/saved files (one path per line, max 10)
 - `shortcuts.xml` — user keyboard shortcut overrides
 - `config.xml` — preferences (tab width, indent, caret, EOL, encoding, display options)
+- `userDefineLangs/` — user UDL XML files (NPP format), merged with bundled ones
 
 **Key design rules for the Linux port:**
-- All UI code is C11; only `lexilla_bridge.cpp` and `LexUserStub.cxx` are C++
+- All UI code is C11; only `lexilla_bridge.cpp` is C++ (LexUserStub.cxx removed — real LexUser.cxx now compiled in lexilla)
 - Scintilla color format is BGR: `r | (g<<8) | (b<<16)`
 - Styling call order: `stylestore_apply_default()` → `SCI_STYLECLEARALL` → `stylestore_apply_global()` → install lexer → `stylestore_apply_lexer(sci, lang_name)` (pass `lang_name`, NOT the Lexilla lexer name)
 - `stylestore_apply_lexer` must receive the XML `LexerType name` (e.g. `"php"`), not the Lexilla internal name (e.g. `"phpscript"`)
@@ -144,8 +146,7 @@ Changes to vendored code should be minimal and clearly marked so they survive up
 
 ### High effort
 
-29. **User-defined languages (UDL)** — parse `~/.config/npp/userDefineLangs/*.xml`; build a runtime `ILexer5` equivalent or use Lexilla's `LexerModule` API.
-33. **Change history / git gutter** — run `git diff` in background; parse unified diff; set `SCI_MARKERDEFINE` symbols in margin.
+29. **Change history / git gutter** — run `git diff` in background; parse unified diff; set `SCI_MARKERDEFINE` symbols in margin.
 34. **Session save / restore** — serialize open file paths + scroll/caret positions to `~/.config/npp/session.xml`; restore on launch.
 35. **Auto-backup** — `g_timeout_add_seconds()` writes current doc to `~/.config/npp/backup/<name>~`; clean on clean save.
 36. **File change detection** — `GFileMonitor` on each open path; prompt reload on `G_FILE_MONITOR_EVENT_CHANGED`.

@@ -16,6 +16,7 @@ The macOS port and this Linux port share a common foundation: both macOS and Lin
 
 ### Editing
 - **Auto-completion** — word and keyword completion triggered after N characters (configurable in Preferences → Editor); sources: language keywords (C/C++, Python, JavaScript, TypeScript, SQL, Rust, Bash, Lua, PHP, Ruby, Perl) and all words in the current document; accept with Tab/Enter, cancel with Escape; enabled/min-chars configurable in Settings → Preferences
+- **User-defined languages (UDL)** — custom syntax highlighting via NPP XML definitions in `~/.config/npp/userDefineLangs/` (user) and `RESOURCES_DIR/userDefineLangs/` (bundled); two bundled Markdown UDLs (light and dark); automatically detected from file extension; available in Language → User Defined Languages submenu; full LexUser.cxx (ported from Windows) handles comments, delimiters, keyword groups, fold markers, operators; multi-word tokens (`"hello world"`), per-style colors/fonts, case-insensitivity, fold-of-comments all supported
 - Multi-tab editing with reorderable tabs and close buttons
 - File operations: New, Open (multi-file), Save, Save As, Close
 - Undo / Redo, Cut / Copy / Paste, Select All
@@ -103,7 +104,6 @@ Ordered by implementation effort (low → high).
 > **Note:** All the features with low and medium effort required are marked as completed. No intermediate release are planned. This software will be released when all the points in this list will be successfully completed.
 
 ### High effort
-- **User-defined languages (UDL)** — custom syntax highlighting via XML definitions
 - **Change history / git gutter** — diff markers in margin, next/prev change navigation
 - **Session save / restore** — persist and reopen tab sets
 - **Auto-backup** — timed backup copies to `~/.config/npp/backup/`
@@ -155,6 +155,7 @@ All user data lives in `~/.config/npp/`:
 | `~/.config/npp/recentfiles.txt` | Recently opened/saved files (one path per line, max 10) |
 | `~/.config/npp/shortcuts.xml` | User-defined keyboard shortcut overrides (Notepad++ format) |
 | `~/.config/npp/config.xml` | Preferences (tab width, indent, caret, EOL, encoding, display options) |
+| `~/.config/npp/userDefineLangs/` | User-defined language XML files (NPP UDL format) |
 
 ## Architecture
 
@@ -171,6 +172,7 @@ linux/src/styleeditor.c/h  — Style Configurator dialog
 linux/src/encoding.c/h     — encoding table, BOM detection, UTF-8 conversion helpers
 linux/src/shortcutmap.c/h  — shortcut table, key-capture dialog, Shortcut Mapper
 linux/src/prefs.c/h        — preferences struct, load/save, Preferences dialog
+linux/src/udl.c/h          — User Defined Language manager: XML parse, udl_apply()
 linux/src/sci_c.h           — C-safe Scintilla interface
 
 scintilla/                  — vendored editing engine (GTK3 backend used as-is)
