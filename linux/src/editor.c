@@ -8,6 +8,7 @@
 #include "stylestore.h"
 #include "i18n.h"
 #include "autocomplete.h"
+#include "gitgutter.h"
 #include <string.h>
 #include <stdio.h>
 
@@ -96,6 +97,7 @@ static void setup_sci(GtkWidget *sci)
     /* Apply correct margin widths now that fonts/styles are set */
     main_apply_view_symbols(sci);
     autocomplete_setup(sci);
+    gitgutter_setup(sci);
 }
 
 /* ------------------------------------------------------------------ */
@@ -281,6 +283,10 @@ static void on_sci_notify(GtkWidget *sci, gint unused,
                 SCI_GETLINEINDENTPOSITION, (uptr_t)cur_line, 0);
             sci_msg(sci, SCI_SETSEL, (uptr_t)new_pos, (sptr_t)new_pos);
         }
+    } else if (code == SCN_MODIFIED &&
+               (n->modificationType & (SC_MOD_INSERTTEXT | SC_MOD_DELETETEXT))) {
+        if (doc->filepath)
+            gitgutter_update(sci, doc->filepath);
     }
 }
 
@@ -467,6 +473,7 @@ gboolean editor_open_path(const char *path)
     statusbar_update_from_sci(sci);
     findreplace_set_sci(sci);
     main_recent_file_add(path);
+    gitgutter_update(sci, path);
     return TRUE;
 }
 
@@ -517,6 +524,7 @@ static gboolean save_doc_to_path(NppDoc *doc, const char *path)
     }
     g_free(buf);
     sci_msg(doc->sci, SCI_SETSAVEPOINT, 0, 0);
+    gitgutter_update(doc->sci, path);
     return TRUE;
 }
 

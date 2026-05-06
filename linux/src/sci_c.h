@@ -163,6 +163,10 @@ typedef struct SCNotification {
 #define SC_UPDATE_CONTENT       0x1
 #define SC_UPDATE_SELECTION     0x2
 
+/* SC_MOD_ flags (used in SCNotification.modificationType for SCN_MODIFIED) */
+#define SC_MOD_INSERTTEXT       0x1
+#define SC_MOD_DELETETEXT       0x2
+
 /* Margin types */
 #define SC_MARGIN_SYMBOL        0
 #define SC_MARGIN_NUMBER        1
