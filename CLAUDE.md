@@ -39,6 +39,7 @@ cmake -B build && cmake --build build
 | `columneditor.c/h` | Column Editor dialog: insert text or number sequence into each line of a selection |
 | `autocomplete.c/h` | Word+keyword auto-completion: `SCI_AUTOCSHOW` driven by `SCN_CHARADDED`; sources keywords from `lexer_get_keywords()` and scans the document (first 100 KB) |
 | `udl.c/h` | User Defined Language manager: scan and parse NPP UDL XML files; `udl_apply()` routes 28 kwlist slots to `SCI_SETPROPERTY` (comments, numbers, operators1, folders-in-code1, delimiters) or `SCI_SETKEYWORDS` (operators2, folders-in-code2/comment, keywords1-8); applies per-style colors/fonts; multi-word tokens preprocessed (`"a b"` → `a\vb`, `'a b'` → `a\bb`) |
+| `gitgutter.c/h` | Git change-history gutter: `gitgutter_setup()` defines margin 3 + markers 2/3/4; `gitgutter_update()` debounces 800 ms then runs `git diff HEAD -- <file>` via `GSubprocess`; unified diff parser classifies lines as added/modified/deleted; `gitgutter_clear()` removes all markers |
 
 **User config location (Linux port):** `~/.config/npp/`
 - `stylers.xml` — user style overrides (saved by Style Configurator)
@@ -146,7 +147,6 @@ Changes to vendored code should be minimal and clearly marked so they survive up
 
 ### High effort
 
-29. **Change history / git gutter** — run `git diff` in background; parse unified diff; set `SCI_MARKERDEFINE` symbols in margin.
 34. **Session save / restore** — serialize open file paths + scroll/caret positions to `~/.config/npp/session.xml`; restore on launch.
 35. **Auto-backup** — `g_timeout_add_seconds()` writes current doc to `~/.config/npp/backup/<name>~`; clean on clean save.
 36. **File change detection** — `GFileMonitor` on each open path; prompt reload on `G_FILE_MONITOR_EVENT_CHANGED`.

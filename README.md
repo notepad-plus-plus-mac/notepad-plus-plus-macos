@@ -72,6 +72,7 @@ The macOS port and this Linux port share a common foundation: both macOS and Lin
 - **Preferences dialog** — Settings → Preferences: 4-page dialog (Editor / Display / New Document / General) covering tab width/indentation, auto-indent, brace highlighting, caret style, word wrap, EOL mode, default encoding, title format, and copy-line behaviour; persisted to `~/.config/npp/config.xml`; settings applied live without restarting
 - **Auto-indent** — three modes selectable in Preferences → Editor: None (disabled), Basic (copies leading whitespace of the previous line on Enter), Advanced (Basic + adds one indent level after lines ending with `{` or `:`, and auto-dedents when a `}` is typed at the start of the new line)
 - **Code folding controls** — View → Folding submenu: Fold All (Ctrl+Alt+F9), Unfold All (Ctrl+Alt+Shift+F9), and Fold / Unfold Level 1–8 (collapses or expands all fold headers at the chosen nesting level)
+- **Change history / git gutter** — a 4-pixel margin (margin 3) shows per-line diff status against `HEAD`: green (`SC_MARK_FULLRECT`) for added lines, orange for modified lines, red (`SC_MARK_LEFTRECT`) for deleted-line positions; `git diff HEAD -- <file>` runs in a background `GSubprocess`; updates are debounced (800 ms) and triggered on file open, save, and any text modification; unified diff parsed to classify added/modified/deleted ranges
 
 ### Localisation
 - Automatic system locale detection via GLib (`g_get_language_names()`)
@@ -104,7 +105,6 @@ Ordered by implementation effort (low → high).
 > **Note:** All the features with low and medium effort required are marked as completed. No intermediate release are planned. This software will be released when all the points in this list will be successfully completed.
 
 ### High effort
-- **Change history / git gutter** — diff markers in margin, next/prev change navigation
 - **Session save / restore** — persist and reopen tab sets
 - **Auto-backup** — timed backup copies to `~/.config/npp/backup/`
 - **File change detection** — detect external modifications and prompt to reload
@@ -174,6 +174,7 @@ linux/src/encoding.c/h     — encoding table, BOM detection, UTF-8 conversion h
 linux/src/shortcutmap.c/h  — shortcut table, key-capture dialog, Shortcut Mapper
 linux/src/prefs.c/h        — preferences struct, load/save, Preferences dialog
 linux/src/udl.c/h          — User Defined Language manager: XML parse, udl_apply()
+linux/src/gitgutter.c/h    — Git gutter: background diff, unified diff parser, Scintilla margin markers
 linux/src/sci_c.h           — C-safe Scintilla interface
 
 scintilla/                  — vendored editing engine (GTK3 backend used as-is)
