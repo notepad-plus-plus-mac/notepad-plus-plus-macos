@@ -822,7 +822,39 @@ static NSCursor *cursorFromEnum(Window::Cursor cursor) {
 		// Only snap for positions inside the document - allow outside
 		// for overshoot.
 		long lineHeight = mOwner.backend->WndProc(Message::TextHeight, 0, 0);
-		rc.origin.y = std::round(rc.origin.y / lineHeight) * lineHeight;
+		// LOCAL CHANGE (notepad-plus-plus-mac issue #68): for discrete
+		// mouse-wheel clicks (USB clicky wheel, no precise deltas),
+		// round the proposed Y position in the DIRECTION OF MOTION
+		// instead of to the nearest line. With the upstream
+		// std::round(), a single slow wheel click that proposes
+		// <0.5 line of movement rounds back to the current line origin
+		// and the scroll is silently dropped — slow wheel users see
+		// nothing happen.
+		//
+		// Trackpad / Magic Mouse precise deltas keep the existing
+		// snap-to-nearest-line so they don't become jumpy. Programmatic
+		// scrolls (Find Next, Goto Line, sync-scroll, …) and animation
+		// frames also fall through to the existing branch since their
+		// currentEvent is not a discrete wheel event. Overshoot at the
+		// document's top/bottom edges is preserved by the surrounding
+		// guard.
+		if (lineHeight > 0) {
+			NSEvent *cur = NSApp.currentEvent;
+			BOOL discreteWheel = cur.type == NSEventTypeScrollWheel
+							  && !cur.hasPreciseScrollingDeltas;
+			if (discreteWheel) {
+				const double proposedLines = rc.origin.y / static_cast<double>(lineHeight);
+				const double currentLines  = self.visibleRect.origin.y / static_cast<double>(lineHeight);
+				const double diff = proposedLines - currentLines;
+				double snappedLines;
+				if (diff > 0 && diff < 1.0)        snappedLines = currentLines + 1.0;
+				else if (diff < 0 && diff > -1.0)  snappedLines = currentLines - 1.0;
+				else                               snappedLines = std::round(proposedLines);
+				rc.origin.y = snappedLines * lineHeight;
+			} else {
+				rc.origin.y = std::round(rc.origin.y / lineHeight) * lineHeight;
+			}
+		}
 	}
 	// Snap to whole points - on retina displays this avoids visual debris
 	// when scrolling horizontally.
