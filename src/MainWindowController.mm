@@ -1458,6 +1458,10 @@ static NSDictionary<NSString *, NSArray *> *toolbarGroupMap(void) {
     BOOL _showIndentGuides;
     BOOL _showLineNumbers;
 
+    // Ctrl + scroll-wheel zoom
+    id      _scrollZoomEventMonitor;
+    CGFloat _scrollZoomAccumulator;
+
     // Scroll synchronization
     BOOL _syncVerticalScrolling;
     BOOL _syncHorizontalScrolling;
@@ -1540,11 +1544,55 @@ static NSDictionary<NSString *, NSArray *> *toolbarGroupMap(void) {
                                                         selector:@selector(autoSaveTick:)
                                                         userInfo:nil
                                                          repeats:YES];
+        [self _installScrollZoomMonitor];
     }
     return self;
 }
 
+- (void)_installScrollZoomMonitor {
+    __weak typeof(self) weakSelf = self;
+    _scrollZoomEventMonitor =
+        [NSEvent addLocalMonitorForEventsMatchingMask:NSEventMaskScrollWheel
+                                              handler:^NSEvent *(NSEvent *event) {
+        // Only intercept Control + scroll
+        if (!(event.modifierFlags & NSEventModifierFlagControl)) return event;
+
+        __strong typeof(weakSelf) self = weakSelf;
+        if (!self) return event;
+
+        // Confirm the pointer is over one of our editor views
+        NSPoint loc = [self.window.contentView convertPoint:event.locationInWindow fromView:nil];
+        NSView *hit = [self.window.contentView hitTest:loc];
+        BOOL inEditor = NO;
+        for (NSView *v = hit; v; v = v.superview) {
+            if ([v isKindOfClass:[EditorView class]]) { inEditor = YES; break; }
+        }
+        if (!inEditor) return event;
+
+        CGFloat delta;
+        if (event.hasPreciseScrollingDeltas) {
+            // Trackpad: accumulate small per-event deltas; fire once per threshold crossed
+            self->_scrollZoomAccumulator += event.scrollingDeltaY;
+            if (fabs(self->_scrollZoomAccumulator) < 8.0) return nil;
+            delta = self->_scrollZoomAccumulator;
+            self->_scrollZoomAccumulator = 0.0;
+        } else {
+            // Discrete mouse wheel: one notch = one zoom step
+            delta = event.deltaY;
+        }
+
+        if      (delta > 0) [self zoomIn:nil];
+        else if (delta < 0) [self zoomOut:nil];
+
+        return nil; // consume — do not scroll the editor
+    }];
+}
+
 - (void)dealloc {
+    if (_scrollZoomEventMonitor) {
+        [NSEvent removeMonitor:_scrollZoomEventMonitor];
+        _scrollZoomEventMonitor = nil;
+    }
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
