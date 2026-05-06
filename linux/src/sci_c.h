@@ -231,13 +231,14 @@ typedef struct SCNotification {
 #define SC_MARKNUM_FOLDEROPEN       31
 
 /* Fold mark shapes */
-#define SC_MARK_VLINE               20
-#define SC_MARK_LCORNER             21
-#define SC_MARK_TCORNER             22
-#define SC_MARK_BOXPLUS             23
-#define SC_MARK_BOXPLUSCONNECTED    24
-#define SC_MARK_BOXMINUS            25
-#define SC_MARK_BOXMINUSCONNECTED   26
+#define SC_MARK_ROUNDRECT           1
+#define SC_MARK_VLINE               9
+#define SC_MARK_LCORNER             10
+#define SC_MARK_TCORNER             11
+#define SC_MARK_BOXPLUS             12
+#define SC_MARK_BOXPLUSCONNECTED    13
+#define SC_MARK_BOXMINUS            14
+#define SC_MARK_BOXMINUSCONNECTED   15
 
 /* Fold messages and constants */
 #define SCI_GETFOLDLEVEL        2223
@@ -271,8 +272,7 @@ typedef struct SCNotification {
 
 /* Bookmark marker */
 #define SC_MARKNUM_BOOKMARK     1
-#define SC_MARK_BOOKMARK        27
-#define SC_MARK_ROUNDRECT       1
+#define SC_MARK_BOOKMARK        31
 
 /* Caret / scroll preferences */
 #define SCI_SETCARETPERIOD      2076
@@ -297,7 +297,7 @@ typedef struct SCNotification {
 #define SCI_MARKERPREV          2048
 
 /* SCN_MARGINCLICK notification */
-#define SCN_MARGINCLICK         2006
+#define SCN_MARGINCLICK         2010
 
 /* Auto-completion */
 #define SCI_AUTOCSHOW                   2100

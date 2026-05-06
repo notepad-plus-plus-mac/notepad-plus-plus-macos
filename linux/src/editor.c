@@ -232,11 +232,12 @@ static void on_sci_notify(GtkWidget *sci, gint unused,
             sci_msg(sci, SCI_BRACEHIGHLIGHT, (uptr_t)-1, (sptr_t)-1);
         }
     } else if (code == SCN_MARGINCLICK) {
+        /* SCN_MARGINCLICK sets position (line start), not line — derive it */
+        int line = (int)sci_msg(sci, SCI_LINEFROMPOSITION, (uptr_t)n->position, 0);
         if (n->margin == 1) {
-            main_toggle_bookmark_at_line(sci, (int)n->line);
+            main_toggle_bookmark_at_line(sci, line);
         } else if (n->margin == 2) {
-            int line = (int)n->line;
-            int lvl  = (int)sci_msg(sci, SCI_GETFOLDLEVEL, (uptr_t)line, 0);
+            int lvl = (int)sci_msg(sci, SCI_GETFOLDLEVEL, (uptr_t)line, 0);
             if (lvl & SC_FOLDLEVELHEADERFLAG)
                 sci_msg(sci, SCI_TOGGLEFOLD, (uptr_t)line, 0);
         }
