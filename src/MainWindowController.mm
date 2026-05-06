@@ -5489,14 +5489,38 @@ static NSArray<NSDictionary *> *convertRecordedToXmlFormat(NSArray<NSDictionary 
     return nil;
 }
 
+/// Issue #72 — universal-in-window zoom. After the focused editor's zoom
+/// changes, force every other editor in this window to the same zoom so
+/// switching tabs (and split-view editors) doesn't surprise the user with
+/// a different size. Matches Notepad++ Windows behaviour.
+///
+/// Scoped to ONE window: separate MainWindowController instances each
+/// fan-out within their own three tab managers only. That keeps a "small
+/// reference window + large editing window" workflow possible.
+///
+/// Targeted on purpose — we don't post NPPPreferencesChanged because that
+/// would re-apply *every* preference (line numbers, caret style, theme
+/// colours, autocomplete, …) on every zoom, which is wasteful. We only
+/// need SCI_SETZOOM. Plugin / Document Map / Function-List / etc. panels
+/// are excluded because they're not in the editor tab managers; they
+/// keep their own independent zoom state via panelZoomIn / kPrefPanelZoom_*.
+- (void)_propagateEditorZoom:(NSInteger)zoom {
+    for (TabManager *mgr in @[_tabManager, _subTabManagerH, _subTabManagerV]) {
+        for (EditorView *ed in mgr.allEditors) {
+            [ed.scintillaView message:SCI_SETZOOM wParam:(uptr_t)zoom];
+        }
+    }
+}
+
 - (void)zoomIn:(id)sender {
     NSView *panel = [self _focusedZoomablePanel];
     if (panel) { [panel performSelector:@selector(panelZoomIn)]; return; }
     EditorView *ed = [self focusedEditor];
     if (!ed) return;
     [ed.scintillaView message:SCI_ZOOMIN];
-    [[NSUserDefaults standardUserDefaults]
-        setInteger:[ed.scintillaView message:SCI_GETZOOM] forKey:kPrefZoomLevel];
+    NSInteger zoom = [ed.scintillaView message:SCI_GETZOOM];
+    [[NSUserDefaults standardUserDefaults] setInteger:zoom forKey:kPrefZoomLevel];
+    [self _propagateEditorZoom:zoom];
 }
 
 - (void)zoomOut:(id)sender {
@@ -5505,8 +5529,9 @@ static NSArray<NSDictionary *> *convertRecordedToXmlFormat(NSArray<NSDictionary 
     EditorView *ed = [self focusedEditor];
     if (!ed) return;
     [ed.scintillaView message:SCI_ZOOMOUT];
-    [[NSUserDefaults standardUserDefaults]
-        setInteger:[ed.scintillaView message:SCI_GETZOOM] forKey:kPrefZoomLevel];
+    NSInteger zoom = [ed.scintillaView message:SCI_GETZOOM];
+    [[NSUserDefaults standardUserDefaults] setInteger:zoom forKey:kPrefZoomLevel];
+    [self _propagateEditorZoom:zoom];
 }
 
 - (void)resetZoom:(id)sender {
@@ -5516,6 +5541,7 @@ static NSArray<NSDictionary *> *convertRecordedToXmlFormat(NSArray<NSDictionary 
     if (!ed) return;
     [ed.scintillaView message:SCI_SETZOOM wParam:0];
     [[NSUserDefaults standardUserDefaults] setInteger:0 forKey:kPrefZoomLevel];
+    [self _propagateEditorZoom:0];
 }
 
 - (void)toggleShowAllChars:(id)sender {
