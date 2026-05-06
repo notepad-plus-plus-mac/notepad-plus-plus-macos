@@ -1560,6 +1560,17 @@ static NSDictionary<NSString *, NSArray *> *toolbarGroupMap(void) {
         __strong typeof(weakSelf) self = weakSelf;
         if (!self) return event;
 
+        // addLocalMonitorForEventsMatchingMask is APP-WIDE — every
+        // MainWindowController's monitor sees every scroll event in
+        // any window. event.locationInWindow is in the *originating*
+        // window's coord space; converting it via self.window.contentView
+        // when event.window != self.window yields a meaningless point
+        // that can spuriously hit-test to an EditorView in self.window
+        // and trigger zoom in the wrong window. Bail early when the
+        // event isn't for us. (Also covers events from FloatingPanelWindow
+        // pop-out side-panels and the Find window.)
+        if (event.window != self.window) return event;
+
         // Confirm the pointer is over one of our editor views
         NSPoint loc = [self.window.contentView convertPoint:event.locationInWindow fromView:nil];
         NSView *hit = [self.window.contentView hitTest:loc];
