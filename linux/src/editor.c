@@ -47,6 +47,7 @@ static void setup_sci(GtkWidget *sci)
     sci_msg(sci, SCI_SETMARGINTYPE,      1, SC_MARGIN_SYMBOL);
     sci_msg(sci, SCI_SETMARGINSENSITIVE, 1, 1);
     sci_msg(sci, SCI_SETMARGINWIDTHN,    1, 0);       /* hidden until toggled via View menu */
+    sci_msg(sci, SCI_SETMARGINMASKN,     1, (sptr_t)(1 << SC_MARKNUM_BOOKMARK));
     sci_msg(sci, SCI_MARKERDEFINE, SC_MARKNUM_BOOKMARK, SC_MARK_BOOKMARK);
     sci_msg(sci, SCI_MARKERSETFORE, SC_MARKNUM_BOOKMARK, 0x0000FF); /* blue */
     sci_msg(sci, SCI_MARKERSETBACK, SC_MARKNUM_BOOKMARK, 0x0080FF);
@@ -54,6 +55,7 @@ static void setup_sci(GtkWidget *sci)
     sci_msg(sci, SCI_SETMARGINTYPE,      2, SC_MARGIN_SYMBOL);
     sci_msg(sci, SCI_SETMARGINSENSITIVE, 2, 1);
     sci_msg(sci, SCI_SETMARGINWIDTHN,    2, 16);
+    sci_msg(sci, SCI_SETMARGINMASKN,     2, (sptr_t)SC_MASK_FOLDERS);
     sci_msg(sci, SCI_MARKERDEFINE, SC_MARKNUM_FOLDER,       SC_MARK_BOXPLUS);
     sci_msg(sci, SCI_MARKERDEFINE, SC_MARKNUM_FOLDEROPEN,   SC_MARK_BOXMINUS);
     sci_msg(sci, SCI_MARKERDEFINE, SC_MARKNUM_FOLDEREND,    SC_MARK_BOXPLUSCONNECTED);

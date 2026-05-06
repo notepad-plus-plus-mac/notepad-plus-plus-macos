@@ -82,7 +82,9 @@ typedef struct SCNotification {
 #define SCI_REPLACETARGET       2194
 #define SCI_SETTEXT             2181
 #define SCI_GETTEXT             2182
-#define SCI_SETMARGINWIDTHN     2243
+#define SCI_SETMARGINWIDTHN     2242
+#define SCI_GETMARGINWIDTHN     2243
+#define SCI_SETMARGINMASKN      2244
 #define SCI_SETEDGEMODE         2094
 #define SCI_SETEDGECOLUMN       2080
 #define SCI_SETEDGECOLOUR       2098
@@ -216,6 +218,8 @@ typedef struct SCNotification {
 #define STYLE_LINENUMBER        33
 #define STYLE_BRACELIGHT        34
 #define STYLE_BRACEBAD          35
+
+#define SC_MASK_FOLDERS         0xFE000000
 
 /* Fold marker numbers (the full 7-level tree hierarchy) */
 #define SC_MARKNUM_FOLDEREND        25
