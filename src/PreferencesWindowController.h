@@ -9,6 +9,13 @@ extern NSString *const kPrefAutoIndent;          // NSInteger 0=None 1=Advanced 
 extern NSString *const kPrefBackspaceUnindent;   // BOOL, default NO
 extern NSString *const kPrefTabOverrides;        // NSDictionary<langName, @{@"tabSize":@N, @"useTabs":@BOOL}>
 extern NSString *const kPrefShowLineNumbers;
+/// Word wrap session state. NSUserDefaults is used as a transient
+/// broadcast channel only — not as persistent storage. AppDelegate
+/// resets this to NO at the top of applicationDidFinishLaunching: so
+/// every fresh launch starts at OFF regardless of last session's value.
+/// User toggle via toolbar/menu writes here + propagates to all editors
+/// across all open windows; new tabs read it via applyPreferencesFromDefaults.
+extern NSString *const kPrefWordWrap;
 extern NSString *const kPrefHighlightCurrentLine;
 extern NSString *const kPrefEOLType;
 extern NSString *const kPrefEncoding;

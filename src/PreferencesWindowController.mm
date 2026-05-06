@@ -11,6 +11,7 @@ NSString *const kPrefAutoIndent         = @"autoIndent";  // 0=None 1=Advanced 2
 NSString *const kPrefBackspaceUnindent = @"backspaceUnindent";
 NSString *const kPrefTabOverrides      = @"tabOverrides"; // {langName: {tabSize:N, useTabs:BOOL}}
 NSString *const kPrefShowLineNumbers    = @"showLineNumbers";
+NSString *const kPrefWordWrap           = @"wordWrap";       // session-only; reset to NO each launch
 NSString *const kPrefHighlightCurrentLine = @"highlightCurrentLine";
 NSString *const kPrefEOLType            = @"eolType";       // 0=CRLF 1=LF 2=CR
 NSString *const kPrefEncoding           = @"encoding";      // 0=UTF-8 1=Latin-1
@@ -108,6 +109,7 @@ NSString *const kPrefStyleFontSize      = @"styleFontSize";
         kPrefAutoIndent:         @1,   // 0=None 1=Advanced 2=Basic
         kPrefBackspaceUnindent:  @NO,
         kPrefShowLineNumbers:    @YES,
+        kPrefWordWrap:           @NO,   // session-only; AppDelegate resets at launch
         kPrefHighlightCurrentLine: @YES,
         kPrefEOLType:            @1,
         kPrefEncoding:           @0,
@@ -248,6 +250,7 @@ NSString *const kPrefStyleFontSize      = @"styleFontSize";
         kPrefAutoIndent:         @1,   // 0=None 1=Advanced 2=Basic
         kPrefBackspaceUnindent:  @NO,
         kPrefShowLineNumbers:    @YES,
+        kPrefWordWrap:           @NO,   // session-only; AppDelegate resets at launch
         kPrefHighlightCurrentLine: @YES,
         kPrefEOLType:            @1,
         kPrefEncoding:           @0,

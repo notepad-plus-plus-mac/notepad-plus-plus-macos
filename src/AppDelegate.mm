@@ -29,6 +29,14 @@
     // Disable the macOS press-and-hold accent picker so key repeat works in the editor.
     [[NSUserDefaults standardUserDefaults] setBool:NO forKey:@"ApplePressAndHoldEnabled"];
 
+    // Word wrap is a session-only universal toggle — kPrefWordWrap is used as
+    // a transient broadcast channel during runtime, not as persistent storage.
+    // Force OFF here, BEFORE any editor reads applyPreferencesFromDefaults
+    // (session restore, _pendingFilePaths drain, CLI file open, untitled
+    // addNewTab, …), so every fresh launch starts with wrap OFF regardless
+    // of what the previous session set it to. Issues #27, #59 / user request.
+    [[NSUserDefaults standardUserDefaults] setBool:NO forKey:kPrefWordWrap];
+
     // Load config.xml preferences before building UI (applies saved XML → NSUserDefaults)
     readConfigXML();
 

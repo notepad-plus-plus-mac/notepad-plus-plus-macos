@@ -1841,6 +1841,14 @@ static int vkToScintillaKey(int vk) {
     BOOL hlLine = [ud boolForKey:kPrefHighlightCurrentLine];
     [sci message:SCI_SETCARETLINEVISIBLE wParam:hlLine ? 1 : 0];
 
+    // Word wrap — read the session-only kPrefWordWrap so new tabs inherit
+    // the current universal state. AppDelegate resets this to NO on every
+    // launch (no persistence). User toggle via toolbar/menu writes here +
+    // propagates to all open editors via NPPWordWrapSessionChanged broadcast.
+    BOOL wordWrap = [ud boolForKey:kPrefWordWrap];
+    _wordWrapEnabled = wordWrap;
+    [sci message:SCI_SETWRAPMODE wParam:wordWrap ? SC_WRAP_WORD : SC_WRAP_NONE];
+
     NSInteger zoomLevel = [ud integerForKey:kPrefZoomLevel];
     [sci message:SCI_SETZOOM wParam:(uptr_t)zoomLevel];
 

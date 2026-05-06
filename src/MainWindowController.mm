@@ -2588,6 +2588,13 @@ static BOOL groupHasTrailingSep(NSString *ident) {
     [[NSNotificationCenter defaultCenter]
         addObserver:self selector:@selector(_refreshOpenPanelTitles)
                name:NPPLocalizationChanged object:nil];
+    // Universal-in-session word wrap. Cross-window broadcast: when ANY
+    // MainWindowController toggles wrap, every other one observes here
+    // and propagates the new state to its own tab managers, so all
+    // editors in all windows stay in sync.
+    [[NSNotificationCenter defaultCenter]
+        addObserver:self selector:@selector(_wordWrapSessionChanged:)
+               name:@"NPPWordWrapSessionChanged" object:nil];
 
     // ── Horizontal (left/right) split: views | side panels ────────────────────
     _sidePanelHost = [[SidePanelHost alloc] init];
@@ -5469,10 +5476,55 @@ static NSArray<NSDictionary *> *convertRecordedToXmlFormat(NSArray<NSDictionary 
 
 #pragma mark - View menu actions
 
+// Universal-in-session word wrap. The toggle:
+//
+//   1. Computes new state from focused editor.
+//   2. Writes kPrefWordWrap so newly-opened tabs (Cmd+N, drag-drop,
+//      session restore) inherit the same state via
+//      EditorView.applyPreferencesFromDefaults.
+//   3. Propagates to every editor in this window's three tab managers.
+//   4. Posts NPPWordWrapSessionChanged with object:self so other open
+//      windows propagate to their own editors. The receiver filters out
+//      its own broadcasts via the object check (see
+//      _wordWrapSessionChanged:).
+//
+// kPrefWordWrap is reset to NO at the top of
+// applicationDidFinishLaunching: so the pref is a transient broadcast
+// channel only — there is no persistence across launches.
+//
+// RTL editors (those that have Text Direction = RTL) are SKIPPED when
+// turning wrap OFF: RTL forces wrap on for layout reasons (see
+// EditorView.setTextDirectionRTL:), and turning it off would leave them
+// with wrong line lengths. The existing _savedWrapBeforeRTL machinery
+// in EditorView handles wrap-state restore on RTL→LTR switch.
 - (void)toggleWordWrap:(id)sender {
     EditorView *ed = [self currentEditor];
     if (!ed) return;
-    ed.wordWrapEnabled = !ed.wordWrapEnabled;
+    BOOL newState = !ed.wordWrapEnabled;
+    [[NSUserDefaults standardUserDefaults] setBool:newState forKey:kPrefWordWrap];
+    [self _propagateWordWrap:newState];
+    [[NSNotificationCenter defaultCenter]
+        postNotificationName:@"NPPWordWrapSessionChanged" object:self];
+    [self _refreshToolbarStates];
+}
+
+- (void)_propagateWordWrap:(BOOL)enabled {
+    for (TabManager *mgr in @[_tabManager, _subTabManagerH, _subTabManagerV]) {
+        for (EditorView *ed in mgr.allEditors) {
+            // RTL needs wrap on for proper layout — skip the OFF case.
+            if (ed.isTextDirectionRTL && !enabled) continue;
+            ed.wordWrapEnabled = enabled;
+        }
+    }
+}
+
+// Fired when ANOTHER MainWindowController toggles wrap. We filter out our
+// own broadcasts via note.object (toggleWordWrap: posts with object:self)
+// so we don't double-apply / re-broadcast.
+- (void)_wordWrapSessionChanged:(NSNotification *)note {
+    if (note.object == self) return;
+    BOOL enabled = [[NSUserDefaults standardUserDefaults] boolForKey:kPrefWordWrap];
+    [self _propagateWordWrap:enabled];
     [self _refreshToolbarStates];
 }
 
