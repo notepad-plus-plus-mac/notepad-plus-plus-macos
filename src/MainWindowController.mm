@@ -1645,6 +1645,16 @@ static NSDictionary<NSString *, NSArray *> *toolbarGroupMap(void) {
     tb.delegate = self;
     tb.allowsUserCustomization = NO;
     tb.displayMode = NSToolbarDisplayModeIconOnly;
+    // Issue #26: each NSToolbarItem in our setup wraps a multi-button custom
+    // view, not a single labelled button — so there's no per-item label to
+    // render in "Icon and Text" mode. Hide the display-mode picker from the
+    // toolbar's right-click context menu so users can't pick a mode that
+    // would only render empty space below the icons. See
+    // docs/issue-26-toolbar-icon-and-text.md for the full analysis. Will be
+    // re-enabled when toolbar is refactored to one NSToolbarItem per button.
+    if (@available(macOS 13.0, *)) {
+        tb.allowsDisplayModeCustomization = NO;
+    }
     self.window.toolbar = tb;
     // Expanded style puts the toolbar in its own row below the title bar,
     // so items are always left-aligned (not scattered around a centered title).
