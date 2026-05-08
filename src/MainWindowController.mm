@@ -2375,7 +2375,7 @@ static BOOL groupHasTrailingSep(NSString *ident) {
 
 - (void)_tabControlNew:(id)sender {
     [_activeTabManager addNewTab];
-    [self.window makeFirstResponder:[_activeTabManager currentEditor].scintillaView];
+    [self.window makeFirstResponder:[_activeTabManager currentEditor].scintillaView.content];
 }
 
 - (void)_tabControlList:(id)sender {
@@ -2427,7 +2427,7 @@ static BOOL groupHasTrailingSep(NSString *ident) {
     if (idx != NSNotFound) {
         _activeTabManager = tm;
         [tm selectTabAtIndex:idx];
-        [self.window makeFirstResponder:ed.scintillaView];
+        [self.window makeFirstResponder:ed.scintillaView.content];
     }
 }
 
@@ -4809,7 +4809,7 @@ static NSArray<NSDictionary *> *convertRecordedToXmlFormat(NSArray<NSDictionary 
     } completionHandler:^{
         self->_incSearchBar.hidden = YES;
     }];
-    [self.window makeFirstResponder:ed.scintillaView];
+    [self.window makeFirstResponder:ed.scintillaView.content];
 }
 
 // ── Change History ────────────────────────────────────────────────────────────
@@ -5234,7 +5234,7 @@ static NSArray<NSDictionary *> *convertRecordedToXmlFormat(NSArray<NSDictionary 
     for (int i = 0; i < 3; i++) {
         TabManager *tm = candidates[i];
         if (tm != _activeTabManager && tm.allEditors.count > 0) {
-            [self.window makeFirstResponder:tm.currentEditor.scintillaView];
+            [self.window makeFirstResponder:tm.currentEditor.scintillaView.content];
             _activeTabManager = tm;
             return;
         }
@@ -6140,7 +6140,7 @@ static NSArray<NSDictionary *> *convertRecordedToXmlFormat(NSArray<NSDictionary 
         ctx.duration = 0.12;
         self->_findPanelHeightConstraint.animator.constant = 0;
     } completionHandler:^{ self->_findPanel.hidden = YES; }];
-    [self.window makeFirstResponder:[self currentEditor].scintillaView];
+    [self.window makeFirstResponder:[self currentEditor].scintillaView.content];
 }
 
 #pragma mark - NSSplitViewDelegate
@@ -6302,8 +6302,11 @@ static NSArray<NSDictionary *> *convertRecordedToXmlFormat(NSArray<NSDictionary 
 - (void)tabManager:(id)tabManager didSelectEditor:(EditorView *)editor {
     _activeTabManager = tabManager;
     // Give the editor keyboard focus so the old pane's caret stops blinking
-    // and SCN_FOCUSIN fires on the correct editor.
-    [self.window makeFirstResponder:editor.scintillaView];
+    // and SCN_FOCUSIN fires on the correct editor. Target the SCIContentView
+    // (`.content`), not the outer ScintillaView NSView wrapper — only the
+    // content view is in Scintilla's keyDown: chain, so making the wrapper
+    // first responder leaves typing dead until the user clicks in the editor.
+    [self.window makeFirstResponder:editor.scintillaView.content];
 
     // Notify plugins that a different buffer is now active
     [[NppPluginManager shared] notifyPluginsWithCode:NPPN_BUFFERACTIVATED

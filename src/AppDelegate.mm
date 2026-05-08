@@ -232,6 +232,22 @@
         [self.mainWindowController bringWindowForward];
     }
 
+    // ── Initial keyboard focus to the active editor (issue #34) ─────────
+    // Without this, the user's first keystrokes after relaunch go nowhere
+    // and VoiceOver announces a splitter instead of the editor. The fix
+    // has two parts: (1) target SCIContentView via .content, not the
+    // ScintillaView NSView wrapper — ScintillaView itself is not in the
+    // editor's keyDown: chain, so making it first responder leaves typing
+    // dead until the user clicks inside the editor; (2) defer the call
+    // to the next runloop tick so it runs after AppKit has finished
+    // settling the freshly-shown window's first responder.
+    dispatch_async(dispatch_get_main_queue(), ^{
+        EditorView *ed = [self.mainWindowController currentEditor];
+        if (ed.scintillaView.content) {
+            [self.mainWindowController.window makeFirstResponder:ed.scintillaView.content];
+        }
+    });
+
     // ── Background update check (non-blocking, after 5 second delay) ────
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(5.0 * NSEC_PER_SEC)),
                    dispatch_get_main_queue(), ^{
