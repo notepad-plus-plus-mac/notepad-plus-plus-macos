@@ -22,6 +22,7 @@ The macOS port and this Linux port share a common foundation: both macOS and Lin
 - Undo / Redo, Cut / Copy / Paste, Select All
 - Go To Line dialog
 - Modified-document tracking with ask-to-save on close/quit
+- **Session save / restore** — open file set, per-tab caret and scroll positions saved to `~/.config/npp/session.xml` on quit and restored on next launch; skips files that no longer exist on disk; CLI file arguments suppress restore
 - Command-line file arguments
 
 ### Syntax Highlighting
@@ -105,7 +106,6 @@ Ordered by implementation effort (low → high).
 > **Note:** All the features with low and medium effort required are marked as completed. No intermediate release are planned. This software will be released when all the points in this list will be successfully completed.
 
 ### High effort
-- **Session save / restore** — persist and reopen tab sets
 - **Auto-backup** — timed backup copies to `~/.config/npp/backup/`
 - **File change detection** — detect external modifications and prompt to reload
 - **Macro recording / playback** — record and replay keystroke sequences
@@ -156,6 +156,7 @@ All user data lives in `~/.config/npp/`:
 | `~/.config/npp/recentfiles.txt` | Recently opened/saved files (one path per line, max 10) |
 | `~/.config/npp/shortcuts.xml` | User-defined keyboard shortcut overrides (Notepad++ format) |
 | `~/.config/npp/config.xml` | Preferences (tab width, indent, caret, EOL, encoding, display options) |
+| `~/.config/npp/session.xml` | Session state: open file paths, caret and scroll positions, active tab |
 | `~/.config/npp/userDefineLangs/` | User-defined language XML files (NPP UDL format) |
 
 ## Architecture
@@ -175,6 +176,7 @@ linux/src/shortcutmap.c/h  — shortcut table, key-capture dialog, Shortcut Mapp
 linux/src/prefs.c/h        — preferences struct, load/save, Preferences dialog
 linux/src/udl.c/h          — User Defined Language manager: XML parse, udl_apply()
 linux/src/gitgutter.c/h    — Git gutter: background diff, unified diff parser, Scintilla margin markers
+linux/src/session.c/h      — Session save/restore: tab set, caret and scroll positions → ~/.config/npp/session.xml
 linux/src/sci_c.h           — C-safe Scintilla interface
 
 scintilla/                  — vendored editing engine (GTK3 backend used as-is)
