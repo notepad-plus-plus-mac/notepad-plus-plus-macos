@@ -80,6 +80,7 @@ add_executable(notepad++
     src/styleeditor.c
     src/lexer.c
     src/i18n.c
+    src/session.c
     src/lexilla_bridge.cpp
 )
 
