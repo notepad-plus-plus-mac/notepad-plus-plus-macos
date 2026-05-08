@@ -1,24 +1,24 @@
 # Nextpad++ for macOS
 
-**The native independent port of Notepad++ to macOS.** A full port of the original [Notepad++](https://notepad-plus-plus.org) codebase — not a rewrite, not an alternative, not Wine.
+**Nextpad++ for macOS is the native independent port of Notepad++ to macOS.** A full port of the original [Notepad++](https://notepad-plus-plus.org) codebase — not a rewrite, not an alternative, not Wine.
 
 <p align="center">
-  <a href="https://notepad-plus-plus-mac.org"><img src="https://notepad-plus-plus-mac.org/assets/images/icon-128x128.png" alt="Notepad++ for macOS app icon" width="128" height="128"></a>
+  <a href="https://nextpad.org"><img src="https://nextpad.org/assets/images/icon-128x128.png" alt="Nextpad++ for macOS app icon" width="128" height="128"></a>
 </p>
 
 <p align="center">
-  <a href="https://notepad-plus-plus-mac.org"><strong>Website</strong></a> ·
-  <a href="https://notepad-plus-plus-mac.org/download/"><strong>Download</strong></a> ·
-  <a href="https://notepad-plus-plus-mac.org/plugins/"><strong>Plugins</strong></a> ·
-  <a href="https://notepad-plus-plus-mac.org/online-help/"><strong>Help</strong></a> ·
-  <a href="https://github.com/notepad-plus-plus-mac/notepad-plus-plus-macos/releases"><strong>Releases</strong></a>
+  <a href="https://nextpad.org"><strong>Website</strong></a> ·
+  <a href="https://nextpad.org/download/"><strong>Download</strong></a> ·
+  <a href="https://nextpad.org/plugins/"><strong>Plugins</strong></a> ·
+  <a href="https://nextpad.org/online-help/"><strong>Help</strong></a> ·
+  <a href="https://github.com/nextpad-plus-plus/nextpad-plus-plus-macos/releases"><strong>Releases</strong></a>
 </p>
 
 <p align="center">
   <img src="https://img.shields.io/badge/macOS-11%2B-blue" alt="macOS 11+">
   <img src="https://img.shields.io/badge/arch-Apple%20Silicon%20%7C%20Intel-green" alt="Apple Silicon and Intel">
   <img src="https://img.shields.io/badge/license-GPL--3.0-orange" alt="GPL-3.0 License">
-  <img src="https://img.shields.io/github/v/release/notepad-plus-plus-mac/notepad-plus-plus-macos" alt="Latest release">
+  <img src="https://img.shields.io/github/v/release/nextpad-plus-plus/nextpad-plus-plus-macos" alt="Latest release">
 </p>
 
 ---
@@ -38,18 +38,18 @@ The goal is not just to make Notepad++ "run" on Mac — it's to make it feel lik
 ## Screenshots
 
 <p align="center">
-  <img src="https://notepad-plus-plus-mac.org/assets/images/screenshot1.png" alt="Notepad++ for macOS in light mode with syntax-highlighted code, tabs, and document map" width="800">
+  <img src="https://nextpad.org/assets/images/screenshot1.png" alt="Nextpad++ for macOS in light mode with syntax-highlighted code, tabs, and document map" width="800">
   <br><em>Light mode with syntax highlighting and document map</em>
 </p>
 
 <p align="center">
-  <img src="https://notepad-plus-plus-mac.org/assets/images/screenshot3.png" alt="Notepad++ for macOS in dark mode with native macOS title bar" width="800">
+  <img src="https://nextpad.org/assets/images/screenshot3.png" alt="Nextpad++ for macOS in dark mode with native macOS title bar" width="800">
   <br><em>Dark mode, native macOS title bar</em>
 </p>
 
 ## Download
 
-Get the latest build from **[notepad-plus-plus-mac.org/download](https://notepad-plus-plus-mac.org/download/)** or directly from [GitHub Releases](https://github.com/notepad-plus-plus-mac/notepad-plus-plus-macos/releases).
+Get the latest build from **[nextpad.org/download](https://nextpad.org/download/)** or directly from [GitHub Releases](https://github.com/nextpad-plus-plus/nextpad-plus-plus-macos/releases).
 
 The download is a signed, notarized `.dmg`:
 
@@ -69,7 +69,7 @@ The download is a signed, notarized `.dmg`:
 ## Features
 
 - **Syntax highlighting** for 80+ programming languages, with customizable color themes and user-defined languages
-- **Plugin system** with a native Plugin Admin — [~50 plugins already ported](https://notepad-plus-plus-mac.org/plugins/), with all ~140 expected by end of April 2026
+- **Plugin system** with a native Plugin Admin — [~50 plugins already ported](https://nextpad.org/plugins/), with all ~140 expected by end of April 2026
 - **Scintilla-based editing component** with code folding
 - **Multi-document tabbed editing**
 - **Split view** — view and edit two documents side by side or two parts of the same document
@@ -84,11 +84,11 @@ The download is a signed, notarized `.dmg`:
 
 ### Is this the "real" Notepad++ for Mac?
 
-This is the actual Notepad++ codebase ported to run natively on macOS. It is not a knockoff, a Wine wrapper, or a new editor that imitates Notepad++.
+No. Nextpad++ for macOS is a native independent port of the actual Notepad++ codebase ported to run natively on macOS. It is not a knockoff, a Wine wrapper, or a new editor that imitates Notepad++.
 
 ### Do I need Wine, Porting Kit, or CrossOver?
 
-No. None of those. Notepad++ for macOS is a full native port of the original Windows codebase. It runs as a first-class native macOS application using platform APIs directly.
+No. None of those. Nextpad++ for macOS is a full native port of the original Windows codebase. It runs as a first-class native macOS application using platform APIs directly.
 
 ### Does it work on Apple Silicon?
 
@@ -100,24 +100,24 @@ Yes. Completely free and open source under the GPL-3.0 license. No ads, no subsc
 
 ### Does it support plugins from the Windows version?
 
-Plugins are being incrementally ported from Windows. About 50 plugins are already ported and working on macOS, with the full set (~140) expected by the end of April 2026. See the [plugin compatibility page](https://notepad-plus-plus-mac.org/plugins/) for current status.
+Plugins are being incrementally ported from Windows. About 50 plugins are already ported and working on macOS, with the full set (~140) expected by the end of April 2026. See the [plugin compatibility page](https://nextpad.org/plugins/) for current status.
 
 ## Building from Source
 
 This project is written in C++ and Objective-C++ and uses CMake as its build system. Source code lives in `src/`, and platform-native UI code uses `.mm` files (Objective-C++).
 
-Build instructions will be published as the macOS build pipeline matures. For now, the easiest way to use Notepad++ on macOS is to download the signed `.dmg` release.
+Build instructions will be published as the macOS build pipeline matures. For now, the easiest way to use Nextpad++ on macOS is to download the signed `.dmg` release.
 
 ## Contributing
 
 Bug reports, feedback, and contributions are welcome. For:
-- **Bug reports and feature requests** — please open an [issue](https://github.com/notepad-plus-plus-mac/notepad-plus-plus-macos/issues)
+- **Bug reports and feature requests** — please open an [issue](https://github.com/nextpad-plus-plus/nextpad-plus-plus-macos/issues)
 - **Code contributions** — submit a pull request against `main`
-- **Plugin porting** — see the [plugin registry](https://github.com/notepad-plus-plus-mac/nppPluginList)
+- **Plugin porting** — see the [plugin registry](https://github.com/nextpad-plus-plus/nppPluginList)
 
 ## License
 
-Notepad++ for macOS is distributed under the [GNU General Public License v3.0](LICENSE), matching the license of the original Notepad++ project.
+Nextpad++ for macOS is distributed under the [GNU General Public License v3.0](LICENSE), matching the license of the original Notepad++ project.
 
 ## Credits
 
@@ -127,13 +127,12 @@ Notepad++ for macOS is distributed under the [GNU General Public License v3.0](L
 
 ## Links
 
-- 🌐 **Website:** https://notepad-plus-plus-mac.org
-- 📥 **Download:** https://notepad-plus-plus-mac.org/download/
-- 🔌 **Plugins:** https://notepad-plus-plus-mac.org/plugins/
-- 📖 **Documentation:** https://notepad-plus-plus-mac.org/online-help/
-- 🐛 **Issues:** https://github.com/notepad-plus-plus-mac/notepad-plus-plus-macos/issues
-- 💬 **Original Notepad++ Community:** https://community.notepad-plus-plus.org/
-- 💖 **Donate:** https://notepad-plus-plus-mac.org/donate/
+- 🌐 **Website:** https://nextpad.org
+- 📥 **Download:** https://nextpad.org/download/
+- 🔌 **Plugins:** https://nextpad.org/plugins/
+- 📖 **Documentation:** https://nextpad.org/online-help/
+- 🐛 **Issues:** https://github.com/nextpad-plus-plus/nextpad-plus-plus-macos/issues
+- 💖 **Donate:** https://nextpad.org/donate/
 
 ---
 
