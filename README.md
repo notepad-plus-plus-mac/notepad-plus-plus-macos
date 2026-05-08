@@ -23,6 +23,7 @@ The macOS port and this Linux port share a common foundation: both macOS and Lin
 - Go To Line dialog
 - Modified-document tracking with ask-to-save on close/quit
 - **Session save / restore** — open file set, per-tab caret and scroll positions saved to `~/.config/npp/session.xml` on quit and restored on next launch; skips files that no longer exist on disk; CLI file arguments suppress restore
+- **Auto-backup** — every N seconds (default 60, configurable in Preferences → Backup), any modified unsaved document is written to `~/.config/npp/backup/<basename>`; backup is removed when the file is cleanly saved or the tab is closed; enabled/interval configurable via Settings → Preferences → Backup
 - Command-line file arguments
 
 ### Syntax Highlighting
@@ -106,7 +107,6 @@ Ordered by implementation effort (low → high).
 > **Note:** All the features with low and medium effort required are marked as completed. No intermediate release are planned. This software will be released when all the points in this list will be successfully completed.
 
 ### High effort
-- **Auto-backup** — timed backup copies to `~/.config/npp/backup/`
 - **File change detection** — detect external modifications and prompt to reload
 - **Macro recording / playback** — record and replay keystroke sequences
 - **Document List panel** — dockable panel listing all open tabs
@@ -157,6 +157,7 @@ All user data lives in `~/.config/npp/`:
 | `~/.config/npp/shortcuts.xml` | User-defined keyboard shortcut overrides (Notepad++ format) |
 | `~/.config/npp/config.xml` | Preferences (tab width, indent, caret, EOL, encoding, display options) |
 | `~/.config/npp/session.xml` | Session state: open file paths, caret and scroll positions, active tab |
+| `~/.config/npp/backup/` | Auto-backup copies of unsaved/modified documents |
 | `~/.config/npp/userDefineLangs/` | User-defined language XML files (NPP UDL format) |
 
 ## Architecture
@@ -177,6 +178,7 @@ linux/src/prefs.c/h        — preferences struct, load/save, Preferences dialog
 linux/src/udl.c/h          — User Defined Language manager: XML parse, udl_apply()
 linux/src/gitgutter.c/h    — Git gutter: background diff, unified diff parser, Scintilla margin markers
 linux/src/session.c/h      — Session save/restore: tab set, caret and scroll positions → ~/.config/npp/session.xml
+linux/src/backup.c/h       — Auto-backup: periodic g_timeout writes modified docs to ~/.config/npp/backup/
 linux/src/sci_c.h           — C-safe Scintilla interface
 
 scintilla/                  — vendored editing engine (GTK3 backend used as-is)
