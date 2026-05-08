@@ -1652,6 +1652,7 @@ Pudete attivà torna st’ozzione in u dialogu di e preferenze."/>
 				<Item id="90160" name="Evidenziazione intelligente: solu parolla sana"/>
 				<Item id="90161" name="Cliccate doppiu per chjude a tabulazione"/>
 				<Item id="90162" name="Mostra u buttone chjude nantu à e tabulazioni"/>
+				<Item id="90224" name="Wrap tabs to multiple lines"/>
 				<Item id="90163" name="Ricurdativi di a visibilità di u pannellu trà e sessioni"/>
 				<Item id="90164" name="Mantene e voci di fugliale assenti in a sessione"/>
 				<Item id="90165" name="Cunfirmà prima di Salvà tuttu"/>

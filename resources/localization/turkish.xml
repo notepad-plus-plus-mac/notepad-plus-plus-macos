@@ -1614,6 +1614,7 @@ Bu pencereyi Tercihler içinden tekrar aktif edebilirsiniz."/>
 				<Item id="90160" name="Akıllı vurgulama: yalnızca tüm kelime"/>
 				<Item id="90161" name="Sekmeyi kapatmak için çift tıklayın"/>
 				<Item id="90162" name="Sekmelerde kapat düğmesini göster"/>
+				<Item id="90224" name="Sekmeleri birden çok satırda göster"/>
 				<Item id="90163" name="Oturumlar arasında panel görünürlüğünü hatırlayın"/>
 				<Item id="90164" name="Oturumda eksik dosya girişlerini koruyun"/>
 				<Item id="90165" name="Tümünü Kaydetmeden Önce Onaylayın"/>

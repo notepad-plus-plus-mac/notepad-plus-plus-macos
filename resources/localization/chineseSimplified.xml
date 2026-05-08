@@ -1617,6 +1617,7 @@ Translation note:
 				<Item id="90160" name="智能突出显示：仅整个单词"/>
 				<Item id="90161" name="双击关闭选项卡"/>
 				<Item id="90162" name="在选项卡上显示关闭按钮"/>
+				<Item id="90224" name="标签页多行显示"/>
 				<Item id="90163" name="记住跨会话的面板可见性"/>
 				<Item id="90164" name="在会话中保留缺少的文件条目"/>
 				<Item id="90165" name="全部保存前确认"/>

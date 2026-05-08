@@ -1619,6 +1619,7 @@ Bạn có thể mở lại hộp thoại này ở phần Thiết đặt về sau
 				<Item id="90160" name="Đánh dấu thông minh: chỉ toàn bộ từ"/>
 				<Item id="90161" name="Nhấp đúp để đóng tab"/>
 				<Item id="90162" name="Hiển thị nút đóng trên tab"/>
+				<Item id="90224" name="Hiển thị thẻ trên nhiều dòng"/>
 				<Item id="90163" name="Ghi nhớ khả năng hiển thị bảng điều khiển trong các phiên"/>
 				<Item id="90164" name="Giữ các mục nhập tập tin vắng mặt trong phiên"/>
 				<Item id="90165" name="Xác nhận trước khi Lưu tất cả"/>

@@ -27,6 +27,7 @@ NSString *const kPrefCaretWidth          = @"caretWidth";
 NSString *const kPrefTabMaxLabelWidth    = @"tabMaxLabelWidth";
 NSString *const kPrefTabCloseButton      = @"tabCloseButton";
 NSString *const kPrefDoubleClickTabClose = @"doubleClickTabClose";
+NSString *const kPrefTabBarWrap          = @"tabBarWrap";
 NSString *const kPrefVirtualSpace        = @"virtualSpace";
 NSString *const kPrefScrollBeyondLastLine= @"scrollBeyondLastLine";
 NSString *const kPrefCaretBlinkRate      = @"caretBlinkRate";
@@ -136,6 +137,7 @@ NSString *const kPrefStyleFontSize      = @"styleFontSize";
         kPrefTabMaxLabelWidth:     @190,
         kPrefTabCloseButton:       @YES,
         kPrefDoubleClickTabClose:  @NO,
+        kPrefTabBarWrap:           @YES,
         kPrefVirtualSpace:         @NO,
         kPrefScrollBeyondLastLine: @NO,
         kPrefCaretBlinkRate:       @500,
@@ -1066,6 +1068,7 @@ static NSDictionary<NSString *, NSString *> *_langDisplayNames() {
     NSArray *checks = @[
         @[[loc translate:@"Show close button on tabs"],        @800, kPrefTabCloseButton],
         @[[loc translate:@"Double-click to close tab"],        @801, kPrefDoubleClickTabClose],
+        @[[loc translate:@"Wrap tabs to multiple lines"],      @803, kPrefTabBarWrap],
     ];
     for (NSArray *def in checks) {
         NSButton *chk = [NSButton checkboxWithTitle:def[0] target:self action:@selector(prefChanged:)];
@@ -1509,6 +1512,7 @@ static NSDictionary<NSString *, NSString *> *_langDisplayNames() {
         case 800: [ud setBool:[(NSButton *)sender state] == NSControlStateValueOn forKey:kPrefTabCloseButton]; break;
         case 801: [ud setBool:[(NSButton *)sender state] == NSControlStateValueOn forKey:kPrefDoubleClickTabClose]; break;
         case 802: [ud setInteger:[(NSTextField *)sender integerValue] forKey:kPrefTabMaxLabelWidth]; break;
+        case 803: [ud setBool:[(NSButton *)sender state] == NSControlStateValueOn forKey:kPrefTabBarWrap]; break;
         // General
         case 900: [ud setBool:[(NSButton *)sender state] == NSControlStateValueOn forKey:kPrefShowFullPathInTitle]; break;
         // Searching

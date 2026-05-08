@@ -1135,6 +1135,7 @@ By Hiro5 <groccat at gmail>
 				<Item id="90160" name="Ressaltat intel·ligent: només paraula sencera"/>
 				<Item id="90161" name="Fes doble clic per tancar la pestanya"/>
 				<Item id="90162" name="Mostra el botó de tancament a les pestanyes"/>
+				<Item id="90224" name="Mostra les pestanyes en diverses línies"/>
 				<Item id="90163" name="Recordeu la visibilitat del panell a través de les sessions"/>
 				<Item id="90164" name="Mantenir les entrades de fitxers absents a la sessió"/>
 				<Item id="90165" name="Confirmeu abans de desar-ho tot"/>

@@ -1640,6 +1640,7 @@ Poți reactiva această casetă de dialog mai târziu, în Preferințe."/>
 				<Item id="90160" name="Evidențiere inteligentă: numai cuvânt întreg"/>
 				<Item id="90161" name="Faceți dublu clic pentru a închide fila"/>
 				<Item id="90162" name="Afișează butonul de închidere pe file"/>
+				<Item id="90224" name="Afișează filele pe mai multe rânduri"/>
 				<Item id="90163" name="Rețineți vizibilitatea panoului în sesiuni"/>
 				<Item id="90164" name="Păstrați intrările de fișiere absente în sesiune"/>
 				<Item id="90165" name="Confirmați înainte de a salva tot"/>

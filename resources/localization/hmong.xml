@@ -1620,6 +1620,7 @@ Koj tuaj yeem rov qhib qhov kev sib tham no hauv Preferences tom qab."/>
 				<Item id="90160" name="Smart highlighting: tag lo lus xwb"/>
 				<Item id="90161" name="Ob npaug nias rau kaw tab"/>
 				<Item id="90162" name="Qhia kaw khawm ntawm tabs"/>
+				<Item id="90224" name="Wrap tabs to multiple lines"/>
 				<Item id="90163" name="Nco ntsoov lub vaj huam sib luag pom kev hla ntu"/>
 				<Item id="90164" name="Khaws cov ntawv tsis tuaj yeem nkag rau hauv kev sib kho"/>
 				<Item id="90165" name="Paub meej ua ntej Txuag Tag Nrho"/>

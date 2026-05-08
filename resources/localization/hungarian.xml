@@ -1620,6 +1620,7 @@ Ebben az esetben a „Gépház” párbeszédpanel „Egyéb” szakasza alatt k
 				<Item id="90160" name="Intelligens kiemelés: csak a teljes szó"/>
 				<Item id="90161" name="Kattintson duplán a lap bezárásához"/>
 				<Item id="90162" name="Bezárás gomb megjelenítése a lapokon"/>
+				<Item id="90224" name="Lapok megjelenítése több sorban"/>
 				<Item id="90163" name="Emlékezzen a panel láthatóságára a munkamenetek között"/>
 				<Item id="90164" name="Tartsa távol a fájlbejegyzéseket a munkamenetben"/>
 				<Item id="90165" name="Erősítse meg az összes mentése előtt"/>

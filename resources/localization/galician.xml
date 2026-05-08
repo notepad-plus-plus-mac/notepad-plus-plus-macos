@@ -1618,6 +1618,7 @@ Pode reactivalo en Preferencias se o desexa."/>
 				<Item id="90160" name="Resaltado intelixente: só palabra enteira"/>
 				<Item id="90161" name="Fai dobre clic para pechar a pestana"/>
 				<Item id="90162" name="Mostrar o botón de pechar nas pestanas"/>
+				<Item id="90224" name="Amosar as lapelas en varias liñas"/>
 				<Item id="90163" name="Lembra a visibilidade do panel en todas as sesións"/>
 				<Item id="90164" name="Manter as entradas de ficheiro ausentes na sesión"/>
 				<Item id="90165" name="Confirmar antes de gardar todo"/>

@@ -1621,6 +1621,7 @@ W oknie ustawień możesz przywrócić to potwierdzenie w dowolnym momencie."/>
 				<Item id="90160" name="Inteligentne wyróżnianie: tylko całe słowo"/>
 				<Item id="90161" name="Kliknij dwukrotnie, aby zamknąć kartę"/>
 				<Item id="90162" name="Pokaż przycisk zamykania na kartach"/>
+				<Item id="90224" name="Wyświetlaj karty w wielu wierszach"/>
 				<Item id="90163" name="Pamiętaj o widoczności panelu w sesjach"/>
 				<Item id="90164" name="Zachowaj nieobecne wpisy plików w sesji"/>
 				<Item id="90165" name="Potwierdź przed zapisaniem wszystkiego"/>

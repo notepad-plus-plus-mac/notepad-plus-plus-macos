@@ -1620,6 +1620,7 @@ Você pode reativar esta janela de confirmação em Preferências depois."/>
 				<Item id="90160" name="Destaque inteligente: apenas palavra inteira"/>
 				<Item id="90161" name="Clique duas vezes para fechar a aba"/>
 				<Item id="90162" name="Mostrar botão fechar nas abas"/>
+				<Item id="90224" name="Mostrar abas em várias linhas"/>
 				<Item id="90163" name="Lembre-se da visibilidade do painel entre sessões"/>
 				<Item id="90164" name="Manter entradas de arquivo ausentes na sessão"/>
 				<Item id="90165" name="Confirme antes de salvar tudo"/>

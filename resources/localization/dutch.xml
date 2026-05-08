@@ -1624,6 +1624,7 @@ U kunt dit dialoogvenster later terug inschakelen via voorkeuren."/>
 				<Item id="90160" name="Slim markeren: alleen hele woorden"/>
 				<Item id="90161" name="Dubbelklik om het tabblad"/>
 				<Item id="90162" name="te sluitenSluitknop weergeven op tabbladen"/>
+				<Item id="90224" name="Tabbladen over meerdere regels weergeven"/>
 				<Item id="90163" name="Onthoud de zichtbaarheid van het paneel tussen sessies"/>
 				<Item id="90164" name="Bewaar afwezige bestandsitems in sessie"/>
 				<Item id="90165" name="Bevestig vóór alles opslaan"/>

@@ -1612,6 +1612,7 @@ Vous pourrez réactiver cette boîte de dialogue dans les Préférences ultérie
 				<Item id="90160" name="Surlignage intelligent : mot entier uniquement"/>
 				<Item id="90161" name="Double-cliquez pour fermer l'onglet"/>
 				<Item id="90162" name="Afficher le bouton de fermeture sur les onglets"/>
+				<Item id="90224" name="Afficher les onglets sur plusieurs lignes"/>
 				<Item id="90163" name="N'oubliez pas la visibilité du panneau au fil des sessions"/>
 				<Item id="90164" name="Conserver les entrées de fichiers absentes en session"/>
 				<Item id="90165" name="Confirmer avant de tout enregistrer"/>

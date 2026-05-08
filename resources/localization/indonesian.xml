@@ -1464,6 +1464,7 @@ Anda dapat mengaktifkan kembali dialog ini di Preferensi nanti."/>
 				<Item id="90160" name="Penyorotan cerdas: hanya seluruh kata"/>
 				<Item id="90161" name="Klik dua kali untuk menutup tab"/>
 				<Item id="90162" name="Tampilkan tombol tutup pada tab"/>
+				<Item id="90224" name="Tampilkan tab dalam beberapa baris"/>
 				<Item id="90163" name="Ingat visibilitas panel di seluruh sesi"/>
 				<Item id="90164" name="Simpan entri file yang tidak ada dalam sesi"/>
 				<Item id="90165" name="Konfirmasi sebelum Simpan Semua"/>

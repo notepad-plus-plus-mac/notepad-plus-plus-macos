@@ -35,6 +35,7 @@ extern NSString *const kPrefCaretWidth;          // NSInteger 1-3, default 1
 extern NSString *const kPrefTabMaxLabelWidth;    // NSInteger pixels, default 190
 extern NSString *const kPrefTabCloseButton;      // BOOL, default YES
 extern NSString *const kPrefDoubleClickTabClose; // BOOL, default NO
+extern NSString *const kPrefTabBarWrap;          // BOOL, default YES
 extern NSString *const kPrefVirtualSpace;        // BOOL, default NO
 extern NSString *const kPrefScrollBeyondLastLine;// BOOL, default NO
 extern NSString *const kPrefCaretBlinkRate;      // NSInteger ms, default 500

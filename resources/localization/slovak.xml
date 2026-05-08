@@ -1615,6 +1615,7 @@ Toto dialógové okno môžete neskôr znovu aktivovať v Predvoľbách."/>
 				<Item id="90160" name="Inteligentné zvýraznenie: iba celé slovo"/>
 				<Item id="90161" name="Dvojitým kliknutím zatvorte kartu"/>
 				<Item id="90162" name="Zobraziť tlačidlo zatvorenia na kartách"/>
+				<Item id="90224" name="Zobraziť karty vo viacerých riadkoch"/>
 				<Item id="90163" name="Pamätajte na viditeľnosť panela v rámci relácií"/>
 				<Item id="90164" name="Ponechať chýbajúce položky súboru v relácii"/>
 				<Item id="90165" name="Pred Uložiť všetko potvrdiť"/>

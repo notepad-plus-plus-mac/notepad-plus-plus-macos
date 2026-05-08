@@ -1006,6 +1006,7 @@
 				<Item id="90160" name="Theksim i zgjuar: vetëm fjalë e tërë"/>
 				<Item id="90161" name="Klikoni dy herë për të mbyllur skedën"/>
 				<Item id="90162" name="Shfaq butonin e mbylljes në skedat"/>
+				<Item id="90224" name="Shfaq skedat në shumë rreshta"/>
 				<Item id="90163" name="Mbani mend dukshmërinë e panelit nëpër sesione"/>
 				<Item id="90164" name="Mbani hyrjet e skedarëve që mungojnë në sesion"/>
 				<Item id="90165" name="Konfirmo përpara Ruaj të gjitha"/>

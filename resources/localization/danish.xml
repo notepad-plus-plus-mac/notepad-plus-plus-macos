@@ -1478,6 +1478,7 @@ Du kan altid fortryde i &quot;Indstillinger => Diverse&quot;."/>
 				<Item id="90160" name="Smart fremhævning: kun hele ord"/>
 				<Item id="90161" name="Dobbeltklik for at lukke fanen"/>
 				<Item id="90162" name="Vis lukkeknap på faner"/>
+				<Item id="90224" name="Vis faner på flere linjer"/>
 				<Item id="90163" name="Husk panelsynlighed på tværs af sessioner"/>
 				<Item id="90164" name="Behold fraværende filposter i session"/>
 				<Item id="90165" name="Bekræft før Gem alle"/>

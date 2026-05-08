@@ -1646,6 +1646,7 @@ Potvrzovací dialog můžete kdykoliv reaktivovat v &quot;Nastavení&quot;."/>
 				<Item id="90160" name="Inteligentní zvýraznění: pouze celé slovo"/>
 				<Item id="90161" name="Dvojitým kliknutím zavřete kartu"/>
 				<Item id="90162" name="Zobrazit tlačítko pro zavření na kartách"/>
+				<Item id="90224" name="Zobrazit karty ve více řádcích"/>
 				<Item id="90163" name="Pamatujte na viditelnost panelu napříč relacemi"/>
 				<Item id="90164" name="Ponechat chybějící položky souboru v relaci"/>
 				<Item id="90165" name="Potvrďte před Uložit vše"/>

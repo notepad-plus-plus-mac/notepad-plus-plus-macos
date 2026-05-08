@@ -1620,6 +1620,7 @@ Mahimo nimong i-aktibo pag-usab kini nga dialog sa Mga Kagustuhan sa ulahi."/>
 				<Item id="90160" name="Smart highlighting: tibuok pulong lang"/>
 				<Item id="90161" name="Dobleng pag-klik aron masira ang tab"/>
 				<Item id="90162" name="Ipakita ang close button sa mga tab"/>
+				<Item id="90224" name="Wrap tabs to multiple lines"/>
 				<Item id="90163" name="Hinumdumi ang panel visibility sa mga sesyon"/>
 				<Item id="90164" name="Ipadayon ang wala nga mga entri sa file sa sesyon"/>
 				<Item id="90165" name="Kumpirma sa dili pa I-save ang Tanan"/>

@@ -7,9 +7,10 @@
 @end
 
 // ── Constants ─────────────────────────────────────────────────────────────────
-// Bar layout: barH = kTabTopGap + inactiveTabH + 1(border).
+// Bar layout: baseBarH = kTabTopGap + inactiveTabH + 1(border).
 // inactiveTabH = barH - kTabTopGap - 1.  activeTabH = inactiveTabH + kActiveBoost.
-// MainWindowController sets the height constraint = barH.
+// In wrap mode the view reports a taller intrinsic height as rows are added.
+static const CGFloat kTabBarBaseHeight = 25.0;
 static const CGFloat kTabTopGap    = 5.0;   // dead space at bar top (gap below toolbar)
 static const CGFloat kActiveBoost  = 3.0;   // px active tab is taller than inactive
 static const CGFloat kTabMinWidth  = 80.0;
@@ -385,6 +386,7 @@ static const CGFloat kPinSize = 11.0; // pin icon drawn at ~80% of original ~14p
     NSMutableArray<_NppTabItem *> *_items;
     NSInteger                      _selectedIndex;
     BOOL                           _wrapMode;
+    CGFloat                        _preferredHeight;
     _NppScrollArrowButton         *_scrollLeftBtn;
     _NppScrollArrowButton         *_scrollRightBtn;
 }
@@ -394,6 +396,7 @@ static const CGFloat kPinSize = 11.0; // pin icon drawn at ~80% of original ~14p
     if (self) {
         _items         = [NSMutableArray array];
         _selectedIndex = -1;
+        _preferredHeight = kTabBarBaseHeight;
         [self _buildUI];
         [[NSNotificationCenter defaultCenter]
             addObserver:self selector:@selector(_darkModeChanged:)
@@ -453,6 +456,10 @@ static const CGFloat kPinSize = 11.0; // pin icon drawn at ~80% of original ~14p
 - (void)setFrameSize:(NSSize)size {
     [super setFrameSize:size];
     [self relayout];
+}
+
+- (NSSize)intrinsicContentSize {
+    return NSMakeSize(NSViewNoIntrinsicMetric, _preferredHeight);
 }
 
 #pragma mark - Public API
@@ -520,6 +527,7 @@ static const CGFloat kPinSize = 11.0; // pin icon drawn at ~80% of original ~14p
     if (_wrapMode == wrap) return;
     _wrapMode = wrap;
     [self relayout];
+    [self invalidateIntrinsicContentSize];
     [self setNeedsDisplay:YES];
 }
 
@@ -565,38 +573,70 @@ static const CGFloat kPinSize = 11.0; // pin icon drawn at ~80% of original ~14p
 
 #pragma mark - Layout
 
+- (CGFloat)_preferredHeightForWidth:(CGFloat)barW {
+    if (!_wrapMode || _items.count == 0) return kTabBarBaseHeight;
+
+    CGFloat inactiveH = kTabBarBaseHeight - kTabTopGap - 1;
+    CGFloat activeH   = inactiveH + kActiveBoost;
+    CGFloat rowStep   = activeH + 1;
+    CGFloat x = 0;
+    NSInteger rows = 1;
+
+    for (_NppTabItem *item in _items) {
+        CGFloat w = item.preferredWidth;
+        if (x + w > barW && x > 0) {
+            x = 0;
+            rows++;
+        }
+        x += w;
+    }
+
+    return 1 + ((CGFloat)rows - 1) * rowStep + activeH + (kTabTopGap - kActiveBoost);
+}
+
+- (void)_setPreferredHeight:(CGFloat)height {
+    height = MAX(kTabBarBaseHeight, ceil(height));
+    if (fabs(_preferredHeight - height) < 0.5) return;
+
+    _preferredHeight = height;
+    [self invalidateIntrinsicContentSize];
+    [self.superview setNeedsLayout:YES];
+}
+
 - (void)relayout {
     CGFloat barW = self.bounds.size.width;
     CGFloat barH = self.bounds.size.height;
     if (barW < 1 || barH < 1) return;  // not yet sized — skip
 
-    CGFloat inactiveH = barH - kTabTopGap - 1;            // visible inactive tab height
+    CGFloat inactiveH = kTabBarBaseHeight - kTabTopGap - 1; // visible inactive tab height
     CGFloat activeH   = inactiveH + kActiveBoost;          // active tab is slightly taller
 
     if (_wrapMode) {
+        CGFloat neededH = [self _preferredHeightForWidth:barW];
+        [self _setPreferredHeight:neededH];
+
         _scrollLeftBtn.hidden  = YES;
         _scrollRightBtn.hidden = YES;
         _scrollView.frame = NSMakeRect(0, 0, barW, barH);
+        [_scrollView.contentView scrollToPoint:NSZeroPoint];
 
-        CGFloat x = 0, y = 1;
+        CGFloat x = 0;
+        CGFloat rowStep = activeH + 1;
+        NSInteger row = 0;
         for (_NppTabItem *item in _items) {
             CGFloat w = item.preferredWidth;
-            if (x + w > barW && x > 0) { x = 0; y += (inactiveH + 1); }
-            item.frame = NSMakeRect(x, y, w, inactiveH);
+            if (x + w > barW && x > 0) { x = 0; row++; }
+            BOOL sel = (item.tabIndex == _selectedIndex);
+            CGFloat y = neededH - (kTabTopGap - kActiveBoost) - activeH - ((CGFloat)row * rowStep);
+            item.frame = NSMakeRect(x, y, w, sel ? activeH : inactiveH);
             x += w;
         }
-        CGFloat totalH = y + inactiveH + 1;
-        _containerView.frame = NSMakeRect(0, 0, barW, totalH);
-
-        NSRect f = self.frame;
-        if (f.size.height != totalH) {
-            f.size.height = totalH;
-            NSView *sv = self.superview;
-            if (sv) f.origin.y = sv.bounds.size.height - totalH;
-            [super setFrame:f];
-        }
+        _containerView.frame = NSMakeRect(0, 0, barW, neededH);
+        [self setNeedsDisplay:YES];
         return;
     }
+
+    [self _setPreferredHeight:kTabBarBaseHeight];
 
     // ── Non-wrap: calculate total tab width, decide if arrows needed ──────────
     CGFloat totalTabsW = 0;
@@ -632,6 +672,11 @@ static const CGFloat kPinSize = 11.0; // pin icon drawn at ~80% of original ~14p
 // existing tabs off the left.
 - (void)scrollTabToVisible:(NSInteger)index {
     if (index < 0 || index >= (NSInteger)_items.count) return;
+    if (_wrapMode) {
+        [_scrollView.contentView scrollToPoint:NSZeroPoint];
+        [_scrollView reflectScrolledClipView:_scrollView.contentView];
+        return;
+    }
     NSRect     tab = _items[index].frame;
     NSClipView *cv = _scrollView.contentView;
     CGFloat     cx = cv.bounds.origin.x;

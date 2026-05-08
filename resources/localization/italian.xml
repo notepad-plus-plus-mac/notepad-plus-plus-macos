@@ -1603,6 +1603,7 @@ Il messaggio può essere riattivato da Preferenze."/>
 				<Item id="90160" name="Evidenziazione intelligente: solo parola intera"/>
 				<Item id="90161" name="Fare doppio clic per chiudere la scheda"/>
 				<Item id="90162" name="Mostra il pulsante di chiusura sulle schede"/>
+				<Item id="90224" name="Mostra le schede su più righe"/>
 				<Item id="90163" name="Ricorda la visibilità del pannello tra le sessioni"/>
 				<Item id="90164" name="Mantieni voci di file assenti nella sessione"/>
 				<Item id="90165" name="Conferma prima di salvare tutto"/>

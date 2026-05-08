@@ -1206,6 +1206,7 @@ Siz bir necha marker ustunlarini probellar orqali belgilashingiz mumkin."/>
 				<Item id="90160" name="Aqlli ta'kidlash: faqat butun so'z"/>
 				<Item id="90161" name="Yorliqni yopish uchun ikki marta bosing"/>
 				<Item id="90162" name="Yorliqlarda yopish tugmasini ko'rsatish"/>
+				<Item id="90224" name="Varaqlarni bir nechta qatorda ko‘rsatish"/>
 				<Item id="90163" name="Seanslar bo'ylab panel ko'rinishini eslab qoling"/>
 				<Item id="90164" name="Seansda mavjud bo'lmagan fayl yozuvlarini saqlang"/>
 				<Item id="90165" name="Hammasini saqlashdan oldin tasdiqlang"/>

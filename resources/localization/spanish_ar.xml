@@ -951,6 +951,7 @@
 				<Item id="90160" name="Resaltado inteligente: solo la palabra completa"/>
 				<Item id="90161" name="Haga doble clic para cerrar la pestaña"/>
 				<Item id="90162" name="Mostrar botón de cerrar en pestañas"/>
+				<Item id="90224" name="Mostrar pestañas en varias líneas"/>
 				<Item id="90163" name="Recuerde la visibilidad del panel entre sesiones"/>
 				<Item id="90164" name="Mantener entradas de archivos ausentes en la sesión"/>
 				<Item id="90165" name="Confirmar antes de guardar todo"/>

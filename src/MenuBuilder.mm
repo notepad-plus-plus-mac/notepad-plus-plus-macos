@@ -681,6 +681,7 @@ static NSMenu *buildLanguageMenu() {
     // ── Navigation ──
     [tabViewMenu addItem:item(@"First Tab",    @selector(selectFirstTab:),    @"")];
     [tabViewMenu addItem:item(@"Last Tab",     @selector(selectLastTab:),     @"")];
+    [tabViewMenu addItem:item(@"Multi-line Tabs", @selector(toggleTabBarWrap:), @"")];
     {
         unichar pgdn = NSPageDownFunctionKey;
         unichar pgup = NSPageUpFunctionKey;

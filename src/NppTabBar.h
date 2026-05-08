@@ -15,7 +15,7 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)tabBarDidRequestNewTab:(NppTabBar *)bar;
 @end
 
-/// Left-aligned, scrollable tab bar styled after Notepad++.
+/// Left-aligned tab bar styled after Notepad++.
 @interface NppTabBar : NSView
 
 @property (nonatomic, weak, nullable) id<NppTabBarDelegate> delegate;
@@ -41,6 +41,7 @@ NS_ASSUME_NONNULL_BEGIN
 - (NSInteger)tabColorAtIndex:(NSInteger)index;
 
 /// When YES tabs wrap to multiple rows instead of scrolling horizontally.
+/// The view's intrinsic height grows to fit all rows.
 @property (nonatomic) BOOL wrapMode;
 
 @end

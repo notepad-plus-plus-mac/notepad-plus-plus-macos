@@ -1629,6 +1629,7 @@ Diese Wahl kann jederzeit in den Einstellungen angepasst werden."/>
 				<Item id="90160" name="Intelligente Hervorhebung: nur ganzes Wort"/>
 				<Item id="90161" name="Doppelklicken Sie, um die Registerkarte"/>
 				<Item id="90162" name="zu schließenSchaltfläche „Schließen“ auf Registerkarten anzeigen"/>
+				<Item id="90224" name="Tabs in mehreren Zeilen anzeigen"/>
 				<Item id="90163" name="Denken Sie an die Panel-Sichtbarkeit über Sitzungen hinweg"/>
 				<Item id="90164" name="Fehlende Dateieinträge in Sitzung behalten"/>
 				<Item id="90165" name="Vor „Alles speichern“ bestätigen"/>

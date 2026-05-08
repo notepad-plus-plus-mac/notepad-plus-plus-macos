@@ -740,6 +740,7 @@
 				<Item id="90160" name="Pametno isticanje: samo cijela riječ"/>
 				<Item id="90161" name="Dvaput kliknite da zatvorite karticu"/>
 				<Item id="90162" name="Prikaži dugme za zatvaranje na karticama"/>
+				<Item id="90224" name="Wrap tabs to multiple lines"/>
 				<Item id="90163" name="Zapamtite vidljivost panela kroz sesije"/>
 				<Item id="90164" name="Zadrži odsutne unose datoteka u sesiji"/>
 				<Item id="90165" name="Potvrdi prije Save All"/>

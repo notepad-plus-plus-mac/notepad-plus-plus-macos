@@ -739,6 +739,7 @@
 				<Item id="90160" name="Smart highlighting: whole word only"/>
 				<Item id="90161" name="Double-click to close tab"/>
 				<Item id="90162" name="Show close button on tabs"/>
+				<Item id="90224" name="Wrap tabs to multiple lines"/>
 				<Item id="90163" name="Remember panel visibility across sessions"/>
 				<Item id="90164" name="Keep absent file entries in session"/>
 				<Item id="90165" name="Confirm before Save All"/>

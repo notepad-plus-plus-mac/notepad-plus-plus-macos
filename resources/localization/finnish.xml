@@ -1431,6 +1431,7 @@ Updated to v8.6 fixed version
 				<Item id="90160" name="Älykäs korostus: vain koko sana"/>
 				<Item id="90161" name="Sulje välilehti kaksoisnapsauttamalla"/>
 				<Item id="90162" name="Näytä välilehtien sulkemispainike"/>
+				<Item id="90224" name="Näytä välilehdet usealla rivillä"/>
 				<Item id="90163" name="Muista paneelin näkyvyys istuntojen aikana"/>
 				<Item id="90164" name="Pidä poissa tiedostomerkinnät istunnossa"/>
 				<Item id="90165" name="Vahvista ennen Tallenna kaikki"/>

@@ -1620,6 +1620,7 @@ Du kan aktivera denna dialogruta i inställningarna senare."/>
 				<Item id="90160" name="Smart markering: endast hela ord"/>
 				<Item id="90161" name="Dubbelklicka för att stänga fliken"/>
 				<Item id="90162" name="Visa stängningsknapp på flikar"/>
+				<Item id="90224" name="Visa flikar på flera rader"/>
 				<Item id="90163" name="Kom ihåg panelsynlighet över sessioner"/>
 				<Item id="90164" name="Behåll frånvarande filposter i sessionen"/>
 				<Item id="90165" name="Bekräfta innan Spara alla"/>

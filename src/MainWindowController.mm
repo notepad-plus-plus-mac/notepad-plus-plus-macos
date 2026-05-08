@@ -304,6 +304,7 @@ void writeConfigXML(void) {
     NSInteger tabMaxW  = [ud integerForKey:kPrefTabMaxLabelWidth];
     BOOL tabClose      = [ud boolForKey:kPrefTabCloseButton];
     BOOL dblClickClose = [ud boolForKey:kPrefDoubleClickTabClose];
+    BOOL tabBarWrap    = [ud boolForKey:kPrefTabBarWrap];
     BOOL virtualSpace  = [ud boolForKey:kPrefVirtualSpace];
     BOOL scrollBeyond  = [ud boolForKey:kPrefScrollBeyondLastLine];
     NSInteger fontQual = [ud integerForKey:kPrefFontQuality];
@@ -359,8 +360,8 @@ void writeConfigXML(void) {
     [xml appendFormat:@"        <GUIConfig name=\"TabBar\" closeButton=\"%@\" "
      @"doubleClick2Close=\"%@\" reduce=\"yes\" dragAndDrop=\"yes\" "
      @"drawTopBar=\"yes\" drawInactiveTab=\"yes\" "
-     @"pinButton=\"yes\" tabCompactLabelLen=\"%ld\" />\n",
-     _yn(tabClose), _yn(dblClickClose), (long)tabMaxW];
+     @"pinButton=\"yes\" multiLine=\"%@\" tabCompactLabelLen=\"%ld\" />\n",
+     _yn(tabClose), _yn(dblClickClose), _yn(tabBarWrap), (long)tabMaxW];
 
     // TabSetting (global)
     [xml appendFormat:@"        <GUIConfig name=\"TabSetting\" replaceBySpace=\"%@\" size=\"%ld\" />\n",
@@ -509,6 +510,8 @@ void readConfigXML(void) {
                 [ud setBool:_ynBool(v) forKey:kPrefTabCloseButton];
             if ((v = [el attributeForName:@"doubleClick2Close"].stringValue))
                 [ud setBool:_ynBool(v) forKey:kPrefDoubleClickTabClose];
+            if ((v = [el attributeForName:@"multiLine"].stringValue))
+                [ud setBool:_ynBool(v) forKey:kPrefTabBarWrap];
             if ((v = [el attributeForName:@"tabCompactLabelLen"].stringValue))
                 [ud setInteger:v.integerValue forKey:kPrefTabMaxLabelWidth];
         }
@@ -2448,6 +2451,9 @@ static BOOL groupHasTrailingSep(NSString *ident) {
 
     NppTabBar *primaryTabBar = _tabManager.tabBar;
     primaryTabBar.translatesAutoresizingMaskIntoConstraints = NO;
+    primaryTabBar.wrapMode = [[NSUserDefaults standardUserDefaults] boolForKey:kPrefTabBarWrap];
+    [primaryTabBar setContentHuggingPriority:NSLayoutPriorityRequired forOrientation:NSLayoutConstraintOrientationVertical];
+    [primaryTabBar setContentCompressionResistancePriority:NSLayoutPriorityRequired forOrientation:NSLayoutConstraintOrientationVertical];
     NSView *primaryContentView = _tabManager.contentView;
     primaryContentView.translatesAutoresizingMaskIntoConstraints = NO;
 
@@ -2460,7 +2466,7 @@ static BOOL groupHasTrailingSep(NSString *ident) {
         [primaryTabBar.topAnchor constraintEqualToAnchor:primaryContainer.topAnchor],
         [primaryTabBar.leadingAnchor constraintEqualToAnchor:primaryContainer.leadingAnchor],
         [primaryTabBar.trailingAnchor constraintEqualToAnchor:primaryContainer.trailingAnchor],
-        [primaryTabBar.heightAnchor constraintEqualToConstant:25],
+        [primaryTabBar.heightAnchor constraintGreaterThanOrEqualToConstant:25],
         [primaryContentView.topAnchor constraintEqualToAnchor:primaryTabBar.bottomAnchor],
         [primaryContentView.leadingAnchor constraintEqualToAnchor:primaryContainer.leadingAnchor],
         [primaryContentView.trailingAnchor constraintEqualToAnchor:primaryContainer.trailingAnchor],
@@ -2473,6 +2479,9 @@ static BOOL groupHasTrailingSep(NSString *ident) {
 
     NppTabBar *subTabBar = _subTabManagerH.tabBar;
     subTabBar.translatesAutoresizingMaskIntoConstraints = NO;
+    subTabBar.wrapMode = primaryTabBar.wrapMode;
+    [subTabBar setContentHuggingPriority:NSLayoutPriorityRequired forOrientation:NSLayoutConstraintOrientationVertical];
+    [subTabBar setContentCompressionResistancePriority:NSLayoutPriorityRequired forOrientation:NSLayoutConstraintOrientationVertical];
     NSView *subContentView = _subTabManagerH.contentView;
     subContentView.translatesAutoresizingMaskIntoConstraints = NO;
 
@@ -2484,7 +2493,7 @@ static BOOL groupHasTrailingSep(NSString *ident) {
         [subTabBar.topAnchor constraintEqualToAnchor:_subEditorContainerH.topAnchor],
         [subTabBar.leadingAnchor constraintEqualToAnchor:_subEditorContainerH.leadingAnchor],
         [subTabBar.trailingAnchor constraintEqualToAnchor:_subEditorContainerH.trailingAnchor],
-        [subTabBar.heightAnchor constraintEqualToConstant:25],
+        [subTabBar.heightAnchor constraintGreaterThanOrEqualToConstant:25],
         [subContentView.topAnchor constraintEqualToAnchor:subTabBar.bottomAnchor],
         [subContentView.leadingAnchor constraintEqualToAnchor:_subEditorContainerH.leadingAnchor],
         [subContentView.trailingAnchor constraintEqualToAnchor:_subEditorContainerH.trailingAnchor],
@@ -2497,6 +2506,9 @@ static BOOL groupHasTrailingSep(NSString *ident) {
 
     NppTabBar *subTabBarV = _subTabManagerV.tabBar;
     subTabBarV.translatesAutoresizingMaskIntoConstraints = NO;
+    subTabBarV.wrapMode = primaryTabBar.wrapMode;
+    [subTabBarV setContentHuggingPriority:NSLayoutPriorityRequired forOrientation:NSLayoutConstraintOrientationVertical];
+    [subTabBarV setContentCompressionResistancePriority:NSLayoutPriorityRequired forOrientation:NSLayoutConstraintOrientationVertical];
     NSView *subContentViewV = _subTabManagerV.contentView;
     subContentViewV.translatesAutoresizingMaskIntoConstraints = NO;
 
@@ -2508,7 +2520,7 @@ static BOOL groupHasTrailingSep(NSString *ident) {
         [subTabBarV.topAnchor constraintEqualToAnchor:_subEditorContainerV.topAnchor],
         [subTabBarV.leadingAnchor constraintEqualToAnchor:_subEditorContainerV.leadingAnchor],
         [subTabBarV.trailingAnchor constraintEqualToAnchor:_subEditorContainerV.trailingAnchor],
-        [subTabBarV.heightAnchor constraintEqualToConstant:25],
+        [subTabBarV.heightAnchor constraintGreaterThanOrEqualToConstant:25],
         [subContentViewV.topAnchor constraintEqualToAnchor:subTabBarV.bottomAnchor],
         [subContentViewV.leadingAnchor constraintEqualToAnchor:_subEditorContainerV.leadingAnchor],
         [subContentViewV.trailingAnchor constraintEqualToAnchor:_subEditorContainerV.trailingAnchor],
@@ -4308,6 +4320,7 @@ static NSArray<NSDictionary *> *convertRecordedToXmlFormat(NSArray<NSDictionary 
     _tabManager.tabBar.wrapMode     = newWrap;
     _subTabManagerH.tabBar.wrapMode = newWrap;
     _subTabManagerV.tabBar.wrapMode = newWrap;
+    [[NSUserDefaults standardUserDefaults] setBool:newWrap forKey:kPrefTabBarWrap];
 }
 
 #pragma mark - Sort Tabs
@@ -4548,7 +4561,7 @@ static NSArray<NSDictionary *> *convertRecordedToXmlFormat(NSArray<NSDictionary 
 
     // Tab Wrap checkmark
     if (action == @selector(toggleTabBarWrap:)) {
-        [(NSMenuItem *)item setState:_tabManager.tabBar.wrapMode
+        [(NSMenuItem *)item setState:[[NSUserDefaults standardUserDefaults] boolForKey:kPrefTabBarWrap]
             ? NSControlStateValueOn : NSControlStateValueOff];
         return YES;
     }
@@ -7919,8 +7932,14 @@ static NSArray<NSDictionary *> *convertRecordedToXmlFormat(NSArray<NSDictionary 
 
 - (void)_prefsChanged:(NSNotification *)n {
     // Status bar visibility
-    BOOL showStatus = [[NSUserDefaults standardUserDefaults] boolForKey:kPrefShowStatusBar];
+    NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
+    BOOL showStatus = [ud boolForKey:kPrefShowStatusBar];
     _statusBar.hidden = !showStatus;
+
+    BOOL wrapTabs = [ud boolForKey:kPrefTabBarWrap];
+    _tabManager.tabBar.wrapMode     = wrapTabs;
+    _subTabManagerH.tabBar.wrapMode = wrapTabs;
+    _subTabManagerV.tabBar.wrapMode = wrapTabs;
 
     // Title bar (full path vs filename only)
     [self updateTitle];

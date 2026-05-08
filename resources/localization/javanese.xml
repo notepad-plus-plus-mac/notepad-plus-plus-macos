@@ -1620,6 +1620,7 @@ Sampeyan bisa ngaktifake maneh dialog iki ing Preferensi mengko."/>
 				<Item id="90160" name="Sorotan pinter: wutuh mung tembung"/>
 				<Item id="90161" name="Klik kaping pindho kanggo nutup tab"/>
 				<Item id="90162" name="Tampilake tombol tutup ing tab"/>
+				<Item id="90224" name="Tampilake tab ing pirang-pirang baris"/>
 				<Item id="90163" name="Elingi visibilitas panel ing kabeh sesi"/>
 				<Item id="90164" name="Tansah entri file sing ora ana ing sesi"/>
 				<Item id="90165" name="Konfirmasi sadurunge Simpen Kabeh"/>

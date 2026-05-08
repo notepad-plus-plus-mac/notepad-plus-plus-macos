@@ -1539,6 +1539,7 @@ To pogovorno okno lahko pozneje znova aktivirate v nastavitvah."/>
 				<Item id="90160" name="Pametno označevanje: samo cela beseda"/>
 				<Item id="90161" name="Dvokliknite, da zaprete zavihek"/>
 				<Item id="90162" name="Pokaži gumb za zapiranje na zavihkih"/>
+				<Item id="90224" name="Prikaži zavihke v več vrsticah"/>
 				<Item id="90163" name="Zapomni si vidnost plošče med sejami"/>
 				<Item id="90164" name="Ohrani odsotne vnose datotek v seji"/>
 				<Item id="90165" name="Potrdi, preden shrani vse"/>

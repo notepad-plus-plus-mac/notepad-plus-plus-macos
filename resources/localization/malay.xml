@@ -645,6 +645,7 @@ Desc: Malay translation for Notepad++
 				<Item id="90160" name="Sorotan pintar: seluruh perkataan sahaja"/>
 				<Item id="90161" name="Klik dua kali untuk menutup tab"/>
 				<Item id="90162" name="Tunjukkan butang tutup pada tab"/>
+				<Item id="90224" name="Paparkan tab dalam berbilang baris"/>
 				<Item id="90163" name="Ingat keterlihatan panel merentas sesi"/>
 				<Item id="90164" name="Simpan entri fail yang tidak hadir dalam sesi"/>
 				<Item id="90165" name="Sahkan sebelum Simpan Semua"/>

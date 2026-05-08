@@ -1620,6 +1620,7 @@ Možete ponovo aktivirati dijalog u preferencama."/>
 				<Item id="90160" name="Паметно истицање: само цела реч"/>
 				<Item id="90161" name="Двапут кликните да бисте затворили картицу"/>
 				<Item id="90162" name="Прикажи дугме за затварање на картицама"/>
+				<Item id="90224" name="Prikaži kartice u više redova"/>
 				<Item id="90163" name="Запамтите видљивост панела у свим сесијама"/>
 				<Item id="90164" name="Задржи одсутне уносе датотека у сесији"/>
 				<Item id="90165" name="Потврди пре Саве Алл"/>
