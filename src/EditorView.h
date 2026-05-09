@@ -9,6 +9,12 @@ extern NSNotificationName const EditorViewCursorDidMoveNotification;
 /// Posted when a Scintilla editor gains keyboard focus (SCN_FOCUSIN).
 extern NSNotificationName const EditorViewDidGainFocusNotification;
 
+/// Posted when an editor's contents are written to disk via saveFileToPath:.
+/// Object is the EditorView. MainWindowController listens and conditionally
+/// refreshes the git diff gutter only when the GitPanel is open — keeps git
+/// invocations gated to the panel-visible state (issue #76).
+extern NSNotificationName const EditorViewDidSaveNotification;
+
 /// Wraps ScintillaView and provides Notepad++-style editor functionality.
 @interface EditorView : NSView <ScintillaNotificationProtocol>
 

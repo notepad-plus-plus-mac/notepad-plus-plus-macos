@@ -19,6 +19,7 @@
 
 NSNotificationName const EditorViewCursorDidMoveNotification = @"EditorViewCursorDidMoveNotification";
 NSNotificationName const EditorViewDidGainFocusNotification  = @"EditorViewDidGainFocusNotification";
+NSNotificationName const EditorViewDidSaveNotification        = @"EditorViewDidSaveNotification";
 NSNotificationName const EditorViewDidScrollNotification = @"EditorViewDidScrollNotification";
 
 // Forward-declare Lexilla's CreateLexer (statically linked)
@@ -633,7 +634,13 @@ static const NSUInteger kLargeFileThreshold = 50 * 1024 * 1024; // 50 MB
         [self setLanguage:lang];
     }
 
-    [self updateGitDiffMarkers];
+    // Issue #76 — DO NOT call updateGitDiffMarkers here unconditionally.
+    // It spawns /usr/bin/git, which on a Mac without Xcode CLT triggers the
+    // "Install Command Line Tools" prompt on every save. Instead post a
+    // notification; MainWindowController's handler gates the git work on
+    // GitPanel visibility (matches the existing pattern at MWC:6385).
+    [[NSNotificationCenter defaultCenter]
+        postNotificationName:EditorViewDidSaveNotification object:self];
 
     [[NppPluginManager shared] notifyPluginsWithCode:NPPN_FILESAVED
                                             bufferID:(intptr_t)(__bridge void *)self];

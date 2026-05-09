@@ -1540,6 +1540,9 @@ static NSDictionary<NSString *, NSArray *> *toolbarGroupMap(void) {
         [[NSNotificationCenter defaultCenter]
             addObserver:self selector:@selector(editorDidGainFocus:)
                    name:EditorViewDidGainFocusNotification object:nil];
+        [[NSNotificationCenter defaultCenter]
+            addObserver:self selector:@selector(_editorDidSave:)
+                   name:EditorViewDidSaveNotification object:nil];
         // (scroll sync uses a timer, not notifications)
         [self rebuildRecentFilesMenu];
         [self rebuildUDLLanguageMenu];
@@ -4179,6 +4182,23 @@ static NSArray<NSDictionary *> *convertRecordedToXmlFormat(NSArray<NSDictionary 
                 branch ? [@"\u2387 " stringByAppendingString:branch] : @"";
         });
     });
+}
+
+// Issue #76 \u2014 refresh the git diff gutter when an editor is saved, but only
+// when the GitPanel is open AND the saved editor belongs to this window.
+// The notification post is in EditorView.saveFileToPath:; without this
+// indirection the editor would have to spawn /usr/bin/git on every save,
+// which on a Mac without Xcode CLT triggers the install prompt.
+- (void)_editorDidSave:(NSNotification *)note {
+    if (!_gitPanel || ![_sidePanelHost hasPanel:_gitPanel]) return;
+    EditorView *editor = note.object;
+    if (![editor isKindOfClass:[EditorView class]]) return;
+    // Multi-window safety: only refresh editors that belong to this window.
+    // Without this check, saving in window A while window B's GitPanel is
+    // open would spawn git on window A's account.
+    if (editor.window != self.window) return;
+    [editor updateGitDiffMarkers];
+    [self _updateGitBranch:editor.filePath];
 }
 
 - (void)_showProjectPanelTab:(NSInteger)tab {
