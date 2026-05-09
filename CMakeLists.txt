@@ -254,14 +254,170 @@ add_custom_command(TARGET NotepadPlusPlusMac POST_BUILD
         "$<TARGET_BUNDLE_DIR:NotepadPlusPlusMac>/Contents/Resources/toolbarButtonsConf.xml"
     COMMENT "Copying default toolbarButtonsConf.xml into bundle")
 
-# Localized display name so Dock shows "Notepad++" not "NotepadPlusPlus"
-add_custom_command(TARGET NotepadPlusPlusMac POST_BUILD
-    COMMAND ${CMAKE_COMMAND} -E make_directory
-        "$<TARGET_BUNDLE_DIR:NotepadPlusPlusMac>/Contents/Resources/en.lproj"
-    COMMAND ${CMAKE_COMMAND} -E copy_if_different
-        "${CMAKE_SOURCE_DIR}/resources/en.lproj/InfoPlist.strings"
-        "$<TARGET_BUNDLE_DIR:NotepadPlusPlusMac>/Contents/Resources/en.lproj/InfoPlist.strings"
-    COMMENT "Copying localized display name")
+# Localized display name + per-language stubs (issue #35).
+# We ship resources/localization/<name>.xml for ~135 NPP-style translations,
+# but macOS only registers a localization if a corresponding
+# <bcp47>.lproj/InfoPlist.strings exists in the bundle. Without those:
+#   • [NSBundle preferredLocalizations] returns only ["en"], so VoiceOver
+#     pronounces every UI element with an English voice regardless of the
+#     active NppLocalizer language.
+#   • The system-supplied App menu items (About / Hide / Quit / Services /
+#     Window) stay English even when the rest of the UI is translated.
+# Fix: at configure time, generate stub <bcp47>.lproj/InfoPlist.strings files
+# (using the same template as resources/en.lproj/InfoPlist.strings) under
+# resources/lproj/. At build time, copy each into the bundle.
+# The list maps every NppLocalizer language file we ship to a BCP-47 code.
+# Skipped: english_customizable (variant of English) and piglatin (joke).
+set(NPP_BUNDLE_LANGUAGES
+    ab          # abkhazian
+    af          # afrikaans
+    sq          # albanian
+    am          # amharic
+    ar          # arabic
+    an          # aragonese
+    oc-aranes   # aranese
+    hy          # armenian
+    as          # assamese
+    ay          # aymara
+    az          # azerbaijani
+    bm          # bambara
+    eu          # basque
+    be          # belarusian
+    bn          # bengali
+    bho         # bhojpuri
+    bs          # bosnian
+    pt-BR       # brazilian_portuguese
+    br          # breton
+    bg          # bulgarian
+    ca          # catalan
+    ceb         # cebuano
+    ny          # chichewa
+    zh-Hans     # chineseSimplified
+    co          # corsican
+    hr          # croatian
+    cs          # czech
+    da          # danish
+    dv          # dhivehi
+    doi         # dogri
+    nl          # dutch
+    en          # english
+    eo          # esperanto
+    et          # estonian
+    ee          # ewe
+    ext         # extremaduran
+    fa          # farsi
+    fi          # finnish
+    fr          # french
+    fur         # friulian
+    gl          # galician
+    ka          # georgian
+    de          # german
+    el          # greek
+    gn          # guarani
+    gu          # gujarati
+    ha          # hausa
+    haw         # hawaiian
+    he          # hebrew
+    hi          # hindi
+    hmn         # hmong
+    yue         # hongKongCantonese
+    hu          # hungarian
+    ig          # igbo
+    ilo         # ilocano
+    id          # indonesian
+    ga          # irish
+    it          # italian
+    ja          # japanese
+    jv          # javanese
+    kab         # kabyle
+    kn          # kannada
+    kk          # kazakh
+    rw          # kinyarwanda
+    kok         # konkani
+    ko          # korean
+    kri         # krio
+    ku          # kurdish
+    ky          # kyrgyz
+    lo          # lao
+    lv          # latvian
+    lij         # ligurian
+    ln          # lingala
+    lt          # lithuanian
+    lb          # luxembourgish
+    mk          # macedonian
+    mai         # maithili
+    mg          # malagasy
+    ms          # malay
+    ml          # malayalam
+    mr          # marathi
+    lus         # mizo
+    mn          # mongolian
+    my          # myanmar
+    ne          # nepali
+    nb          # norwegian (Bokmål)
+    nn          # nynorsk
+    oc          # occitan
+    or          # odia
+    ps          # pashto
+    pl          # polish
+    pt-PT       # portuguese
+    pa          # punjabi
+    qu          # quechua
+    ro          # romanian
+    ru          # russian
+    sgs         # samogitian
+    sc          # sardinian
+    nso         # sepedi
+    sr-Latn     # serbian
+    sr-Cyrl     # serbianCyrillic
+    st          # sesotho
+    sn          # shona
+    si          # sinhala
+    sk          # slovak
+    sl          # slovenian
+    so          # somali
+    es          # spanish
+    es-AR       # spanish_ar
+    su          # sundanese
+    sw          # swahili
+    sv          # swedish
+    tl          # tagalog
+    zh-Hant     # taiwaneseMandarin
+    tg-Cyrl     # tajikCyrillic
+    ta          # tamil
+    tt          # tatar
+    te          # telugu
+    th          # thai
+    ti          # tigrinya
+    ts          # tsonga
+    tr          # turkish
+    tk          # turkmen
+    tw          # twi
+    uk          # ukrainian
+    ur          # urdu
+    ug          # uyghur
+    uz-Latn     # uzbek
+    uz-Cyrl     # uzbekCyrillic
+    vec         # venetian
+    vi          # vietnamese
+    cy          # welsh
+    xh          # xhosa
+    yo          # yoruba
+    zu          # zulu
+)
+
+# Materialise each lproj directly into the bundle at build time, using the
+# existing resources/en.lproj/InfoPlist.strings as the single source of truth.
+# No intermediate source-tree mirror — the only checked-in file is the
+# template (which we already had).
+foreach(_lang IN LISTS NPP_BUNDLE_LANGUAGES)
+    add_custom_command(TARGET NotepadPlusPlusMac POST_BUILD
+        COMMAND ${CMAKE_COMMAND} -E make_directory
+            "$<TARGET_BUNDLE_DIR:NotepadPlusPlusMac>/Contents/Resources/${_lang}.lproj"
+        COMMAND ${CMAKE_COMMAND} -E copy_if_different
+            "${CMAKE_SOURCE_DIR}/resources/en.lproj/InfoPlist.strings"
+            "$<TARGET_BUNDLE_DIR:NotepadPlusPlusMac>/Contents/Resources/${_lang}.lproj/InfoPlist.strings")
+endforeach()
 
 # Ad-hoc code signing — gives the app a stable identity so macOS can
 # remember TCC permission grants (Downloads, Desktop, Documents) across launches.
