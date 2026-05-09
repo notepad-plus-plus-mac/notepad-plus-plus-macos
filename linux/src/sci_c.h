@@ -140,6 +140,16 @@ typedef struct SCNotification {
 #define SCI_CONVERTEOLS         2029
 #define SCI_SETEOLMODE          2031
 #define SCI_GETEOLMODE          2030
+#define SCI_LINESONSCREEN       2370
+#define SCI_TEXTHEIGHT          2279
+#define SCI_GETDOCPOINTER       2357
+#define SCI_SETDOCPOINTER       2358
+#define SCI_SETHSCROLLBAR       2130
+#define SCI_SETVSCROLLBAR       2280
+#define SCI_SETCARETWIDTH       2188
+#define SCI_SETREADONLY         2171
+#define SCI_SETWRAPMODE         2268
+#define SC_WRAP_NONE            0
 #define SCI_SETLEXERLANGUAGE    4006
 #define SCI_SETILEXER           4033
 #define SCI_SETPROPERTY         4004

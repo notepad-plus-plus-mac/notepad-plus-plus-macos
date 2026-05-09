@@ -12,6 +12,7 @@
 #include "gitgutter.h"
 #include "macro.h"
 #include "funclist.h"
+#include "docmap.h"
 #include <string.h>
 #include <stdio.h>
 
@@ -304,8 +305,10 @@ static void on_sci_notify(GtkWidget *sci, gint unused,
     } else if (code == SCN_UPDATEUI) {
         /* only update statusbar for the currently visible tab */
         int cur = gtk_notebook_get_current_page(GTK_NOTEBOOK(s_notebook));
-        if (gtk_notebook_get_nth_page(GTK_NOTEBOOK(s_notebook), cur) == sci)
+        if (gtk_notebook_get_nth_page(GTK_NOTEBOOK(s_notebook), cur) == sci) {
             statusbar_update_from_sci(sci);
+            docmap_sync_scroll(sci);
+        }
 
         /* Brace highlighting */
         Sci_Position pos = (Sci_Position)sci_msg(sci, SCI_GETCURRENTPOS, 0, 0);

@@ -86,6 +86,7 @@ add_executable(notepad++
     src/doclist.c
     src/workspace.c
     src/funclist.c
+    src/docmap.c
     src/lexilla_bridge.cpp
 )
 
