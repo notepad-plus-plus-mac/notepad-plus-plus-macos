@@ -10,7 +10,7 @@ extern "C" {
 #define UDL_KWLIST_COUNT 28
 
 /* Load all UDL definitions from RESOURCES_DIR/userDefineLangs/ and
- * ~/.config/npp/userDefineLangs/. Safe to call multiple times (no-op after first). */
+ * ~/.config/notetux/userDefineLangs/. Safe to call multiple times (no-op after first). */
 void udl_load_all(void);
 
 /* Return number of loaded UDL definitions. */

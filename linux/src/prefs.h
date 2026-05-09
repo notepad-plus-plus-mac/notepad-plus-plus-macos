@@ -45,10 +45,10 @@ typedef struct {
 
 extern NppPrefs g_prefs;
 
-/* Load from ~/.config/npp/config.xml (call before building UI) */
+/* Load from ~/.config/notetux/config.xml (call before building UI) */
 void prefs_load(void);
 
-/* Save to ~/.config/npp/config.xml */
+/* Save to ~/.config/notetux/config.xml */
 void prefs_save(void);
 
 /* Show (or raise) the Preferences dialog */

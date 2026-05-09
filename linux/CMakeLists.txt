@@ -62,7 +62,7 @@ target_compile_options(lexilla PRIVATE "-include" "cstdint")
 # -----------------------------------------------------------------------------
 # Application — GTK3 + Scintilla (C + C++ wrapper for Lexilla)
 # -----------------------------------------------------------------------------
-add_executable(notepad++
+add_executable(notetux++
     src/main.c
     src/editor.c
     src/encoding.c
@@ -92,7 +92,7 @@ add_executable(notepad++
     src/lexilla_bridge.cpp
 )
 
-target_include_directories(notepad++ PRIVATE
+target_include_directories(notetux++ PRIVATE
     "${SCI_ROOT}/include"
     "${SCI_ROOT}/src"
     "${SCI_ROOT}/gtk"
@@ -100,16 +100,16 @@ target_include_directories(notepad++ PRIVATE
     ${GTK3_INCLUDE_DIRS}
 )
 
-target_compile_definitions(notepad++ PRIVATE
+target_compile_definitions(notetux++ PRIVATE
     GTK
     RESOURCES_DIR="${CMAKE_SOURCE_DIR}/../resources"
 )
-target_compile_options(notepad++ PRIVATE ${GTK3_CFLAGS_OTHER})
+target_compile_options(notetux++ PRIVATE ${GTK3_CFLAGS_OTHER})
 # lexilla_bridge.cpp needs cstdint for the same reason as lexilla
 set_source_files_properties(src/lexilla_bridge.cpp PROPERTIES
     COMPILE_OPTIONS "-include;cstdint")
 
-target_link_libraries(notepad++ PRIVATE
+target_link_libraries(notetux++ PRIVATE
     scintilla
     lexilla
     ${GTK3_LIBRARIES}

@@ -120,7 +120,7 @@ static GMarkupParser s_xml_parser = { xml_start, NULL, NULL, NULL, NULL };
 
 void shortcut_load(void)
 {
-    gchar *path = g_build_filename(g_get_home_dir(), ".config", "npp",
+    gchar *path = g_build_filename(g_get_home_dir(), ".config", "notetux",
                                    "shortcuts.xml", NULL);
     gchar *xml  = NULL;
     if (!g_file_get_contents(path, &xml, NULL, NULL)) {
@@ -140,11 +140,11 @@ void shortcut_load(void)
 
 void shortcut_save(void)
 {
-    gchar *dir  = g_build_filename(g_get_home_dir(), ".config", "npp", NULL);
+    gchar *dir  = g_build_filename(g_get_home_dir(), ".config", "notetux", NULL);
     g_mkdir_with_parents(dir, 0700);
     g_free(dir);
 
-    gchar *path = g_build_filename(g_get_home_dir(), ".config", "npp",
+    gchar *path = g_build_filename(g_get_home_dir(), ".config", "notetux",
                                    "shortcuts.xml", NULL);
     GString *buf = g_string_new(
         "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n"

@@ -42,7 +42,7 @@ static GtkWidget  *s_recent_item  = NULL;   /* the top-level "Recent Files" item
 
 static char *recent_file_path(void)
 {
-    return g_build_filename(g_get_home_dir(), ".config", "npp", "recentfiles.txt", NULL);
+    return g_build_filename(g_get_home_dir(), ".config", "notetux", "recentfiles.txt", NULL);
 }
 
 static void recent_save(void)
@@ -553,9 +553,9 @@ void main_refresh_title(void)
         const char *name = g_prefs.show_full_path_in_title
                            ? doc->filepath
                            : g_path_get_basename(doc->filepath);
-        snprintf(buf, sizeof(buf), "%s%s — Notepad++ Linux", mod, name);
+        snprintf(buf, sizeof(buf), "%s%s — Notetux++", mod, name);
     } else {
-        snprintf(buf, sizeof(buf), "%snew %d — Notepad++ Linux", mod, doc->new_index);
+        snprintf(buf, sizeof(buf), "%snew %d — Notetux++", mod, doc->new_index);
     }
     gtk_window_set_title(GTK_WINDOW(s_main_window), buf);
 }
@@ -3116,7 +3116,7 @@ static GtkWidget *build_menubar(GtkWindow *window, GApplication *app)
     /* ---- Help ---- */
     {
         GtkWidget *help = submenu(bar, TM("menu.help", "_Help"));
-        APPEND(help, nyi_item("About Notepad++ Linux…"));
+        APPEND(help, nyi_item("About Notetux++…"));
         APPEND(help, nyi_item("Debug Info…"));
         APPEND(help, sep_item());
         APPEND(help, nyi_item("Project Home Page"));
@@ -3200,7 +3200,7 @@ static void on_activate(GtkApplication *app, gpointer data)
 
     GtkWidget *window = gtk_application_window_new(app);
     s_main_window = window;
-    gtk_window_set_title(GTK_WINDOW(window), "Notepad++ Linux");
+    gtk_window_set_title(GTK_WINDOW(window), "Notetux++");
     gtk_window_set_default_size(GTK_WINDOW(window), 1024, 700);
     g_signal_connect(window, "delete-event",   G_CALLBACK(on_delete_event), app);
     g_signal_connect(window, "key-press-event", G_CALLBACK(on_key_press),   NULL);
@@ -3292,7 +3292,7 @@ int main(int argc, char **argv)
     /* Restore last session only when launched with no file arguments */
     s_restore_session = (argc == 1);
 
-    GtkApplication *app = gtk_application_new("org.notepadplusplus.linux",
+    GtkApplication *app = gtk_application_new("org.notetux.app",
                                               G_APPLICATION_DEFAULT_FLAGS);
     g_signal_connect(app, "activate", G_CALLBACK(on_activate), NULL);
 

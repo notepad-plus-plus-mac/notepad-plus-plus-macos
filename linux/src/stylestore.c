@@ -3,7 +3,7 @@
  * applyLexerColors from StyleConfiguratorWindowController.mm + EditorView.mm.
  *
  * Parses stylers.model.xml (same XML the macOS port uses) with GLib's
- * GMarkupParser. Config override at $HOME/.config/npp/stylers.xml.
+ * GMarkupParser. Config override at $HOME/.config/notetux/stylers.xml.
  */
 #include "stylestore.h"
 #include "sci_c.h"
@@ -349,12 +349,12 @@ void stylestore_init(const char *xml_path)
     parse_file(model_path);
     fix_default_font();
 
-    /* Overlay user overrides from $HOME/.config/npp/stylers.xml */
+    /* Overlay user overrides from $HOME/.config/notetux/stylers.xml */
     const char *home = g_get_home_dir();
     if (home) {
         char user_path[512];
         snprintf(user_path, sizeof(user_path),
-                 "%s/.config/npp/stylers.xml", home);
+                 "%s/.config/notetux/stylers.xml", home);
         if (g_file_test(user_path, G_FILE_TEST_EXISTS))
             parse_file(user_path);
     }
@@ -382,7 +382,7 @@ void stylestore_save_user(void)
     if (!home) return;
 
     char dir[512];
-    snprintf(dir, sizeof(dir), "%s/.config/npp", home);
+    snprintf(dir, sizeof(dir), "%s/.config/notetux", home);
     g_mkdir_with_parents(dir, 0755);
 
     char path[512];

@@ -1,12 +1,12 @@
 /* backup.c — Periodic auto-backup for the Linux GTK3 port.
  *
  * Every g_prefs.backup_interval_secs seconds, any modified (unsaved) document
- * is written to ~/.config/npp/backup/<basename>.  On a clean save or on tab
+ * is written to ~/.config/notetux/backup/<basename>.  On a clean save or on tab
  * close the backup file is removed.
  *
  * Naming:
- *   Saved file  → ~/.config/npp/backup/<basename>
- *   Unsaved doc → ~/.config/npp/backup/new_<N>
+ *   Saved file  → ~/.config/notetux/backup/<basename>
+ *   Unsaved doc → ~/.config/notetux/backup/new_<N>
  *
  * The timer runs on the GLib main loop; no threading needed.
  */
@@ -33,7 +33,7 @@ static void backup_path_for(NppDoc *doc, char *out, gsize size)
         snprintf(tmp, sizeof(tmp), "new_%d", doc->new_index);
         leaf = tmp;
     }
-    gchar *dir = g_build_filename(g_get_user_config_dir(), "npp", "backup", NULL);
+    gchar *dir = g_build_filename(g_get_user_config_dir(), "notetux", "backup", NULL);
     snprintf(out, size, "%s/%s", dir, leaf);
     g_free(dir);
 }
@@ -85,7 +85,7 @@ static gboolean backup_tick(gpointer data)
 void backup_init(void)
 {
     /* Ensure the backup directory exists */
-    gchar *dir = g_build_filename(g_get_user_config_dir(), "npp", "backup", NULL);
+    gchar *dir = g_build_filename(g_get_user_config_dir(), "notetux", "backup", NULL);
     g_mkdir_with_parents(dir, 0755);
     g_free(dir);
 

@@ -1,7 +1,7 @@
 /* session.c — Session save / restore for the Linux GTK3 port.
  *
  * Persists open file paths + scroll/caret positions to
- * ~/.config/npp/session.xml in NPP-compatible XML format.
+ * ~/.config/notetux/session.xml in NPP-compatible XML format.
  *
  * Format:
  *   <NotepadPlus>
@@ -32,7 +32,7 @@ static const char *session_path(void)
 {
     static char s_path[512];
     if (!s_path[0])
-        snprintf(s_path, sizeof(s_path), "%s/npp/session.xml",
+        snprintf(s_path, sizeof(s_path), "%s/notetux/session.xml",
                  g_get_user_config_dir());
     return s_path;
 }
@@ -105,7 +105,7 @@ void session_save(void)
         "</NotepadPlus>\n");
 
     /* Ensure config dir exists */
-    gchar *dir = g_build_filename(g_get_user_config_dir(), "npp", NULL);
+    gchar *dir = g_build_filename(g_get_user_config_dir(), "notetux", NULL);
     g_mkdir_with_parents(dir, 0755);
     g_free(dir);
 

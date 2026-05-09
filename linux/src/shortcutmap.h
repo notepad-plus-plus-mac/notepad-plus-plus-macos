@@ -24,10 +24,10 @@ ShortcutEntry *shortcut_find(const char *id);
 /* Called during menu build: stores widget + group ref for live rebinding */
 void shortcut_register(const char *id, GtkWidget *widget, GtkAccelGroup *group);
 
-/* Load overrides from ~/.config/npp/shortcuts.xml */
+/* Load overrides from ~/.config/notetux/shortcuts.xml */
 void shortcut_load(void);
 
-/* Write current bindings to ~/.config/npp/shortcuts.xml */
+/* Write current bindings to ~/.config/notetux/shortcuts.xml */
 void shortcut_save(void);
 
 /* Show (or re-raise) the shortcut mapper dialog */

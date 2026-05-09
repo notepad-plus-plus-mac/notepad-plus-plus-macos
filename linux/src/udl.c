@@ -1,5 +1,5 @@
 /* udl.c — User Defined Language (UDL) manager for the Linux GTK3 port.
- * Parses ~/.config/npp/userDefineLangs/*.xml and RESOURCES_DIR/userDefineLangs/*.xml,
+ * Parses ~/.config/notetux/userDefineLangs/*.xml and RESOURCES_DIR/userDefineLangs/*.xml,
  * then applies the "user" Lexilla lexer with the proper properties and keyword lists.
  */
 #include "udl.h"
@@ -488,7 +488,7 @@ void udl_load_all(void)
 
     const char *home = g_get_home_dir();
     char user_dir[512];
-    snprintf(user_dir, sizeof(user_dir), "%s/.config/npp/userDefineLangs", home);
+    snprintf(user_dir, sizeof(user_dir), "%s/.config/notetux/userDefineLangs", home);
     load_dir(user_dir);
 }
 

@@ -347,11 +347,11 @@ static void populate_theme_combo(SEState *s)
     }
     g_ptr_array_unref(bundled);
 
-    /* User themes from $HOME/.config/npp/themes/ */
+    /* User themes from $HOME/.config/notetux/themes/ */
     const char *home = g_get_home_dir();
     if (home) {
         char udir[512];
-        snprintf(udir, sizeof(udir), "%s/.config/npp/themes", home);
+        snprintf(udir, sizeof(udir), "%s/.config/notetux/themes", home);
         GPtrArray *user = scan_themes(udir);
         for (guint i = 0; i < user->len; i++) {
             const char *p = (const char *)g_ptr_array_index(user, i);

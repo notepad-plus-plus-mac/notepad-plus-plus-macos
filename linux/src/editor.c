@@ -290,9 +290,9 @@ static void update_window_title(void)
         const char *name = g_prefs.show_full_path_in_title
                            ? doc->filepath
                            : g_path_get_basename(doc->filepath);
-        snprintf(buf, sizeof(buf), "%s%s — Notepad++ Linux", mod, name);
+        snprintf(buf, sizeof(buf), "%s%s — Notetux++", mod, name);
     } else {
-        snprintf(buf, sizeof(buf), "%snew %d — Notepad++ Linux", mod, doc->new_index);
+        snprintf(buf, sizeof(buf), "%snew %d — Notetux++", mod, doc->new_index);
     }
 
     gtk_window_set_title(GTK_WINDOW(s_window), buf);
