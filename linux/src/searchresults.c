@@ -36,6 +36,9 @@ static char         *s_current_file = NULL; /* filepath of s_file_iter */
 static int           s_total_all_hits  = 0;
 static int           s_total_all_files = 0;
 
+/* Paned position: set once on first show */
+static gboolean      s_needs_initial_pos = TRUE;
+
 /* ------------------------------------------------------------------ */
 /* Navigation on row double-click                                     */
 /* ------------------------------------------------------------------ */
@@ -234,16 +237,6 @@ void searchresults_end(int total_hits, int total_files)
 
     gtk_tree_store_set(s_store, &root, COL_TEXT, label, -1);
 
-    /* Expand only the new search root */
-    GtkTreePath *p = gtk_tree_model_get_path(GTK_TREE_MODEL(s_store), &root);
-    gtk_tree_view_expand_row(GTK_TREE_VIEW(s_tree), p, FALSE);
-    gtk_tree_path_free(p);
-
-    /* Scroll to the new search root */
-    p = gtk_tree_model_get_path(GTK_TREE_MODEL(s_store), &root);
-    gtk_tree_view_scroll_to_cell(GTK_TREE_VIEW(s_tree), p, NULL, TRUE, 0.0f, 0.0f);
-    gtk_tree_path_free(p);
-
     /* Update totals in header */
     s_total_all_hits  += total_hits;
     s_total_all_files += total_files;
@@ -252,15 +245,44 @@ void searchresults_end(int total_hits, int total_files)
              s_total_all_hits, s_total_all_hits == 1 ? "" : "es");
     gtk_label_set_text(GTK_LABEL(s_count_lbl), summary);
 
-    /* Auto-show the panel */
+    /* Show panel first — expand/scroll only work on a mapped tree view */
     searchresults_set_visible(TRUE);
+
+    /* Expand the new search root and all its children */
+    GtkTreePath *p = gtk_tree_model_get_path(GTK_TREE_MODEL(s_store), &root);
+    gtk_tree_view_expand_row(GTK_TREE_VIEW(s_tree), p, TRUE);
+    gtk_tree_view_scroll_to_cell(GTK_TREE_VIEW(s_tree), p, NULL, TRUE, 0.0f, 0.0f);
+    gtk_tree_path_free(p);
+}
+
+/* Idle callback: set paned position once after layout pass completes */
+static gboolean set_initial_paned_pos(gpointer data)
+{
+    GtkWidget *paned = data;
+    int total = gtk_widget_get_allocated_height(paned);
+    if (total > 200) {
+        gtk_paned_set_position(GTK_PANED(paned), total - 200);
+        s_needs_initial_pos = FALSE;
+    }
+    return G_SOURCE_REMOVE;
 }
 
 void searchresults_set_visible(gboolean v)
 {
     if (!s_panel) return;
-    if (v) gtk_widget_show(s_panel);
-    else   gtk_widget_hide(s_panel);
+    if (v) {
+        /* show_all ensures children that lost visibility flags get re-shown */
+        gtk_widget_show_all(s_panel);
+        /* On first show, defer the position adjustment until after GTK has
+         * completed the layout pass triggered by show_all.                */
+        if (s_needs_initial_pos) {
+            GtkWidget *paned = gtk_widget_get_parent(s_panel);
+            if (GTK_IS_PANED(paned))
+                g_idle_add(set_initial_paned_pos, paned);
+        }
+    } else {
+        gtk_widget_hide(s_panel);
+    }
 }
 
 gboolean searchresults_is_visible(void)
