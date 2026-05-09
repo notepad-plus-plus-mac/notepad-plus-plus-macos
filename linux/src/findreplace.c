@@ -407,3 +407,7 @@ void findreplace_show(GtkWidget *parent_window, const char *find_text, gboolean 
     gtk_window_present(GTK_WINDOW(s_dialog));
     gtk_widget_grab_focus(s_find_entry);
 }
+
+
+void findreplace_find_next(void) { find_in_sci(TRUE);  }
+void findreplace_find_prev(void) { find_in_sci(FALSE); }
