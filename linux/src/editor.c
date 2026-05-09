@@ -10,6 +10,7 @@
 #include "i18n.h"
 #include "autocomplete.h"
 #include "gitgutter.h"
+#include "macro.h"
 #include <string.h>
 #include <stdio.h>
 
@@ -380,6 +381,8 @@ static void on_sci_notify(GtkWidget *sci, gint unused,
                (n->modificationType & (SC_MOD_INSERTTEXT | SC_MOD_DELETETEXT))) {
         if (doc->filepath)
             gitgutter_update(sci, doc->filepath);
+    } else if (code == SCN_MACRORECORD) {
+        macro_on_record((unsigned int)n->message, n->wParam, n->lParam);
     }
 }
 
@@ -700,6 +703,39 @@ gboolean editor_close_page(int page)
         editor_new_doc();
 
     update_window_title();
+    return TRUE;
+}
+
+gboolean editor_save_all(void)
+{
+    gboolean ok = TRUE;
+    int n = gtk_notebook_get_n_pages(GTK_NOTEBOOK(s_notebook));
+    for (int p = 0; p < n; p++) {
+        NppDoc *doc = editor_doc_at(p);
+        if (doc && doc->modified)
+            if (!editor_save_at(p)) ok = FALSE;
+    }
+    return ok;
+}
+
+void editor_reload_current(void)
+{
+    NppDoc *doc = editor_current_doc();
+    if (!doc || !doc->filepath) return;
+    reload_doc_from_disk(doc);
+}
+
+gboolean editor_close_all_but_current(void)
+{
+    int cur = editor_current_page();
+    /* close from right */
+    int n;
+    while ((n = gtk_notebook_get_n_pages(GTK_NOTEBOOK(s_notebook))) > 1) {
+        int target = (n - 1 == cur) ? n - 2 : n - 1;
+        if (target < 0) break;
+        if (!editor_close_page(target)) return FALSE;
+        if (target < cur) cur--;
+    }
     return TRUE;
 }
 
