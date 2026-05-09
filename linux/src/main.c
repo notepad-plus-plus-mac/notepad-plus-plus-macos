@@ -15,6 +15,7 @@
 #include "i18n.h"
 #include "session.h"
 #include "backup.h"
+#include "macro.h"
 
 /* Set to TRUE in main() when no file arguments are given; read in on_activate. */
 static gboolean s_restore_session = FALSE;
@@ -169,11 +170,34 @@ static void cb_set_encoding(GtkMenuItem *item, gpointer data)
 }
 
 /* File */
-static void cb_new(GtkMenuItem *i, gpointer d)    { (void)i;(void)d; editor_new_doc(); }
-static void cb_open(GtkMenuItem *i, gpointer d)   { (void)i;(void)d; editor_open_dialog(); }
-static void cb_save(GtkMenuItem *i, gpointer d)   { (void)i;(void)d; editor_save(); }
-static void cb_save_as(GtkMenuItem *i, gpointer d){ (void)i;(void)d; editor_save_as_dialog(); }
-static void cb_close(GtkMenuItem *i, gpointer d)  { (void)i;(void)d; editor_close_page(-1); }
+static void cb_new(GtkMenuItem *i, gpointer d)       { (void)i;(void)d; editor_new_doc(); }
+static void cb_open(GtkMenuItem *i, gpointer d)      { (void)i;(void)d; editor_open_dialog(); }
+static void cb_reload(GtkMenuItem *i, gpointer d)    { (void)i;(void)d; editor_reload_current(); }
+static void cb_save(GtkMenuItem *i, gpointer d)      { (void)i;(void)d; editor_save(); }
+static void cb_save_as(GtkMenuItem *i, gpointer d)   { (void)i;(void)d; editor_save_as_dialog(); }
+static void cb_save_all(GtkMenuItem *i, gpointer d)  { (void)i;(void)d; editor_save_all(); }
+static void cb_close(GtkMenuItem *i, gpointer d)     { (void)i;(void)d; editor_close_page(-1); }
+static void cb_close_all(GtkMenuItem *i, gpointer d)
+{
+    (void)i; (void)d;
+    /* Close all pages from the last down; each close may leave one "new 1" behind. */
+    int count = editor_page_count();
+    for (int k = count - 1; k >= 0; k--)
+        if (!editor_close_page(k)) break;
+}
+static void cb_close_all_but(GtkMenuItem *i, gpointer d) { (void)i;(void)d; editor_close_all_but_current(); }
+
+static void cb_load_session(GtkMenuItem *i, gpointer d)
+{
+    (void)i; (void)d;
+    session_restore();
+}
+
+static void cb_save_session(GtkMenuItem *i, gpointer d)
+{
+    (void)i; (void)d;
+    session_save();
+}
 
 static void cb_quit(GtkMenuItem *i, gpointer app)
 {
@@ -283,6 +307,133 @@ static void cb_add_next_occurrence(GtkMenuItem *i, gpointer d)
     if (editor_send(SCI_GETSELECTIONSTART, 0, 0) ==
         editor_send(SCI_GETSELECTIONEND,   0, 0)) return;
     editor_send(SCI_MULTIPLESELECTADDNEXT, 0, 0);
+}
+
+/* Edit — delete / indent / clipboard */
+static void cb_delete(GtkMenuItem *i, gpointer d)        { (void)i;(void)d; editor_send(SCI_CLEAR, 0, 0); }
+static void cb_indent(GtkMenuItem *i, gpointer d)        { (void)i;(void)d; editor_send(SCI_TAB, 0, 0); }
+static void cb_unindent(GtkMenuItem *i, gpointer d)      { (void)i;(void)d; editor_send(SCI_BACKTAB, 0, 0); }
+
+static void cb_copy_filepath(GtkMenuItem *i, gpointer d)
+{
+    (void)i; (void)d;
+    NppDoc *doc = editor_current_doc();
+    if (!doc || !doc->filepath) return;
+    gtk_clipboard_set_text(gtk_clipboard_get(GDK_SELECTION_CLIPBOARD), doc->filepath, -1);
+}
+
+static void cb_copy_filename(GtkMenuItem *i, gpointer d)
+{
+    (void)i; (void)d;
+    NppDoc *doc = editor_current_doc();
+    if (!doc || !doc->filepath) return;
+    gchar *base = g_path_get_basename(doc->filepath);
+    gtk_clipboard_set_text(gtk_clipboard_get(GDK_SELECTION_CLIPBOARD), base, -1);
+    g_free(base);
+}
+
+static void cb_copy_dirpath(GtkMenuItem *i, gpointer d)
+{
+    (void)i; (void)d;
+    NppDoc *doc = editor_current_doc();
+    if (!doc || !doc->filepath) return;
+    gchar *dir = g_path_get_dirname(doc->filepath);
+    gtk_clipboard_set_text(gtk_clipboard_get(GDK_SELECTION_CLIPBOARD), dir, -1);
+    g_free(dir);
+}
+
+/* Search — find next/prev */
+static void cb_find_next(GtkMenuItem *i, gpointer d) { (void)i;(void)d; findreplace_find_next(); }
+static void cb_find_prev(GtkMenuItem *i, gpointer d) { (void)i;(void)d; findreplace_find_prev(); }
+
+/* View — tab navigation */
+static void cb_next_tab(GtkMenuItem *i, gpointer d)
+{
+    (void)i; (void)d;
+    GtkWidget *nb = editor_get_notebook();
+    int n = gtk_notebook_get_n_pages(GTK_NOTEBOOK(nb));
+    int cur = gtk_notebook_get_current_page(GTK_NOTEBOOK(nb));
+    gtk_notebook_set_current_page(GTK_NOTEBOOK(nb), (cur + 1) % n);
+}
+static void cb_prev_tab(GtkMenuItem *i, gpointer d)
+{
+    (void)i; (void)d;
+    GtkWidget *nb = editor_get_notebook();
+    int n = gtk_notebook_get_n_pages(GTK_NOTEBOOK(nb));
+    int cur = gtk_notebook_get_current_page(GTK_NOTEBOOK(nb));
+    gtk_notebook_set_current_page(GTK_NOTEBOOK(nb), (cur + n - 1) % n);
+}
+static void cb_first_tab(GtkMenuItem *i, gpointer d) { (void)i;(void)d; gtk_notebook_set_current_page(GTK_NOTEBOOK(editor_get_notebook()), 0); }
+static void cb_last_tab(GtkMenuItem *i, gpointer d)  { (void)i;(void)d; gtk_notebook_set_current_page(GTK_NOTEBOOK(editor_get_notebook()), -1); }
+static void cb_select_tab_n(GtkMenuItem *i, gpointer data)
+{
+    (void)i;
+    gtk_notebook_set_current_page(GTK_NOTEBOOK(editor_get_notebook()), GPOINTER_TO_INT(data) - 1);
+}
+
+/* View — zoom */
+static void cb_zoom_in     (GtkMenuItem *i, gpointer d) { (void)i;(void)d; editor_send(SCI_ZOOMIN,  0, 0); }
+static void cb_zoom_out    (GtkMenuItem *i, gpointer d) { (void)i;(void)d; editor_send(SCI_ZOOMOUT, 0, 0); }
+static void cb_zoom_restore(GtkMenuItem *i, gpointer d) { (void)i;(void)d; editor_send(SCI_SETZOOM, 0, 0); }
+
+/* View — always on top */
+static gboolean s_always_on_top = FALSE;
+static void cb_always_on_top(GtkCheckMenuItem *item, gpointer d)
+{
+    (void)d;
+    s_always_on_top = gtk_check_menu_item_get_active(item);
+    gtk_window_set_keep_above(GTK_WINDOW(s_main_window), s_always_on_top);
+}
+
+/* View — fold current level */
+static void cb_fold_current(GtkMenuItem *i, gpointer d)
+{
+    (void)i; (void)d;
+    Sci_Position line = (Sci_Position)editor_send(SCI_LINEFROMPOSITION,
+        (uptr_t)editor_send(SCI_GETCURRENTPOS, 0, 0), 0);
+    editor_send(SCI_FOLDLINE, (uptr_t)line, SC_FOLDACTION_CONTRACT);
+}
+static void cb_unfold_current(GtkMenuItem *i, gpointer d)
+{
+    (void)i; (void)d;
+    Sci_Position line = (Sci_Position)editor_send(SCI_LINEFROMPOSITION,
+        (uptr_t)editor_send(SCI_GETCURRENTPOS, 0, 0), 0);
+    editor_send(SCI_FOLDLINE, (uptr_t)line, SC_FOLDACTION_EXPAND);
+}
+
+/* Macro */
+static void cb_macro_start(GtkMenuItem *i, gpointer d)
+{
+    (void)i; (void)d;
+    NppDoc *doc = editor_current_doc();
+    if (!doc) return;
+    macro_start_recording(doc->sci);
+    toolbar_update_macro_buttons();
+}
+
+static void cb_macro_stop(GtkMenuItem *i, gpointer d)
+{
+    (void)i; (void)d;
+    NppDoc *doc = editor_current_doc();
+    if (!doc) return;
+    macro_stop_recording(doc->sci);
+    toolbar_update_macro_buttons();
+}
+
+static void cb_macro_play(GtkMenuItem *i, gpointer d)
+{
+    (void)i; (void)d;
+    NppDoc *doc = editor_current_doc();
+    if (!doc) return;
+    macro_playback(doc->sci);
+}
+
+static void cb_macro_play_n(GtkMenuItem *i, gpointer d)
+{
+    (void)i; (void)d;
+    NppDoc *doc = editor_current_doc();
+    if (!doc) return;
+    macro_playback_n(doc->sci, GTK_WINDOW(s_main_window));
 }
 
 /* Settings */
@@ -2147,6 +2298,14 @@ static GtkWidget *sep_item(void)
     return gtk_separator_menu_item_new();
 }
 
+/* Disabled placeholder for not-yet-implemented menu items */
+static GtkWidget *nyi_item(const char *label)
+{
+    GtkWidget *item = gtk_menu_item_new_with_label(label);
+    gtk_widget_set_sensitive(item, FALSE);
+    return item;
+}
+
 static GtkWidget *submenu(GtkWidget *bar, const char *label)
 {
     GtkWidget *item = gtk_menu_item_new_with_mnemonic(label);
@@ -2191,11 +2350,46 @@ static GtkWidget *build_menubar(GtkWindow *window, GApplication *app)
         APPEND(file, s_recent_item);
         recent_rebuild_menu();
     }
+    /* Open Containing Folder submenu */
+    {
+        GtkWidget *ocf_item = gtk_menu_item_new_with_label("Open Containing Folder");
+        GtkWidget *ocf_menu = gtk_menu_new();
+        gtk_menu_item_set_submenu(GTK_MENU_ITEM(ocf_item), ocf_menu);
+        APPEND(ocf_menu, nyi_item("Terminal"));
+        APPEND(ocf_menu, nyi_item("File Manager"));
+        APPEND(file, ocf_item);
+    }
+    APPEND(file, nyi_item("Open in Default Viewer"));
+    APPEND(file, nyi_item("Open Folder as Workspace…"));
+    APPEND(file, sep_item());
+    APPEND(file, menu_item(TM("cmd.reload", "Reload from Disk"), G_CALLBACK(cb_reload), NULL, NULL, 0, 0));
     APPEND(file, sep_item());
     APPEND(file, smi("cmd.save",  TM("cmd.41006", "_Save"),      G_CALLBACK(cb_save),   NULL, accel, GDK_KEY_s, GDK_CONTROL_MASK));
     APPEND(file, smi("cmd.saveas",TM("cmd.41008", "Save _As…"),  G_CALLBACK(cb_save_as),NULL, accel, GDK_KEY_s, GDK_CONTROL_MASK | GDK_SHIFT_MASK));
+    APPEND(file, nyi_item("Save a Copy As…"));
+    APPEND(file, smi("cmd.saveall", TM("cmd.saveall", "Save All"), G_CALLBACK(cb_save_all), NULL, accel, GDK_KEY_s, GDK_CONTROL_MASK | GDK_SHIFT_MASK | GDK_MOD1_MASK));
+    APPEND(file, nyi_item("Rename…"));
     APPEND(file, sep_item());
     APPEND(file, smi("cmd.close", TM("cmd.41003", "_Close"),     G_CALLBACK(cb_close),  NULL, accel, GDK_KEY_w, GDK_CONTROL_MASK));
+    APPEND(file, menu_item("Close All", G_CALLBACK(cb_close_all), NULL, NULL, 0, 0));
+    /* Close Multiple Documents submenu */
+    {
+        GtkWidget *cm_item = gtk_menu_item_new_with_label("Close Multiple Documents");
+        GtkWidget *cm_menu = gtk_menu_new();
+        gtk_menu_item_set_submenu(GTK_MENU_ITEM(cm_item), cm_menu);
+        APPEND(cm_menu, menu_item("Close All But Current",  G_CALLBACK(cb_close_all_but), NULL, NULL, 0, 0));
+        APPEND(cm_menu, nyi_item("Close All to the Left"));
+        APPEND(cm_menu, nyi_item("Close All to the Right"));
+        APPEND(cm_menu, nyi_item("Close All Unchanged"));
+        APPEND(file, cm_item);
+    }
+    APPEND(file, nyi_item("Move to Trash"));
+    APPEND(file, sep_item());
+    APPEND(file, menu_item("Load Session…", G_CALLBACK(cb_load_session), NULL, NULL, 0, 0));
+    APPEND(file, menu_item("Save Session…", G_CALLBACK(cb_save_session), NULL, NULL, 0, 0));
+    APPEND(file, sep_item());
+    APPEND(file, nyi_item("Print…"));
+    APPEND(file, nyi_item("Print Now"));
     APPEND(file, sep_item());
     APPEND(file, smi("cmd.quit",  TM("cmd.41011", "_Quit"),      G_CALLBACK(cb_quit),   app,  accel, GDK_KEY_q, GDK_CONTROL_MASK));
 
@@ -2207,8 +2401,22 @@ static GtkWidget *build_menubar(GtkWindow *window, GApplication *app)
     APPEND(edit, smi("cmd.cut",   TM("cmd.42001", "Cu_t"),        G_CALLBACK(cb_cut),    NULL, accel, GDK_KEY_x, GDK_CONTROL_MASK));
     APPEND(edit, smi("cmd.copy",  TM("cmd.42002", "_Copy"),       G_CALLBACK(cb_copy),   NULL, accel, GDK_KEY_c, GDK_CONTROL_MASK));
     APPEND(edit, smi("cmd.paste", TM("cmd.42005", "_Paste"),      G_CALLBACK(cb_paste),  NULL, accel, GDK_KEY_v, GDK_CONTROL_MASK));
+    APPEND(edit, menu_item(TM("cmd.delete", "_Delete"),           G_CALLBACK(cb_delete), NULL, NULL,  0, 0));
     APPEND(edit, sep_item());
     APPEND(edit, smi("cmd.selall",TM("cmd.42007", "Select _All"), G_CALLBACK(cb_selall), NULL, accel, GDK_KEY_a, GDK_CONTROL_MASK));
+    APPEND(edit, sep_item());
+    /* Copy to Clipboard submenu */
+    {
+        GtkWidget *ctc_item = gtk_menu_item_new_with_label("Copy to Clipboard");
+        GtkWidget *ctc_menu = gtk_menu_new();
+        gtk_menu_item_set_submenu(GTK_MENU_ITEM(ctc_item), ctc_menu);
+        APPEND(ctc_menu, menu_item("Full Path",       G_CALLBACK(cb_copy_filepath), NULL, NULL, 0, 0));
+        APPEND(ctc_menu, menu_item("File Name",       G_CALLBACK(cb_copy_filename), NULL, NULL, 0, 0));
+        APPEND(ctc_menu, menu_item("Directory Path",  G_CALLBACK(cb_copy_dirpath),  NULL, NULL, 0, 0));
+        APPEND(edit, ctc_item);
+    }
+    APPEND(edit, smi("cmd.indent",   TM("cmd.indent",   "_Indent"),          G_CALLBACK(cb_indent),   NULL, accel, GDK_KEY_Tab,       0));
+    APPEND(edit, smi("cmd.unindent", TM("cmd.unindent", "_Unindent"),        G_CALLBACK(cb_unindent), NULL, accel, GDK_KEY_Tab, GDK_SHIFT_MASK));
     APPEND(edit, sep_item());
     APPEND(edit, menu_item(TM("menu.columneditor", "_Column Editor…"),
                            G_CALLBACK(cb_column_editor), NULL, accel,
@@ -2356,11 +2564,47 @@ static GtkWidget *build_menubar(GtkWindow *window, GApplication *app)
         APPEND(edit, cmt_item);
     }
 
+    /* On Selection submenu */
+    {
+        GtkWidget *sel_item = gtk_menu_item_new_with_label("On Selection");
+        GtkWidget *sel_menu = gtk_menu_new();
+        gtk_menu_item_set_submenu(GTK_MENU_ITEM(sel_item), sel_menu);
+        APPEND(sel_menu, nyi_item("Open File"));
+        APPEND(sel_menu, nyi_item("Open Folder"));
+        APPEND(sel_menu, sep_item());
+        APPEND(sel_menu, nyi_item("Google Search"));
+        APPEND(sel_menu, nyi_item("Wikipedia Search"));
+        APPEND(sel_menu, nyi_item("Stack Overflow Search"));
+        APPEND(edit, sel_item);
+    }
+    APPEND(edit, sep_item());
+    APPEND(edit, nyi_item("Character Panel…"));
+    APPEND(edit, sep_item());
+    APPEND(edit, nyi_item("Read-Only"));
+    APPEND(edit, nyi_item("Clear Read-Only Flag"));
+
     /* ---- Search ---- */
     GtkWidget *search = submenu(bar, TM("menu.search", "_Search"));
     APPEND(search, smi("cmd.find",       TM("cmd.43001", "_Find…"),          G_CALLBACK(cb_find),         NULL, accel, GDK_KEY_f, GDK_CONTROL_MASK));
     APPEND(search, smi("cmd.replace",    TM("cmd.43003", "_Replace…"),       G_CALLBACK(cb_replace),      NULL, accel, GDK_KEY_h, GDK_CONTROL_MASK));
     APPEND(search, smi("cmd.findinfiles",TM("cmd.findinfiles","Find in _Files…"), G_CALLBACK(cb_find_in_files), NULL, accel, GDK_KEY_f, GDK_CONTROL_MASK | GDK_SHIFT_MASK));
+    APPEND(search, nyi_item("Incremental Search…"));
+    APPEND(search, sep_item());
+    APPEND(search, smi("cmd.findnext",   TM("cmd.findnext",  "Find _Next"),   G_CALLBACK(cb_find_next), NULL, accel, GDK_KEY_F3, 0));
+    APPEND(search, smi("cmd.findprev",   TM("cmd.findprev",  "Find _Prev"),   G_CALLBACK(cb_find_prev), NULL, accel, GDK_KEY_F3, GDK_SHIFT_MASK));
+    APPEND(search, sep_item());
+    /* Change History submenu */
+    {
+        GtkWidget *ch_item = gtk_menu_item_new_with_label("Change History");
+        GtkWidget *ch_menu = gtk_menu_new();
+        gtk_menu_item_set_submenu(GTK_MENU_ITEM(ch_item), ch_menu);
+        APPEND(ch_menu, nyi_item("Next Change"));
+        APPEND(ch_menu, nyi_item("Previous Change"));
+        APPEND(ch_menu, sep_item());
+        APPEND(ch_menu, nyi_item("Revert Recent Change"));
+        APPEND(ch_menu, nyi_item("Clear All Changes"));
+        APPEND(search, ch_item);
+    }
     APPEND(search, sep_item());
     APPEND(search, smi("cmd.selectall.occ", TM("cmd.selectall.occ", "Select _All Occurrences"),
                        G_CALLBACK(cb_select_all_occurrences), NULL, accel,
@@ -2504,6 +2748,11 @@ static GtkWidget *build_menubar(GtkWindow *window, GApplication *app)
         APPEND(fold_sub, menu_item(TM("menu.view.unfoldall", "_Unfold All"),
                                    G_CALLBACK(cb_unfold_all), NULL, accel,
                                    GDK_KEY_F9, GDK_MOD1_MASK | GDK_CONTROL_MASK | GDK_SHIFT_MASK));
+        APPEND(fold_sub, sep_item());
+        APPEND(fold_sub, smi("cmd.fold.current",   TM("menu.view.foldcurrent",   "Fold _Current Level"),
+                             G_CALLBACK(cb_fold_current),   NULL, accel, GDK_KEY_F9, GDK_CONTROL_MASK));
+        APPEND(fold_sub, smi("cmd.unfold.current", TM("menu.view.unfoldcurrent", "_Unfold Current Level"),
+                             G_CALLBACK(cb_unfold_current), NULL, accel, GDK_KEY_F9, GDK_CONTROL_MASK | GDK_SHIFT_MASK));
 
         APPEND(fold_sub, sep_item());
 
@@ -2520,6 +2769,79 @@ static GtkWidget *build_menubar(GtkWindow *window, GApplication *app)
                                        GINT_TO_POINTER(lv), NULL, 0, 0));
             if (lv < 8) APPEND(fold_sub, sep_item());
         }
+
+        APPEND(view, sep_item());
+
+        /* Tab navigation submenu */
+        {
+            GtkWidget *tab_item = gtk_menu_item_new_with_label("Tab");
+            GtkWidget *tab_menu = gtk_menu_new();
+            gtk_menu_item_set_submenu(GTK_MENU_ITEM(tab_item), tab_menu);
+            APPEND(tab_menu, smi("cmd.tab.next",  "Next Tab",           G_CALLBACK(cb_next_tab),  NULL, accel, GDK_KEY_Tab,       GDK_CONTROL_MASK));
+            APPEND(tab_menu, smi("cmd.tab.prev",  "Previous Tab",       G_CALLBACK(cb_prev_tab),  NULL, accel, GDK_KEY_Tab,       GDK_CONTROL_MASK | GDK_SHIFT_MASK));
+            APPEND(tab_menu, smi("cmd.tab.first", "First Tab",          G_CALLBACK(cb_first_tab), NULL, accel, GDK_KEY_Page_Up,   GDK_CONTROL_MASK | GDK_SHIFT_MASK));
+            APPEND(tab_menu, smi("cmd.tab.last",  "Last Tab",           G_CALLBACK(cb_last_tab),  NULL, accel, GDK_KEY_Page_Down, GDK_CONTROL_MASK | GDK_SHIFT_MASK));
+            APPEND(tab_menu, sep_item());
+            for (int t = 1; t <= 9; t++) {
+                char lbl[24];
+                snprintf(lbl, sizeof(lbl), "Tab %d", t);
+                APPEND(tab_menu, menu_item(lbl, G_CALLBACK(cb_select_tab_n), GINT_TO_POINTER(t), NULL, 0, 0));
+            }
+            APPEND(view, tab_item);
+        }
+
+        APPEND(view, sep_item());
+
+        /* Zoom submenu */
+        {
+            GtkWidget *zoom_item = gtk_menu_item_new_with_mnemonic(TM("menu.view.zoom", "_Zoom"));
+            GtkWidget *zoom_menu = gtk_menu_new();
+            gtk_menu_item_set_submenu(GTK_MENU_ITEM(zoom_item), zoom_menu);
+            APPEND(zoom_menu, smi("cmd.zoom.in",      "Zoom In",              G_CALLBACK(cb_zoom_in),      NULL, accel, GDK_KEY_equal, GDK_CONTROL_MASK));
+            APPEND(zoom_menu, smi("cmd.zoom.out",     "Zoom Out",             G_CALLBACK(cb_zoom_out),     NULL, accel, GDK_KEY_minus, GDK_CONTROL_MASK));
+            APPEND(zoom_menu, smi("cmd.zoom.restore", "Restore Default Zoom", G_CALLBACK(cb_zoom_restore), NULL, accel, GDK_KEY_0, GDK_CONTROL_MASK));
+            APPEND(view, zoom_item);
+        }
+
+        APPEND(view, sep_item());
+
+        /* Panels submenu (placeholders) */
+        {
+            GtkWidget *pan_item = gtk_menu_item_new_with_label("Panels");
+            GtkWidget *pan_menu = gtk_menu_new();
+            gtk_menu_item_set_submenu(GTK_MENU_ITEM(pan_item), pan_menu);
+            APPEND(pan_menu, nyi_item("Document List"));
+            APPEND(pan_menu, nyi_item("Document Map"));
+            APPEND(pan_menu, nyi_item("Function List"));
+            APPEND(pan_menu, nyi_item("Folder as Workspace"));
+            APPEND(pan_menu, nyi_item("Project Manager"));
+            APPEND(pan_menu, nyi_item("Monitoring (tail -f)"));
+            APPEND(view, pan_item);
+        }
+
+        APPEND(view, sep_item());
+
+        /* Synchronise submenu */
+        {
+            GtkWidget *sync_item = gtk_menu_item_new_with_label("Synchronise");
+            GtkWidget *sync_menu = gtk_menu_new();
+            gtk_menu_item_set_submenu(GTK_MENU_ITEM(sync_item), sync_menu);
+            APPEND(sync_menu, nyi_item("Synchronise Horizontal Scrolling"));
+            APPEND(sync_menu, nyi_item("Synchronise Vertical Scrolling"));
+            APPEND(view, sync_item);
+        }
+
+        APPEND(view, sep_item());
+
+        /* Always on Top */
+        {
+            GtkWidget *aot = gtk_check_menu_item_new_with_label("Always on Top");
+            gtk_check_menu_item_set_active(GTK_CHECK_MENU_ITEM(aot), FALSE);
+            g_signal_connect(aot, "toggled", G_CALLBACK(cb_always_on_top), NULL);
+            APPEND(view, aot);
+        }
+        APPEND(view, nyi_item("Text Direction RTL"));
+        APPEND(view, nyi_item("Text Direction LTR"));
     }
 
     /* ---- Language ---- */
@@ -2605,6 +2927,18 @@ static GtkWidget *build_menubar(GtkWindow *window, GApplication *app)
     APPEND(settings, sep_item());
     APPEND(settings, menu_item(TM("cmd.prefs", "_Preferences…"),
                                G_CALLBACK(cb_preferences), NULL, accel, 0, 0));
+    APPEND(settings, sep_item());
+    /* Import submenu */
+    {
+        GtkWidget *imp_item = gtk_menu_item_new_with_label("Import");
+        GtkWidget *imp_menu = gtk_menu_new();
+        gtk_menu_item_set_submenu(GTK_MENU_ITEM(imp_item), imp_menu);
+        APPEND(imp_menu, nyi_item("Import Plugin(s)…"));
+        APPEND(imp_menu, nyi_item("Import Style Themes(s)…"));
+        APPEND(settings, imp_item);
+    }
+    APPEND(settings, sep_item());
+    APPEND(settings, nyi_item("Edit Context Menu…"));
 
     /* ---- Tools ---- */
     GtkWidget *tools = submenu(bar, TM("menu.tools", "_Tools"));
@@ -2620,6 +2954,55 @@ static GtkWidget *build_menubar(GtkWindow *window, GApplication *app)
                             G_CALLBACK(cb_ascii_to_hex), NULL, accel, 0, 0));
     APPEND(tools, menu_item(TM("menu.tools.hextoasc", "_Hex → ASCII"),
                             G_CALLBACK(cb_hex_to_ascii), NULL, accel, 0, 0));
+
+    /* ---- Macro ---- */
+    {
+        GtkWidget *macro = submenu(bar, TM("menu.macro", "_Macro"));
+        APPEND(macro, smi("cmd.macro.start", TM("menu.macro.start", "Start _Recording"),
+                          G_CALLBACK(cb_macro_start), NULL, accel,
+                          GDK_KEY_r, GDK_CONTROL_MASK | GDK_SHIFT_MASK));
+        APPEND(macro, smi("cmd.macro.stop",  TM("menu.macro.stop",  "S_top Recording"),
+                          G_CALLBACK(cb_macro_stop),  NULL, accel,
+                          GDK_KEY_r, GDK_CONTROL_MASK | GDK_SHIFT_MASK | GDK_MOD1_MASK));
+        APPEND(macro, sep_item());
+        APPEND(macro, smi("cmd.macro.play",  TM("menu.macro.play",  "_Playback"),
+                          G_CALLBACK(cb_macro_play),  NULL, accel,
+                          GDK_KEY_p, GDK_CONTROL_MASK | GDK_SHIFT_MASK));
+        APPEND(macro, smi("cmd.macro.playn", TM("menu.macro.playn", "Run Macro _Multiple Times…"),
+                          G_CALLBACK(cb_macro_play_n), NULL, accel,
+                          GDK_KEY_p, GDK_MOD1_MASK | GDK_SHIFT_MASK));
+        APPEND(macro, sep_item());
+        APPEND(macro, nyi_item("Save Current Recorded Macro As…"));
+        APPEND(macro, nyi_item("Trim Trailing Space and Save"));
+        APPEND(macro, sep_item());
+        APPEND(macro, nyi_item("Modify Shortcut / Delete Macro…"));
+    }
+
+    /* ---- Run ---- */
+    {
+        GtkWidget *run = submenu(bar, TM("menu.run", "_Run"));
+        APPEND(run, nyi_item("Run…"));
+        APPEND(run, sep_item());
+        APPEND(run, nyi_item("Modify Shortcut / Delete Command…"));
+    }
+
+    /* ---- Plugins ---- */
+    {
+        GtkWidget *plugins = submenu(bar, TM("menu.plugins", "_Plugins"));
+        APPEND(plugins, nyi_item("Plugins Admin…"));
+    }
+
+    /* ---- Help ---- */
+    {
+        GtkWidget *help = submenu(bar, TM("menu.help", "_Help"));
+        APPEND(help, nyi_item("About Notepad++ Linux…"));
+        APPEND(help, nyi_item("Debug Info…"));
+        APPEND(help, sep_item());
+        APPEND(help, nyi_item("Project Home Page"));
+        APPEND(help, nyi_item("Online Documentation"));
+        APPEND(help, sep_item());
+        APPEND(help, nyi_item("Check for Updates…"));
+    }
 
     return bar;
 }
