@@ -79,6 +79,7 @@ The macOS port and this Linux port share a common foundation: both macOS and Lin
 - **Change history / git gutter** — a 4-pixel margin (margin 3) shows per-line diff status against `HEAD`: green (`SC_MARK_FULLRECT`) for added lines, orange for modified lines, red (`SC_MARK_LEFTRECT`) for deleted-line positions; `git diff HEAD -- <file>` runs in a background `GSubprocess`; updates are debounced (800 ms) and triggered on file open, save, and any text modification; unified diff parsed to classify added/modified/deleted ranges
 - **Document List panel** — View → Panels → Document List toggles a dockable side panel listing all open tabs; each row shows a `*` prefix for modified documents; clicking a row switches to that tab; the panel syncs automatically when tabs are opened, closed, renamed or switched; housed in a resizable `GtkPaned` to the left of the editor
 - **Folder as Workspace panel** — View → Panels → Folder as Workspace (or File → Open Folder as Workspace…) opens a directory tree browser; lazy-loaded `GtkTreeView`: directories expand on demand via `g_file_enumerate_children`; entries sorted directories-first then alphabetically; hidden files skipped; folder/file icons from the system icon theme; double-click opens a file in the editor; current root shown in a path label in the panel header
+- **Function List panel** — View → Panels → Function List toggles a dockable right-side panel showing the structure of the current file; per-language regex patterns cover 18 languages (C, C++, ObjC, Python, JavaScript, TypeScript, Java, C#, Go, Rust, PHP, Ruby, Bash, Lua, Swift, Kotlin, Perl, SQL, PowerShell); two-level tree: class/struct nodes at the root, functions as children; ungrouped functions collected under a `(Global)` node; Python uses indentation depth for class membership; brace-depth tracking for all other languages; debounced 600 ms rebuild on each `SCN_MODIFIED`; clicking a row jumps the editor to that line; panel is hidden by default
 
 ### Localisation
 - Automatic system locale detection via GLib (`g_get_language_names()`)
@@ -111,7 +112,6 @@ Ordered by implementation effort (low → high).
 > **Note:** All the features with low and medium effort required are marked as completed. No intermediate release are planned. This software will be released when all the points in this list will be successfully completed.
 
 ### High effort
-- **Function List panel** — tree view of functions/classes in the current file
 - **Document Map** — minimap preview of the full document
 - **Search Results panel** — accumulated find results with navigation
 - **Spell checker** — inline spell checking with highlight and correction
@@ -181,6 +181,7 @@ linux/src/session.c/h      — Session save/restore: tab set, caret and scroll p
 linux/src/backup.c/h       — Auto-backup: periodic g_timeout writes modified docs to ~/.config/npp/backup/
 linux/src/doclist.c/h      — Document List panel: GtkListBox synced to notebook pages
 linux/src/workspace.c/h    — Folder as Workspace panel: lazy GtkTreeView backed by GFileEnumerator
+linux/src/funclist.c/h     — Function List panel: per-language regex parser, 2-level GtkTreeStore, debounced rebuild
 linux/src/sci_c.h           — C-safe Scintilla interface
 
 scintilla/                  — vendored editing engine (GTK3 backend used as-is)
