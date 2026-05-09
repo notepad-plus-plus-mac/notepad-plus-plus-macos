@@ -18,6 +18,7 @@
 #include "macro.h"
 #include "doclist.h"
 #include "workspace.h"
+#include "funclist.h"
 
 /* Set to TRUE in main() when no file arguments are given; read in on_activate. */
 static gboolean s_restore_session = FALSE;
@@ -449,6 +450,12 @@ static void cb_toggle_workspace(GtkCheckMenuItem *item, gpointer d)
 {
     (void)d;
     workspace_set_visible(gtk_check_menu_item_get_active(item));
+}
+
+static void cb_toggle_funclist(GtkCheckMenuItem *item, gpointer d)
+{
+    (void)d;
+    funclist_set_visible(gtk_check_menu_item_get_active(item));
 }
 
 static void cb_open_folder_workspace(GtkMenuItem *i, gpointer d)
@@ -2856,7 +2863,12 @@ static GtkWidget *build_menubar(GtkWindow *window, GApplication *app)
                 APPEND(pan_menu, mi_doclist);
             }
             APPEND(pan_menu, nyi_item("Document Map"));
-            APPEND(pan_menu, nyi_item("Function List"));
+            {
+                GtkWidget *mi_fl = gtk_check_menu_item_new_with_label("Function List");
+                gtk_check_menu_item_set_active(GTK_CHECK_MENU_ITEM(mi_fl), FALSE);
+                g_signal_connect(mi_fl, "toggled", G_CALLBACK(cb_toggle_funclist), NULL);
+                APPEND(pan_menu, mi_fl);
+            }
             {
                 GtkWidget *mi_ws = gtk_check_menu_item_new_with_label("Folder as Workspace");
                 gtk_check_menu_item_set_active(GTK_CHECK_MENU_ITEM(mi_ws), FALSE);
@@ -3077,6 +3089,7 @@ static void on_switch_page(GtkNotebook *nb, GtkWidget *page,
     toolbar_sync_toggles(doc->sci);
     main_sync_encoding_menu(doc->encoding ? doc->encoding : "UTF-8");
     doclist_sync_selection((int)n);
+    funclist_update(doc->sci);
 }
 
 /* ------------------------------------------------------------------ */
@@ -3142,16 +3155,23 @@ static void on_activate(GtkApplication *app, gpointer data)
     gtk_box_pack_start(GTK_BOX(vbox), toolbar, FALSE, FALSE, 0);
 
     /* Editor area layout (left-to-right):
-     *   [workspace panel] | [doclist panel] | [editor notebook]
-     * Each panel lives as pack1 of its own GtkPaned so it collapses
-     * cleanly when hidden.                                          */
+     *   [workspace] | [doclist] | [editor notebook] | [funclist]
+     * Each panel lives as pack1/pack2 of its own GtkPaned so it
+     * collapses cleanly when hidden.                               */
     GtkWidget *notebook  = editor_init(window);
     g_signal_connect(notebook, "switch-page", G_CALLBACK(on_switch_page), NULL);
 
-    GtkWidget *inner_paned = gtk_paned_new(GTK_ORIENTATION_HORIZONTAL);
-    gtk_paned_pack1(GTK_PANED(inner_paned), doclist_init(),  FALSE, FALSE);
-    gtk_paned_pack2(GTK_PANED(inner_paned), notebook,        TRUE,  TRUE);
+    /* notebook | funclist */
+    GtkWidget *right_paned = gtk_paned_new(GTK_ORIENTATION_HORIZONTAL);
+    gtk_paned_pack1(GTK_PANED(right_paned), notebook,       TRUE,  TRUE);
+    gtk_paned_pack2(GTK_PANED(right_paned), funclist_init(), FALSE, FALSE);
 
+    /* doclist | (notebook + funclist) */
+    GtkWidget *inner_paned = gtk_paned_new(GTK_ORIENTATION_HORIZONTAL);
+    gtk_paned_pack1(GTK_PANED(inner_paned), doclist_init(), FALSE, FALSE);
+    gtk_paned_pack2(GTK_PANED(inner_paned), right_paned,    TRUE,  TRUE);
+
+    /* workspace | rest */
     GtkWidget *outer_paned = gtk_paned_new(GTK_ORIENTATION_HORIZONTAL);
     gtk_paned_pack1(GTK_PANED(outer_paned), workspace_init(window), FALSE, FALSE);
     gtk_paned_pack2(GTK_PANED(outer_paned), inner_paned,            TRUE,  TRUE);
@@ -3172,6 +3192,7 @@ static void on_activate(GtkApplication *app, gpointer data)
     /* show_all overrides any hide() set before realisation; re-hide side panels */
     doclist_set_visible(FALSE);
     workspace_set_visible(FALSE);
+    funclist_set_visible(FALSE);
 
     /* Restore previous session (only when no files given on CLI) */
     if (s_restore_session)

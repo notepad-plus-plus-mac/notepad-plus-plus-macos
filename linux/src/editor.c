@@ -11,6 +11,7 @@
 #include "autocomplete.h"
 #include "gitgutter.h"
 #include "macro.h"
+#include "funclist.h"
 #include <string.h>
 #include <stdio.h>
 
@@ -381,6 +382,7 @@ static void on_sci_notify(GtkWidget *sci, gint unused,
                (n->modificationType & (SC_MOD_INSERTTEXT | SC_MOD_DELETETEXT))) {
         if (doc->filepath)
             gitgutter_update(sci, doc->filepath);
+        funclist_schedule_update(sci);
     } else if (code == SCN_MACRORECORD) {
         macro_on_record((unsigned int)n->message, n->wParam, n->lParam);
     }
