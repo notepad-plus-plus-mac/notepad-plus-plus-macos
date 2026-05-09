@@ -2694,8 +2694,17 @@ static const unsigned int kSCI_SetRectSelAnchor          = 2590;
 
 #pragma mark - Code Folding
 
-- (void)foldAll:(id)sender    { [_scintillaView message:SCI_FOLDALL wParam:SC_FOLDACTION_CONTRACT]; }
-- (void)unfoldAll:(id)sender  { [_scintillaView message:SCI_FOLDALL wParam:SC_FOLDACTION_EXPAND]; }
+// Issue #89 — Collapse All / Unfold All must include SC_FOLDACTION_CONTRACT_EVERY_LEVEL.
+// Without this flag, Scintilla's Editor::FoldAll only sets SetFoldExpanded(false)
+// on top-level (FoldLevel::Base) headers and skips past nested ranges via
+// `line = lineMaxSubord;`. Nested headers stay internally marked as expanded —
+// they're only hidden under their collapsed parent. When the user expands
+// the parent, the nested ones reappear expanded. Setting the
+// CONTRACT_EVERY_LEVEL flag drives the `else if (contractAll)` branch and
+// explicitly contracts every nested header. Mirrors Windows NPP's
+// ScintillaEditView::foldAll which OR's the same flag in for both directions.
+- (void)foldAll:(id)sender    { [_scintillaView message:SCI_FOLDALL wParam:(SC_FOLDACTION_CONTRACT | SC_FOLDACTION_CONTRACT_EVERY_LEVEL)]; }
+- (void)unfoldAll:(id)sender  { [_scintillaView message:SCI_FOLDALL wParam:(SC_FOLDACTION_EXPAND   | SC_FOLDACTION_CONTRACT_EVERY_LEVEL)]; }
 
 - (void)foldCurrentLevel:(id)sender {
     sptr_t line = [_scintillaView message:SCI_LINEFROMPOSITION
