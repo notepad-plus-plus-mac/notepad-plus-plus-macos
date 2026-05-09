@@ -77,6 +77,8 @@ The macOS port and this Linux port share a common foundation: both macOS and Lin
 - **Macro recording / playback** — Macro menu: Start Recording (Ctrl+Shift+R), Stop Recording, Playback (Ctrl+Shift+P), Run Macro Multiple Times… (dialog with spin button); stores `(msg, wParam, lParam)` triples from `SCN_MACRORECORD`; string-argument messages (REPLACESEL, INSERTTEXT, etc.) are heap-copied for safe replay; each playback wrapped in a single undo action; four toolbar buttons (startrecord / stoprecord / playrecord / playrecord_m) with correct enabled/disabled states
 - **File change detection** — `GFileMonitor` watches each open file for external modifications; when the file changes on disk a modal prompt offers to reload (preserving caret position) or keep the current version; changes caused by our own save are suppressed via an `ignore_next_change` flag; the monitor is started on open/save-as and cancelled on tab close
 - **Change history / git gutter** — a 4-pixel margin (margin 3) shows per-line diff status against `HEAD`: green (`SC_MARK_FULLRECT`) for added lines, orange for modified lines, red (`SC_MARK_LEFTRECT`) for deleted-line positions; `git diff HEAD -- <file>` runs in a background `GSubprocess`; updates are debounced (800 ms) and triggered on file open, save, and any text modification; unified diff parsed to classify added/modified/deleted ranges
+- **Document List panel** — View → Panels → Document List toggles a dockable side panel listing all open tabs; each row shows a `*` prefix for modified documents; clicking a row switches to that tab; the panel syncs automatically when tabs are opened, closed, renamed or switched; housed in a resizable `GtkPaned` to the left of the editor
+- **Folder as Workspace panel** — View → Panels → Folder as Workspace (or File → Open Folder as Workspace…) opens a directory tree browser; lazy-loaded `GtkTreeView`: directories expand on demand via `g_file_enumerate_children`; entries sorted directories-first then alphabetically; hidden files skipped; folder/file icons from the system icon theme; double-click opens a file in the editor; current root shown in a path label in the panel header
 
 ### Localisation
 - Automatic system locale detection via GLib (`g_get_language_names()`)
@@ -109,8 +111,8 @@ Ordered by implementation effort (low → high).
 > **Note:** All the features with low and medium effort required are marked as completed. No intermediate release are planned. This software will be released when all the points in this list will be successfully completed.
 
 ### High effort
-- **Document List panel** — dockable panel listing all open tabs
-- **Folder as Workspace panel** — multi-root file tree browser
+- ~~**Document List panel**~~ — done
+- ~~**Folder as Workspace panel**~~ — done
 - **Function List panel** — tree view of functions/classes in the current file
 - **Document Map** — minimap preview of the full document
 - **Search Results panel** — accumulated find results with navigation
@@ -179,6 +181,8 @@ linux/src/udl.c/h          — User Defined Language manager: XML parse, udl_app
 linux/src/gitgutter.c/h    — Git gutter: background diff, unified diff parser, Scintilla margin markers
 linux/src/session.c/h      — Session save/restore: tab set, caret and scroll positions → ~/.config/npp/session.xml
 linux/src/backup.c/h       — Auto-backup: periodic g_timeout writes modified docs to ~/.config/npp/backup/
+linux/src/doclist.c/h      — Document List panel: GtkListBox synced to notebook pages
+linux/src/workspace.c/h    — Folder as Workspace panel: lazy GtkTreeView backed by GFileEnumerator
 linux/src/sci_c.h           — C-safe Scintilla interface
 
 scintilla/                  — vendored editing engine (GTK3 backend used as-is)
