@@ -17,6 +17,7 @@
 #include "backup.h"
 #include "macro.h"
 #include "doclist.h"
+#include "workspace.h"
 
 /* Set to TRUE in main() when no file arguments are given; read in on_activate. */
 static gboolean s_restore_session = FALSE;
@@ -442,6 +443,31 @@ static void cb_toggle_doclist(GtkCheckMenuItem *item, gpointer d)
 {
     (void)d;
     doclist_set_visible(gtk_check_menu_item_get_active(item));
+}
+
+static void cb_toggle_workspace(GtkCheckMenuItem *item, gpointer d)
+{
+    (void)d;
+    workspace_set_visible(gtk_check_menu_item_get_active(item));
+}
+
+static void cb_open_folder_workspace(GtkMenuItem *i, gpointer d)
+{
+    (void)i; (void)d;
+    GtkWidget *dlg = gtk_file_chooser_dialog_new(
+        "Open Folder as Workspace",
+        GTK_WINDOW(s_main_window),
+        GTK_FILE_CHOOSER_ACTION_SELECT_FOLDER,
+        "_Cancel", GTK_RESPONSE_CANCEL,
+        "_Open",   GTK_RESPONSE_ACCEPT,
+        NULL);
+    if (gtk_dialog_run(GTK_DIALOG(dlg)) == GTK_RESPONSE_ACCEPT) {
+        char *folder = gtk_file_chooser_get_filename(GTK_FILE_CHOOSER(dlg));
+        workspace_set_folder(folder);
+        workspace_set_visible(TRUE);
+        g_free(folder);
+    }
+    gtk_widget_destroy(dlg);
 }
 
 /* Settings */
@@ -2373,7 +2399,7 @@ static GtkWidget *build_menubar(GtkWindow *window, GApplication *app)
         APPEND(file, ocf_item);
     }
     APPEND(file, nyi_item("Open in Default Viewer"));
-    APPEND(file, nyi_item("Open Folder as Workspace…"));
+    APPEND(file, menu_item("Open Folder as Workspace…", G_CALLBACK(cb_open_folder_workspace), NULL, NULL, 0, 0));
     APPEND(file, sep_item());
     APPEND(file, menu_item(TM("cmd.reload", "Reload from Disk"), G_CALLBACK(cb_reload), NULL, NULL, 0, 0));
     APPEND(file, sep_item());
@@ -2831,7 +2857,12 @@ static GtkWidget *build_menubar(GtkWindow *window, GApplication *app)
             }
             APPEND(pan_menu, nyi_item("Document Map"));
             APPEND(pan_menu, nyi_item("Function List"));
-            APPEND(pan_menu, nyi_item("Folder as Workspace"));
+            {
+                GtkWidget *mi_ws = gtk_check_menu_item_new_with_label("Folder as Workspace");
+                gtk_check_menu_item_set_active(GTK_CHECK_MENU_ITEM(mi_ws), FALSE);
+                g_signal_connect(mi_ws, "toggled", G_CALLBACK(cb_toggle_workspace), NULL);
+                APPEND(pan_menu, mi_ws);
+            }
             APPEND(pan_menu, nyi_item("Project Manager"));
             APPEND(pan_menu, nyi_item("Monitoring (tail -f)"));
             APPEND(view, pan_item);
@@ -3110,14 +3141,22 @@ static void on_activate(GtkApplication *app, gpointer data)
     GtkWidget *toolbar = toolbar_init(window);
     gtk_box_pack_start(GTK_BOX(vbox), toolbar, FALSE, FALSE, 0);
 
-    /* Editor area: GtkPaned with Document List panel on left, notebook on right */
-    GtkWidget *hpaned  = gtk_paned_new(GTK_ORIENTATION_HORIZONTAL);
-    GtkWidget *doclist = doclist_init();
-    GtkWidget *notebook = editor_init(window);
+    /* Editor area layout (left-to-right):
+     *   [workspace panel] | [doclist panel] | [editor notebook]
+     * Each panel lives as pack1 of its own GtkPaned so it collapses
+     * cleanly when hidden.                                          */
+    GtkWidget *notebook  = editor_init(window);
     g_signal_connect(notebook, "switch-page", G_CALLBACK(on_switch_page), NULL);
-    gtk_paned_pack1(GTK_PANED(hpaned), doclist, FALSE, FALSE);
-    gtk_paned_pack2(GTK_PANED(hpaned), notebook, TRUE,  TRUE);
-    gtk_box_pack_start(GTK_BOX(vbox), hpaned, TRUE, TRUE, 0);
+
+    GtkWidget *inner_paned = gtk_paned_new(GTK_ORIENTATION_HORIZONTAL);
+    gtk_paned_pack1(GTK_PANED(inner_paned), doclist_init(),  FALSE, FALSE);
+    gtk_paned_pack2(GTK_PANED(inner_paned), notebook,        TRUE,  TRUE);
+
+    GtkWidget *outer_paned = gtk_paned_new(GTK_ORIENTATION_HORIZONTAL);
+    gtk_paned_pack1(GTK_PANED(outer_paned), workspace_init(window), FALSE, FALSE);
+    gtk_paned_pack2(GTK_PANED(outer_paned), inner_paned,            TRUE,  TRUE);
+
+    gtk_box_pack_start(GTK_BOX(vbox), outer_paned, TRUE, TRUE, 0);
     backup_init();
 
     /* Status bar */
@@ -3130,7 +3169,9 @@ static void on_activate(GtkApplication *app, gpointer data)
     (void)args; /* CLI args handled below in main() via editor_open_path */
 
     gtk_widget_show_all(window);
-    doclist_set_visible(FALSE); /* show_all would un-hide it; keep it off by default */
+    /* show_all overrides any hide() set before realisation; re-hide side panels */
+    doclist_set_visible(FALSE);
+    workspace_set_visible(FALSE);
 
     /* Restore previous session (only when no files given on CLI) */
     if (s_restore_session)

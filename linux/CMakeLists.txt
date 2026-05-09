@@ -84,6 +84,7 @@ add_executable(notepad++
     src/session.c
     src/backup.c
     src/doclist.c
+    src/workspace.c
     src/lexilla_bridge.cpp
 )
 
