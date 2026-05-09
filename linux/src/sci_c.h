@@ -162,6 +162,10 @@ typedef struct SCNotification {
 #define SCN_SAVEPOINTLEFT       2003
 #define SCN_UPDATEUI            2007
 #define SCN_MODIFIED            2008
+#define SCN_MACRORECORD         2009
+
+#define SCI_STARTRECORD         3001
+#define SCI_STOPRECORD          3002
 
 /* SC_UPDATE_ flags (used in SCNotification.updated for SCN_UPDATEUI) */
 #define SC_UPDATE_CONTENT       0x1
@@ -281,6 +285,15 @@ typedef struct SCNotification {
 /* Bookmark marker */
 #define SC_MARKNUM_BOOKMARK     1
 #define SC_MARK_BOOKMARK        31
+
+/* Delete / indent / zoom */
+#define SCI_CLEAR               2180
+#define SCI_TAB                 2327
+#define SCI_BACKTAB             2328
+#define SCI_ZOOMIN              2333
+#define SCI_ZOOMOUT             2334
+#define SCI_SETZOOM             2373
+#define SCI_GETZOOM             2374
 
 /* Caret / scroll preferences */
 #define SCI_SETCARETPERIOD      2076
