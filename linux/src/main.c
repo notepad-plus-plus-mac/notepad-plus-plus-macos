@@ -3278,6 +3278,9 @@ static void on_activate(GtkApplication *app, gpointer data)
     eol_menu_sync((int)scintilla_send_message(SCINTILLA(initial->sci), SCI_GETEOLMODE, 0, 0));
     apply_view_symbols(initial->sci);
     apply_edge(initial->sci);
+
+    /* Defer focus grab until after the window's first map+layout pass */
+    g_idle_add((GSourceFunc)gtk_widget_grab_focus, initial->sci);
 }
 
 /* ------------------------------------------------------------------ */
