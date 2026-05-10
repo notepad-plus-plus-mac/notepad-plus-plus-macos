@@ -485,35 +485,83 @@ static NSUInteger nppLargeFileThreshold(void) {
         textData = [rawData subdataWithRange:NSMakeRange(2, len - 2)];
     }
 
-    // ── Convert to UTF-8 bytes for Scintilla ─────────────────────────────────
+    // ── Convert to UTF-8 bytes for Scintilla (Phase 2 optimised) ─────────────
     // We must avoid [ScintillaView setString:] because it calls SCI_SETTEXT
-    // which uses strlen() and truncates at the first null byte.
-    // Instead, convert to UTF-8 NSData and use SCI_ADDTEXT with explicit length.
-
+    // which uses strlen() and truncates at the first null byte. Instead pass
+    // a UTF-8 NSData payload to SCI_ADDTEXT with explicit length.
+    //
+    // Phase 2 rules:
+    //   • Small files: full UTF-8 validation pass + Win-1252 / Latin-1
+    //     fallbacks (cheap on small inputs, matches NPP-Win behaviour).
+    //   • Large files (>=threshold): head/tail UTF-8 probe instead of a
+    //     full-file walk. If both 1 MB ends decode as UTF-8 we treat the
+    //     whole thing as UTF-8 and pass mmap'd bytes straight to Scintilla.
+    //     Probe boundaries are slid off any UTF-8 continuation byte.
+    //   • Huge non-UTF-8 file: byte-pass-through as Latin-1 (no full-file
+    //     conversion). Bytes >= 0x80 may render as U+FFFD; user already
+    //     accepted "no syntax highlighting" for this file.
     NSData *utf8Data = nil;
 
     if (hasBOM && enc != NSUTF8StringEncoding) {
-        // BOM-detected UTF-16: convert to UTF-8 via NSString
+        // BOM-detected UTF-16: convert to UTF-8 via NSString. UTF-16-BOM'd
+        // multi-GB files exist but are vanishingly rare; we accept the cost.
         NSString *content = [[NSString alloc] initWithData:textData encoding:enc];
         if (content)
             utf8Data = [content dataUsingEncoding:NSUTF8StringEncoding];
     }
 
     if (!utf8Data) {
-        // Try UTF-8 first (most common case) — use raw bytes directly
-        NSString *probe = [[NSString alloc] initWithData:rawData encoding:NSUTF8StringEncoding];
-        if (probe) {
-            enc = NSUTF8StringEncoding;
-            utf8Data = hasBOM ? textData : rawData;  // already UTF-8
+        BOOL isUTF8 = NO;
+        if (large) {
+            // ── Head/tail UTF-8 probe (Phase 2 #3) ─────────────────────────
+            // Walking a 3 GB buffer just to validate UTF-8 wasted ~10 s in the
+            // baseline. Probing the first/last 1 MB and accepting on success
+            // is correct for any file that's UTF-8 throughout, and the
+            // boundary-slide ensures we never split a multi-byte sequence.
+            const NSUInteger kProbeBytes = (NSUInteger)1 * 1024 * 1024;
+            NSUInteger probeLen = MIN(kProbeBytes, len);
+            // Slide the head probe end backwards off any UTF-8 continuation
+            // byte (10xxxxxx) so we never falsely fail on a sliced sequence.
+            NSUInteger headEnd = probeLen;
+            while (headEnd > 0 && (b[headEnd] & 0xC0) == 0x80) headEnd--;
+            NSData *headProbe = [rawData subdataWithRange:NSMakeRange(0, headEnd)];
+            BOOL headValid = ([[NSString alloc] initWithData:headProbe
+                                                    encoding:NSUTF8StringEncoding] != nil);
+            BOOL tailValid = YES;
+            if (len > probeLen) {
+                NSUInteger tailStart = len - probeLen;
+                while (tailStart < len && (b[tailStart] & 0xC0) == 0x80) tailStart++;
+                NSData *tailProbe = [rawData subdataWithRange:
+                                     NSMakeRange(tailStart, len - tailStart)];
+                tailValid = ([[NSString alloc] initWithData:tailProbe
+                                                   encoding:NSUTF8StringEncoding] != nil);
+            }
+            isUTF8 = headValid && tailValid;
         } else {
-            // Try Windows-1252, then Latin-1
+            // Small file — full validation (same path as before).
+            isUTF8 = ([[NSString alloc] initWithData:rawData
+                                            encoding:NSUTF8StringEncoding] != nil);
+        }
+
+        if (isUTF8) {
+            // Phase 2 #4: when payload is UTF-8 already, pass mmap'd bytes
+            // directly to SCI_ADDTEXT — no NSString round-trip, no extra copy.
+            enc = NSUTF8StringEncoding;
+            utf8Data = hasBOM ? textData : rawData;
+        } else if (large) {
+            // Huge non-UTF-8: byte-as-Latin-1 (no full-file walk).
+            enc = NSISOLatin1StringEncoding;
+            utf8Data = rawData;
+        } else {
+            // Small non-UTF-8: try Win-1252, then Latin-1 (cheap walk on small).
             NSStringEncoding win1252 = nppEnc(kCFStringEncodingWindowsLatin1);
             NSString *content = [[NSString alloc] initWithData:rawData encoding:win1252];
             if (content) {
                 enc = win1252;
                 utf8Data = [content dataUsingEncoding:NSUTF8StringEncoding];
             } else {
-                content = [[NSString alloc] initWithData:rawData encoding:NSISOLatin1StringEncoding];
+                content = [[NSString alloc] initWithData:rawData
+                                                encoding:NSISOLatin1StringEncoding];
                 if (content) {
                     enc = NSISOLatin1StringEncoding;
                     utf8Data = [content dataUsingEncoding:NSUTF8StringEncoding];
@@ -523,12 +571,30 @@ static NSUInteger nppLargeFileThreshold(void) {
     }
 
     if (!utf8Data) {
-        // Last resort: load raw bytes as-is (binary file)
+        // Final fallback — load raw bytes as-is.
         enc = NSISOLatin1StringEncoding;
         utf8Data = rawData;
     }
 
-    // Load into Scintilla using SCI_ADDTEXT with explicit length — binary safe
+    // Phase 2 #1+#2: every load swaps to a fresh Scintilla document so the
+    // options match the file state. Large files get TEXT_LARGE (64-bit
+    // Position type → no silent >2 GB wraparound) + STYLES_NONE (skip the
+    // per-byte styles array — we already disable syntax highlighting in
+    // large mode, so this is a free ~50% RAM cut). Small files get DEFAULT
+    // options. Always swapping handles the reload-after-shrink edge case
+    // (tab previously held a 3 GB file gets STYLES_NONE; if that tab is then
+    // reloaded with a tiny file, we want syntax highlighting back).
+    int docOptions = large ? (SC_DOCUMENTOPTION_TEXT_LARGE | SC_DOCUMENTOPTION_STYLES_NONE)
+                           : SC_DOCUMENTOPTION_DEFAULT;
+    sptr_t newDoc = [_scintillaView message:SCI_CREATEDOCUMENT
+                                     wParam:(uptr_t)utf8Data.length
+                                     lParam:docOptions];
+    if (newDoc) {
+        [_scintillaView message:SCI_SETDOCPOINTER wParam:0 lParam:newDoc];
+        [_scintillaView message:SCI_RELEASEDOCUMENT wParam:0 lParam:newDoc];
+    }
+
+    // Load into Scintilla using SCI_ADDTEXT with explicit length — binary safe.
     [_scintillaView message:SCI_CLEARALL wParam:0 lParam:0];
     [_scintillaView message:SCI_ADDTEXT
                      wParam:(uptr_t)utf8Data.length
