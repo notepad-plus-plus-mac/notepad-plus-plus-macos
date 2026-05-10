@@ -90,6 +90,12 @@ add_executable(notetux++
     src/searchresults.c
     src/spell.c
     src/plugin.c
+    src/changehistory.c
+    src/project.c
+    src/run.c
+    src/pluginsadmin.c
+    src/cliphistory.c
+    src/charpanel.c
     src/lexilla_bridge.cpp
 )
 
