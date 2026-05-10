@@ -167,13 +167,13 @@ Ordered by implementation effort (low → high). The core editing experience is 
 
 | # | Feature | Description |
 |---|---------|-------------|
-| 64 | Change History | Navigate next/previous changed regions; revert recent changes; clear change history |
-| 65 | Project Manager panel | Read/write `.nppproject` XML files; virtual file groups; dockable left panel |
-| 66 | Macro management | Save named macros to XML, assign shortcuts, delete; Modify Shortcut / Delete Macro… dialog |
-| 67 | Run command dialog | Execute external commands with `%FILE%`/`%DIR%`/`%NAME%`/`%EXT%` substitution; save named commands |
-| 68 | Plugins Admin dialog | Discover, install, update and remove plugins from a GitHub-based manifest |
-| 69 | Clipboard History panel | Track clipboard changes; rolling history; double-click to paste |
-| 70 | Character Panel | Unicode character browser; search by name or codepoint; insert into editor on double-click |
+| ~~64~~ | ~~Change History~~ ✓ | Margin-4 bar (gold=unsaved, green=saved); Next/Prev/Revert/Clear via Search menu |
+| ~~65~~ | ~~Project Manager panel~~ ✓ | `.nppproject` XML read/write; GtkTreeView with folders/files; leftmost dockable panel |
+| ~~66~~ | ~~Macro management~~ ✓ | Named macros in `macros.xml`; Save/Delete dialog; Trim Trailing Space and Save |
+| ~~67~~ | ~~Run command dialog~~ ✓ | `%FILE%/%DIR%/%NAME%/%EXT%` substitution; saved commands in `commands.xml`; Ctrl+F5 |
+| ~~68~~ | ~~Plugins Admin dialog~~ ✓ | Scan installed plugins; Install from file; Uninstall; restart notice |
+| ~~69~~ | ~~Clipboard History panel~~ ✓ | `owner-change` tracking; rolling 20-entry GQueue; double-click pastes into editor |
+| ~~70~~ | ~~Character Panel~~ ✓ | 49-block Unicode browser; 16-wide grid; U+ search; insert on click; UTF-8 detail card |
 
 ## Release packaging
 
