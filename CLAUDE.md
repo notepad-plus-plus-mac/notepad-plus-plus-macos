@@ -169,3 +169,48 @@ Changes to vendored code should be minimal and clearly marked so they survive up
 42. ~~**Search Results panel**~~ — done: `searchresults.c/h`; dockable bottom pane; 3-level `GtkTreeStore` (search → file → hit); accumulates across searches; fed from `findinfiles.c:post_results()`; auto-shown on search completion; double-click navigates; Clear button; toggled from View → Panels → Search Results.
 43. ~~**Spell checker**~~ — done: `spell.c/h`; `dlopen` enchant-2 at runtime; indicator 8 squiggle red; 1200 ms debounce; UTF-8 word walk (skip < 3 chars / all-caps); right-click suggestions + Ignore + Add to Dictionary; Settings → Spell Check toggle; graceful fallback when library absent.
 44. ~~**Plugin system**~~ — done: `plugin.c/h`; `dlopen`/`dlsym` loader scanning `~/.config/notetux/plugins/<Name>/<Name>.so` + `/usr/lib/notetux/plugins/`; five required exports (`getName`, `getFuncsArray`, `beNotified`, `messageProc`, `isUnicode`) + optional `setInfo(NppData)`; `NppData` carries main window, primary Scintilla widget, and `hostMsg` callback; `plugin_notify_all()` in `on_sci_notify` broadcasts all Scintilla events; NPPM routing for `GETCURRENTSCINTILLA`, `GETNBOPENFILES`, `GETFULLCURRENTPATH`, `GETFILENAME`, `GETDIRECTORYPATH`; auto-generated submenus in Plugins menu (separator + checkmark support); plugin dir auto-created; no build-time dependency on plugins.
+
+### Low effort
+
+Menu items currently `nyi_item()` placeholders that need straightforward implementation — each is a few lines in `main.c` or a small addition to `editor.c`.
+
+45. **About dialog** — `GtkAboutDialog` with version, copyright, GPL-3.0 licence, website, authors and credits (Don Ho / Andrey Letov / Neil Hodgson); triggered from Help → About Notetux++…
+46. **Debug Info dialog** — `GtkMessageDialog` showing runtime GTK/GLib versions, compile-time Scintilla/Lexilla versions, and build date (`__DATE__`); triggered from Help → Debug Info…
+47. **Project Home Page / Online Documentation** — `gtk_show_uri_on_window` with the GitHub repository URL; two items in Help menu, currently disabled placeholders.
+48. **Open in Default Viewer** — `g_app_info_launch_default_for_uri` on the current file's URI; File → Open in Default Viewer; no-op when no file is open.
+49. **Open Containing Folder → Terminal** — spawn a terminal emulator in the current file's directory; try `x-terminal-emulator` → `gnome-terminal` → `xfce4-terminal` → `konsole` → `xterm` in order; fall back to home dir when no file is open.
+50. **Open Containing Folder → File Manager** — `gtk_show_uri_on_window` with the directory URI; integrates with any XDG-compliant file manager.
+51. **On Selection → Open File / Open Folder** — get selected text via `SCI_GETSELTEXT`; strip whitespace; call `editor_open_path` (Open File) or `workspace_set_folder + workspace_set_visible` (Open Folder); no-op on empty selection.
+52. **On Selection → Google / Wikipedia / Stack Overflow search** — `g_uri_escape_string` on selection, `gtk_show_uri_on_window` with the encoded query URL; three items in Edit → On Selection submenu.
+53. **Read-Only / Clear Read-Only Flag** — `editor_send(SCI_SETREADONLY, 1/0, 0)`; Edit menu items; mark tab label with a lock glyph when active (optional).
+54. **Text Direction RTL / LTR** — `editor_send(SCI_SETBIDIRECTIONAL, SC_BIDIRECTIONAL_R2L/L2R, 0)`; View menu items; add `SCI_SETBIDIRECTIONAL 2709` and `SC_BIDIRECTIONAL_*` constants to `sci_c.h`.
+55. **Close All to the Left / Right / Unchanged** — iterate the `GtkNotebook` pages in reverse relative to the current tab; call `editor_close_page(p)` for each matched page; three items in File → Close Multiple Documents submenu.
+56. **Move to Trash** — `g_file_new_for_path` + `g_file_trash`; on success close the tab via `editor_close_page(-1)`; show error dialog if trash fails; File menu item.
+57. **Import Plugin(s)…** — `GtkFileChooserDialog` filtered to `*.so`; copy the selected file into `~/.config/notetux/plugins/<name>/`; show a restart-required notice; Settings → Import → Import Plugin(s)…
+58. **Import Style Themes(s)…** — `GtkFileChooserDialog` filtered to `*.xml`; copy into `~/.config/notetux/themes/`; notify user to select via Style Configurator; Settings → Import → Import Style Themes(s)…
+
+### Medium effort
+
+59. **Save a Copy As…** — `GtkFileChooserDialog`, write doc bytes (with encoding conversion via `encoding_from_utf8`) to the new path without updating `NppDoc.filepath`, save point, or tab label; ~40 lines in `editor.c`.
+60. **Rename…** — `GtkFileChooserDialog` starting in the current file's directory; `g_rename()` on disk; update `NppDoc.filepath`, restart `GFileMonitor`, refresh tab label and window title; ~50 lines in `editor.c`.
+61. **Monitoring (tail -f)** — add `gboolean monitoring` to `NppDoc`; when set, `GFileMonitor` change events auto-reload silently (skip the "do you want to reload?" prompt); toggled from View → Panels → Monitoring (tail -f); `~60` lines across `editor.c` and `main.c`.
+62. **Incremental Search** — live search bar (Ctrl+I) docked at the bottom of the editor area; highlights every match as you type using `SCI_SEARCHINTARGET` + `SCI_INDICATORFILLRANGE`; Enter/Shift+Enter jump to next/previous match; Escape closes; `GtkSearchBar` widget; ~100 lines, could live in `findreplace.c` or a new `incremental.c/h`.
+63. **Print… / Print Now** — `GtkPrintOperation` with a `GtkPrintContext` that renders the document text line-by-line with syntax-colour approximation (or plain text as a first pass); Print… shows the full dialog, Print Now uses last settings; ~80 lines in `main.c`.
+
+### High effort
+
+64. **Change History** — next/previous/revert/clear per-document change tracking; the simplest approach is a baseline snapshot (bytes at last save) + `SCI_GETCHANGEDLINES` (if available) or a line-level diff against the snapshot on every `SCN_MODIFIED`; clear resets the baseline; navigation jumps the caret to the next changed region.
+65. **Project Manager panel** — beyond Folder as Workspace: reads and writes `.nppproject` XML files (file groups, virtual names); dockable left panel; separate `project.c/h`.
+66. **Macro management** — Save Current Recorded Macro As… (name + shortcut, persisted to `~/.config/notetux/macros.xml`); Trim Trailing Space and Save; Modify Shortcut / Delete Macro… dialog listing saved macros; extends `macro.c/h`.
+67. **Run command dialog** — Run… (execute external command with `%FILE%`/`%DIR%`/`%NAME%`/`%EXT%` substitution; Ctrl+F5); save named commands; Modify Shortcut / Delete Command…; new `run.c/h`.
+68. **Plugins Admin dialog** — discover plugins from a GitHub-based manifest (JSON or XML); install / update / remove to `~/.config/notetux/plugins/`; categorised list with description + version; new `pluginsadmin.c/h`; plugs into existing `plugin.c/h` loader.
+69. **Clipboard History panel** — track clipboard changes via `GDK_SELECTION_CLIPBOARD` owner-change signal; rolling history of last N text entries; dockable panel (GtkListBox); double-click to paste into active editor; new `cliphistory.c/h`.
+70. **Character Panel** — Unicode character browser: code-block tree on the left, character grid on the right; search by name or codepoint; detail card showing character name, UTF-8/16/32 byte sequences; double-click inserts into editor at caret; new `charpanel.c/h`.
+
+### Not planned (Linux-irrelevant or out of scope)
+
+- **Synchronise Scrolling** — requires a split-view mode (not implemented and not planned)
+- **Edit Context Menu…** — context menu editor; low value, complex persistence
+- **Check for Updates** — native distro packages (.deb/.rpm/etc.) handle updates through the system package manager
+- **CommandPalettePanel** — macOS Spotlight metaphor; on Linux, keyboard-shortcut discoverability is the right answer
+- **Trim Trailing Space and Save** (standalone macro item) — covered by Macro management (item 66) when implemented as part of that group

@@ -109,9 +109,71 @@ Output: `linux/build/notetux++`
 ./linux/build/notetux++ file1.c file2.h
 ```
 
+## Development methodology
+
+### Goal: feature parity with the macOS port
+
+The long-term target is to reach the same set of functionalities as the [Notepad++ for macOS](https://github.com/notepadplusplus/notepad-plus-plus-mac) port — or as close to it as the platform allows. Some features are macOS-specific (floating panels, Command Palette, Spotlight integration) and will not be ported; everything else is fair game.
+
+Feature parity is tracked by cross-referencing:
+1. **The macOS source files** (`src/*.mm`) — each panel, dialog and controller is a candidate for porting.
+2. **The Linux menu stubs** — every `nyi_item()` placeholder in `linux/src/main.c` is an unimplemented menu item from the original Notepad++ feature set.
+
+### How new features are tackled
+
+Each development session follows the same pattern used to implement items 38–44 (the side panels, spell checker and plugin system):
+
+1. **Audit** — compare the macOS source and the Linux `nyi_item()` stubs to find what is missing.
+2. **Classify by effort** — group items into *low* (trivial callbacks, a few lines), *medium* (new dialogs or editor functions, ~50–100 lines), and *high* (entirely new panels or subsystems, their own `.c/.h` files).
+3. **Implement in effort order** — low-effort items first (they accumulate quickly and keep the app feeling complete), then medium, then high.
+4. **Update docs** — CLAUDE.md and this README are updated when each item is completed, so the lists always reflect the current state.
+
+The numbered items below (45–70) are the current open list. Completed items are struck through. Items with no number are not planned.
+
 ## Upcoming features
 
-> **The project is now feature-complete.** All planned features — including the plugin system — have been implemented. The next step is release packaging.
+Ordered by implementation effort (low → high). The core editing experience is complete; remaining items are polish, integration, and advanced features.
+
+### Low effort
+
+| # | Feature | Description |
+|---|---------|-------------|
+| 45 | About dialog | `GtkAboutDialog` with version, copyright, GPL-3.0, credits (Don Ho / Andrey Letov / Neil Hodgson) |
+| 46 | Debug Info dialog | Runtime GTK/GLib versions, compile-time Scintilla/Lexilla versions, build date |
+| 47 | Project Home Page / Online Documentation | Open GitHub repository and README in the system browser |
+| 48 | Open in Default Viewer | Open current file with its registered default application |
+| 49 | Open Containing Folder → Terminal | Spawn terminal emulator in current file's directory (tries `x-terminal-emulator`, `gnome-terminal`, `xterm`, etc.) |
+| 50 | Open Containing Folder → File Manager | Open current file's directory in the system file manager |
+| 51 | On Selection → Open File / Open Folder | Treat selected text as a file path or directory and open it |
+| 52 | On Selection → Web searches | Google, Wikipedia, Stack Overflow — URL-encode selection and open in browser |
+| 53 | Read-Only / Clear Read-Only Flag | Toggle `SCI_SETREADONLY` on the active document |
+| 54 | Text Direction RTL / LTR | `SCI_SETBIDIRECTIONAL` for right-to-left and left-to-right editing |
+| 55 | Close All to the Left / Right / Unchanged | Bulk-close tabs relative to the current one, or close all unmodified tabs |
+| 56 | Move to Trash | Send current file to the system trash and close its tab |
+| 57 | Import Plugin(s)… | File chooser to copy a `.so` plugin into `~/.config/notetux/plugins/` |
+| 58 | Import Style Themes(s)… | File chooser to copy an XML theme into `~/.config/notetux/themes/` |
+
+### Medium effort
+
+| # | Feature | Description |
+|---|---------|-------------|
+| 59 | Save a Copy As… | Save the document to a new path without switching the active filepath |
+| 60 | Rename… | Rename the file on disk and update the tab label, title bar and file monitor |
+| 61 | Monitoring (tail -f) | Auto-reload the current file silently when it changes on disk (no prompt) |
+| 62 | Incremental Search | Live search bar (Ctrl+I) that highlights matches as you type; Enter/Shift+Enter to step through results |
+| 63 | Print… / Print Now | `GtkPrintOperation` with full dialog or immediate print using last settings |
+
+### High effort
+
+| # | Feature | Description |
+|---|---------|-------------|
+| 64 | Change History | Navigate next/previous changed regions; revert recent changes; clear change history |
+| 65 | Project Manager panel | Read/write `.nppproject` XML files; virtual file groups; dockable left panel |
+| 66 | Macro management | Save named macros to XML, assign shortcuts, delete; Modify Shortcut / Delete Macro… dialog |
+| 67 | Run command dialog | Execute external commands with `%FILE%`/`%DIR%`/`%NAME%`/`%EXT%` substitution; save named commands |
+| 68 | Plugins Admin dialog | Discover, install, update and remove plugins from a GitHub-based manifest |
+| 69 | Clipboard History panel | Track clipboard changes; rolling history; double-click to paste |
+| 70 | Character Panel | Unicode character browser; search by name or codepoint; insert into editor on double-click |
 
 ## Release packaging
 
