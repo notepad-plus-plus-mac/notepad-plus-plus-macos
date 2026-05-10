@@ -10,6 +10,7 @@
 #include "i18n.h"
 #include "autocomplete.h"
 #include "gitgutter.h"
+#include "changehistory.h"
 #include "macro.h"
 #include "funclist.h"
 #include "docmap.h"
@@ -228,6 +229,7 @@ static void setup_sci(GtkWidget *sci)
     main_apply_view_symbols(sci);
     autocomplete_setup(sci);
     gitgutter_setup(sci);
+    changehistory_setup(sci);
     spell_on_sci_created(sci);
     gtk_widget_add_events(sci, GDK_BUTTON_PRESS_MASK);
     g_signal_connect(sci, "button-press-event",
@@ -335,6 +337,7 @@ static void on_sci_notify(GtkWidget *sci, gint unused,
     if (code == SCN_SAVEPOINTREACHED) {
         doc->modified = FALSE;
         backup_clean(doc);
+        changehistory_on_save(sci);
         int page = gtk_notebook_page_num(GTK_NOTEBOOK(s_notebook), sci);
         refresh_tab_label(page);
         update_window_title();
@@ -424,6 +427,9 @@ static void on_sci_notify(GtkWidget *sci, gint unused,
         }
     } else if (code == SCN_MODIFIED &&
                (n->modificationType & (SC_MOD_INSERTTEXT | SC_MOD_DELETETEXT))) {
+        Sci_Position mod_line = (Sci_Position)sci_msg(sci, SCI_LINEFROMPOSITION,
+            (uptr_t)n->position, 0);
+        changehistory_on_modified(sci, mod_line, n->linesAdded);
         if (doc->filepath)
             gitgutter_update(sci, doc->filepath);
         funclist_schedule_update(sci);

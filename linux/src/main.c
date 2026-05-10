@@ -23,6 +23,12 @@
 #include "searchresults.h"
 #include "spell.h"
 #include "plugin.h"
+#include "changehistory.h"
+#include "project.h"
+#include "run.h"
+#include "pluginsadmin.h"
+#include "cliphistory.h"
+#include "charpanel.h"
 
 /* Set to TRUE in main() when no file arguments are given; read in on_activate. */
 static gboolean s_restore_session = FALSE;
@@ -908,6 +914,110 @@ static void do_print(GtkPrintOperationAction action)
 
 static void cb_print    (GtkMenuItem *i, gpointer d) { (void)i;(void)d; do_print(GTK_PRINT_OPERATION_ACTION_PRINT_DIALOG); }
 static void cb_print_now(GtkMenuItem *i, gpointer d) { (void)i;(void)d; do_print(GTK_PRINT_OPERATION_ACTION_PRINT); }
+
+/* ------------------------------------------------------------------ */
+/* Item 64 — Change History                                            */
+/* ------------------------------------------------------------------ */
+static void cb_ch_next(GtkMenuItem *i, gpointer d)
+{
+    (void)i; (void)d;
+    NppDoc *doc = editor_current_doc();
+    if (doc) changehistory_next(doc->sci);
+}
+static void cb_ch_prev(GtkMenuItem *i, gpointer d)
+{
+    (void)i; (void)d;
+    NppDoc *doc = editor_current_doc();
+    if (doc) changehistory_prev(doc->sci);
+}
+static void cb_ch_revert(GtkMenuItem *i, gpointer d)
+{
+    (void)i; (void)d;
+    NppDoc *doc = editor_current_doc();
+    if (doc) changehistory_revert_recent(doc->sci);
+}
+static void cb_ch_clear(GtkMenuItem *i, gpointer d)
+{
+    (void)i; (void)d;
+    NppDoc *doc = editor_current_doc();
+    if (doc) changehistory_clear(doc->sci);
+}
+
+/* ------------------------------------------------------------------ */
+/* Item 65 — Project Manager                                           */
+/* ------------------------------------------------------------------ */
+static void cb_toggle_project(GtkCheckMenuItem *item, gpointer d)
+{
+    (void)d;
+    project_set_visible(gtk_check_menu_item_get_active(item));
+}
+static GtkWidget *s_project_mi = NULL;
+
+/* ------------------------------------------------------------------ */
+/* Item 66 — Macro management                                          */
+/* ------------------------------------------------------------------ */
+static void cb_macro_save_as(GtkMenuItem *i, gpointer d)
+{
+    (void)i; (void)d;
+    NppDoc *doc = editor_current_doc();
+    if (doc) macro_save_as_dialog(doc->sci, GTK_WINDOW(s_main_window));
+}
+static void cb_macro_manage(GtkMenuItem *i, gpointer d)
+{
+    (void)i; (void)d;
+    NppDoc *doc = editor_current_doc();
+    macro_manage_dialog(doc ? doc->sci : NULL, GTK_WINDOW(s_main_window));
+}
+static void cb_macro_trim_save(GtkMenuItem *i, gpointer d)
+{
+    (void)i; (void)d;
+    NppDoc *doc = editor_current_doc();
+    if (doc) { macro_trim_and_save(doc->sci); editor_save(); }
+}
+
+/* ------------------------------------------------------------------ */
+/* Item 67 — Run command                                               */
+/* ------------------------------------------------------------------ */
+static void cb_run_cmd(GtkMenuItem *i, gpointer d)
+{
+    (void)i; (void)d;
+    NppDoc *doc = editor_current_doc();
+    run_dialog(GTK_WINDOW(s_main_window), doc ? doc->filepath : NULL);
+}
+static void cb_run_manage(GtkMenuItem *i, gpointer d)
+{
+    (void)i; (void)d;
+    NppDoc *doc = editor_current_doc();
+    run_manage_dialog(GTK_WINDOW(s_main_window), doc ? doc->filepath : NULL);
+}
+
+/* ------------------------------------------------------------------ */
+/* Item 68 — Plugins Admin                                             */
+/* ------------------------------------------------------------------ */
+static void cb_plugins_admin(GtkMenuItem *i, gpointer d)
+{
+    (void)i; (void)d;
+    pluginsadmin_show(GTK_WINDOW(s_main_window));
+}
+
+/* ------------------------------------------------------------------ */
+/* Item 69 — Clipboard History                                         */
+/* ------------------------------------------------------------------ */
+static GtkWidget *s_cliphistory_mi = NULL;
+static void cb_toggle_cliphistory(GtkCheckMenuItem *item, gpointer d)
+{
+    (void)d;
+    cliphistory_set_visible(gtk_check_menu_item_get_active(item));
+}
+
+/* ------------------------------------------------------------------ */
+/* Item 70 — Character Panel                                           */
+/* ------------------------------------------------------------------ */
+static void cb_char_panel(GtkMenuItem *i, gpointer d)
+{
+    (void)i; (void)d;
+    charpanel_set_visible(!charpanel_is_visible());
+}
 
 static void cb_toggle_spellcheck(GtkCheckMenuItem *item, gpointer d)
 {
@@ -3105,7 +3215,8 @@ static GtkWidget *build_menubar(GtkWindow *window, GApplication *app)
         APPEND(edit, sel_item);
     }
     APPEND(edit, sep_item());
-    APPEND(edit, nyi_item("Character Panel…"));
+    APPEND(edit, menu_item("Character Panel…", G_CALLBACK(cb_char_panel),
+                            NULL, NULL, 0, 0));
     APPEND(edit, sep_item());
     APPEND(edit, menu_item("Read-Only",           G_CALLBACK(cb_set_readonly),   NULL, NULL, 0, 0));
     APPEND(edit, menu_item("Clear Read-Only Flag", G_CALLBACK(cb_clear_readonly), NULL, NULL, 0, 0));
@@ -3125,11 +3236,11 @@ static GtkWidget *build_menubar(GtkWindow *window, GApplication *app)
         GtkWidget *ch_item = gtk_menu_item_new_with_label("Change History");
         GtkWidget *ch_menu = gtk_menu_new();
         gtk_menu_item_set_submenu(GTK_MENU_ITEM(ch_item), ch_menu);
-        APPEND(ch_menu, nyi_item("Next Change"));
-        APPEND(ch_menu, nyi_item("Previous Change"));
+        APPEND(ch_menu, menu_item("Next Change",         G_CALLBACK(cb_ch_next),   NULL, NULL, 0, 0));
+        APPEND(ch_menu, menu_item("Previous Change",     G_CALLBACK(cb_ch_prev),   NULL, NULL, 0, 0));
         APPEND(ch_menu, sep_item());
-        APPEND(ch_menu, nyi_item("Revert Recent Change"));
-        APPEND(ch_menu, nyi_item("Clear All Changes"));
+        APPEND(ch_menu, menu_item("Revert Recent Change",G_CALLBACK(cb_ch_revert), NULL, NULL, 0, 0));
+        APPEND(ch_menu, menu_item("Clear All Changes",   G_CALLBACK(cb_ch_clear),  NULL, NULL, 0, 0));
         APPEND(search, ch_item);
     }
     APPEND(search, sep_item());
@@ -3368,11 +3479,24 @@ static GtkWidget *build_menubar(GtkWindow *window, GApplication *app)
                                  G_CALLBACK(cb_toggle_searchresults), NULL);
                 APPEND(pan_menu, mi_sr);
             }
-            APPEND(pan_menu, nyi_item("Project Manager"));
+            {
+                s_project_mi = gtk_check_menu_item_new_with_label("Project Manager");
+                gtk_check_menu_item_set_active(GTK_CHECK_MENU_ITEM(s_project_mi), FALSE);
+                g_signal_connect(s_project_mi, "toggled",
+                                 G_CALLBACK(cb_toggle_project), NULL);
+                APPEND(pan_menu, s_project_mi);
+            }
             s_monitoring_mi = gtk_check_menu_item_new_with_label("Monitoring (tail -f)");
             g_signal_connect(s_monitoring_mi, "toggled",
                              G_CALLBACK(cb_toggle_monitoring), NULL);
             APPEND(pan_menu, s_monitoring_mi);
+            {
+                s_cliphistory_mi = gtk_check_menu_item_new_with_label("Clipboard History");
+                gtk_check_menu_item_set_active(GTK_CHECK_MENU_ITEM(s_cliphistory_mi), FALSE);
+                g_signal_connect(s_cliphistory_mi, "toggled",
+                                 G_CALLBACK(cb_toggle_cliphistory), NULL);
+                APPEND(pan_menu, s_cliphistory_mi);
+            }
             APPEND(view, pan_item);
         }
 
@@ -3536,18 +3660,23 @@ static GtkWidget *build_menubar(GtkWindow *window, GApplication *app)
                           G_CALLBACK(cb_macro_play_n), NULL, accel,
                           GDK_KEY_p, GDK_MOD1_MASK | GDK_SHIFT_MASK));
         APPEND(macro, sep_item());
-        APPEND(macro, nyi_item("Save Current Recorded Macro As…"));
-        APPEND(macro, nyi_item("Trim Trailing Space and Save"));
+        APPEND(macro, menu_item("Save Current Recorded Macro As…",
+                                G_CALLBACK(cb_macro_save_as), NULL, NULL, 0, 0));
+        APPEND(macro, menu_item("Trim Trailing Space and Save",
+                                G_CALLBACK(cb_macro_trim_save), NULL, NULL, 0, 0));
         APPEND(macro, sep_item());
-        APPEND(macro, nyi_item("Modify Shortcut / Delete Macro…"));
+        APPEND(macro, menu_item("Modify Shortcut / Delete Macro…",
+                                G_CALLBACK(cb_macro_manage), NULL, NULL, 0, 0));
     }
 
     /* ---- Run ---- */
     {
         GtkWidget *run = submenu(bar, TM("menu.run", "_Run"));
-        APPEND(run, nyi_item("Run…"));
+        APPEND(run, smi("cmd.run", "Run…", G_CALLBACK(cb_run_cmd),
+                         NULL, accel, GDK_KEY_F5, GDK_CONTROL_MASK));
         APPEND(run, sep_item());
-        APPEND(run, nyi_item("Modify Shortcut / Delete Command…"));
+        APPEND(run, menu_item("Modify Shortcut / Delete Command…",
+                               G_CALLBACK(cb_run_manage), NULL, NULL, 0, 0));
     }
 
     /* ---- Plugins ---- */
@@ -3557,7 +3686,8 @@ static GtkWidget *build_menubar(GtkWindow *window, GApplication *app)
         plugin_populate_menu(plugins);
         if (plugin_count() > 0)
             APPEND(plugins, sep_item());
-        APPEND(plugins, nyi_item("Plugins Admin…"));
+        APPEND(plugins, menu_item("Plugins Admin…", G_CALLBACK(cb_plugins_admin),
+                                   NULL, NULL, 0, 0));
     }
 
     /* ---- Help ---- */
@@ -3679,7 +3809,8 @@ static void on_activate(GtkApplication *app, gpointer data)
     gtk_box_pack_start(GTK_BOX(vbox), toolbar, FALSE, FALSE, 0);
 
     /* Editor area layout (left-to-right):
-     *   [workspace] | [doclist] | [notebook] | [funclist] | [docmap]
+     *   [project] | [workspace] | [doclist] | [notebook] | [funclist] | [docmap]
+     * Bottom area: Search Results | Clipboard History
      * Each panel is a pack1/pack2 of its own GtkPaned so it collapses
      * cleanly when hidden.                                            */
     GtkWidget *editor_container = editor_init(window);
@@ -3704,12 +3835,26 @@ static void on_activate(GtkApplication *app, gpointer data)
     gtk_paned_pack1(GTK_PANED(outer_paned), workspace_init(window), FALSE, FALSE);
     gtk_paned_pack2(GTK_PANED(outer_paned), inner_paned,            TRUE,  TRUE);
 
-    /* Vertical pane: all horizontal panels on top, Search Results at bottom */
+    /* project | rest — project is the leftmost panel */
+    GtkWidget *proj_paned = gtk_paned_new(GTK_ORIENTATION_HORIZONTAL);
+    gtk_paned_pack1(GTK_PANED(proj_paned), project_init(window), FALSE, FALSE);
+    gtk_paned_pack2(GTK_PANED(proj_paned), outer_paned,          TRUE,  TRUE);
+
+    /* Bottom: Search Results left, Clipboard History right */
+    GtkWidget *bottom_paned = gtk_paned_new(GTK_ORIENTATION_HORIZONTAL);
+    gtk_paned_pack1(GTK_PANED(bottom_paned), searchresults_init(),     TRUE,  TRUE);
+    gtk_paned_pack2(GTK_PANED(bottom_paned), cliphistory_init(window), FALSE, FALSE);
+
+    /* Vertical pane: all horizontal panels on top, bottom panels at bottom */
     GtkWidget *content_vpaned = gtk_paned_new(GTK_ORIENTATION_VERTICAL);
-    gtk_paned_pack1(GTK_PANED(content_vpaned), outer_paned,          TRUE,  FALSE);
-    gtk_paned_pack2(GTK_PANED(content_vpaned), searchresults_init(), FALSE, FALSE);
+    gtk_paned_pack1(GTK_PANED(content_vpaned), proj_paned,   TRUE,  FALSE);
+    gtk_paned_pack2(GTK_PANED(content_vpaned), bottom_paned, FALSE, FALSE);
+
+    /* Character Panel floats as a separate bottom area (vertical box below content) */
+    GtkWidget *char_panel = charpanel_init(window);
 
     gtk_box_pack_start(GTK_BOX(vbox), content_vpaned, TRUE, TRUE, 0);
+    gtk_box_pack_start(GTK_BOX(vbox), char_panel,     FALSE, FALSE, 0);
     backup_init();
     spell_init(window);
 
@@ -3729,6 +3874,9 @@ static void on_activate(GtkApplication *app, gpointer data)
     funclist_set_visible(FALSE);
     docmap_set_visible(FALSE);
     searchresults_set_visible(FALSE);
+    project_set_visible(FALSE);
+    cliphistory_set_visible(FALSE);
+    charpanel_set_visible(FALSE);
     editor_incr_search_close(); /* hide the incremental search bar */
 
     /* Restore previous session (only when no files given on CLI) */
