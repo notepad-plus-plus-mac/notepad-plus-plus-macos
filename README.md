@@ -83,6 +83,7 @@ The macOS port and this Linux port share a common foundation: both macOS and Lin
 - **Document Map** — View → Panels → Document Map toggles a dockable minimap panel on the far right; a secondary `ScintillaWidget` shares the same document as the main editor via `SCI_SETDOCPOINTER` (text and syntax-highlighting tokens are automatically mirrored); zoomed to −10 with all margins, scrollbars, and caret hidden; a semi-transparent blue viewport rectangle is painted on top via `GtkOverlay` + `GtkDrawingArea` + Cairo; the minimap centres on the currently visible range on every `SCN_UPDATEUI` event; the overlay captures all pointer events so clicking or dragging the minimap scrolls the main editor continuously; no header — the minimap fills the full panel for seamless integration; panel is hidden by default
 - **Search Results panel** — View → Panels → Search Results (also auto-shown after every Find in Files search) toggles a dockable bottom panel; three-level `GtkTreeStore`: search root row ("Search "needle" — N matches in M files") → file rows ("path (N hits)") → hit rows ("line: text"); results accumulate across multiple searches without being cleared; double-clicking a hit row opens the file and jumps to that line; a Clear button wipes all accumulated results; the panel lives in a vertical `GtkPaned` below the main editor area; hidden by default, shown automatically when a Find in Files search returns results
 - **Spell checker** — Settings → Spell Check enables inline spell checking; `libenchant-2` loaded at runtime via `dlopen` (gracefully disabled if not installed); dictionary selected from system locale (`LC_MESSAGES`) with fallback to base language; misspelled words underlined with a red squiggle (Scintilla indicator 8, `INDIC_SQUIGGLE`); UTF-8-aware word walker skips words under 3 characters and all-uppercase acronyms; full-document pass limited to 200 KB, debounced 1200 ms after each edit; right-clicking a misspelled word shows a context menu with up to 8 suggestions (click to replace), "Ignore Word" (session), and "Add to Dictionary" (permanent)
+- **Plugin system** — plugins are native Linux shared libraries (`.so`) placed in `~/.config/notetux/plugins/<Name>/<Name>.so`; each plugin exports five standard symbols (`getName`, `getFuncsArray`, `beNotified`, `messageProc`, `isUnicode`) plus an optional `setInfo(NppData)` to receive host handles and a host-message callback; the host calls `beNotified` on every Scintilla editor event; plugins query the host via `NppData.hostMsg(NPPM_*, ...)` — supported messages: `NPPM_GETCURRENTSCINTILLA`, `NPPM_GETNBOPENFILES`, `NPPM_GETFULLCURRENTPATH`, `NPPM_GETFILENAME`, `NPPM_GETDIRECTORYPATH`; each plugin's functions appear as a submenu under the Plugins menu; separator items (`"-"`) and checkbox items (`init2Check != 0`) are supported; a minimal example plugin is provided in `linux/example_plugin/HelloPlugin/`
 
 ### Localisation
 - Automatic system locale detection via GLib (`g_get_language_names()`)
@@ -110,12 +111,7 @@ Output: `linux/build/notetux++`
 
 ## Upcoming features
 
-Ordered by implementation effort (low → high).
-
-> **Note:** All the features with low and medium effort required are marked as completed. No intermediate release are planned. This software will be released when all the points in this list will be successfully completed.
-
-### High effort
-- **Plugin system** — dlopen-based plugin loading, menu integration, NPPM message routing
+> **The project is now feature-complete.** All planned features — including the plugin system — have been implemented. The next step is release packaging.
 
 ## Release packaging
 
@@ -162,6 +158,7 @@ All user data lives in `~/.config/notetux/`:
 | `~/.config/notetux/session.xml` | Session state: open file paths, caret and scroll positions, active tab |
 | `~/.config/notetux/backup/` | Auto-backup copies of unsaved/modified documents |
 | `~/.config/notetux/userDefineLangs/` | User-defined language XML files (NPP UDL format) |
+| `~/.config/notetux/plugins/` | Plugin directory; each plugin lives in `<Name>/<Name>.so` |
 
 ## Architecture
 
@@ -188,6 +185,7 @@ linux/src/funclist.c/h     — Function List panel: per-language regex parser, 2
 linux/src/docmap.c/h       — Document Map panel: shared-document minimap ScintillaWidget, viewport Cairo overlay
 linux/src/searchresults.c/h — Search Results panel: 3-level GtkTreeStore, fed from findinfiles, bottom-docked
 linux/src/spell.c/h         — Spell checker: dlopen enchant-2, indicator squiggle, right-click suggestions
+linux/src/plugin.c/h        — Plugin system: .so loader, NppData/hostMsg, beNotified broadcast, NPPM routing, menu generation
 linux/src/sci_c.h           — C-safe Scintilla interface
 
 scintilla/                  — vendored editing engine (GTK3 backend used as-is)
