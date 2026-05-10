@@ -479,6 +479,338 @@ static void cb_toggle_searchresults(GtkCheckMenuItem *item, gpointer d)
     searchresults_set_visible(gtk_check_menu_item_get_active(item));
 }
 
+/* ------------------------------------------------------------------ */
+/* Items 45–58: low-effort implementations                            */
+/* ------------------------------------------------------------------ */
+
+/* Helper: return selected text as a newly-allocated string, or NULL.
+   Caller must g_free() the result. */
+static char *get_selection_text(void)
+{
+    int len = (int)editor_send(SCI_GETSELTEXT, 0, 0);
+    if (len <= 1) return NULL;   /* len includes null terminator */
+    char *buf = g_malloc(len);
+    editor_send(SCI_GETSELTEXT, 0, (sptr_t)buf);
+    return buf;
+}
+
+/* Helper: return the directory of the current file, or home dir.
+   Caller must g_free() the result. */
+static char *current_file_dir(void)
+{
+    NppDoc *doc = editor_current_doc();
+    if (doc && doc->filepath)
+        return g_path_get_dirname(doc->filepath);
+    return g_strdup(g_get_home_dir());
+}
+
+/* 45 — About dialog */
+static void cb_about(GtkMenuItem *i, gpointer d)
+{
+    (void)i; (void)d;
+    GtkWidget *dlg = gtk_about_dialog_new();
+    gtk_about_dialog_set_program_name(GTK_ABOUT_DIALOG(dlg), "Notetux++");
+    gtk_about_dialog_set_version(GTK_ABOUT_DIALOG(dlg), "1.0.0");
+    gtk_about_dialog_set_comments(GTK_ABOUT_DIALOG(dlg),
+        "A native Linux text editor inspired by Notepad++.\n"
+        "Built with GTK3, Scintilla and Lexilla.");
+    gtk_about_dialog_set_copyright(GTK_ABOUT_DIALOG(dlg), "© 2026 Andrea Coi");
+    gtk_about_dialog_set_license_type(GTK_ABOUT_DIALOG(dlg), GTK_LICENSE_GPL_3_0);
+    gtk_about_dialog_set_website(GTK_ABOUT_DIALOG(dlg),
+        "https://github.com/notetux/notetux-plusplus");
+    gtk_about_dialog_set_website_label(GTK_ABOUT_DIALOG(dlg), "GitHub repository");
+    const char *authors[] = { "Andrea Coi", NULL };
+    gtk_about_dialog_set_authors(GTK_ABOUT_DIALOG(dlg), authors);
+    const char *credits[] = {
+        "Don Ho — Notepad++ (Windows)",
+        "Andrey Letov — Notepad++ for macOS",
+        "Neil Hodgson — Scintilla & Lexilla",
+        NULL
+    };
+    gtk_about_dialog_add_credit_section(GTK_ABOUT_DIALOG(dlg),
+        "Built on the shoulders of", credits);
+    gtk_window_set_transient_for(GTK_WINDOW(dlg), GTK_WINDOW(s_main_window));
+    gtk_dialog_run(GTK_DIALOG(dlg));
+    gtk_widget_destroy(dlg);
+}
+
+/* 46 — Debug Info dialog */
+static void cb_debug_info(GtkMenuItem *i, gpointer d)
+{
+    (void)i; (void)d;
+    gchar *info = g_strdup_printf(
+        "Notetux++ 1.0.0\n\n"
+        "GTK:       %d.%d.%d  (built against %d.%d.%d)\n"
+        "GLib:      %d.%d.%d\n"
+        "Build:     " __DATE__ " " __TIME__,
+        gtk_get_major_version(), gtk_get_minor_version(), gtk_get_micro_version(),
+        GTK_MAJOR_VERSION, GTK_MINOR_VERSION, GTK_MICRO_VERSION,
+        glib_major_version, glib_minor_version, glib_micro_version);
+    GtkWidget *dlg = gtk_message_dialog_new(GTK_WINDOW(s_main_window),
+        GTK_DIALOG_MODAL, GTK_MESSAGE_INFO, GTK_BUTTONS_OK, "%s", info);
+    gtk_window_set_title(GTK_WINDOW(dlg), "Debug Info");
+    gtk_dialog_run(GTK_DIALOG(dlg));
+    gtk_widget_destroy(dlg);
+    g_free(info);
+}
+
+/* 47 — Open URL in system browser (reused for home page and online docs) */
+static void cb_open_url(GtkMenuItem *i, gpointer data)
+{
+    (void)i;
+    gtk_show_uri_on_window(GTK_WINDOW(s_main_window),
+        (const char *)data, GDK_CURRENT_TIME, NULL);
+}
+
+/* 48 — Open current file with its default application */
+static void cb_open_in_default_viewer(GtkMenuItem *i, gpointer d)
+{
+    (void)i; (void)d;
+    NppDoc *doc = editor_current_doc();
+    if (!doc || !doc->filepath) return;
+    GError *err = NULL;
+    char *uri = g_filename_to_uri(doc->filepath, NULL, &err);
+    if (uri) {
+        gtk_show_uri_on_window(GTK_WINDOW(s_main_window), uri, GDK_CURRENT_TIME, NULL);
+        g_free(uri);
+    }
+    if (err) g_error_free(err);
+}
+
+/* 49 — Open terminal in current file's directory */
+static void cb_open_in_terminal(GtkMenuItem *i, gpointer d)
+{
+    (void)i; (void)d;
+    char *dir = current_file_dir();
+    /* Try common terminal emulators; each is spawned in dir as cwd. */
+    const char *terms[] = {
+        "x-terminal-emulator", "gnome-terminal", "xfce4-terminal",
+        "konsole", "mate-terminal", "lxterminal", "xterm", NULL
+    };
+    for (int t = 0; terms[t]; t++) {
+        char *argv[] = { (char *)terms[t], NULL };
+        GError *err = NULL;
+        gboolean ok = g_spawn_async(dir, argv, NULL,
+            G_SPAWN_SEARCH_PATH |
+            G_SPAWN_STDOUT_TO_DEV_NULL |
+            G_SPAWN_STDERR_TO_DEV_NULL,
+            NULL, NULL, NULL, &err);
+        if (err) g_error_free(err);
+        if (ok) break;
+    }
+    g_free(dir);
+}
+
+/* 50 — Open file manager at current file's directory */
+static void cb_open_in_file_manager(GtkMenuItem *i, gpointer d)
+{
+    (void)i; (void)d;
+    char *dir = current_file_dir();
+    GError *err = NULL;
+    char *uri = g_filename_to_uri(dir, NULL, &err);
+    if (uri) {
+        gtk_show_uri_on_window(GTK_WINDOW(s_main_window), uri, GDK_CURRENT_TIME, NULL);
+        g_free(uri);
+    }
+    if (err) g_error_free(err);
+    g_free(dir);
+}
+
+/* 51 — Open selected text as a file path */
+static void cb_open_selected_file(GtkMenuItem *i, gpointer d)
+{
+    (void)i; (void)d;
+    char *sel = get_selection_text();
+    if (!sel) return;
+    editor_open_path(g_strstrip(sel));
+    g_free(sel);
+}
+
+/* 51 — Open selected text as a folder in Workspace panel */
+static void cb_open_selected_folder(GtkMenuItem *i, gpointer d)
+{
+    (void)i; (void)d;
+    char *sel = get_selection_text();
+    if (!sel) return;
+    g_strstrip(sel);
+    if (g_file_test(sel, G_FILE_TEST_IS_DIR)) {
+        workspace_set_folder(sel);
+        workspace_set_visible(TRUE);
+    }
+    g_free(sel);
+}
+
+/* 52 — Web search on selected text (data = URL printf format with one %s) */
+static void cb_web_search(GtkMenuItem *i, gpointer data)
+{
+    (void)i;
+    char *sel = get_selection_text();
+    if (!sel) return;
+    char *encoded = g_uri_escape_string(g_strstrip(sel), NULL, FALSE);
+    char *url = g_strdup_printf((const char *)data, encoded);
+    gtk_show_uri_on_window(GTK_WINDOW(s_main_window), url, GDK_CURRENT_TIME, NULL);
+    g_free(url);
+    g_free(encoded);
+    g_free(sel);
+}
+
+/* 53 — Read-Only toggle */
+static void cb_set_readonly  (GtkMenuItem *i, gpointer d) { (void)i;(void)d; editor_send(SCI_SETREADONLY, 1, 0); }
+static void cb_clear_readonly(GtkMenuItem *i, gpointer d) { (void)i;(void)d; editor_send(SCI_SETREADONLY, 0, 0); }
+
+/* 54 — Text direction */
+static void cb_text_dir_rtl(GtkMenuItem *i, gpointer d) { (void)i;(void)d; editor_send(SCI_SETBIDIRECTIONAL, SC_BIDIRECTIONAL_R2L, 0); }
+static void cb_text_dir_ltr(GtkMenuItem *i, gpointer d) { (void)i;(void)d; editor_send(SCI_SETBIDIRECTIONAL, SC_BIDIRECTIONAL_L2R, 0); }
+
+/* 55 — Close All to the Left */
+static void cb_close_left(GtkMenuItem *i, gpointer d)
+{
+    (void)i; (void)d;
+    int cur = editor_current_page();
+    for (int p = cur - 1; p >= 0; p--)
+        if (!editor_close_page(p)) break;
+}
+
+/* 55 — Close All to the Right */
+static void cb_close_right(GtkMenuItem *i, gpointer d)
+{
+    (void)i; (void)d;
+    int total = editor_page_count();
+    int cur   = editor_current_page();
+    for (int p = total - 1; p > cur; p--)
+        if (!editor_close_page(p)) break;
+}
+
+/* 55 — Close All Unchanged */
+static void cb_close_unchanged(GtkMenuItem *i, gpointer d)
+{
+    (void)i; (void)d;
+    for (int p = editor_page_count() - 1; p >= 0; p--) {
+        NppDoc *doc = editor_doc_at(p);
+        if (doc && !doc->modified)
+            editor_close_page(p);
+    }
+}
+
+/* 56 — Move to Trash */
+static void cb_move_to_trash(GtkMenuItem *i, gpointer d)
+{
+    (void)i; (void)d;
+    NppDoc *doc = editor_current_doc();
+    if (!doc || !doc->filepath) return;
+    GFile  *f   = g_file_new_for_path(doc->filepath);
+    GError *err = NULL;
+    if (g_file_trash(f, NULL, &err)) {
+        editor_close_page(-1);
+    } else {
+        GtkWidget *dlg = gtk_message_dialog_new(GTK_WINDOW(s_main_window),
+            GTK_DIALOG_MODAL, GTK_MESSAGE_ERROR, GTK_BUTTONS_OK,
+            "Cannot move to Trash:\n%s", err ? err->message : "unknown error");
+        gtk_dialog_run(GTK_DIALOG(dlg));
+        gtk_widget_destroy(dlg);
+        if (err) g_error_free(err);
+    }
+    g_object_unref(f);
+}
+
+/* 57 — Import a plugin .so into ~/.config/notetux/plugins/<name>/ */
+static void cb_import_plugin(GtkMenuItem *i, gpointer d)
+{
+    (void)i; (void)d;
+    GtkWidget *dlg = gtk_file_chooser_dialog_new(
+        "Import Plugin", GTK_WINDOW(s_main_window),
+        GTK_FILE_CHOOSER_ACTION_OPEN,
+        "_Cancel", GTK_RESPONSE_CANCEL,
+        "_Import", GTK_RESPONSE_ACCEPT, NULL);
+    GtkFileFilter *ff = gtk_file_filter_new();
+    gtk_file_filter_set_name(ff, "Shared Libraries (*.so)");
+    gtk_file_filter_add_pattern(ff, "*.so");
+    gtk_file_chooser_add_filter(GTK_FILE_CHOOSER(dlg), ff);
+
+    if (gtk_dialog_run(GTK_DIALOG(dlg)) == GTK_RESPONSE_ACCEPT) {
+        char *src      = gtk_file_chooser_get_filename(GTK_FILE_CHOOSER(dlg));
+        char *basename = g_path_get_basename(src);
+        char *name     = g_strdup(basename);
+        char *dot      = strrchr(name, '.');
+        if (dot) *dot  = '\0';
+
+        char *dest_dir = g_build_filename(g_get_home_dir(), ".config", "notetux",
+                                          "plugins", name, NULL);
+        g_mkdir_with_parents(dest_dir, 0755);
+        char  *dest = g_build_filename(dest_dir, basename, NULL);
+        GFile *fsrc = g_file_new_for_path(src);
+        GFile *fdst = g_file_new_for_path(dest);
+        GError *err = NULL;
+        if (!g_file_copy(fsrc, fdst, G_FILE_COPY_OVERWRITE, NULL, NULL, NULL, &err)) {
+            GtkWidget *e = gtk_message_dialog_new(GTK_WINDOW(s_main_window),
+                GTK_DIALOG_MODAL, GTK_MESSAGE_ERROR, GTK_BUTTONS_OK,
+                "Cannot import plugin:\n%s", err->message);
+            gtk_dialog_run(GTK_DIALOG(e));
+            gtk_widget_destroy(e);
+            g_error_free(err);
+        } else {
+            GtkWidget *ok = gtk_message_dialog_new(GTK_WINDOW(s_main_window),
+                GTK_DIALOG_MODAL, GTK_MESSAGE_INFO, GTK_BUTTONS_OK,
+                "Plugin \"%s\" imported successfully.\n"
+                "Restart Notetux++ to load it.", name);
+            gtk_dialog_run(GTK_DIALOG(ok));
+            gtk_widget_destroy(ok);
+        }
+        g_object_unref(fsrc);
+        g_object_unref(fdst);
+        g_free(dest_dir); g_free(dest);
+        g_free(name); g_free(basename); g_free(src);
+    }
+    gtk_widget_destroy(dlg);
+}
+
+/* 58 — Import a theme XML into ~/.config/notetux/themes/ */
+static void cb_import_theme(GtkMenuItem *i, gpointer d)
+{
+    (void)i; (void)d;
+    GtkWidget *dlg = gtk_file_chooser_dialog_new(
+        "Import Style Theme", GTK_WINDOW(s_main_window),
+        GTK_FILE_CHOOSER_ACTION_OPEN,
+        "_Cancel", GTK_RESPONSE_CANCEL,
+        "_Import", GTK_RESPONSE_ACCEPT, NULL);
+    GtkFileFilter *ff = gtk_file_filter_new();
+    gtk_file_filter_set_name(ff, "Theme files (*.xml)");
+    gtk_file_filter_add_pattern(ff, "*.xml");
+    gtk_file_chooser_add_filter(GTK_FILE_CHOOSER(dlg), ff);
+
+    if (gtk_dialog_run(GTK_DIALOG(dlg)) == GTK_RESPONSE_ACCEPT) {
+        char *src      = gtk_file_chooser_get_filename(GTK_FILE_CHOOSER(dlg));
+        char *basename = g_path_get_basename(src);
+        char *dest_dir = g_build_filename(g_get_home_dir(), ".config", "notetux",
+                                          "themes", NULL);
+        g_mkdir_with_parents(dest_dir, 0755);
+        char  *dest = g_build_filename(dest_dir, basename, NULL);
+        GFile *fsrc = g_file_new_for_path(src);
+        GFile *fdst = g_file_new_for_path(dest);
+        GError *err = NULL;
+        if (!g_file_copy(fsrc, fdst, G_FILE_COPY_OVERWRITE, NULL, NULL, NULL, &err)) {
+            GtkWidget *e = gtk_message_dialog_new(GTK_WINDOW(s_main_window),
+                GTK_DIALOG_MODAL, GTK_MESSAGE_ERROR, GTK_BUTTONS_OK,
+                "Cannot import theme:\n%s", err->message);
+            gtk_dialog_run(GTK_DIALOG(e));
+            gtk_widget_destroy(e);
+            g_error_free(err);
+        } else {
+            GtkWidget *ok = gtk_message_dialog_new(GTK_WINDOW(s_main_window),
+                GTK_DIALOG_MODAL, GTK_MESSAGE_INFO, GTK_BUTTONS_OK,
+                "Theme \"%s\" imported.\n"
+                "Select it from Settings → Style Configurator.", basename);
+            gtk_dialog_run(GTK_DIALOG(ok));
+            gtk_widget_destroy(ok);
+        }
+        g_object_unref(fsrc);
+        g_object_unref(fdst);
+        g_free(dest_dir); g_free(dest);
+        g_free(basename); g_free(src);
+    }
+    gtk_widget_destroy(dlg);
+}
+
 static void cb_toggle_spellcheck(GtkCheckMenuItem *item, gpointer d)
 {
     (void)d;
@@ -2443,11 +2775,11 @@ static GtkWidget *build_menubar(GtkWindow *window, GApplication *app)
         GtkWidget *ocf_item = gtk_menu_item_new_with_label("Open Containing Folder");
         GtkWidget *ocf_menu = gtk_menu_new();
         gtk_menu_item_set_submenu(GTK_MENU_ITEM(ocf_item), ocf_menu);
-        APPEND(ocf_menu, nyi_item("Terminal"));
-        APPEND(ocf_menu, nyi_item("File Manager"));
+        APPEND(ocf_menu, menu_item("Terminal",     G_CALLBACK(cb_open_in_terminal),    NULL, NULL, 0, 0));
+        APPEND(ocf_menu, menu_item("File Manager", G_CALLBACK(cb_open_in_file_manager), NULL, NULL, 0, 0));
         APPEND(file, ocf_item);
     }
-    APPEND(file, nyi_item("Open in Default Viewer"));
+    APPEND(file, menu_item("Open in Default Viewer", G_CALLBACK(cb_open_in_default_viewer), NULL, NULL, 0, 0));
     APPEND(file, menu_item("Open Folder as Workspace…", G_CALLBACK(cb_open_folder_workspace), NULL, NULL, 0, 0));
     APPEND(file, sep_item());
     APPEND(file, menu_item(TM("cmd.reload", "Reload from Disk"), G_CALLBACK(cb_reload), NULL, NULL, 0, 0));
@@ -2466,12 +2798,12 @@ static GtkWidget *build_menubar(GtkWindow *window, GApplication *app)
         GtkWidget *cm_menu = gtk_menu_new();
         gtk_menu_item_set_submenu(GTK_MENU_ITEM(cm_item), cm_menu);
         APPEND(cm_menu, menu_item("Close All But Current",  G_CALLBACK(cb_close_all_but), NULL, NULL, 0, 0));
-        APPEND(cm_menu, nyi_item("Close All to the Left"));
-        APPEND(cm_menu, nyi_item("Close All to the Right"));
-        APPEND(cm_menu, nyi_item("Close All Unchanged"));
+        APPEND(cm_menu, menu_item("Close All to the Left",  G_CALLBACK(cb_close_left),      NULL, NULL, 0, 0));
+        APPEND(cm_menu, menu_item("Close All to the Right", G_CALLBACK(cb_close_right),     NULL, NULL, 0, 0));
+        APPEND(cm_menu, menu_item("Close All Unchanged",    G_CALLBACK(cb_close_unchanged), NULL, NULL, 0, 0));
         APPEND(file, cm_item);
     }
-    APPEND(file, nyi_item("Move to Trash"));
+    APPEND(file, menu_item("Move to Trash", G_CALLBACK(cb_move_to_trash), NULL, NULL, 0, 0));
     APPEND(file, sep_item());
     APPEND(file, menu_item("Load Session…", G_CALLBACK(cb_load_session), NULL, NULL, 0, 0));
     APPEND(file, menu_item("Save Session…", G_CALLBACK(cb_save_session), NULL, NULL, 0, 0));
@@ -2657,19 +2989,25 @@ static GtkWidget *build_menubar(GtkWindow *window, GApplication *app)
         GtkWidget *sel_item = gtk_menu_item_new_with_label("On Selection");
         GtkWidget *sel_menu = gtk_menu_new();
         gtk_menu_item_set_submenu(GTK_MENU_ITEM(sel_item), sel_menu);
-        APPEND(sel_menu, nyi_item("Open File"));
-        APPEND(sel_menu, nyi_item("Open Folder"));
+        APPEND(sel_menu, menu_item("Open File",   G_CALLBACK(cb_open_selected_file),   NULL, NULL, 0, 0));
+        APPEND(sel_menu, menu_item("Open Folder", G_CALLBACK(cb_open_selected_folder), NULL, NULL, 0, 0));
         APPEND(sel_menu, sep_item());
-        APPEND(sel_menu, nyi_item("Google Search"));
-        APPEND(sel_menu, nyi_item("Wikipedia Search"));
-        APPEND(sel_menu, nyi_item("Stack Overflow Search"));
+        APPEND(sel_menu, menu_item("Google Search",
+            G_CALLBACK(cb_web_search),
+            (gpointer)"https://www.google.com/search?q=%s", NULL, 0, 0));
+        APPEND(sel_menu, menu_item("Wikipedia Search",
+            G_CALLBACK(cb_web_search),
+            (gpointer)"https://en.wikipedia.org/w/index.php?search=%s", NULL, 0, 0));
+        APPEND(sel_menu, menu_item("Stack Overflow Search",
+            G_CALLBACK(cb_web_search),
+            (gpointer)"https://stackoverflow.com/search?q=%s", NULL, 0, 0));
         APPEND(edit, sel_item);
     }
     APPEND(edit, sep_item());
     APPEND(edit, nyi_item("Character Panel…"));
     APPEND(edit, sep_item());
-    APPEND(edit, nyi_item("Read-Only"));
-    APPEND(edit, nyi_item("Clear Read-Only Flag"));
+    APPEND(edit, menu_item("Read-Only",           G_CALLBACK(cb_set_readonly),   NULL, NULL, 0, 0));
+    APPEND(edit, menu_item("Clear Read-Only Flag", G_CALLBACK(cb_clear_readonly), NULL, NULL, 0, 0));
 
     /* ---- Search ---- */
     GtkWidget *search = submenu(bar, TM("menu.search", "_Search"));
@@ -2955,8 +3293,8 @@ static GtkWidget *build_menubar(GtkWindow *window, GApplication *app)
             g_signal_connect(aot, "toggled", G_CALLBACK(cb_always_on_top), NULL);
             APPEND(view, aot);
         }
-        APPEND(view, nyi_item("Text Direction RTL"));
-        APPEND(view, nyi_item("Text Direction LTR"));
+        APPEND(view, menu_item("Text Direction RTL", G_CALLBACK(cb_text_dir_rtl), NULL, NULL, 0, 0));
+        APPEND(view, menu_item("Text Direction LTR", G_CALLBACK(cb_text_dir_ltr), NULL, NULL, 0, 0));
     }
 
     /* ---- Language ---- */
@@ -3048,8 +3386,8 @@ static GtkWidget *build_menubar(GtkWindow *window, GApplication *app)
         GtkWidget *imp_item = gtk_menu_item_new_with_label("Import");
         GtkWidget *imp_menu = gtk_menu_new();
         gtk_menu_item_set_submenu(GTK_MENU_ITEM(imp_item), imp_menu);
-        APPEND(imp_menu, nyi_item("Import Plugin(s)…"));
-        APPEND(imp_menu, nyi_item("Import Style Themes(s)…"));
+        APPEND(imp_menu, menu_item("Import Plugin(s)…",       G_CALLBACK(cb_import_plugin), NULL, NULL, 0, 0));
+        APPEND(imp_menu, menu_item("Import Style Themes(s)…", G_CALLBACK(cb_import_theme),  NULL, NULL, 0, 0));
         APPEND(settings, imp_item);
     }
     APPEND(settings, sep_item());
@@ -3121,11 +3459,15 @@ static GtkWidget *build_menubar(GtkWindow *window, GApplication *app)
     /* ---- Help ---- */
     {
         GtkWidget *help = submenu(bar, TM("menu.help", "_Help"));
-        APPEND(help, nyi_item("About Notetux++…"));
-        APPEND(help, nyi_item("Debug Info…"));
+        APPEND(help, menu_item("About Notetux++…", G_CALLBACK(cb_about),      NULL, NULL, 0, 0));
+        APPEND(help, menu_item("Debug Info…",      G_CALLBACK(cb_debug_info), NULL, NULL, 0, 0));
         APPEND(help, sep_item());
-        APPEND(help, nyi_item("Project Home Page"));
-        APPEND(help, nyi_item("Online Documentation"));
+        APPEND(help, menu_item("Project Home Page",
+            G_CALLBACK(cb_open_url),
+            (gpointer)"https://github.com/notetux-plus-plus/notetux-plus-plus", NULL, 0, 0));
+        APPEND(help, menu_item("Online Documentation",
+            G_CALLBACK(cb_open_url),
+            (gpointer)"https://github.com/notetux-plus-plus/notetux-plus-plus/blob/main/README.md", NULL, 0, 0));
         APPEND(help, sep_item());
         APPEND(help, nyi_item("Check for Updates…"));
     }
