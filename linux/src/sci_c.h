@@ -148,6 +148,12 @@ typedef struct SCNotification {
 #define SCI_SETVSCROLLBAR       2280
 #define SCI_SETCARETWIDTH       2188
 #define SCI_SETREADONLY         2171
+#define SCI_GETREADONLY         2088
+#define SCI_GETSELTEXT          2161
+#define SCI_SETBIDIRECTIONAL    2709
+#define SC_BIDIRECTIONAL_DISABLED 0
+#define SC_BIDIRECTIONAL_L2R    1
+#define SC_BIDIRECTIONAL_R2L    2
 #define SCI_SETWRAPMODE         2268
 #define SC_WRAP_NONE            0
 #define SCI_SETLEXERLANGUAGE    4006
