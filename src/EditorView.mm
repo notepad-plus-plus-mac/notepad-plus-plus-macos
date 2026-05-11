@@ -16,6 +16,7 @@
 #import "ScintillaMessages.h"
 #include "SciLexer.h"
 #include <CommonCrypto/CommonDigest.h>
+#include <vector>
 
 NSNotificationName const EditorViewCursorDidMoveNotification = @"EditorViewCursorDidMoveNotification";
 NSNotificationName const EditorViewDidGainFocusNotification  = @"EditorViewDidGainFocusNotification";
@@ -644,6 +645,10 @@ static NSUInteger nppLargeFileThreshold(void) {
     // Tell change history that the just-loaded content IS the save baseline —
     // without this every line would show as orange immediately after file open.
     [_scintillaView message:SCI_SETSAVEPOINT];
+
+    // SCI_SETWORDCHARS is per-document; Phase 2 always swaps to a fresh doc
+    // on each load, so re-apply the user's word-char preference here (issue #42).
+    [self applyWordCharsFromDefaults];
 
     // Record mtime from the stat we already performed at the top of this method.
     _lastKnownModDate = attrs[NSFileModificationDate];
@@ -2128,6 +2133,67 @@ static int vkToScintillaKey(int vk) {
     // ── Disable text drag-drop ──
     // Note: SCI_SETMOUSEDWELLTIME can disable drag; we use a simpler approach
     // by not processing drag events when disabled (handled in Scintilla Cocoa)
+
+    // ── Delimiter pane / word-char list (issue #42) ──
+    // SCI_SETWORDCHARS is per-document; we also re-apply at the end of
+    // loadFileAtPath: so the new doc (post-Phase-2 always-swap) inherits the
+    // user's setting.
+    [self applyWordCharsFromDefaults];
+}
+
+// Cached at first read so subsequent loads don't have to round-trip through
+// Scintilla. Reads SCI_GETWORDCHARS from a fresh view (Scintilla's stock
+// default per-class table). Falls back to a known-good ASCII set if Scintilla
+// returns nothing — should never trigger but keeps us defensive.
+static NSString *nppDefaultWordChars(ScintillaView *sci) {
+    static NSString *cached = nil;
+    if (cached) return cached;
+    sptr_t len = [sci message:SCI_GETWORDCHARS wParam:0 lParam:0];
+    if (len > 0) {
+        char *buf = (char *)malloc((size_t)len + 1);
+        if (buf) {
+            [sci message:SCI_GETWORDCHARS wParam:0 lParam:(sptr_t)buf];
+            buf[len] = '\0';
+            cached = [[NSString alloc] initWithUTF8String:buf] ?:
+                @"abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789_";
+            free(buf);
+            return cached;
+        }
+    }
+    cached = @"abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789_";
+    return cached;
+}
+
+// Apply the effective word-char set to Scintilla, derived from kPrefWordChars*.
+// Use-default → restore Scintilla's stock list. Custom → stock + user chars not
+// already present (matches Windows addCustomWordChars de-duplication). Only
+// printable ASCII from kPrefWordCharsAdded is honored; SCI_SETWORDCHARS treats
+// the payload as a byte set, so non-ASCII bytes would be meaningless.
+- (void)applyWordCharsFromDefaults {
+    NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
+    ScintillaView *sci = _scintillaView;
+    NSString *defaultList = nppDefaultWordChars(sci);
+
+    if ([ud boolForKey:kPrefWordCharsUseDefault]) {
+        [sci message:SCI_SETWORDCHARS wParam:0 lParam:(sptr_t)defaultList.UTF8String];
+        return;
+    }
+
+    NSString *added = [ud stringForKey:kPrefWordCharsAdded] ?: @"";
+    if (added.length == 0) {
+        [sci message:SCI_SETWORDCHARS wParam:0 lParam:(sptr_t)defaultList.UTF8String];
+        return;
+    }
+
+    NSMutableString *combined = [defaultList mutableCopy];
+    for (NSUInteger i = 0; i < added.length; i++) {
+        unichar c = [added characterAtIndex:i];
+        if (c < 0x20 || c > 0x7E) continue;  // printable ASCII only
+        NSString *one = [NSString stringWithCharacters:&c length:1];
+        if ([defaultList rangeOfString:one].location == NSNotFound)
+            [combined appendString:one];
+    }
+    [sci message:SCI_SETWORDCHARS wParam:0 lParam:(sptr_t)combined.UTF8String];
 }
 
 - (void)_preferencesChanged:(NSNotification *)note {
@@ -3712,9 +3778,140 @@ static NSSet<NSString *> *_cLikeLanguages() {
                 }
             }
             break;
+        case SCN_DOUBLECLICK:
+            [self _handleDelimiterDoubleClick:notification];
+            break;
         default:
             break;
     }
+}
+
+// ⌘+double-click selection between configured Open / Close delimiters (issue
+// #42, "Delimiter selection settings"). Ported from Windows NppNotification.cpp
+// lines 218-369 with the following macOS adaptations:
+//   • Modifier check uses SCMOD_CTRL which ScintillaCocoa already maps from
+//     macOS Cmd (see ScintillaCocoa.mm TranslateModifierFlags). Plain
+//     double-click falls through and Scintilla performs native word select.
+//   • Entire-document mode uses SCI_GETCHARACTERPOINTER (zero-copy, matches
+//     Phase 2.5 save path). For multi-GB files this is essential — we cannot
+//     afford to SCI_GETTEXT a 2.78 GB buffer like the Windows code does.
+//     The pointer is invalidated by edits; we hold it only for the
+//     synchronous scan on the main thread, so no concurrency hazard.
+//   • Single-line mode allocates a per-line copy via SCI_GETLINE; bounded
+//     by line length, fine for typical source code.
+- (void)_handleDelimiterDoubleClick:(SCNotification *)notification {
+    if (notification->modifiers != SCMOD_CTRL) return;  // plain or other-mod double-click → Scintilla handles
+
+    NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
+    NSString *openS  = [ud stringForKey:kPrefDelimOpen]  ?: @"(";
+    NSString *closeS = [ud stringForKey:kPrefDelimClose] ?: @")";
+    if (openS.length == 0 || closeS.length == 0) return;
+
+    // Delimiter chars must be single-byte (ASCII). The prefs UI already clamps
+    // to one Unicode char, but a non-ASCII unichar would be multi-byte UTF-8 —
+    // matching it byte-by-byte against the doc would be wrong. Reject.
+    unichar openU  = [openS  characterAtIndex:0];
+    unichar closeU = [closeS characterAtIndex:0];
+    if (openU > 0x7E || closeU > 0x7E) return;
+    const char openCh  = (char)openU;
+    const char closeCh = (char)closeU;
+
+    BOOL entireDoc = [ud boolForKey:kPrefDelimEntireDoc];
+    ScintillaView *sci = _scintillaView;
+
+    // Click position. notification->position is -1 for empty-line click —
+    // fall back to current caret position (matches Windows lines 229-234).
+    sptr_t clickAbs = notification->position;
+    if (clickAbs < 0) clickAbs = [sci message:SCI_GETCURRENTPOS];
+    if (clickAbs < 0) return;
+
+    const char *buf = NULL;
+    sptr_t bufLen = 0;
+    sptr_t lineStart = 0;     // absolute byte offset of buf[0] in the document
+    sptr_t clickRel  = 0;     // click position relative to buf[0]
+    NSData *lineCopy = nil;   // retains the malloc'd line buffer in single-line mode
+
+    if (entireDoc) {
+        bufLen = [sci message:SCI_GETLENGTH];
+        if (bufLen <= 0) return;
+        buf = (const char *)[sci message:SCI_GETCHARACTERPOINTER];
+        if (!buf) return;
+        clickRel = clickAbs;
+    } else {
+        sptr_t line = [sci message:SCI_LINEFROMPOSITION wParam:(uptr_t)clickAbs];
+        sptr_t lineLen = [sci message:SCI_LINELENGTH wParam:(uptr_t)line];
+        if (lineLen <= 0) return;
+        char *tmp = (char *)malloc((size_t)lineLen + 1);
+        if (!tmp) return;
+        [sci message:SCI_GETLINE wParam:(uptr_t)line lParam:(sptr_t)tmp];
+        tmp[lineLen] = '\0';
+        lineCopy = [NSData dataWithBytesNoCopy:tmp length:(NSUInteger)lineLen freeWhenDone:YES];
+        buf = (const char *)lineCopy.bytes;
+        bufLen = lineLen;
+        lineStart = [sci message:SCI_POSITIONFROMLINE wParam:(uptr_t)line];
+        clickRel = clickAbs - lineStart;
+    }
+
+    if (clickRel < 0 || clickRel >= bufLen) return;
+
+    sptr_t leftmost = -1;
+    sptr_t rightmost = -1;
+
+    if (openCh == closeCh) {
+        // Same delimiter on both sides (e.g. "..."). Scan outward from the
+        // click; if the delimiter is " also respect backslash escapes.
+        for (sptr_t i = clickRel; i >= 0; --i) {
+            if (buf[i] == openCh) {
+                if (openCh == '"' && i > 0 && buf[i - 1] == '\\') continue;
+                leftmost = i;
+                break;
+            }
+        }
+        if (leftmost < 0) return;
+        for (sptr_t i = clickRel; i < bufLen; ++i) {
+            if (buf[i] == closeCh) {
+                if (closeCh == '"' && i > 0 && buf[i - 1] == '\\') continue;
+                rightmost = i;
+                break;
+            }
+        }
+    } else {
+        // Distinct pair like (). Stack-based matched-pair scan; pick the
+        // innermost matched pair that brackets the click position. Uses
+        // std::vector to avoid NSNumber boxing in deeply-nested files.
+        std::vector<sptr_t> opens;
+        opens.reserve(64);
+        for (sptr_t i = 0; i < bufLen; ++i) {
+            if (buf[i] == openCh) {
+                opens.push_back(i);
+            } else if (buf[i] == closeCh && !opens.empty()) {
+                sptr_t opener = opens.back();
+                opens.pop_back();
+                if (opener <= clickRel && i >= clickRel &&
+                    (leftmost < 0 || opener > leftmost)) {
+                    leftmost  = opener;
+                    rightmost = i;
+                }
+            }
+        }
+    }
+
+    if (leftmost < 0 || rightmost < 0) return;
+
+    // Selection covers content *between* the delimiters, exclusive of them
+    // (matches Windows lines 358-366).
+    //
+    // CRITICAL: use SCI_SETSEL, not SCI_SETANCHOR + SCI_SETCURRENTPOS. With
+    // Ctrl held (which on macOS = ⌘ after ScintillaCocoa's modifier swap),
+    // Scintilla's Editor.cxx:4806 SKIPS the SetEmptySelection call, so the
+    // word at the click position is ADDED as a second selection on top of
+    // whatever was previously selected. SCI_SETANCHOR/SCI_SETCURRENTPOS only
+    // mutate the main selection without clearing the others — Cmd+C would
+    // then copy both and concatenate with newlines (selN=2, "X\nhello world").
+    // SCI_SETSEL clears any multi-selection and sets a single stream range.
+    sptr_t anchor  = lineStart + leftmost + 1;
+    sptr_t current = lineStart + rightmost;
+    [sci message:SCI_SETSEL wParam:(uptr_t)anchor lParam:(sptr_t)current];
 }
 
 // ─────────────────────────────────────────────────────────────────────────────

@@ -74,6 +74,17 @@ extern NSString *const kPrefInSelThreshold;      // NSInteger, default 1024
 extern NSString *const kPrefFuncListUseXML;      // BOOL, default YES — use XML parsers vs hardcoded regex
 extern NSString *const kPrefToolbarIconScale;    // double, 0.50/0.75/0.90/1.00/1.25/1.50, default 1.0 — restart required
 
+// Delimiter pane (issue #42) — two independent features sharing one prefs page,
+// mirroring Windows NPP. (1) "Word character list" extends Scintilla's word
+// set so double-click selects e.g. an IP address as a whole. (2) "Delimiter
+// selection settings" lets ⌘+double-click select text between configured
+// open/close characters (single line, or entire document if AllowSeveralLines).
+extern NSString *const kPrefWordCharsUseDefault; // BOOL, default YES
+extern NSString *const kPrefWordCharsAdded;      // NSString, default @"" — ASCII chars added to word set
+extern NSString *const kPrefDelimOpen;           // NSString, single char, default @"("
+extern NSString *const kPrefDelimClose;          // NSString, single char, default @")"
+extern NSString *const kPrefDelimEntireDoc;      // BOOL, default NO — Allow on several lines
+
 // Performance / Large File Restriction (Phase 1 of huge-file support).
 // Mirrors the Windows NPP "Performance" preferences pane. When a file size
 // crosses kPrefLargeFileSizeMB AND kPrefLargeFileEnabled is YES, the editor

@@ -64,6 +64,13 @@ NSString *const kPrefInSelThreshold      = @"inSelThreshold";
 NSString *const kPrefFuncListUseXML      = @"funcListUseXML";
 NSString *const kPrefToolbarIconScale    = @"toolbarIconScale";
 
+// Delimiter pane (issue #42)
+NSString *const kPrefWordCharsUseDefault = @"wordCharsUseDefault";
+NSString *const kPrefWordCharsAdded      = @"wordCharsAdded";
+NSString *const kPrefDelimOpen           = @"delimOpen";
+NSString *const kPrefDelimClose          = @"delimClose";
+NSString *const kPrefDelimEntireDoc      = @"delimEntireDoc";
+
 // Performance / Large File Restriction (issue #75-style; mirrors Windows NPP)
 NSString *const kPrefLargeFileEnabled            = @"largeFileEnabled";
 NSString *const kPrefLargeFileSizeMB             = @"largeFileSizeMB";
@@ -112,6 +119,7 @@ NSString *const kPrefStyleFontSize      = @"styleFontSize";
     NSArray<NSString *>  *_indentLangNames;    // Indentation page — "[Default]" + language display names
     NSDictionary<NSString *, NSString *> *_indentDisplayToInternal; // "Python" → "python"
     NSString             *_indentSelectedLang; // currently selected internal lang name (nil = [Default])
+    NSTextField          *_delimWordCharsField; // Delimiter page — toggled enabled by radio
 }
 
 + (void)load {
@@ -194,6 +202,12 @@ NSString *const kPrefStyleFontSize      = @"styleFontSize";
         kPrefLargeFileAllowBraceMatch:    @NO,
         kPrefLargeFileAllowURLClick:      @NO,
         kPrefLargeFileSuppress2GBWarning: @YES,
+        // Delimiter pane (issue #42)
+        kPrefWordCharsUseDefault:         @YES,
+        kPrefWordCharsAdded:              @"",
+        kPrefDelimOpen:                   @"(",
+        kPrefDelimClose:                  @")",
+        kPrefDelimEntireDoc:              @NO,
     }];
     // Force-upgrade any stale @NO value stored by earlier builds.
     NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
@@ -255,6 +269,7 @@ NSString *const kPrefStyleFontSize      = @"styleFontSize";
         [loc translate:@"Backup"],
         [loc translate:@"Auto-Completion"],
         [loc translate:@"Searching"],
+        [loc translate:@"Delimiter"],
         [loc translate:@"Performance"],
         [loc translate:@"MISC."],
     ]];
@@ -303,6 +318,7 @@ NSString *const kPrefStyleFontSize      = @"styleFontSize";
         [[NppLocalizer shared] translate:@"Backup"],
         [[NppLocalizer shared] translate:@"Auto-Completion"],
         [[NppLocalizer shared] translate:@"Searching"],
+        [[NppLocalizer shared] translate:@"Delimiter"],
         [[NppLocalizer shared] translate:@"Performance"],
         [[NppLocalizer shared] translate:@"MISC."],
     ]];
@@ -534,6 +550,7 @@ NSString *const kPrefStyleFontSize      = @"styleFontSize";
     if ([name isEqualToString:[loc translate:@"Backup"]])           return [self _buildBackupPage];
     if ([name isEqualToString:[loc translate:@"Auto-Completion"]])  return [self _buildAutoCompletionPage];
     if ([name isEqualToString:[loc translate:@"Searching"]])        return [self _buildSearchingPage];
+    if ([name isEqualToString:[loc translate:@"Delimiter"]])        return [self _buildDelimiterPage];
     if ([name isEqualToString:[loc translate:@"Performance"]])      return [self _buildPerformancePage];
     if ([name isEqualToString:[loc translate:@"MISC."]])            return [self _buildMiscPage];
     return nil;
@@ -1480,6 +1497,124 @@ static NSDictionary<NSString *, NSString *> *_langDisplayNames() {
     return v;
 }
 
+#pragma mark - Delimiter Page
+
+// Mirrors Windows NPP "Delimiter" pane (issue #42). Two independent features
+// share this page in the Windows UI; we preserve that grouping.
+//   • Word character list — extends Scintilla's word set so double-click
+//     selects e.g. "192.168.1.1" as a whole (when "." is in the added chars).
+//   • Delimiter selection settings — ⌘+double-click selects everything
+//     between configured Open / Close characters. Single line by default;
+//     "Allow on several lines" expands to entire-document scan.
+//
+// macOS modifier note: ScintillaCocoa's TranslateModifierFlags swaps Cmd↔Ctrl
+// so the Windows code path (modifiers == SCMOD_CTRL) actually triggers on
+// ⌘ on this platform. The Preferences label reflects that.
+- (NSView *)_buildDelimiterPage {
+    NSView *v = [[NSView alloc] init];
+    NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
+    NppLocalizer *loc = [NppLocalizer shared];
+    CGFloat y = 380;
+
+    // ── Word character list ───────────────────────────────────────────────────
+    NSTextField *wclHeader = [NSTextField labelWithString:[loc translate:@"Word character list"]];
+    wclHeader.frame = NSMakeRect(20, y, 400, 20);
+    wclHeader.font = [NSFont boldSystemFontOfSize:13];
+    [v addSubview:wclHeader];
+    y -= 30;
+
+    BOOL useDefault = [ud boolForKey:kPrefWordCharsUseDefault];
+
+    NSButton *radioDefault = [NSButton radioButtonWithTitle:
+        [loc translate:@"Use default Word character list as it is"]
+                                                    target:self action:@selector(prefChanged:)];
+    radioDefault.frame = NSMakeRect(40, y, 460, 20);
+    radioDefault.state = useDefault ? NSControlStateValueOn : NSControlStateValueOff;
+    radioDefault.tag = 1500;
+    [v addSubview:radioDefault];
+    y -= 26;
+
+    NSButton *radioCustom = [NSButton radioButtonWithTitle:
+        [loc translate:@"Add your character as part of word"]
+                                                   target:self action:@selector(prefChanged:)];
+    radioCustom.frame = NSMakeRect(40, y, 460, 20);
+    radioCustom.state = useDefault ? NSControlStateValueOff : NSControlStateValueOn;
+    radioCustom.tag = 1501;
+    [v addSubview:radioCustom];
+    y -= 22;
+
+    NSTextField *radioHint = [NSTextField labelWithString:
+        [loc translate:@"(don't choose it unless you know what you're doing)"]];
+    radioHint.frame = NSMakeRect(58, y, 460, 16);
+    radioHint.font = [NSFont systemFontOfSize:10];
+    radioHint.textColor = [NSColor secondaryLabelColor];
+    [v addSubview:radioHint];
+    y -= 24;
+
+    NSTextField *charsField = [[NSTextField alloc]
+        initWithFrame:NSMakeRect(58, y - 2, 420, 22)];
+    charsField.stringValue = [ud stringForKey:kPrefWordCharsAdded] ?: @"";
+    charsField.placeholderString = @"e.g. .$%-";
+    charsField.tag = 1502;
+    charsField.target = self;
+    charsField.action = @selector(prefChanged:);
+    charsField.enabled = !useDefault;
+    [v addSubview:charsField];
+    _delimWordCharsField = charsField;  // cached for the radio toggle to re-enable
+    y -= 42;
+
+    // ── Delimiter selection settings ──────────────────────────────────────────
+    NSTextField *delHeader = [NSTextField labelWithString:
+        [loc translate:@"Delimiter selection settings (⌘ + Mouse double click)"]];
+    delHeader.frame = NSMakeRect(20, y, 460, 20);
+    delHeader.font = [NSFont boldSystemFontOfSize:13];
+    [v addSubview:delHeader];
+    y -= 32;
+
+    // Inline row: "Open"  [(]  bla bla bla bla bla  [)]  "Close"
+    NSTextField *openLabel = [NSTextField labelWithString:[loc translate:@"Open"]];
+    openLabel.frame = NSMakeRect(40, y, 50, 20);
+    [v addSubview:openLabel];
+
+    NSTextField *openerField = [[NSTextField alloc]
+        initWithFrame:NSMakeRect(85, y - 2, 32, 22)];
+    openerField.stringValue = [ud stringForKey:kPrefDelimOpen] ?: @"(";
+    openerField.alignment = NSTextAlignmentCenter;
+    openerField.tag = 1503;
+    openerField.target = self;
+    openerField.action = @selector(prefChanged:);
+    [v addSubview:openerField];
+
+    NSTextField *previewLabel = [NSTextField labelWithString:@"bla bla bla bla bla"];
+    previewLabel.frame = NSMakeRect(125, y, 130, 20);
+    previewLabel.textColor = [NSColor secondaryLabelColor];
+    [v addSubview:previewLabel];
+
+    NSTextField *closerField = [[NSTextField alloc]
+        initWithFrame:NSMakeRect(260, y - 2, 32, 22)];
+    closerField.stringValue = [ud stringForKey:kPrefDelimClose] ?: @")";
+    closerField.alignment = NSTextAlignmentCenter;
+    closerField.tag = 1504;
+    closerField.target = self;
+    closerField.action = @selector(prefChanged:);
+    [v addSubview:closerField];
+
+    NSTextField *closeLabel = [NSTextField labelWithString:[loc translate:@"Close"]];
+    closeLabel.frame = NSMakeRect(300, y, 50, 20);
+    [v addSubview:closeLabel];
+    y -= 36;
+
+    NSButton *allowMulti = [NSButton checkboxWithTitle:
+        [loc translate:@"Allow on several lines"]
+                                                target:self action:@selector(prefChanged:)];
+    allowMulti.frame = NSMakeRect(40, y, 300, 20);
+    allowMulti.state = [ud boolForKey:kPrefDelimEntireDoc] ? NSControlStateValueOn : NSControlStateValueOff;
+    allowMulti.tag = 1505;
+    [v addSubview:allowMulti];
+
+    return v;
+}
+
 #pragma mark - MISC. Page
 
 - (NSView *)_buildMiscPage {
@@ -1690,6 +1825,44 @@ static NSDictionary<NSString *, NSString *> *_langDisplayNames() {
         }
         // Indentation
         case 1303: [ud setBool:[(NSButton *)sender state] == NSControlStateValueOn forKey:kPrefBackspaceUnindent]; break;
+        // Delimiter pane (issue #42) — 1500-1505
+        case 1500: {  // "Use default" radio
+            [ud setBool:YES forKey:kPrefWordCharsUseDefault];
+            // Pair: deselect the other radio + disable the custom-chars field
+            NSView *page = [(NSButton *)sender superview];
+            NSButton *other = [page viewWithTag:1501];
+            other.state = NSControlStateValueOff;
+            _delimWordCharsField.enabled = NO;
+            break;
+        }
+        case 1501: {  // "Add your character" radio
+            [ud setBool:NO forKey:kPrefWordCharsUseDefault];
+            NSView *page = [(NSButton *)sender superview];
+            NSButton *other = [page viewWithTag:1500];
+            other.state = NSControlStateValueOff;
+            _delimWordCharsField.enabled = YES;
+            break;
+        }
+        case 1502:    // Custom word chars text field
+            [ud setObject:[(NSTextField *)sender stringValue] forKey:kPrefWordCharsAdded];
+            break;
+        case 1503: {  // Open delimiter — clamp to 1 char
+            NSString *s = [(NSTextField *)sender stringValue];
+            NSString *one = s.length > 0 ? [s substringToIndex:1] : @"(";
+            [ud setObject:one forKey:kPrefDelimOpen];
+            [(NSTextField *)sender setStringValue:one]; // reflect clamp in UI
+            break;
+        }
+        case 1504: {  // Close delimiter — clamp to 1 char
+            NSString *s = [(NSTextField *)sender stringValue];
+            NSString *one = s.length > 0 ? [s substringToIndex:1] : @")";
+            [ud setObject:one forKey:kPrefDelimClose];
+            [(NSTextField *)sender setStringValue:one];
+            break;
+        }
+        case 1505:    // Allow on several lines
+            [ud setBool:[(NSButton *)sender state] == NSControlStateValueOn forKey:kPrefDelimEntireDoc];
+            break;
     }
 
     [[NSNotificationCenter defaultCenter] postNotificationName:@"NPPPreferencesChanged" object:nil];
