@@ -104,9 +104,28 @@ static NSDictionary<NSString *, NSString *> *toolbarIconMapping(void) {
         case NppDarkModeDark:  _cachedIsDark = YES; break;
         case NppDarkModeAuto:
         default: {
-            NSAppearanceName name = [NSApp.effectiveAppearance
-                bestMatchFromAppearancesWithNames:@[NSAppearanceNameAqua, NSAppearanceNameDarkAqua]];
-            _cachedIsDark = [name isEqualToString:NSAppearanceNameDarkAqua];
+            // Read the system's AppleInterfaceStyle global preference directly
+            // via CFPreferences instead of NSApp.effectiveAppearance.
+            //
+            // NSApp.effectiveAppearance is unreliable at first call from
+            // applicationDidFinishLaunching: — it returns Aqua (Light) until
+            // the first runloop tick has propagated the system appearance,
+            // even when the user has macOS in Dark mode. That made the very
+            // first read of statusBarBackground.CGColor bake the light value
+            // into the status bar / FindReplace / IncrementalSearch layers,
+            // and the bar stayed light for the whole session (the
+            // NPPDarkModeChangedNotification path that re-applies the CGColor
+            // only fires on explicit pref change). Toggling Prefs Light↔Dark
+            // and back masked the bug because by then NSApp was caught up.
+            //
+            // Reading the global "Apple Global Domain" pref directly is the
+            // canonical source of truth and is correct immediately at launch.
+            // Value is "Dark" when dark mode is enabled; missing / absent
+            // means Light.
+            CFPropertyListRef style = CFPreferencesCopyAppValue(
+                CFSTR("AppleInterfaceStyle"), kCFPreferencesAnyApplication);
+            NSString *styleStr = style ? (__bridge_transfer NSString *)style : nil;
+            _cachedIsDark = [styleStr isEqualToString:@"Dark"];
             break;
         }
     }
@@ -237,8 +256,18 @@ static NSDictionary<NSString *, NSString *> *toolbarIconMapping(void) {
 }
 
 - (NSColor *)statusBarBackground {
+    // Static RGB literals in both branches. The light branch previously
+    // returned [NSColor windowBackgroundColor] — a semantic dynamic color —
+    // and the callsites cache its .CGColor on a CALayer (status bar +
+    // FindReplacePanel + IncrementalSearchBar). CGColor resolution happens
+    // against the current drawing appearance, NOT against NSApp.appearance,
+    // so when macOS is in Dark mode but the user has chosen Light mode in
+    // Notepad++, the dark variant of windowBackgroundColor was baked into
+    // the layer at view-creation time. Static RGB makes the resolution
+    // deterministic and matches the existing pattern in tabBarBackground.
+    // 0xECECEC ≈ stock macOS Aqua window chrome shade.
     return _cachedIsDark ? [NSColor colorWithWhite:0.18 alpha:1]
-                         : [NSColor windowBackgroundColor];
+                         : [NSColor colorWithRed:0xEC/255.0 green:0xEC/255.0 blue:0xEC/255.0 alpha:1];
 }
 
 // ── Icon Paths ───────────────────────────────────────────────────────────────
