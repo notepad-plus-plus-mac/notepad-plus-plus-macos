@@ -485,7 +485,15 @@ static sptr_t _srSciColor(NSColor *c) {
         suffix];
 
     sptr_t startPos = [_sci message:SCI_GETLENGTH];
-    [_sci message:SCI_APPENDTEXT wParam:header.length lParam:(sptr_t)header.UTF8String];
+    // SCI_APPENDTEXT wParam is the UTF-8 BYTE count, not the NSString character
+    // count. For non-ASCII content these differ (Punjabi/Cyrillic/CJK etc.), and
+    // passing .length truncates the buffer mid-byte — Scintilla drops the
+    // trailing newline, the next APPENDTEXT concatenates inline, and the
+    // results view looks "scrambled" (issue #46). lengthOfBytesUsingEncoding:
+    // returns the exact UTF-8 byte count and is correct for any string.
+    [_sci message:SCI_APPENDTEXT
+                 wParam:[header lengthOfBytesUsingEncoding:NSUTF8StringEncoding]
+                 lParam:(sptr_t)header.UTF8String];
 
     // Add line info for search header
     _SRLineInfo headerInfo = {};
@@ -502,7 +510,10 @@ static sptr_t _srSciColor(NSColor *c) {
             fileRes.filePath,
             (long)fileRes.results.count,
             fileRes.results.count == 1 ? @"" : @"s"];
-        [_sci message:SCI_APPENDTEXT wParam:fileHeader.length lParam:(sptr_t)fileHeader.UTF8String];
+        // wParam = UTF-8 byte count, not character count — see issue #46 note above.
+        [_sci message:SCI_APPENDTEXT
+                     wParam:[fileHeader lengthOfBytesUsingEncoding:NSUTF8StringEncoding]
+                     lParam:(sptr_t)fileHeader.UTF8String];
 
         _SRLineInfo fileInfo = {};
         fileInfo.filePath = fileRes.filePath.UTF8String ?: "";
@@ -539,7 +550,10 @@ static sptr_t _srSciColor(NSColor *c) {
             }
             _markingLines.push_back(marking);
 
-            [_sci message:SCI_APPENDTEXT wParam:resultLine.length lParam:(sptr_t)resultLine.UTF8String];
+            // wParam = UTF-8 byte count, not character count — see issue #46 note above.
+            [_sci message:SCI_APPENDTEXT
+                         wParam:[resultLine lengthOfBytesUsingEncoding:NSUTF8StringEncoding]
+                         lParam:(sptr_t)resultLine.UTF8String];
 
             _SRLineInfo lineInfo = {};
             lineInfo.filePath = r.filePath.UTF8String ?: "";
