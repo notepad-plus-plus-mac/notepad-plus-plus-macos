@@ -113,7 +113,11 @@
         lang.commentStart = [self _attrValue:@"commentStart" from:tagStr] ?: @"";
         lang.commentEnd = [self _attrValue:@"commentEnd" from:tagStr] ?: @"";
 
-        // Decode XML entities in comment delimiters
+        // Decode XML entities in comment delimiters. commentLine carries the
+        // same entity-encoded payloads (e.g. VB stores commentLine="&apos;");
+        // skipping it here caused "Toggle Single Line Comment" to insert the
+        // literal string "&apos;" instead of the apostrophe.
+        lang.commentLine = [self _decodeEntities:lang.commentLine];
         lang.commentStart = [self _decodeEntities:lang.commentStart];
         lang.commentEnd = [self _decodeEntities:lang.commentEnd];
 
