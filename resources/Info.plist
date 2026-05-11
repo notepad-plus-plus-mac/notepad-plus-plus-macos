@@ -4,21 +4,21 @@
 <plist version="1.0">
 <dict>
     <key>CFBundleName</key>
-    <string>Notepad++</string>
+    <string>Nextpad++</string>
     <key>CFBundleDisplayName</key>
-    <string>Notepad++</string>
+    <string>Nextpad++</string>
     <key>CFBundleIdentifier</key>
-    <string>org.notepadplusplus.mac</string>
+    <string>org.nextpadplusplus.mac</string>
     <key>CFBundleVersion</key>
-    <string>1.0.5</string>
+    <string>1.0.6</string>
     <key>CFBundleShortVersionString</key>
-    <string>1.0.5</string>
+    <string>1.0.6</string>
     <key>CFBundlePackageType</key>
     <string>APPL</string>
     <key>CFBundleSignature</key>
     <string>????</string>
     <key>CFBundleExecutable</key>
-    <string>Notepad++</string>
+    <string>Nextpad++</string>
     <key>NSPrincipalClass</key>
     <string>NppApplication</string>
     <key>CFBundleIconFile</key>
@@ -30,21 +30,21 @@
     <key>NSSupportsAutomaticGraphicsSwitching</key>
     <true/>
     <key>NSDownloadsFolderUsageDescription</key>
-    <string>Notepad++ needs access to open and edit files in Downloads.</string>
+    <string>Nextpad++ needs access to open and edit files in Downloads.</string>
     <key>NSDesktopFolderUsageDescription</key>
-    <string>Notepad++ needs access to open and edit files on Desktop.</string>
+    <string>Nextpad++ needs access to open and edit files on Desktop.</string>
     <key>NSDocumentsFolderUsageDescription</key>
-    <string>Notepad++ needs access to open and edit files in Documents.</string>
+    <string>Nextpad++ needs access to open and edit files in Documents.</string>
     <key>NSRemovableVolumesUsageDescription</key>
-    <string>Notepad++ needs access to open and edit files on external drives.</string>
+    <string>Nextpad++ needs access to open and edit files on external drives.</string>
     <!-- File-type associations.
          LSHandlerRank=Alternate means we appear in right-click → Open With…
          submenu but never automatically take over a file type a user already
-         has a default for. Bumping to Default in v1.0.7 will turn on Notepad++
+         has a default for. Bumping to Default in v1.0.7 will turn on Nextpad++
          doc-icon overlay (CotEditor pattern) — see the rebrand notes.
          TypeScript (.ts) is intentionally OMITTED: Apple's UTI for it is
          public.mpeg-2-transport-stream (a video format), so listing it would
-         advertise Notepad++ as a video opener.
+         advertise Nextpad++ as a video opener.
     -->
     <key>CFBundleDocumentTypes</key>
     <array>

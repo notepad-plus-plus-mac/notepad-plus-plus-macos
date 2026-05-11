@@ -181,7 +181,7 @@ add_custom_command(TARGET NotepadPlusPlusMac POST_BUILD
     COMMENT "Copying stylers.model.xml into bundle")
 
 # DMG installer background: bundled inside the app so the release DMG can
-# point Finder at Notepad++.app:Contents:Resources:dmg-background.tiff
+# point Finder at Nextpad++.app:Contents:Resources:dmg-background.tiff
 # without needing a visible .background/ folder in the DMG root.
 add_custom_command(TARGET NotepadPlusPlusMac POST_BUILD
     COMMAND ${CMAKE_COMMAND} -E copy_if_different
@@ -204,7 +204,7 @@ add_custom_command(TARGET NotepadPlusPlusMac POST_BUILD
 # Bundle localization XML files (Windows NPP format, unmodified).
 # These live in resources/localization/ inside this repo.
 # Users can also drop additional XML files into
-#   ~/Library/Application Support/Notepad++/localization/
+#   ~/Library/Application Support/Nextpad++/localization/
 # to add languages without touching the app bundle.
 add_custom_command(TARGET NotepadPlusPlusMac POST_BUILD
     COMMAND ${CMAKE_COMMAND} -E copy_directory
@@ -226,28 +226,28 @@ add_custom_command(TARGET NotepadPlusPlusMac POST_BUILD
         "$<TARGET_BUNDLE_DIR:NotepadPlusPlusMac>/Contents/Resources/userDefineLangs"
     COMMENT "Copying pre-installed UDL files into bundle")
 
-# Default shortcuts.xml (copied to ~/.notepad++/ on first run if missing)
+# Default shortcuts.xml (copied to ~/.nextpad++/ on first run if missing)
 add_custom_command(TARGET NotepadPlusPlusMac POST_BUILD
     COMMAND ${CMAKE_COMMAND} -E copy_if_different
         "${CMAKE_SOURCE_DIR}/resources/shortcuts.xml"
         "$<TARGET_BUNDLE_DIR:NotepadPlusPlusMac>/Contents/Resources/shortcuts.xml"
     COMMENT "Copying default shortcuts.xml into bundle")
 
-# Default tabContextMenu.xml (copied to ~/.notepad++/ on first run)
+# Default tabContextMenu.xml (copied to ~/.nextpad++/ on first run)
 add_custom_command(TARGET NotepadPlusPlusMac POST_BUILD
     COMMAND ${CMAKE_COMMAND} -E copy_if_different
         "${CMAKE_SOURCE_DIR}/resources/tabContextMenu.xml"
         "$<TARGET_BUNDLE_DIR:NotepadPlusPlusMac>/Contents/Resources/tabContextMenu.xml"
     COMMENT "Copying default tabContextMenu.xml into bundle")
 
-# Default contextMenu.xml (copied to ~/.notepad++/ on first run)
+# Default contextMenu.xml (copied to ~/.nextpad++/ on first run)
 add_custom_command(TARGET NotepadPlusPlusMac POST_BUILD
     COMMAND ${CMAKE_COMMAND} -E copy_if_different
         "${CMAKE_SOURCE_DIR}/resources/contextMenu.xml"
         "$<TARGET_BUNDLE_DIR:NotepadPlusPlusMac>/Contents/Resources/contextMenu.xml"
     COMMENT "Copying default contextMenu.xml into bundle")
 
-# Default toolbarButtonsConf.xml (copied as _example to ~/.notepad++/ on first run)
+# Default toolbarButtonsConf.xml (copied as _example to ~/.nextpad++/ on first run)
 add_custom_command(TARGET NotepadPlusPlusMac POST_BUILD
     COMMAND ${CMAKE_COMMAND} -E copy_if_different
         "${CMAKE_SOURCE_DIR}/resources/toolbarButtonsConf.xml"
@@ -428,12 +428,12 @@ add_custom_command(TARGET NotepadPlusPlusMac POST_BUILD
     COMMENT "Ad-hoc code signing the app bundle")
 
 set_target_properties(NotepadPlusPlusMac PROPERTIES
-    OUTPUT_NAME "Notepad++"
+    OUTPUT_NAME "Nextpad++"
     MACOSX_BUNDLE_INFO_PLIST "${CMAKE_SOURCE_DIR}/resources/Info.plist"
-    MACOSX_BUNDLE_BUNDLE_NAME "Notepad++"
-    MACOSX_BUNDLE_GUI_IDENTIFIER "org.notepadplusplus.mac"
-    MACOSX_BUNDLE_BUNDLE_VERSION "1.0.5"
-    MACOSX_BUNDLE_SHORT_VERSION_STRING "1.0.5"
+    MACOSX_BUNDLE_BUNDLE_NAME "Nextpad++"
+    MACOSX_BUNDLE_GUI_IDENTIFIER "org.nextpadplusplus.mac"
+    MACOSX_BUNDLE_BUNDLE_VERSION "1.0.6"
+    MACOSX_BUNDLE_SHORT_VERSION_STRING "1.0.6"
 )
 
 target_include_directories(NotepadPlusPlusMac PRIVATE
