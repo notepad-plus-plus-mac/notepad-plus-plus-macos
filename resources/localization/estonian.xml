@@ -282,7 +282,7 @@ https://github.com/AndresTraks/
 					<Item id="46001" name="Stiilide seadistamine..."/>
 					<Item id="46250" name="Defineeri enda keel..."/>
 					<Item id="46180" name="Kasutaja määratud"/>
-					<Item id="47000" name="Teave Notepad++-i kohta..."/>
+					<Item id="47000" name="Teave Nextpad++-i kohta..."/>
 					<Item id="47010" name="Käsurea parameetrid..."/>
 					<Item id="47001" name="Veebisait"/>
 					<Item id="47002" name="Projekti leht"/>
@@ -290,7 +290,7 @@ https://github.com/AndresTraks/
 					<Item id="47004" name="Kogukond (foorum)"/>
 					<Item id="47012" name="Silumisinfo..."/>
 					<Item id="47005" name="Leia veel pluginaid"/>
-					<Item id="47006" name="Värskenda Notepad++-i"/>
+					<Item id="47006" name="Värskenda Nextpad++-i"/>
 					<Item id="47009" name="Seadista proksiserver värskendamiseks..."/>
 					<Item id="48005" name="Pluginate importimine..."/>
 					<Item id="48006" name="Kujunduste importimine..."/>
@@ -812,10 +812,10 @@ https://github.com/AndresTraks/
 
 				<MultiInstance title="Mitu protsessi">
 					<Item id="6151" name="Mitme protsessi sätted"/>
-					<Item id="6152" name="Ava sessioon uues Notepad++-i protsessis"/>
+					<Item id="6152" name="Ava sessioon uues Nextpad++-i protsessis"/>
 					<Item id="6153" name="Luba alati mitu protsessi"/>
 					<Item id="6154" name="Vaikeväärtus (üks protsess)"/>
-					<Item id="6155" name="* Selle sätte muutmine nõuab Notepad++-i taaskäivitamist"/>
+					<Item id="6155" name="* Selle sätte muutmine nõuab Nextpad++-i taaskäivitamist"/>
 				</MultiInstance>
 
 				<Delimiter title="Eraldaja">
@@ -854,7 +854,7 @@ https://github.com/AndresTraks/
 					<Item id="6319" name="Luba avamine"/>
 					<Item id="6320" name="Ära kriipsuta alla"/>
 					<Item id="6322" name="Sessiooni faili laiend:"/>
-					<Item id="6323" name="Luba Notepad++-i automaatne värskendamine"/>
+					<Item id="6323" name="Luba Nextpad++-i automaatne värskendamine"/>
 					<Item id="6324" name="Dokumentide vahel liikumine (Ctrl+Tabeldusklahv)"/>
 					<Item id="6331" name="Näita tiitliribal ainult failinime"/>
 					<Item id="6334" name="Tuvasta teksti kodeering automaatselt"/>
@@ -1000,7 +1000,7 @@ https://github.com/AndresTraks/
 				<Item id="90104" name="Laadi uuesti kettalt"/>
 				<Item id="90105" name="Muuda otsingumootorit"/>
 				<Item id="90106" name="Käivitusviga"/>
-				<Item id="90107" name="Notepad++ laadimisaeg"/>
+				<Item id="90107" name="Nextpad++ laadimisaeg"/>
 				<Item id="90108" name="Värskendusi ei saa kontrollida"/>
 				<Item id="90109" name="Olete kursis"/>
 				<Item id="90110" name="Laadi alla"/>
@@ -1086,7 +1086,7 @@ https://github.com/AndresTraks/
 				<Item id="90189" name="Windows (CRLF)"/>
 				<Item id="90190" name="Mac (CR)"/>
 				<Item id="90191" name="Pluginate loendi hoidla"/>
-				<Item id="90192" name="Valige Notepad++ teema XML-fail, mida rakendada"/>
+				<Item id="90192" name="Valige Nextpad++ teema XML-fail, mida rakendada"/>
 				<Item id="90193" name="Loo uus\u2026"/>
 				<Item id="90194" name="Salvesta kui\u2026"/>
 				<Item id="90195" name="Kasutaja keel:"/>
@@ -1099,7 +1099,7 @@ https://github.com/AndresTraks/
 				<Item id="90202" name="Kehtetu vahemik"/>
 				<Item id="90203" name="Vahemiku väärtused peavad olema 0–255 ja algus peab olema &lt;= lõpp."/>
 				<Item id="90204" name="contextMenu.xml ei leitud"/>
-				<Item id="90205" name="Taaskäivitage Notepad++, et taastada vaikekontekstMenu.xml."/>
+				<Item id="90205" name="Taaskäivitage Nextpad++, et taastada vaikekontekstMenu.xml."/>
 				<Item id="90206" name="Failis on salvestamata muudatusi.Uue kodeeringuga uuesti laadimine tühistab need.Kas jätkata?"/>
 				<Item id="90207" name="Serverilt pole vastust."/>
 				<Item id="90208" name="Server tagastas oleku"/>
@@ -1121,15 +1121,15 @@ https://github.com/AndresTraks/
 			</MacStrings>
 		</Dialog>
 		<MessageBox>
-			<ContextMenuXmlEditWarning title="Kontekstimenüü redigeerimine" message="Faili contextMenu.xml kaudu saab muuta Notepad++-i kontekstimenüü kirjeid.
-Pärast faili salvestamist tuleb muudatuste rakendamiseks Notepad++ uuesti käivitada."/>
-			<NppHelpAbsentWarning title="Faili pole olemas" message="\rei eksisteeri. Palun laadi see alla Notepad++-i veebisaidilt."/>
+			<ContextMenuXmlEditWarning title="Kontekstimenüü redigeerimine" message="Faili contextMenu.xml kaudu saab muuta Nextpad++-i kontekstimenüü kirjeid.
+Pärast faili salvestamist tuleb muudatuste rakendamiseks Nextpad++ uuesti käivitada."/>
+			<NppHelpAbsentWarning title="Faili pole olemas" message="\rei eksisteeri. Palun laadi see alla Nextpad++-i veebisaidilt."/>
 			<SaveCurrentModifWarning title="Salvesta praegune muudatus" message="Praegune muudatus tuleks salvestada.\rKõiki salvestatud muudatusi ei saa tagasi võtta.\r\rKas soovid jätkata?"/>
 			<LoseUndoAbilityWarning title="Tagasi võtmise võimalus kaob" message="Praegune muudatus tuleks salvestada.\rKõiki salvestatud muudatusi ei saa tagasi võtta.\r\rKas soovid jätkata?"/>
-			<CannotMoveDoc title="Uude Notepad++-i protsessi liigutamine" message="Dokumenti on muudetud, salvesta see ja proovi uuesti."/>
+			<CannotMoveDoc title="Uude Nextpad++-i protsessi liigutamine" message="Dokumenti on muudetud, salvesta see ja proovi uuesti."/>
 			<DocReloadWarning title="Uuesti laadimine" message="Kas soovid kindlasti lahtioleva faili uuesti laadida? Tehtud muudatused ei jää alles."/>
 			<FileLockedWarning title="Salvestamine ebaõnnestus" message="Fail võib olla avatud mõnes muus programmis"/>
-			<FileAlreadyOpenedInNpp title="" message="Fail on juba Notepad++-is avatud."/>
+			<FileAlreadyOpenedInNpp title="" message="Fail on juba Nextpad++-is avatud."/>
 			<DeleteFileFailed title="Faili kustutamine" message="Faili kustutamine ebaõnnestus"/>
 
 			<!-- $INT_REPLACE$ is a place holder, don't translate it -->
@@ -1214,7 +1214,7 @@ Pärast faili salvestamist tuleb muudatuste rakendamiseks Notepad++ uuesti käiv
 			<word-chars-list-tab-warning value="$INT_REPLACE$ tabeldusmärk(i)"/>
 			<word-chars-list-warning-end value=" tähemärkide loendis."/>
 			<cloud-invalid-warning value="Vigane rada."/>
-			<cloud-restart-warning value="Palun taaskäivita muudatuste rakendamiseks Notepad++."/>
+			<cloud-restart-warning value="Palun taaskäivita muudatuste rakendamiseks Nextpad++."/>
 		</MiscStrings>
 	</Native-Langue>
 </NotepadPlus>

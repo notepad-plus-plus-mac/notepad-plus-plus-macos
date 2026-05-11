@@ -163,8 +163,8 @@
 
 					<Item id="46001" name="Styler Configurator..."/>
 					<Item id="47000" name="Tungkol sa..."/>
-					<Item id="47001" name="Notepad++ Home"/>
-					<Item id="47002" name="Notepad++ Project Page"/>
+					<Item id="47001" name="Nextpad++ Home"/>
+					<Item id="47002" name="Nextpad++ Project Page"/>
 					<Item id="47003" name="Online na tulong"/>
 					<Item id="47004" name="Forum"/>
 					<Item id="47005" name="Kumuha ng mga plugin"/>
@@ -462,7 +462,7 @@
 					<Item id="6319" name="Payagan"/>
 					<Item id="6320" name="Huwag magsalungguhit"/>
 					<Item id="6322" name="Session file ext:"/>
-					<Item id="6323" name="Payagan ang Notepad++ auto-updater"/>
+					<Item id="6323" name="Payagan ang Nextpad++ auto-updater"/>
 					<Item id="6324" name="Document switcher (Ctrl+TAB)"/>
 					<Item id="6326" name="Payagan ang matalinong pagha-highlight"/>
 					<Item id="6329" name="I-highlight ang magkatambal na tag"/>
@@ -628,7 +628,7 @@
 				<Item id="90104" name="I-reload mula sa Disk"/>
 				<Item id="90105" name="Baguhin ang Search Engine"/>
 				<Item id="90106" name="Error sa Pagtakbo"/>
-				<Item id="90107" name="Notepad++ Oras ng Paglo-load"/>
+				<Item id="90107" name="Nextpad++ Oras ng Paglo-load"/>
 				<Item id="90108" name="Hindi Masuri para sa Mga Update"/>
 				<Item id="90109" name="Ikaw ay Napapanahon"/>
 				<Item id="90110" name="I-download"/>
@@ -714,7 +714,7 @@
 				<Item id="90189" name="Windows (CRLF)"/>
 				<Item id="90190" name="Mac (CR)"/>
 				<Item id="90191" name="Repository ng listahan ng plugin"/>
-				<Item id="90192" name="Pumili ng Notepad++ theme XML file na ilalapat"/>
+				<Item id="90192" name="Pumili ng Nextpad++ theme XML file na ilalapat"/>
 				<Item id="90193" name="Lumikha ng bago\u2026"/>
 				<Item id="90194" name="I-save bilang\u2026"/>
 				<Item id="90195" name="Wika ng gumagamit:"/>
@@ -727,7 +727,7 @@
 				<Item id="90202" name="Di-wastong Saklaw"/>
 				<Item id="90203" name="Ang mga value ng range ay dapat na 0-255 at ang simula ay dapat &lt;= end."/>
 				<Item id="90204" name="contextMenu.xml Not Found"/>
-				<Item id="90205" name="I-restart ang Notepad++ upang muling buuin ang default na contextMenu.xml."/>
+				<Item id="90205" name="I-restart ang Nextpad++ upang muling buuin ang default na contextMenu.xml."/>
 				<Item id="90206" name="Ang file ay may mga hindi na-save na pagbabago.Ang pag-reload gamit ang bagong pag-encode ay itapon ang mga ito.Magpatuloy?"/>
 				<Item id="90207" name="Walang tugon mula sa server."/>
 				<Item id="90208" name="Ibinalik ang status ng server"/>

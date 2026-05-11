@@ -1049,7 +1049,7 @@
 				<Item id="90202" name="ਅਵੈਧ ਰੇਂਜ"/>
 				<Item id="90203" name="ਰੇਂਜ ਦੇ ਮੁੱਲ 0-255 ਹੋਣੇ ਚਾਹੀਦੇ ਹਨ ਅਤੇ ਅਰੰਭ &lt;= ਅੰਤ ਹੋਣਾ ਚਾਹੀਦਾ ਹੈ।"/>
 				<Item id="90204" name="contextMenu.xml ਨਹੀਂ ਮਿਲਿਆ"/>
-				<Item id="90205" name="ਡਿਫੌਲਟ contextMenu.xml ਨੂੰ ਮੁੜ ਬਣਾਉਣ ਲਈ Notepad++ ਮੁੜ-ਚਾਲੂ ਕਰੋ।"/>
+				<Item id="90205" name="ਡਿਫੌਲਟ contextMenu.xml ਨੂੰ ਮੁੜ ਬਣਾਉਣ ਲਈ Nextpad++ ਮੁੜ-ਚਾਲੂ ਕਰੋ।"/>
 				<Item id="90206" name="ਫ਼ਾਈਲ ਵਿੱਚ ਅਣ-ਰੱਖਿਅਤ ਤਬਦੀਲੀਆਂ ਹਨ।ਨਵੀਂ ਏਨਕੋਡਿੰਗ ਨਾਲ ਰੀਲੋਡ ਕਰਨਾ ਉਹਨਾਂ ਨੂੰ ਰੱਦ ਕਰ ਦੇਵੇਗਾ।ਜਾਰੀ ਰੱਖਣਾ ਹੈ?"/>
 				<Item id="90207" name="ਸਰਵਰ ਤੋਂ ਕੋਈ ਜਵਾਬ ਨਹੀਂ।"/>
 				<Item id="90208" name="ਸਰਵਰ ਵਾਪਸੀ ਸਥਿਤੀ"/>
@@ -1071,14 +1071,14 @@
 			</MacStrings>
 		</Dialog>
 		<MessageBox>
-			<ContextMenuXmlEditWarning title="Editing contextMenu" message="Editing contextMenu.xml allows you to modify your Notepad++ popup context menu.\rYou have to restart your Notepad++ to take effect after modifying contextMenu.xml."/>
-			<NppHelpAbsentWarning title="File does not exist" message="\rdoesn't exist. Please download it on Notepad++ site."/>
+			<ContextMenuXmlEditWarning title="Editing contextMenu" message="Editing contextMenu.xml allows you to modify your Nextpad++ popup context menu.\rYou have to restart your Nextpad++ to take effect after modifying contextMenu.xml."/>
+			<NppHelpAbsentWarning title="File does not exist" message="\rdoesn't exist. Please download it on Nextpad++ site."/>
 			<SaveCurrentModifWarning title="Save Current Modification" message="You should save the current modification.\rAll the saved modifications can not be undone.\r\rContinue?"/>
 			<LoseUndoAbilityWarning title="Lose Undo Ability Warning" message="You should save the current modification.\rAll the saved modifications can not be undone.\r\rContinue?"/>
-			<CannotMoveDoc title="Move to new Notepad++ Instance" message="Document is modified, save it then try again."/>
-			<DocReloadWarning title="Reload" message="Are you sure you want to reload the current file and lose the changes made in Notepad++?"/>
+			<CannotMoveDoc title="Move to new Nextpad++ Instance" message="Document is modified, save it then try again."/>
+			<DocReloadWarning title="Reload" message="Are you sure you want to reload the current file and lose the changes made in Nextpad++?"/>
 			<FileLockedWarning title="Save failed" message="Please check whether if this file is opened in another program"/>
-			<FileAlreadyOpenedInNpp title="" message="The file is already opened in Notepad++."/>
+			<FileAlreadyOpenedInNpp title="" message="The file is already opened in Nextpad++."/>
 			<DeleteFileFailed title="Delete File" message="Delete File failed"/>
 
 			<!-- $INT_REPLACE$ is a place holder, don't translate it -->

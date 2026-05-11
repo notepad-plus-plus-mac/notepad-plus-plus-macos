@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <!--
-    Xhosa (isiXhosa) language file for Notepad++ macOS
+    Xhosa (isiXhosa) language file for Nextpad++ macOS
     Based on English template - community translations welcome
     Created: 2026-04-04
 -->
@@ -41,7 +41,7 @@
 					<Item subMenuId="edit-onSelection" name="EkuKhethweni"/>
 					<Item subMenuId="edit-multiSelectALL" name="Ukukhetha okuninzi BONKE"/>
 					<Item subMenuId="edit-multiSelectNext" name="Khetha okuninzi Okulandelayo"/>
-					<Item subMenuId="edit-readonlyInNotepad++" name="Funda-Kuphela kwiNotepad++"/>
+					<Item subMenuId="edit-readonlyInNextpad++" name="Funda-Kuphela kwiNextpad++"/>
 					<Item subMenuId="search-changeHistory" name="Guqula iMbali"/>
 					<Item subMenuId="search-markAll" name="Isimbo Zonke Izehlo zoMqondiso"/>
 					<Item subMenuId="search-markOne" name="Isimbo esinye uMqondiso"/>
@@ -367,17 +367,17 @@
 					<Item id="46016" name="Akukho (Umbhalo Oqhelekileyo)"/>
 					<Item id="46250" name="Chaza ulwimi lwakho..."/>
 					<Item id="46300" name="Vula ifolda yoLwimi oluchazwe nguMsebenzisi..."/>
-					<Item id="46301" name="I-Notepad++ Ingqokelela yeeLwimi ezichazwe nguMsebenzisi"/>
+					<Item id="46301" name="I-Nextpad++ Ingqokelela yeeLwimi ezichazwe nguMsebenzisi"/>
 					<Item id="46180" name="Ukuchazwa komsebenzisi"/>
-					<Item id="47000" name="Malunga Notepad++"/>
+					<Item id="47000" name="Malunga Nextpad++"/>
 					<Item id="47010" name="Iingxoxo zomgca womyalelo..."/>
-					<Item id="47001" name="Notepad++ Ekhaya"/>
-					<Item id="47002" name="Iphepha leProjekthi yeNotepad++"/>
-					<Item id="47003" name="Notepad++ Incwadi yoMsebenzisi we-Intanethi"/>
-					<Item id="47004" name="I-Notepad++ Uluntu (iForam)"/>
+					<Item id="47001" name="Nextpad++ Ekhaya"/>
+					<Item id="47002" name="Iphepha leProjekthi yeNextpad++"/>
+					<Item id="47003" name="Nextpad++ Incwadi yoMsebenzisi we-Intanethi"/>
+					<Item id="47004" name="I-Nextpad++ Uluntu (iForam)"/>
 					<Item id="47012" name="Debug Ulwazi..."/>
 					<Item id="47005" name="Fumana ii-plugins ezininzi"/>
-					<Item id="47006" name="Hlaziya iNotepad++"/>
+					<Item id="47006" name="Hlaziya iNextpad++"/>
 					<Item id="47009" name="Misela uMmeli woHlaziyo..."/>
 					<Item id="48005" name="Thatha ngaphandle iiplagi..."/>
 					<Item id="48006" name="Thatha ngaphandle imixholo yesimbo..."/>
@@ -446,7 +446,7 @@
 				<Item CMDID="41016" name="Hambisa kwi-Recycle Bin"/>
 				<Item CMDID="41014" name="Layisha kwakhona"/>
 				<Item CMDID="41010" name="Shicilela..."/>
-				<Item CMDID="42028" name="Funda-Kuphela kwiNotepad++"/>
+				<Item CMDID="42028" name="Funda-Kuphela kwiNextpad++"/>
 				<Item CMDID="42033" name="Uphawu lokufunda-kuphela kwiWindows"/>
 				<Item CMDID="2" name="Khuphela kwibhodi eqhotyoshwayo"/>
 				<Item CMDID="42029" name="Khuphela Indlela Yefayile Egcweleyo"/>
@@ -1128,7 +1128,7 @@
 				</DefaultDir>
 
 				<FileAssoc title="Umbutho weeFayile">
-					<Item id="4008" name="Nceda uphume kwi-Notepad++ kwaye uqalise kwakhona i-Notepad++ kwimowudi yoMlawuli ukuze usebenzise eli nqaku."/>
+					<Item id="4008" name="Nceda uphume kwi-Nextpad++ kwaye uqalise kwakhona i-Nextpad++ kwimowudi yoMlawuli ukuze usebenzise eli nqaku."/>
 					<Item id="4009" name="Izandiso ezixhaswayo:"/>
 					<Item id="4010" name="Izandiso ezibhalisiweyo:"/>
 				</FileAssoc>
@@ -1213,7 +1213,7 @@
 				</Print>
 
 				<Searching title="Iyakhangela">
-					<Item id="6902" name="Sebenzisa ifonti enesithuba esinye kwincoko yababini yokuFumana (Kufuneka uqalise kwakhona iNotepad++)"/>
+					<Item id="6902" name="Sebenzisa ifonti enesithuba esinye kwincoko yababini yokuFumana (Kufuneka uqalise kwakhona iNextpad++)"/>
 					<Item id="6903" name="Fumana incoko yababini ihlala ivuliwe emva kophendlo oluvelisa iziphumo zefestile"/>
 					<Item id="6904" name="Qinisekisa Faka Indawo Kwawo Kuwo Onke Amaxwebhu Avuliweyo"/>
 					<Item id="6905" name="Faka endaweni: Sukushukuma uye kwesi sehlo silandelayo"/>
@@ -1281,7 +1281,7 @@
 					<Item id="6152" name="Vula iseshoni kumzekelo omtsha (kwaye ugcine iseshoni ngokuzenzekelayo xa uphuma)"/>
 					<Item id="6153" name="Ihlala ikwimowudi yemizekelo emininzi"/>
 					<Item id="6154" name="Ukuhlala kukho (umzekelo omnye)"/>
-					<Item id="6155" name="* Uhlengahlengiso lwesi setingi kufuneka luqale kwakhona i-Notepad++"/>
+					<Item id="6155" name="* Uhlengahlengiso lwesi setingi kufuneka luqale kwakhona i-Nextpad++"/>
 					<Item id="6171" name="Lungiselela ufake Umhla Ixesha"/>
 					<Item id="6175" name="Ukubuyisela umva ulungelelwaniso lwexesha lomhla (iifomati ezinde ezimfutshane)"/>
 					<Item id="6172" name="Ifomathi eqhelekileyo:"/>
@@ -1364,8 +1364,8 @@
 					</ComboBox>
 					<ComboBox id="6364">
 						<Element name="Khubaza"/>
-						<Element name="Yenza kuqaliswe i-Notepad++"/>
-						<Element name="Vula i-Notepad++ phuma"/>
+						<Element name="Yenza kuqaliswe i-Nextpad++"/>
+						<Element name="Vula i-Nextpad++ phuma"/>
 					</ComboBox>
 					<Item id="6308" name="inkqubo yetreyi"/>
 					<Item id="6363" name="indlela yonikezelo"/>
@@ -1564,7 +1564,7 @@ Unokwenza kwakhona le ncoko yababini kwiiZikhethwa kamva."/>
 				<Item id="90104" name="Layisha kwakhona kwiDiski"/>
 				<Item id="90105" name="Tshintsha Injini Yokukhangela"/>
 				<Item id="90106" name="Qhuba imposiso"/>
-				<Item id="90107" name="I-Notepad++ Ixesha Lokulayisha"/>
+				<Item id="90107" name="I-Nextpad++ Ixesha Lokulayisha"/>
 				<Item id="90108" name="Akukwazeki ukuJonga uHlaziyo"/>
 				<Item id="90109" name="UkwiXesha Eliqhelekileyo"/>
 				<Item id="90110" name="Khuphela"/>
@@ -1650,7 +1650,7 @@ Unokwenza kwakhona le ncoko yababini kwiiZikhethwa kamva."/>
 				<Item id="90189" name="IiWindows (CRLF)"/>
 				<Item id="90190" name="IMac (CR)"/>
 				<Item id="90191" name="Uluhlu lwe-plugin yokugcina"/>
-				<Item id="90192" name="Khetha ifayile yeXML yomxholo weNotepad++ oza kuyisebenzisa"/>
+				<Item id="90192" name="Khetha ifayile yeXML yomxholo weNextpad++ oza kuyisebenzisa"/>
 				<Item id="90193" name="Yenza entsha\u2026"/>
 				<Item id="90194" name="Gcina njenge\u2026"/>
 				<Item id="90195" name="Ulwimi lomsebenzisi:"/>
@@ -1663,7 +1663,7 @@ Unokwenza kwakhona le ncoko yababini kwiiZikhethwa kamva."/>
 				<Item id="90202" name="Uluhlu olungasebenziyo"/>
 				<Item id="90203" name="Amaxabiso oluhlu kufuneka abe ngu-0-255 kwaye isiqalo kufuneka sibe &lt;= ekupheleni."/>
 				<Item id="90204" name="umxholoMenu.xml Ayifunyenwanga"/>
-				<Item id="90205" name="Phinda uqalise iNotepad++ ukuze uvelise kwakhona umongo ongagqibekanga weMenu.xml."/>
+				<Item id="90205" name="Phinda uqalise iNextpad++ ukuze uvelise kwakhona umongo ongagqibekanga weMenu.xml."/>
 				<Item id="90206" name="Ifayile inotshintsho olungagcinwanga.Ukulayishwa kwakhona ngekhowudi entsha kuya kuzilahla.Qhubeka?"/>
 				<Item id="90207" name="Akukho mpendulo evela kwiseva."/>
 				<Item id="90208" name="Ubume beseva bubuyisiwe"/>
@@ -1687,7 +1687,7 @@ Unokwenza kwakhona le ncoko yababini kwiiZikhethwa kamva."/>
 		<MessageBox>
 			<!-- $INT_REPLACE$ and $STR_REPLACE$ are place holders, don't translate these place holders. -->
 			<ContextMenuXmlEditWarning title="IMenu yokuhlela umxholo" message="Ukuhlela umongo weMenu.xml ikuvumela ukuba uguqule iNotepad yakho++ kwimenyu yemenu yepopup.
-Kufuneka uqalise kwakhona i-Notepad++ yakho ukuze isebenze emva kokuguqula umongo weMenu.xml."/>
+Kufuneka uqalise kwakhona i-Nextpad++ yakho ukuze isebenze emva kokuguqula umongo weMenu.xml."/>
 			<SaveCurrentModifWarning title="Gcina Uhlengahlengiso Lwangoku" message="Kufuneka ugcine ulungiso lwangoku.
 Lonke ulungiso olugciniweyo alunakuphinda lungenziwa.
 
@@ -1696,16 +1696,16 @@ Qhubeka?"/><!-- HowToReproduce: when you openned file is modified but unsaved ye
 Lonke ulungiso olugciniweyo alunakuphinda lungenziwa.
 
 Qhubeka?"/><!-- HowToReproduce: when you openned file is modified and saved, then you are changing file encoding. -->
-			<CannotMoveDoc title="Hambisa kwiNotepad entsha++ Instance" message="Uxwebhu lulungisiwe, lugcine uze uzame kwakhona."/><!-- HowToReproduce: From your Notepad++ drag & drop a clean (not dirty) file to outside of Notepad++, another instance of Notepad++ will be created. Then from your first Notepad++ drag & drop an unsaved file to the new instance. -->
-			<DocReloadWarning title="Layisha kwakhona" message="Uqinisekile ukuba ufuna ukulayisha kwakhona ifayile yangoku kwaye ulahlekelwe lutshintsho olwenziwe kwiNotepad++?"/>
+			<CannotMoveDoc title="Hambisa kwiNotepad entsha++ Instance" message="Uxwebhu lulungisiwe, lugcine uze uzame kwakhona."/><!-- HowToReproduce: From your Nextpad++ drag & drop a clean (not dirty) file to outside of Nextpad++, another instance of Nextpad++ will be created. Then from your first Nextpad++ drag & drop an unsaved file to the new instance. -->
+			<DocReloadWarning title="Layisha kwakhona" message="Uqinisekile ukuba ufuna ukulayisha kwakhona ifayile yangoku kwaye ulahlekelwe lutshintsho olwenziwe kwiNextpad++?"/>
 			<FileLockedWarning title="Ukugcina akuphumelelanga" message="Nceda khangela ukuba ingaba le fayile ivuliwe kwenye inkqubo"/>
-			<FileAlreadyOpenedInNpp title="" message="Ifayile sele ivuliwe kwi-Notepad++."/><!-- HowToReproduce: Open a new document and open a file "c:/tmp/foo", save this new document by choosing "c:/tmp/foo" as file to save, reply the override popup "yes", then this message appears. -->
+			<FileAlreadyOpenedInNpp title="" message="Ifayile sele ivuliwe kwi-Nextpad++."/><!-- HowToReproduce: Open a new document and open a file "c:/tmp/foo", save this new document by choosing "c:/tmp/foo" as file to save, reply the override popup "yes", then this message appears. -->
 			<RenameTabTemporaryNameAlreadyInUse title="Ukuthiya ngokutsha akuphumelelanga" message="Igama elichaziweyo sele lisetyenziswa kwenye indawo."/><!-- HowToReproduce: Rename the tab of an untitled document and provide a name that is the same as an already-existing tab of an untitled document. -->
 			<RenameTabTemporaryNameIsEmpty title="Ukuthiya ngokutsha akuphumelelanga" message="Igama elikhankanyiweyo alinakuba nanto, okanye alinakuqulatha kuphela isithuba okanye ii-TAB(ii)."/><!-- HowToReproduce: Rename the tab of an untitled document and provide an empty string or only some white speces. -->
 			<DeleteFileFailed title="Cima Ifayile" message="Ukucima iFayile akuphumelelanga"/><!-- HowToReproduce: this message prevents from system failure. It's hard to reproduce. -->
 
 			<NbFileToOpenImportantWarning title="Isixa seefayili ekufuneka zivulwe sikhulu kakhulu" message="$INT_REPLACE$ files are about to be opened.
-Are you sure you want to open them?"/><!-- HowToReproduce: Check "Open all files of folder instead of launching Folder as Workspace on folder dropping" in "Default Directory" of Preferences dialog, then drop a folder which contains more then 200 files into Notepad++. -->
+Are you sure you want to open them?"/><!-- HowToReproduce: Check "Open all files of folder instead of launching Folder as Workspace on folder dropping" in "Default Directory" of Preferences dialog, then drop a folder which contains more then 200 files into Nextpad++. -->
 			<SettingsOnCloudError title="Izicwangciso kwifu" message="Kubonakala ngathi umendo wezicwangciso kwilifu umiselwe kwi-drive yokufunda kuphela,
 okanye kwisiqulathi seefayili esifuna amalungelo awodwa ukuze ubhale ufikelelo.
 Useto lwakho efini luya kurhoxiswa.Nceda phinda umisele ixabiso elihambelanayo usebenzisa incoko yababini Ekhethwayo."/>
@@ -1716,7 +1716,7 @@ Kufuneka wenze &quot;Vula zonke iifayile zefolda endaweni yokundulula isiqulathi
 			<SortingError title="Imposiso yokuhlela" message="Akukwazeki ukwenza ukhetho lwamanani ngenxa yomgca $INT_REPLACE$."/><!-- HowToReproduce: this message prevents from system failure. It's hard to reproduce. -->
 			<SortLocaleMultiple title="Ukuhlela akwenziwanga" message="Ukuhlela iinketho ezininzi akuxhaswanga."/><!-- HowToReproduce: Make a multiple selection and choose Edit | Line Operations | Sort Lines In Locale Order. -->
 			<SortLocaleUnknown title="Ukuhlela Akuphumelelanga" message="Isizathu sokungaphumeleli kohlobo asinakuqinisekiswa."/><!-- HowToReproduce: This condition is theoretical; it is unknown what could cause it. -->
-			<SortLocaleExcept title="Ukuhlela Akuphumelelanga" message="$STR_REPLACE$"/><!-- HowToReproduce: Open a large file, e.g. 500MB / 90k lines, in 32-bit Notepad++ and choose Edit | Line Operations | Sort Lines In Locale Order. -->
+			<SortLocaleExcept title="Ukuhlela Akuphumelelanga" message="$STR_REPLACE$"/><!-- HowToReproduce: Open a large file, e.g. 500MB / 90k lines, in 32-bit Nextpad++ and choose Edit | Line Operations | Sort Lines In Locale Order. -->
 			<ColumnModeTip title="Ingcebiso yeNdlela yeKholamu" message="Kukho iindlela ezi-3 zokutshintshela kwimowudi yokukhetha ikholamu:
 
 1. (Ikhibhodi kunye neMouse) Bamba i-Alt ngelixa ucofa-ekhohlo utsala
@@ -1744,14 +1744,14 @@ Ngaba uyafuna ukuyilayisha kwakhona?"/>
 			<DoReloadOrNotAndLooseChange title="Layisha kwakhona" message="&quot;$STR_REPLACE$&quot;
 
 Le fayile iye yalungiswa yenye inkqubo.
-Ngaba uyafuna ukuyilayisha kwakhona kwaye ulahlekelwe lutshintsho olwenziwe kwiNotepad++?"/>
+Ngaba uyafuna ukuyilayisha kwakhona kwaye ulahlekelwe lutshintsho olwenziwe kwiNextpad++?"/>
 			<PrehistoricSystemDetected title="Inkqubo yembali yangaphambili ichongiwe" message="Kubonakala ngathi usasebenzisa inkqubo yangaphambili.Olu phawu lusebenza kuphela kwinkqubo yangoku, uxolo."/><!-- HowToReproduce: Launch "Document Map" under Windows XP. -->
-			<XpUpdaterProblem title="Notepad++ Updater" message="Uhlaziyo lweNotepad++ aluhambelani neXP ngenxa yomaleko wokhuseleko ophelelwe lixesha phantsi kweXP.
-Ngaba uyafuna ukuya kwiphepha le-Notepad++ ukukhuphela inguqulelo yamva nje?"/><!-- HowToReproduce: Run menu "? -> Update Notepad++" under Windows XP. -->
-			<GUpProxyConfNeedAdminMode title="Imimiselo Yommeleli" message="Nceda uqalise kwakhona i-Notepad++ kwimowudi yoLawulo ukumisela ummeli."/>
+			<XpUpdaterProblem title="Nextpad++ Updater" message="Uhlaziyo lweNextpad++ aluhambelani neXP ngenxa yomaleko wokhuseleko ophelelwe lixesha phantsi kweXP.
+Ngaba uyafuna ukuya kwiphepha le-Nextpad++ ukukhuphela inguqulelo yamva nje?"/><!-- HowToReproduce: Run menu "? -> Update Nextpad++" under Windows XP. -->
+			<GUpProxyConfNeedAdminMode title="Imimiselo Yommeleli" message="Nceda uqalise kwakhona i-Nextpad++ kwimowudi yoLawulo ukumisela ummeli."/>
 			<DocTooDirtyToMonitor title="Ingxaki yokubeka iliso" message="Uxwebhu lumdaka.Nceda ugcine uhlengahlengiso phambi kokulubeka esweni."/>
 			<DocNoExistToMonitor title="Ingxaki yokubeka iliso" message="Ifayile kufuneka ibekhona ukuze ibekwe iliso."/>
-			<FileTooBigToOpen title="Ingxaki yobungakanani befayile" message="Ifayile inkulu kakhulu ukuba ingavulwa yiNotepad++"/><!-- HowToReproduce: Try to open a 4GB file (it's not easy to reproduce, it depends on your system). -->
+			<FileTooBigToOpen title="Ingxaki yobungakanani befayile" message="Ifayile inkulu kakhulu ukuba ingavulwa yiNextpad++"/><!-- HowToReproduce: Try to open a 4GB file (it's not easy to reproduce, it depends on your system). -->
 			<FileLoadingException title="Ikhowudi yangaphandle: $STR_REPLACE$" message="Kwenzeke imposiso ngexesha ulayisha ifayile!"/>
 			<WantToOpenHugeFile title="Ivula isilumkiso sefayile enkulu" message="Ukuvula ifayile enkulu ye-2GB+ kunokuthatha imizuzu emininzi.
 Uyafuna ukuyivula?"/>
@@ -1765,8 +1765,8 @@ Isiqulathi seefayili &quot;$STR_REPLACE2$&quot; asikho."/>
 Ngaba uyafuna ukugcina ifayile yangoku?"/><!-- HowToReproduce: this message prevents from system failure. It's hard to reproduce. -->
 			<LoadStylersFailed title="Layisha stylers.xml akuphumelelanga" message="Ukulayisha &quot;$STR_REPLACE$&quot; akuphumelelanga!"/>
 			<LoadLangsFailed title="Umqwalaseli" message="Layisha langs.xml ayiphumelelanga!
-Ngaba uyafuna ukubuyisela i-langs.xml yakho?"/><!-- HowToReproduce: Close Notepad++. Use another editor to remove all content of "langs.xml" (0 length) then save it. Open Notepad++. -->
-			<LoadLangsFailedFinal title="Umqwalaseli" message="Layisha langs.xml ayiphumelelanga!"/><!-- HowToReproduce: Close Notepad++. Use another editor to make "langs.xml" an invalid xml file then save it. Open Notepad++. -->
+Ngaba uyafuna ukubuyisela i-langs.xml yakho?"/><!-- HowToReproduce: Close Nextpad++. Use another editor to remove all content of "langs.xml" (0 length) then save it. Open Nextpad++. -->
+			<LoadLangsFailedFinal title="Umqwalaseli" message="Layisha langs.xml ayiphumelelanga!"/><!-- HowToReproduce: Close Nextpad++. Use another editor to make "langs.xml" an invalid xml file then save it. Open Nextpad++. -->
 			<FolderAsWorspaceSubfolderExists title="Isiqulathi seefayili njengeNdawo yokusebenzela yongeza ingxaki yesiqulathi seefayili" message="Isiqulathi seefayili esisezantsi sencwadi ofuna ukuyongeza ikhona.
 Nceda susa ingcambu yayo kwiqela lenjongo ngaphambi kokuba wongeze incwadi eneenkcukacha &quot;$STR_REPLACE$&quot;."/><!-- HowToReproduce: Add a folder like "c:\temp\aFolder\" into "Folder as Workspace" panel, then try to add "c:\temp\". -->
 
@@ -1794,17 +1794,17 @@ ndicela unike enye."/>
 			<SCMapperDoDeleteOrNot title="Ingaba uqinisekile?" message="Uqinisekile ufuna ukucima le ndlela imfutshane?"/>
 			<FindCharRangeValueError title="Uluhlu lwengxaki yeXabiso" message="Kufuneka uchwetheze phakathi kwe-0 kunye ne-255."/> <!-- HowToReproduce: Search menu, then Find characters in range, select Custom range, enter 999 in either edit box, press Find. -->
 			<OpenInAdminMode title="Ukugcina akuphumelelanga" message="Ifayile ayinakugcinwa kwaye inokukhuselwa.
-Ngaba uyafuna ukwazisa i-Notepad++ kwimowudi yoMlawuli?"/>
+Ngaba uyafuna ukwazisa i-Nextpad++ kwimowudi yoMlawuli?"/>
 			<OpenInAdminModeWithoutCloseCurrent title="Ukugcina akuphumelelanga" message="Ifayile ayinakugcinwa kwaye inokukhuselwa.
-Ngaba uyafuna ukwazisa i-Notepad++ kwimowudi yoMlawuli?"/>
+Ngaba uyafuna ukwazisa i-Nextpad++ kwimowudi yoMlawuli?"/>
 			<OpenInAdminModeFailed title="Vula kwimo yoMlawuli ayiphumelelanga" message="I-Notepad ++ ayikwazi ukuvulwa kwimo yoMlawuli."/><!-- HowToReproduce: When you have no Admin privilege and you try to save a modified file in a protected location (for example: any file in sub-folder of "C:\Program Files\". This message will appear after replying "Yes" to "Open in Admin mode" dialog. -->
 			<ViewInBrowser title="Jonga iFayile yangoku kwiBhrawuza" message="Isicelo asifumaneki kwindlela yakho."/>
-			<ExitToUpdatePlugins title="I-Notepad++ sele iza kuphuma" message="Ukuba ucofa u-EWE, uya kuyeka i-Notepad++ ukuze uqhubeke nokusebenza.
-I-Notepad++ iya kuqaliswa kwakhona emva kokuba yonke imisebenzi iphelile.
+			<ExitToUpdatePlugins title="I-Nextpad++ sele iza kuphuma" message="Ukuba ucofa u-EWE, uya kuyeka i-Nextpad++ ukuze uqhubeke nokusebenza.
+I-Nextpad++ iya kuqaliswa kwakhona emva kokuba yonke imisebenzi iphelile.
 Qhubeka?"/>
-			<NeedToRestartToLoadPlugins title="I-Notepad++ kufuneka iphinde iqaliswe" message="Kuya kufuneka uqalise kwakhona i-Notepad++ ukuze ulayishe iiplagi ozifakileyo."/><!-- HowToReproduce: Import a plugin via menu "Settings->Import->Import Plugin(s)...". -->
-			<ChangeHistoryEnabledWarning title="I-Notepad++ kufuneka iphinde iqaliswe" message="Kuya kufuneka uqalise kwakhona i-Notepad++ ukwenza utshintsho lweMbali."/><!-- HowToReproduce: uncheck "Display Change History" via Preferences dialog "Marges/Border/Edge. -->
-			<WindowsSessionExit title="I-Notepad++ - Phuma kwiseshoni yeWindows" message="Iseshoni yeWindows sele iza kupheliswa kodwa unedatha engagcinwanga.Ngaba uyafuna ukuphuma kwi-Notepad++ ngoku?"/>
+			<NeedToRestartToLoadPlugins title="I-Nextpad++ kufuneka iphinde iqaliswe" message="Kuya kufuneka uqalise kwakhona i-Nextpad++ ukuze ulayishe iiplagi ozifakileyo."/><!-- HowToReproduce: Import a plugin via menu "Settings->Import->Import Plugin(s)...". -->
+			<ChangeHistoryEnabledWarning title="I-Nextpad++ kufuneka iphinde iqaliswe" message="Kuya kufuneka uqalise kwakhona i-Nextpad++ ukwenza utshintsho lweMbali."/><!-- HowToReproduce: uncheck "Display Change History" via Preferences dialog "Marges/Border/Edge. -->
+			<WindowsSessionExit title="I-Nextpad++ - Phuma kwiseshoni yeWindows" message="Iseshoni yeWindows sele iza kupheliswa kodwa unedatha engagcinwanga.Ngaba uyafuna ukuphuma kwi-Nextpad++ ngoku?"/>
 			<LanguageMenuCompactWarning title="Imenyu yoLwimi oluHlanganisiweyo" message="Olu khetho luya kutshintshwa kuphehlelelo olulandelayo."/><!-- HowToReproduce: toggle "Make language menu compact" via Preferences dialog "Language/Language Menu. -->
 			<SwitchUnsavedThemeWarning title="$STR_REPLACE$" message="Utshintsho olungagcinwanga sele luza kuchithwa!
 Ngaba uyafuna ukugcina utshintsho lwakho phambi kokutshintsha imixholo?"/><!-- HowToReproduce: In the Style Configurator dialog change some theme and switch to other theme without saving. -->
@@ -1812,10 +1812,10 @@ Ngaba uyafuna ukugcina utshintsho lwakho phambi kokutshintsha imixholo?"/><!-- H
 Nceda uvavanye loo miyalelo kwaye, ukuba kuyimfuneko, uyihlele kwakhona.
 
 Kungenjalo, unako ukuhla kwi-Notepad ++ v8.5.2 kwaye ubuyisele idatha yakho yangaphambili.
-I-Notepad++ iya kukhuphela i-&quot;shortcuts.xml&quot; yakho endala kwaye iyigcine njenge &quot;shortcuts.xml.v8.5.2.backup&quot;.
-Ukuthiya ngokutsha &quot;shortcuts.xml.v8.5.2.backup&quot; -&gt; &quot;shortcuts.xml&quot;, imiyalelo yakho kufuneka ibuyiselwe kwaye isebenze ngokufanelekileyo."/><!-- HowToReproduce: Close Notepad++, remove shortcuts.xml.v8.5.2.backup & v852ShortcutsCompatibilityWarning.xml if present, relaunch Notepad++, delete or modify a shortcuts via Shortcut Mapper, close Notepad++, then the message will show up -->
+I-Nextpad++ iya kukhuphela i-&quot;shortcuts.xml&quot; yakho endala kwaye iyigcine njenge &quot;shortcuts.xml.v8.5.2.backup&quot;.
+Ukuthiya ngokutsha &quot;shortcuts.xml.v8.5.2.backup&quot; -&gt; &quot;shortcuts.xml&quot;, imiyalelo yakho kufuneka ibuyiselwe kwaye isebenze ngokufanelekileyo."/><!-- HowToReproduce: Close Nextpad++, remove shortcuts.xml.v8.5.2.backup & v852ShortcutsCompatibilityWarning.xml if present, relaunch Nextpad++, delete or modify a shortcuts via Shortcut Mapper, close Nextpad++, then the message will show up -->
 			<FullReadOnlySavingForbidden title="Ukugcina akuphumelelanga" message="Ayinakugcina ifayile.
-I-Notepad++ egcweleyo egcina indlela eyalelweyo yokufunda kuphela ithintele ukuba ifayile ingagcinwa."/>
+I-Nextpad++ egcweleyo egcina indlela eyalelweyo yokufunda kuphela ithintele ukuba ifayile ingagcinwa."/>
 			<NotEnoughRoom4Saving title="Ukugcina akuphumelelanga" message="Ayiphumelelanga ukugcina ifayile.
 Kubonakala ngathi akukho ndawo yaneleyo kwidiski yokugcina ifayile.Ifayile yakho ayigcinwanga."/>
 			<FileInaccessibleUserSession title="Ifayile ayifikeleleki" message="Ezinye iifayile kwiseshoni yakho egcinwe ngesandla &quot;$STR_REPLACE$&quot; ayifikeleleki.Anokuvulwa njengamaxwebhu angenanto kunye namaxwebhu okufunda kuphela njengezibambi-ndawo.
@@ -1828,8 +1828,8 @@ QAPHELA: Ukukhetha ukungenzi izibambi-ndawo okanye ukuzivala kamva, iseshoni yak
 Ngaba ungathanda ukwenza ezo zibambi-ndawo?
 
 QAPHELA: Ukukhetha ukungenzi izibambi-ndawo okanye ukuzivala kamva, iseshoni yakho IYA KULUNGISWA XA UPHUMA!Sicebisa ukuba wenze i-backup &quot;session.xml&quot; yakho ngoku."/>
-			<RTLvsDirectWrite title="Ayinakuqhuba i-RTL" message="I-RTL ayihambelani nemowudi ye-DirectWrite.Nceda ucime imowudi ye-DirectWrite kwi-MISC.icandelo lencoko yababini Ezikhethwayo, kwaye uqale kwakhona i-Notepad++."/>
-			<FileMemoryAllocationFailed title="NONE" message="Mhlawumbi akukho nkumbulo yaneleyo ekhululekileyo yefayile elayishwa yiNotepad++."/><!-- HowToReproduce: Try to open multiple files with total size > ~700MB in the x86 Notepad++ (it will depend on the PC memory configuration and the current system memory usage...). -->
+			<RTLvsDirectWrite title="Ayinakuqhuba i-RTL" message="I-RTL ayihambelani nemowudi ye-DirectWrite.Nceda ucime imowudi ye-DirectWrite kwi-MISC.icandelo lencoko yababini Ezikhethwayo, kwaye uqale kwakhona i-Nextpad++."/>
+			<FileMemoryAllocationFailed title="NONE" message="Mhlawumbi akukho nkumbulo yaneleyo ekhululekileyo yefayile elayishwa yiNextpad++."/><!-- HowToReproduce: Try to open multiple files with total size > ~700MB in the x86 Nextpad++ (it will depend on the PC memory configuration and the current system memory usage...). -->
 			<FindRegexBackwardDisabled title="Uphendlo lwasemva lweRegex luvaliwe" message="Ngokungagqibekanga, uphendlo lwangasemva lweregex luvaliwe ngenxa yeziphumo ezinokubakhona ebezingalindelekanga.Ukwenza uphendlo lwasemva, vula iFumana ingxoxo kwaye ukhethe imo yokukhangela eqhelekileyo okanye eyandisiweyo endaweni yokubonakalisa rhoqo.
 Cofa iqhosha elithi Kulungile ukuvula i Fumana ingxoxo okanye usete ingqwalasela kuyo.
 
@@ -1837,8 +1837,8 @@ Ukuba ufuna umsebenzi wokukhangela we-regex ongasemva, jonga incwadi yomsebenzis
 			<PrintError title="0" message="Ayinakuqalisa uxwebhu lomshicileli."/><!-- Use title="0" to use Windows OS default translated "Error" title. -->
 			<FindAutoChangeOfInSelectionWarning title="Khangela isilumkiso" message="Imeko yebhokisi yokukhangela &quot;Kukukhetha&quot; iguqulwe ngokuzenzekela.
 Nceda uqinisekise imeko yokukhangela phambi kokuba wenze isenzo."/> <!-- HowToReproduce: https://github.com/notepad-plus-plus/notepad-plus-plus/issues/14897#issuecomment-2564316224 -->
-			<Need2Restart2ShowMenuShortcuts title="I-Notepad++ kufuneka iqalwe kwakhona" message="I-Notepad++ idinga ukuqaliswa kwakhona ukubonisa iindlela ezimfutshane zemenyu ekunene."/>
-			<NoAdminRight2ChangeReadOnlyFileAttribute title="Ukutshintsha uphawu lwefayile efundwayo kuphela akuphumelelanga" message="Nceda usebenzise i-Notepad++ njengomlawuli ukuze utshintshe iimpawu zefayile."/>
+			<Need2Restart2ShowMenuShortcuts title="I-Nextpad++ kufuneka iqalwe kwakhona" message="I-Nextpad++ idinga ukuqaliswa kwakhona ukubonisa iindlela ezimfutshane zemenyu ekunene."/>
+			<NoAdminRight2ChangeReadOnlyFileAttribute title="Ukutshintsha uphawu lwefayile efundwayo kuphela akuphumelelanga" message="Nceda usebenzise i-Nextpad++ njengomlawuli ukuze utshintshe iimpawu zefayile."/>
 		</MessageBox>
 		<ClipboardHistory>
 			<PanelTitle name="Imbali yebhodi eqhotyoshwayo"/>
@@ -1958,8 +1958,8 @@ Nceda uqinisekise imeko yokukhangela phambi kokuba wenze isenzo."/> <!-- HowToRe
 			<word-chars-list-warning-end value="kuluhlu lwabalinganiswa bakho."/><!-- HowToReproduce: In "Delimiter" section of Preferences dialog, check "Add your character as part of word\r(don't choose it unless you know what you're doing)", then type a white-space in the text field. -->
 			<backup-select-folder value="Khetha incwadi eneenkcukacha njengovimba weefayili"/><!-- HowToReproduce: Settings > Preferences > Backup > [...] -->
 			<cloud-invalid-warning value="Indlela engasebenziyo."/>
-			<cloud-restart-warning value="Nceda uqalise kwakhona i-Notepad++ ukuze isebenze."/>
-			<cloud-select-folder value="Khetha ifolda ukusuka/ukuya apho iNotepad++ ifunda/ibhala khona izicwangciso zayo"/><!-- HowToReproduce: In "Cloud" section of Preferences dialog, check "Set your cloud location path here: ", then click the button "...". This message is displayed in the "Browse For Folder" dialog. -->
+			<cloud-restart-warning value="Nceda uqalise kwakhona i-Nextpad++ ukuze isebenze."/>
+			<cloud-select-folder value="Khetha ifolda ukusuka/ukuya apho iNextpad++ ifunda/ibhala khona izicwangciso zayo"/><!-- HowToReproduce: In "Cloud" section of Preferences dialog, check "Set your cloud location path here: ", then click the button "...". This message is displayed in the "Browse For Folder" dialog. -->
 			<default-open-save-select-folder value="Khetha incwadi eneenkcukacha njengolawulo olungagqibekanga"/><!-- HowToReproduce: Settings > Preferences > Default Directory > [...] -->
 			<shift-change-direction-tip value="Sebenzisa uShift+Enter ukukhangela kwelinye icala"/>
 			<two-find-buttons-tip value="2 ukufumana amaqhosha emowudi"/>
@@ -2118,7 +2118,7 @@ Ukuba ukhetha imowudi eqhubela phambili kodwa ungahleli iifayile kwezi lwimi zik
 
 			<!-- Don't translate "Global override" and "Default Style" -->
 			<global-override-tip value="Ukuvumela &quot;i-Global override&quot; apha iyakugqitha loo parameter kuzo zonke izimbo zolwimi.Eyona nto uyifunayo ngenene kukusebenzisa &quot;iSimbo esiMiselweyo&quot; endaweni yoko"/>
-			<scintillaRenderingTechnology-tip value="Unokuphucula unikezelo loonobumba abakhethekileyo okanye asombulule imiba ethile yemizobo, qala kwakhona i-Notepad++ ukuze usebenzise utshintsho."/>
+			<scintillaRenderingTechnology-tip value="Unokuphucula unikezelo loonobumba abakhethekileyo okanye asombulule imiba ethile yemizobo, qala kwakhona i-Nextpad++ ukuze usebenzise utshintsho."/>
 
 			<!-- Due to the limited space on the status bar, if the translations for 'length' & 'lines' are much longer than the English words, please leave them in English instead of translating them. -->
 			<statusbar-length-lines value="ubude: $STR_REPLACE1$ imigca: $STR_REPLACE2$"/>

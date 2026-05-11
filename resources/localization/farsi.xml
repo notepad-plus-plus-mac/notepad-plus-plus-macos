@@ -2,7 +2,7 @@
 <NotepadPlus>
 	<!--
 	If "RTL" attribute is present and its value is "yes", then user can add "editZoneRTL" attribute beside,
-	and set the value of the attribute in question to "no", so Notepad++ GUI will be RTL,
+	and set the value of the attribute in question to "no", so Nextpad++ GUI will be RTL,
 	but Scintilla zone will be LTR by opening files (see the commented example).
 	Of course, user can set any direction they want afterward, and what they have set on document will be remembered across the sessions.
 	-->
@@ -980,7 +980,7 @@
 				<Item id="90104" name="بارگذاری مجدد از دیسک"/>
 				<Item id="90105" name="تغییر موتور جستجو"/>
 				<Item id="90106" name="خطای اجرا"/>
-				<Item id="90107" name="Notepad++ زمان بارگذاری"/>
+				<Item id="90107" name="Nextpad++ زمان بارگذاری"/>
 				<Item id="90108" name="امکان بررسی به روز رسانی ها وجود ندارد"/>
 				<Item id="90109" name="شما به روز هستید"/>
 				<Item id="90110" name="دانلود"/>
@@ -1066,7 +1066,7 @@
 				<Item id="90189" name="ویندوز (CRLF)"/>
 				<Item id="90190" name="مک (CR)"/>
 				<Item id="90191" name="مخزن لیست پلاگین"/>
-				<Item id="90192" name="یک فایل XML با موضوع Notepad++ را برای اعمال"/>
+				<Item id="90192" name="یک فایل XML با موضوع Nextpad++ را برای اعمال"/>
 				<Item id="90193" name="انتخاب کنیدایجاد جدید\u2026"/>
 				<Item id="90194" name="ذخیره به عنوان\u2026"/>
 				<Item id="90195" name="زبان کاربر:"/>
@@ -1079,7 +1079,7 @@
 				<Item id="90202" name="محدوده نامعتبر"/>
 				<Item id="90203" name="مقادیر محدوده باید 0-255 و شروع باید &lt;= پایان باشد."/>
 				<Item id="90204" name="contextMenu.xml یافت نشد"/>
-				<Item id="90205" name="Notepad++ را مجدداً راه اندازی کنید تا contextMenu.xml پیش فرض ایجاد شود."/>
+				<Item id="90205" name="Nextpad++ را مجدداً راه اندازی کنید تا contextMenu.xml پیش فرض ایجاد شود."/>
 				<Item id="90206" name="فایل دارای تغییرات ذخیره نشده است.بارگیری مجدد با رمزگذاری جدید باعث حذف آنها می شود.ادامه دهید؟"/>
 				<Item id="90207" name="بدون پاسخ از سرور"/>
 				<Item id="90208" name="سرور وضعیت بازگشت"/>

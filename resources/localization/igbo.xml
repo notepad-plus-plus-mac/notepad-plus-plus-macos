@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <!--
-    Igbo (Igbo) language file for Notepad++ macOS
+    Igbo (Igbo) language file for Nextpad++ macOS
     Based on English template - community translations welcome
     Created: 2026-04-04
 -->
@@ -41,7 +41,7 @@
 					<Item subMenuId="edit-onSelection" name="Na Nhọrọ"/>
 					<Item subMenuId="edit-multiSelectALL" name="Multi-họrọ NIILE"/>
 					<Item subMenuId="edit-multiSelectNext" name="Ọtụtụ nhọrọ na-esote"/>
-					<Item subMenuId="edit-readonlyInNotepad++" name="Ọgụgụ-naanị na Notepad++"/>
+					<Item subMenuId="edit-readonlyInNextpad++" name="Ọgụgụ-naanị na Nextpad++"/>
 					<Item subMenuId="search-changeHistory" name="Gbanwee akụkọ ihe mere eme"/>
 					<Item subMenuId="search-markAll" name="Ụdị ihe omume niile nke Token"/>
 					<Item subMenuId="search-markOne" name="Ụdị Ụdị Otu Token"/>
@@ -369,15 +369,15 @@
 					<Item id="46300" name="Mepee nchekwa asụsụ akọwapụtara nke onye ọrụ..."/>
 					<Item id="46301" name="Akwụkwọ ndetu++ Nchịkọta Asụsụ akọwapụtara nke onye ọrụ"/>
 					<Item id="46180" name="Akọwapụtara onye ọrụ"/>
-					<Item id="47000" name="Banyere Notepad++"/>
+					<Item id="47000" name="Banyere Nextpad++"/>
 					<Item id="47010" name="Arụmụka Ahịrị Iwu..."/>
-					<Item id="47001" name="Ụlọ Notepad++"/>
+					<Item id="47001" name="Ụlọ Nextpad++"/>
 					<Item id="47002" name="Akwụkwọ ndetu++ Ibe oru ngo"/>
-					<Item id="47003" name="Notepad++ Akwụkwọ ntuziaka onye ọrụ n'ịntanetị"/>
-					<Item id="47004" name="Ogbe Notepad++ (Forum)"/>
+					<Item id="47003" name="Nextpad++ Akwụkwọ ntuziaka onye ọrụ n'ịntanetị"/>
+					<Item id="47004" name="Ogbe Nextpad++ (Forum)"/>
 					<Item id="47012" name="Ozi nbipu..."/>
 					<Item id="47005" name="Nweta ngwa mgbakwunye ndị ọzọ"/>
-					<Item id="47006" name="Melite Notepad++"/>
+					<Item id="47006" name="Melite Nextpad++"/>
 					<Item id="47009" name="Tọọ Proxy Updater..."/>
 					<Item id="48005" name="Bubata ngwa mgbakwunye..."/>
 					<Item id="48006" name="Bubata isiokwu(s) ụdị..."/>
@@ -446,7 +446,7 @@
 				<Item CMDID="41016" name="Bugharịa na recycle Bin"/>
 				<Item CMDID="41014" name="Bugharịa"/>
 				<Item CMDID="41010" name="Bipụta..."/>
-				<Item CMDID="42028" name="Ọgụgụ-naanị na Notepad++"/>
+				<Item CMDID="42028" name="Ọgụgụ-naanị na Nextpad++"/>
 				<Item CMDID="42033" name="Àgwà agụ-naanị na Windows"/>
 				<Item CMDID="2" name="Detuo na Klipbọọdụ"/>
 				<Item CMDID="42029" name="Detuo Ụzọ Faịlụ zuru ezu"/>
@@ -1128,7 +1128,7 @@
 				</DefaultDir>
 
 				<FileAssoc title="Njikọ faịlụ">
-					<Item id="4008" name="Biko pụọ na Notepad++ wee malitegharịa Notepad++ n'ụdị nchịkwa ka iji njirimara a."/>
+					<Item id="4008" name="Biko pụọ na Nextpad++ wee malitegharịa Nextpad++ n'ụdị nchịkwa ka iji njirimara a."/>
 					<Item id="4009" name="Mgbatị akwadoro:"/>
 					<Item id="4010" name="Mgbatị ndebanye aha:"/>
 				</FileAssoc>
@@ -1213,7 +1213,7 @@
 				</Print>
 
 				<Searching title="Na-achọ">
-					<Item id="6902" name="Jiri mkpụrụedemede monospaced na Chọta dialog (Ikwesịrị ịmalitegharị Notepad++)"/>
+					<Item id="6902" name="Jiri mkpụrụedemede monospaced na Chọta dialog (Ikwesịrị ịmalitegharị Nextpad++)"/>
 					<Item id="6903" name="Chọta mkparịta ụka ka ghere oghe mgbe ọchụchọ ga-apụta na windo rịzọlt"/>
 					<Item id="6904" name="Kwenye Dochie Ha niile na akwụkwọ niile emepere emepe"/>
 					<Item id="6905" name="Dochie: Agagharịla na ihe omume na-esote"/>
@@ -1281,7 +1281,7 @@
 					<Item id="6152" name="Mepee nnọkọ n'ụdị ọhụrụ (ma chekwaa nnọkọ na-akpaghị aka na ọpụpụ)"/>
 					<Item id="6153" name="Mgbe niile na ọnọdụ ọtụtụ ihe atụ"/>
 					<Item id="6154" name="Ọdabara (mono-ntụgharị)"/>
-					<Item id="6155" name="* Mgbanwe nke ntọala a kwesịrị ịmalitegharị Notepad++"/>
+					<Item id="6155" name="* Mgbanwe nke ntọala a kwesịrị ịmalitegharị Nextpad++"/>
 					<Item id="6171" name="Hazie oge ntinye ụbọchị"/>
 					<Item id="6175" name="Weghachite usoro oge ndabere ndabere (ụdị ogologo ogologo)"/>
 					<Item id="6172" name="Ụdị omenala:"/>
@@ -1364,8 +1364,8 @@
 					</ComboBox>
 					<ComboBox id="6364">
 						<Element name="Gbanyụọ"/>
-						<Element name="Kwado na mmalite Notepad++"/>
-						<Element name="Kwado na Notepad++ ọpụpụ"/>
+						<Element name="Kwado na mmalite Nextpad++"/>
+						<Element name="Kwado na Nextpad++ ọpụpụ"/>
 					</ComboBox>
 					<Item id="6308" name="usoro tray"/>
 					<Item id="6363" name="ụdị nsụgharị"/>
@@ -1564,7 +1564,7 @@ Họrọ &quot;Ee mgbe niile&quot; ma ọ bụrụ na ịchọghị ịhụ mkpa
 				<Item id="90104" name="Bugharịa na diski"/>
 				<Item id="90105" name="Gbanwee ihe nchọta"/>
 				<Item id="90106" name="Gbaa mperi"/>
-				<Item id="90107" name="Oge ntinye akwụkwọ Notepad++"/>
+				<Item id="90107" name="Oge ntinye akwụkwọ Nextpad++"/>
 				<Item id="90108" name="Enweghị ike ịlele maka mmelite"/>
 				<Item id="90109" name="Ị na-emekọ ihe"/>
 				<Item id="90110" name="Download"/>
@@ -1650,7 +1650,7 @@ Họrọ &quot;Ee mgbe niile&quot; ma ọ bụrụ na ịchọghị ịhụ mkpa
 				<Item id="90189" name="Windows (CRLF)"/>
 				<Item id="90190" name="Mac (CR)"/>
 				<Item id="90191" name="Ebe nchekwa ndepụta ngwa mgbakwunye"/>
-				<Item id="90192" name="Họrọ faịlụ XML Notepad++ ka itinye"/>
+				<Item id="90192" name="Họrọ faịlụ XML Nextpad++ ka itinye"/>
 				<Item id="90193" name="Mepụta ọhụrụ\u2026"/>
 				<Item id="90194" name="Chekwa dị ka\u2026"/>
 				<Item id="90195" name="Asụsụ onye ọrụ:"/>
@@ -1663,7 +1663,7 @@ Họrọ &quot;Ee mgbe niile&quot; ma ọ bụrụ na ịchọghị ịhụ mkpa
 				<Item id="90202" name="Oke ezighi ezi"/>
 				<Item id="90203" name="Ọnụ ahịa oke ga-abụrịrị 0-255 na mmalite ga-abụrịrị &lt;= njedebe."/>
 				<Item id="90204" name="contextMenu.xml Ahụghị"/>
-				<Item id="90205" name="Malitegharịa ekwentị Notepad++ ka iweghachite ọnọdụ ndabaraMenu.xml."/>
+				<Item id="90205" name="Malitegharịa ekwentị Nextpad++ ka iweghachite ọnọdụ ndabaraMenu.xml."/>
 				<Item id="90206" name="Faịlụ ahụ nwere mgbanwe echekwabara.Ibugharị na ntinye koodu ọhụrụ ga-atụfu ha.Gaa n'ihu?"/>
 				<Item id="90207" name="Enweghị nzaghachi sitere na sava."/>
 				<Item id="90208" name="Ọkwa nkesa weghaara"/>
@@ -1687,7 +1687,7 @@ Họrọ &quot;Ee mgbe niile&quot; ma ọ bụrụ na ịchọghị ịhụ mkpa
 		<MessageBox>
 			<!-- $INT_REPLACE$ and $STR_REPLACE$ are place holders, don't translate these place holders. -->
 			<ContextMenuXmlEditWarning title="Na-edezi okirikiri nhọrọ ukwuu" message="Edezi contextMenu.xml na-enye gị ohere ịgbanwe ihe ndetu ndetu++ menu ọnọdụ mmapụta gị.
-Ị ga-amalitegharịa Notepad++ gị ka ọ rụọ ọrụ ma megharịa contextMenu.xml."/>
+Ị ga-amalitegharịa Nextpad++ gị ka ọ rụọ ọrụ ma megharịa contextMenu.xml."/>
 			<SaveCurrentModifWarning title="Chekwa mgbanwe ugbu a" message="Ị ga-echekwa mgbanwe ugbu a.
 Enweghị ike ịmegharị mgbanwe niile echekwara.
 
@@ -1696,16 +1696,16 @@ Gaa n'ihu?"/><!-- HowToReproduce: when you openned file is modified but unsaved 
 Enweghị ike ịmegharị mgbanwe niile echekwara.
 
 Gaa n'ihu?"/><!-- HowToReproduce: when you openned file is modified and saved, then you are changing file encoding. -->
-			<CannotMoveDoc title="Gaa na Notepad++ ọhụrụ" message="A gbanwere akwụkwọ, chekwaa ya wee nwaa ọzọ."/><!-- HowToReproduce: From your Notepad++ drag & drop a clean (not dirty) file to outside of Notepad++, another instance of Notepad++ will be created. Then from your first Notepad++ drag & drop an unsaved file to the new instance. -->
-			<DocReloadWarning title="Bugharịa" message="Ị ji n'aka na ịchọrọ ibugharị faịlụ dị ugbu a wee tufuo mgbanwe ndị emere na Notepad++?"/>
+			<CannotMoveDoc title="Gaa na Nextpad++ ọhụrụ" message="A gbanwere akwụkwọ, chekwaa ya wee nwaa ọzọ."/><!-- HowToReproduce: From your Nextpad++ drag & drop a clean (not dirty) file to outside of Nextpad++, another instance of Nextpad++ will be created. Then from your first Nextpad++ drag & drop an unsaved file to the new instance. -->
+			<DocReloadWarning title="Bugharịa" message="Ị ji n'aka na ịchọrọ ibugharị faịlụ dị ugbu a wee tufuo mgbanwe ndị emere na Nextpad++?"/>
 			<FileLockedWarning title="Chekwa adaghị" message="Biko lelee ma ọ bụrụ na emepere faịlụ a na mmemme ọzọ"/>
-			<FileAlreadyOpenedInNpp title="" message="Emeghelarị faịlụ a na Notepad++."/><!-- HowToReproduce: Open a new document and open a file "c:/tmp/foo", save this new document by choosing "c:/tmp/foo" as file to save, reply the override popup "yes", then this message appears. -->
+			<FileAlreadyOpenedInNpp title="" message="Emeghelarị faịlụ a na Nextpad++."/><!-- HowToReproduce: Open a new document and open a file "c:/tmp/foo", save this new document by choosing "c:/tmp/foo" as file to save, reply the override popup "yes", then this message appears. -->
 			<RenameTabTemporaryNameAlreadyInUse title="Ịgbanwegharị aha agaghị abụ" message="A na-eji aha akọwapụtara na taabụ ọzọ."/><!-- HowToReproduce: Rename the tab of an untitled document and provide a name that is the same as an already-existing tab of an untitled document. -->
 			<RenameTabTemporaryNameIsEmpty title="Ịgbanwegharị aha agaghị abụ" message="Aha akọwapụtara enweghị ike ịbụ ihe efu, ma ọ bụ enweghị ike ịnwe naanị oghere ma ọ bụ TAB."/><!-- HowToReproduce: Rename the tab of an untitled document and provide an empty string or only some white speces. -->
 			<DeleteFileFailed title="Hichapụ faịlụ" message="Hichapụ faịlụ agaghị eme"/><!-- HowToReproduce: this message prevents from system failure. It's hard to reproduce. -->
 
 			<NbFileToOpenImportantWarning title="Ọnụ ego faịlụ imepe buru oke ibu" message="$INT_REPLACE$ files are about to be opened.
-Are you sure you want to open them?"/><!-- HowToReproduce: Check "Open all files of folder instead of launching Folder as Workspace on folder dropping" in "Default Directory" of Preferences dialog, then drop a folder which contains more then 200 files into Notepad++. -->
+Are you sure you want to open them?"/><!-- HowToReproduce: Check "Open all files of folder instead of launching Folder as Workspace on folder dropping" in "Default Directory" of Preferences dialog, then drop a folder which contains more then 200 files into Nextpad++. -->
 			<SettingsOnCloudError title="Ntọala na igwe ojii" message="Ọ dị ka edobere ụzọ ntọala na igwe ojii na draịvụ naanị ọgụgụ,
 ma ọ bụ na folda achọrọ ikike ikike maka ịnweta ide.
 A ga-akagbu ntọala gị na igwe ojii.Biko tọgharịa uru ọnụ site na dialog mmasị."/>
@@ -1716,7 +1716,7 @@ A ga-akagbu ntọala gị na igwe ojii.Biko tọgharịa uru ọnụ site na dia
 			<SortingError title="Mperi nhazi usoro" message="Enweghị ike ịme nhazi ọnụọgụgụ n'ihi ahịrị $INT_REPLACE$."/><!-- HowToReproduce: this message prevents from system failure. It's hard to reproduce. -->
 			<SortLocaleMultiple title="Emebeghi usoro" message="Anaghị akwado nhazi ọtụtụ nhọrọ."/><!-- HowToReproduce: Make a multiple selection and choose Edit | Line Operations | Sort Lines In Locale Order. -->
 			<SortLocaleUnknown title="Ụdị adabaghị" message="Enweghị ike ikpebi ihe kpatara ụdị ahụ dara."/><!-- HowToReproduce: This condition is theoretical; it is unknown what could cause it. -->
-			<SortLocaleExcept title="Ụdị adabaghị" message="$STR_REPLACE$"/><!-- HowToReproduce: Open a large file, e.g. 500MB / 90k lines, in 32-bit Notepad++ and choose Edit | Line Operations | Sort Lines In Locale Order. -->
+			<SortLocaleExcept title="Ụdị adabaghị" message="$STR_REPLACE$"/><!-- HowToReproduce: Open a large file, e.g. 500MB / 90k lines, in 32-bit Nextpad++ and choose Edit | Line Operations | Sort Lines In Locale Order. -->
 			<ColumnModeTip title="Ndụmọdụ ụkpụrụ kọlụm" message="Enwere ụzọ atọ iji gbanwee gaa na kọlụm-họrọ ọnọdụ:
 
 1. (keyboard na òké) Jide Alt ka ị na-adọkpụrụ aka ekpe
@@ -1744,14 +1744,14 @@ Mmemme ọzọ agbanweela faịlụ a.
 			<DoReloadOrNotAndLooseChange title="Bugharịa" message="&quot;$STR_REPLACE$&quot;
 
 Mmemme ọzọ agbanweela faịlụ a.
-Ịchọrọ ibugharị ya wee tufuo mgbanwe ndị emere na Notepad++?"/>
+Ịchọrọ ibugharị ya wee tufuo mgbanwe ndị emere na Nextpad++?"/>
 			<PrehistoricSystemDetected title="Achọpụtara sistemu akụkọ tupu akụkọ ihe mere eme" message="Ọ dị ka ị ka na-eji usoro oge ochie.Njirimara a na-arụ ọrụ naanị na sistemụ ọgbara ọhụrụ, ndo."/><!-- HowToReproduce: Launch "Document Map" under Windows XP. -->
-			<XpUpdaterProblem title="Ihe Nwelite Notepad++" message="Notepad++ updater adabaghị na XP n'ihi oyi akwa nchekwa ochie n'okpuru XP.
-Ịchọrọ ịga na ibe Notepad++ ka ibudata ụdị kachasị ọhụrụ?"/><!-- HowToReproduce: Run menu "? -> Update Notepad++" under Windows XP. -->
-			<GUpProxyConfNeedAdminMode title="Ntọala proxy" message="Biko malitegharịa Notepad++ na ọnọdụ nchịkwa iji hazie proxy."/>
+			<XpUpdaterProblem title="Ihe Nwelite Nextpad++" message="Nextpad++ updater adabaghị na XP n'ihi oyi akwa nchekwa ochie n'okpuru XP.
+Ịchọrọ ịga na ibe Nextpad++ ka ibudata ụdị kachasị ọhụrụ?"/><!-- HowToReproduce: Run menu "? -> Update Nextpad++" under Windows XP. -->
+			<GUpProxyConfNeedAdminMode title="Ntọala proxy" message="Biko malitegharịa Nextpad++ na ọnọdụ nchịkwa iji hazie proxy."/>
 			<DocTooDirtyToMonitor title="Nsogbu nlekota oru" message="Akwụkwọ ahụ ruru unyi.Biko chekwaa mgbanwe ahụ tupu nyochaa ya."/>
 			<DocNoExistToMonitor title="Nsogbu nlekota oru" message="Faịlụ kwesịrị ịdị ka a ga-enyocha ya."/>
-			<FileTooBigToOpen title="Nsogbu nha faịlụ" message="Faịlụ buru oke ibu ka Notepad++ meghere"/><!-- HowToReproduce: Try to open a 4GB file (it's not easy to reproduce, it depends on your system). -->
+			<FileTooBigToOpen title="Nsogbu nha faịlụ" message="Faịlụ buru oke ibu ka Nextpad++ meghere"/><!-- HowToReproduce: Try to open a 4GB file (it's not easy to reproduce, it depends on your system). -->
 			<FileLoadingException title="Koodu ewepu: $STR_REPLACE$" message="Enwere mperi mgbe ị na-ebufe faịlụ ahụ!"/>
 			<WantToOpenHugeFile title="Imepe nnukwu ịdọ aka ná ntị faịlụ" message="Imepe nnukwu faịlụ nke 2GB+ nwere ike were ọtụtụ nkeji.
 Ị chọrọ imepe ya?"/>
@@ -1765,8 +1765,8 @@ Ihe nchekwa &quot;$STR_REPLACE2$&quot; adịghị."/>
 Ịchọrọ ịchekwa faịlụ dị ugbu a?"/><!-- HowToReproduce: this message prevents from system failure. It's hard to reproduce. -->
 			<LoadStylersFailed title="Ibu ụdị stylers.xml emezughị" message="Ibu &quot;$STR_REPLACE$&quot; dara!"/>
 			<LoadLangsFailed title="Nhazi" message="Ibu langs.xml dara!
-Ị chọrọ iweghachite langs.xml gị?"/><!-- HowToReproduce: Close Notepad++. Use another editor to remove all content of "langs.xml" (0 length) then save it. Open Notepad++. -->
-			<LoadLangsFailedFinal title="Nhazi" message="Ibu langs.xml dara!"/><!-- HowToReproduce: Close Notepad++. Use another editor to make "langs.xml" an invalid xml file then save it. Open Notepad++. -->
+Ị chọrọ iweghachite langs.xml gị?"/><!-- HowToReproduce: Close Nextpad++. Use another editor to remove all content of "langs.xml" (0 length) then save it. Open Nextpad++. -->
+			<LoadLangsFailedFinal title="Nhazi" message="Ibu langs.xml dara!"/><!-- HowToReproduce: Close Nextpad++. Use another editor to make "langs.xml" an invalid xml file then save it. Open Nextpad++. -->
 			<FolderAsWorspaceSubfolderExists title="nchekwa dị ka Oghere ọrụ na-agbakwunye nsogbu nchekwa" message="Obere nchekwa nke folda ịchọrọ ịgbakwunye dị.
 Biko wepu mgbọrọgwụ ya na panel tupu ịtinye nchekwa &quot;$STR_REPLACE$&quot;."/><!-- HowToReproduce: Add a folder like "c:\temp\aFolder\" into "Folder as Workspace" panel, then try to add "c:\temp\". -->
 
@@ -1794,26 +1794,26 @@ biko nye ọzọ."/>
 			<SCMapperDoDeleteOrNot title="O doro gị anya?" message="Ị ji n'aka na ịchọrọ ihichapụ ụzọ mkpirisi a?"/>
 			<FindCharRangeValueError title="Nsogbu oke ọnụ ahịa" message="Ị kwesịrị pịnye n'etiti 0 na 255."/> <!-- HowToReproduce: Search menu, then Find characters in range, select Custom range, enter 999 in either edit box, press Find. -->
 			<OpenInAdminMode title="Chekwa adaghị" message="Enweghị ike ịchekwa faịlụ a yana enwere ike ichekwa ya.
-Ịchọrọ ịmalite Notepad++ na ọnọdụ nchịkwa?"/>
+Ịchọrọ ịmalite Nextpad++ na ọnọdụ nchịkwa?"/>
 			<OpenInAdminModeWithoutCloseCurrent title="Chekwa adaghị" message="Enweghị ike ịchekwa faịlụ a yana enwere ike ichekwa ya.
-Ịchọrọ ịmalite Notepad++ na ọnọdụ nchịkwa?"/>
-			<OpenInAdminModeFailed title="Mepee na ọnọdụ onye nchịkwa adaghị" message="Enweghị ike imeghe notepad++ na ọnọdụ nchịkwa."/><!-- HowToReproduce: When you have no Admin privilege and you try to save a modified file in a protected location (for example: any file in sub-folder of "C:\Program Files\". This message will appear after replying "Yes" to "Open in Admin mode" dialog. -->
+Ịchọrọ ịmalite Nextpad++ na ọnọdụ nchịkwa?"/>
+			<OpenInAdminModeFailed title="Mepee na ọnọdụ onye nchịkwa adaghị" message="Enweghị ike imeghe Nextpad++ na ọnọdụ nchịkwa."/><!-- HowToReproduce: When you have no Admin privilege and you try to save a modified file in a protected location (for example: any file in sub-folder of "C:\Program Files\". This message will appear after replying "Yes" to "Open in Admin mode" dialog. -->
 			<ViewInBrowser title="Lelee faịlụ dị ugbu a na ihe nchọgharị" message="Enweghị ike ịhụ ngwa na sistemụ gị."/>
-			<ExitToUpdatePlugins title="Notepad++ na-achọ ịpụ apụ" message="Ọ bụrụ na ịpị EE, ị ga-akwụsị Notepad++ ka ịga n'ihu na-arụ ọrụ.
-A ga-amalitegharị Notepad++ ka akwụsịchara ọrụ niile.
+			<ExitToUpdatePlugins title="Nextpad++ na-achọ ịpụ apụ" message="Ọ bụrụ na ịpị EE, ị ga-akwụsị Nextpad++ ka ịga n'ihu na-arụ ọrụ.
+A ga-amalitegharị Nextpad++ ka akwụsịchara ọrụ niile.
 Gaa n'ihu?"/>
-			<NeedToRestartToLoadPlugins title="Ekwesịrị ịmalitegharị Notepad++" message="Ị ga-amalitegharịa Notepad++ ka ibunye plugins ị rụnyere."/><!-- HowToReproduce: Import a plugin via menu "Settings->Import->Import Plugin(s)...". -->
-			<ChangeHistoryEnabledWarning title="Ekwesịrị ịmalitegharị Notepad++" message="Ị ga-amalitegharị Notepad++ ka ị nwee ike ịgbanwe akụkọ ihe mere eme."/><!-- HowToReproduce: uncheck "Display Change History" via Preferences dialog "Marges/Border/Edge. -->
-			<WindowsSessionExit title="Notepad++ - Ọpụpụ nnọkọ Windows" message="Oge Windows na-achọ ịkwụsị mana ị nwere ụfọdụ data echekwarabeghị.Ị chọrọ ịpụ apụ Notepad++ ugbu a?"/>
+			<NeedToRestartToLoadPlugins title="Ekwesịrị ịmalitegharị Nextpad++" message="Ị ga-amalitegharịa Nextpad++ ka ibunye plugins ị rụnyere."/><!-- HowToReproduce: Import a plugin via menu "Settings->Import->Import Plugin(s)...". -->
+			<ChangeHistoryEnabledWarning title="Ekwesịrị ịmalitegharị Nextpad++" message="Ị ga-amalitegharị Nextpad++ ka ị nwee ike ịgbanwe akụkọ ihe mere eme."/><!-- HowToReproduce: uncheck "Display Change History" via Preferences dialog "Marges/Border/Edge. -->
+			<WindowsSessionExit title="Nextpad++ - Ọpụpụ nnọkọ Windows" message="Oge Windows na-achọ ịkwụsị mana ị nwere ụfọdụ data echekwarabeghị.Ị chọrọ ịpụ apụ Nextpad++ ugbu a?"/>
 			<LanguageMenuCompactWarning title="Nchịkọta asụsụ kọmpat" message="A ga-agbanwe nhọrọ a na mbido na-esote."/><!-- HowToReproduce: toggle "Make language menu compact" via Preferences dialog "Language/Language Menu. -->
 			<SwitchUnsavedThemeWarning title="$STR_REPLACE$" message="A ga-atụfu mgbanwe ndị a na-echekwabeghị!
 Ịchọrọ ịchekwa mgbanwe gị tupu ịgbanwee gburugburu?"/><!-- HowToReproduce: In the Style Configurator dialog change some theme and switch to other theme without saving. -->
-			<MacroAndRunCmdlWarning title="Ndakọrịta iwu Macro na Run" message="Iwu Macro na Run gị echekwara na Notepad++ v.8.5.2 (ma ọ bụ karịa) nwere ike ọ gaghị adaba na ụdị Notepad++ dị ugbu a.
+			<MacroAndRunCmdlWarning title="Ndakọrịta iwu Macro na Run" message="Iwu Macro na Run gị echekwara na Nextpad++ v.8.5.2 (ma ọ bụ karịa) nwere ike ọ gaghị adaba na ụdị Nextpad++ dị ugbu a.
 Biko nwalee iwu ndị ahụ ma, ọ bụrụ na achọrọ, degharịa ha ọzọ.
 
-Nhọrọ, ị nwere ike downgrade na Notepad++ v8.5.2 na weghachi gị gara aga data.
-Notepad++ ga-echekwa &quot;shortcuts.xml&quot; ochie gị ma chekwaa ya ka &quot;shortcuts.xml.v8.5.2.backup&quot;.
-Na-atụgharị aha &quot;shortcuts.xml.v8.5.2.backup&quot; -&gt; &quot;shortcuts.xml&quot;, iwu gị kwesịrị iweghachite ma rụọ ọrụ nke ọma."/><!-- HowToReproduce: Close Notepad++, remove shortcuts.xml.v8.5.2.backup & v852ShortcutsCompatibilityWarning.xml if present, relaunch Notepad++, delete or modify a shortcuts via Shortcut Mapper, close Notepad++, then the message will show up -->
+Nhọrọ, ị nwere ike downgrade na Nextpad++ v8.5.2 na weghachi gị gara aga data.
+Nextpad++ ga-echekwa &quot;shortcuts.xml&quot; ochie gị ma chekwaa ya ka &quot;shortcuts.xml.v8.5.2.backup&quot;.
+Na-atụgharị aha &quot;shortcuts.xml.v8.5.2.backup&quot; -&gt; &quot;shortcuts.xml&quot;, iwu gị kwesịrị iweghachite ma rụọ ọrụ nke ọma."/><!-- HowToReproduce: Close Nextpad++, remove shortcuts.xml.v8.5.2.backup & v852ShortcutsCompatibilityWarning.xml if present, relaunch Nextpad++, delete or modify a shortcuts via Shortcut Mapper, close Nextpad++, then the message will show up -->
 			<FullReadOnlySavingForbidden title="Chekwa adaghị" message="Enweghị ike ịchekwa faịlụ.
 Akwụkwọ ndetu++ zuru oke na-echekwa naanị ihe a machibidoro iwu gbochiri ịchekwa faịlụ ahụ."/>
 			<NotEnoughRoom4Saving title="Chekwa adaghị" message="Ịchekwa faịlụ agaghị.
@@ -1828,8 +1828,8 @@ IHE: Ịhọrọ ịghara ịmepụta ebe nchekwa ma ọ bụ mechie ha ma emech
 Ọ ga-amasị gị ịmepụta ebe ndị ahụ?
 
 IHE: Ịhọrọ ịghara ịmepụta ebe nchekwa ma ọ bụ mechie ha ma emechaa, a ga-agbanwe nnọkọ gị na ọpụpụ!Anyị na-atụ aro ka ị kwadoo &quot;session.xml&quot; gị ugbu a."/>
-			<RTLvsDirectWrite title="Enweghị ike ịgba ọsọ RTL" message="RTL adabaghị na ọnọdụ DirectWrite.Biko gbanyụọ ụdị DirectWrite na MISC.ngalaba nke Mmasị Mmasị, wee malitegharịa Notepad++."/>
-			<FileMemoryAllocationFailed title="Ewezuga: Oke ebe nchekwa faịlụ dara" message="Eleghị anya enweghị ebe nchekwa n'efu zuru oke maka faịlụ Notepad++ na-eburu."/><!-- HowToReproduce: Try to open multiple files with total size > ~700MB in the x86 Notepad++ (it will depend on the PC memory configuration and the current system memory usage...). -->
+			<RTLvsDirectWrite title="Enweghị ike ịgba ọsọ RTL" message="RTL adabaghị na ọnọdụ DirectWrite.Biko gbanyụọ ụdị DirectWrite na MISC.ngalaba nke Mmasị Mmasị, wee malitegharịa Nextpad++."/>
+			<FileMemoryAllocationFailed title="Ewezuga: Oke ebe nchekwa faịlụ dara" message="Eleghị anya enweghị ebe nchekwa n'efu zuru oke maka faịlụ Nextpad++ na-eburu."/><!-- HowToReproduce: Try to open multiple files with total size > ~700MB in the x86 Nextpad++ (it will depend on the PC memory configuration and the current system memory usage...). -->
 			<FindRegexBackwardDisabled title="Agbanyụrụ nchọ azụ Regex" message="Site na ndabara, a kwụsịrị ịchọ regex azụ n'ihi nsonaazụ a na-atụghị anya ya.Iji mee ọchụchọ azụ, mepee dialog Chọta wee họrọ ma ọ bụ ọnọdụ ọchụchọ nkịtị ma ọ bụ ogologo ogologo kama ikwu okwu oge niile.
 Pịa bọtịnụ OK ka imepe mkparịta ụka Chọta ma ọ bụ tọọ lekwasị anya na ya.
 
@@ -1837,8 +1837,8 @@ Pịa bọtịnụ OK ka imepe mkparịta ụka Chọta ma ọ bụ tọọ lekw
 			<PrintError title="0" message="Enweghị ike ịmalite akwụkwọ nbipute."/><!-- Use title="0" to use Windows OS default translated "Error" title. -->
 			<FindAutoChangeOfInSelectionWarning title="Chọọ ịdọ aka ná ntị" message="Agbanwela ọnọdụ igbe nlele &quot;N'ime nhọrọ&quot; na-akpaghị aka.
 Biko chọpụta ọnọdụ ọchụchọ tupu ime ihe ahụ."/> <!-- HowToReproduce: https://github.com/notepad-plus-plus/notepad-plus-plus/issues/14897#issuecomment-2564316224 -->
-			<Need2Restart2ShowMenuShortcuts title="Ekwesịrị ịmalitegharị Notepad++" message="Ekwesịrị ịmalitegharị Notepad++ iji gosi ụzọ mkpirisi menu nri."/>
-			<NoAdminRight2ChangeReadOnlyFileAttribute title="Ịgbanwe àgwà ọgụgụ naanị faịlụ dara" message="Biko gbaa Notepad++ ka onye nchịkwa ka ịgbanwee njirimara faịlụ."/>
+			<Need2Restart2ShowMenuShortcuts title="Ekwesịrị ịmalitegharị Nextpad++" message="Ekwesịrị ịmalitegharị Nextpad++ iji gosi ụzọ mkpirisi menu nri."/>
+			<NoAdminRight2ChangeReadOnlyFileAttribute title="Ịgbanwe àgwà ọgụgụ naanị faịlụ dara" message="Biko gbaa Nextpad++ ka onye nchịkwa ka ịgbanwee njirimara faịlụ."/>
 		</MessageBox>
 		<ClipboardHistory>
 			<PanelTitle name="Akụkọ Klipbọọdụ"/>
@@ -1958,8 +1958,8 @@ Biko chọpụta ọnọdụ ọchụchọ tupu ime ihe ahụ."/> <!-- HowToRepr
 			<word-chars-list-warning-end value="n'ime ndepụta agwa gị."/><!-- HowToReproduce: In "Delimiter" section of Preferences dialog, check "Add your character as part of word\r(don't choose it unless you know what you're doing)", then type a white-space in the text field. -->
 			<backup-select-folder value="Họrọ nchekwa dị ka ndekọ ndabere"/><!-- HowToReproduce: Settings > Preferences > Backup > [...] -->
 			<cloud-invalid-warning value="Ụzọ na-ezighi ezi."/>
-			<cloud-restart-warning value="Biko malitegharịa Notepad++ ka ọ rụọ ọrụ."/>
-			<cloud-select-folder value="Họrọ nchekwa site na/ gaa na ebe Notepad++ na-agụ/dere ntọala ya"/><!-- HowToReproduce: In "Cloud" section of Preferences dialog, check "Set your cloud location path here: ", then click the button "...". This message is displayed in the "Browse For Folder" dialog. -->
+			<cloud-restart-warning value="Biko malitegharịa Nextpad++ ka ọ rụọ ọrụ."/>
+			<cloud-select-folder value="Họrọ nchekwa site na/ gaa na ebe Nextpad++ na-agụ/dere ntọala ya"/><!-- HowToReproduce: In "Cloud" section of Preferences dialog, check "Set your cloud location path here: ", then click the button "...". This message is displayed in the "Browse For Folder" dialog. -->
 			<default-open-save-select-folder value="Họrọ nchekwa dị ka ndekọ ndabere"/><!-- HowToReproduce: Settings > Preferences > Default Directory > [...] -->
 			<shift-change-direction-tip value="Jiri Shift+Enter ka ịchọọ n'akụkụ nke ọzọ"/>
 			<two-find-buttons-tip value="2 chọta bọtịnụ mode"/>
@@ -2118,7 +2118,7 @@ C, C++, Java, C #, Objective-C, PHP, JavaScript, JSP, CSS, Perl, Rust, PowerShel
 
 			<!-- Don't translate "Global override" and "Default Style" -->
 			<global-override-tip value="Ịkwado &quot;Global override&quot; ebe a ga-ewepụ oke ahụ n'ụdị asụsụ niile.Ihe ị ga-achọ n'ezie bụ iji ntọala &quot;Ụdị an-kpọ&quot; kama"/>
-			<scintillaRenderingTechnology-tip value="Nwere ike melite nsụgharị nke mkpụrụedemede pụrụ iche ma ọ bụ dozie ụfọdụ nsogbu eserese, malitegharịa Notepad++ ka itinye mgbanwe ndị ahụ."/>
+			<scintillaRenderingTechnology-tip value="Nwere ike melite nsụgharị nke mkpụrụedemede pụrụ iche ma ọ bụ dozie ụfọdụ nsogbu eserese, malitegharịa Nextpad++ ka itinye mgbanwe ndị ahụ."/>
 
 			<!-- Due to the limited space on the status bar, if the translations for 'length' & 'lines' are much longer than the English words, please leave them in English instead of translating them. -->
 			<statusbar-length-lines value="ogologo: $STR_REPLACE1$ ahịrị: $STR_REPLACE2$"/>

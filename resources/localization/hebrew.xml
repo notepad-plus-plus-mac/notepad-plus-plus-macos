@@ -2,7 +2,7 @@
 <NotepadPlus>
 	<!--
 	If "RTL" attribute is present and its value is "yes", then user can add "editZoneRTL" attribute beside,
-	and set the value of the attribute in question to "no", so Notepad++ GUI will be RTL,
+	and set the value of the attribute in question to "no", so Nextpad++ GUI will be RTL,
 	but Scintilla zone will be LTR by opening files (see the commented example).
 	Of course, user can set any direction they want afterward, and what they have set on document will be remembered across the sessions.
 	-->
@@ -612,7 +612,7 @@
 				<Item id="90189" name="Windows (CRLF)"/>
 				<Item id="90190" name="Mac (CR)"/>
 				<Item id="90191" name="מאגר רשימת תוספים"/>
-				<Item id="90192" name="בחר קובץ XML עם ערכת נושא של Notepad++ ליישום"/>
+				<Item id="90192" name="בחר קובץ XML עם ערכת נושא של Nextpad++ ליישום"/>
 				<Item id="90193" name="צור חדש\u2026"/>
 				<Item id="90194" name="שמור בשם\u2026"/>
 				<Item id="90195" name="שפת משתמש:"/>
@@ -625,7 +625,7 @@
 				<Item id="90202" name="טווח לא חוקי"/>
 				<Item id="90203" name="ערכי הטווח חייבים להיות 0-255 וההתחלה חייבת להיות &lt;= סוף."/>
 				<Item id="90204" name="contextMenu.xml לא נמצא"/>
-				<Item id="90205" name="הפעל מחדש את Notepad++ כדי ליצור מחדש את ברירת המחדל של contextMenu.xml."/>
+				<Item id="90205" name="הפעל מחדש את Nextpad++ כדי ליצור מחדש את ברירת המחדל של contextMenu.xml."/>
 				<Item id="90206" name="בקובץ יש שינויים שלא נשמרו.טעינה מחדש עם הקידוד החדש תמחק אותם.לְהַמשִׁיך?"/>
 				<Item id="90207" name="אין תגובה מהשרת."/>
 				<Item id="90208" name="השרת החזיר סטטוס"/>

@@ -194,7 +194,7 @@ Translation note:
 					<Item id="42025" name="Enregistrer la macro"/>
 					<Item id="42026" name="Texte de droite à gauche"/>
 					<Item id="42027" name="Texte de gauche à droite"/>
-					<Item id="42028" name="Lecture seule dans Notepad++"/>
+					<Item id="42028" name="Lecture seule dans Nextpad++"/>
 					<Item id="42029" name="Copier le chemin complet du document actuel"/>
 					<Item id="42030" name="Copier le nom du document actuel"/>
 					<Item id="42031" name="Copier le dossier du document actuel"/>
@@ -359,17 +359,17 @@ Translation note:
 					<Item id="46016" name="Aucun (Texte normal)"/>
 					<Item id="46250" name="Définir votre langage..."/>
 					<Item id="46300" name="Ouvrir le dossier des langages utilisateur..."/>
-					<Item id="46301" name="Collection de langages définis par l’utilisateur Notepad++"/>
+					<Item id="46301" name="Collection de langages définis par l’utilisateur Nextpad++"/>
 					<Item id="46180" name="Langage utilisateur"/>
-					<Item id="47000" name="À propos de Notepad++..."/>
+					<Item id="47000" name="À propos de Nextpad++..."/>
 					<Item id="47010" name="Arguments de la ligne de commande..."/>
-					<Item id="47001" name="Site officiel Notepad++"/>
-					<Item id="47002" name="Projet de développement de Notepad++"/>
+					<Item id="47001" name="Site officiel Nextpad++"/>
+					<Item id="47002" name="Projet de développement de Nextpad++"/>
 					<Item id="47003" name="Aide en ligne"/>
 					<Item id="47004" name="Forum"/>
 					<Item id="47012" name="Informations de débogage..."/>
 					<Item id="47005" name="Obtenir d’autres compléments"/>
-					<Item id="47006" name="Mettre à jour Notepad++"/>
+					<Item id="47006" name="Mettre à jour Nextpad++"/>
 					<Item id="47009" name="Paramétrer le proxy de mise à jour..."/>
 					<Item id="48005" name="Importer un complément..."/>
 					<Item id="48006" name="Importer un thème..."/>
@@ -438,7 +438,7 @@ Translation note:
 				<Item CMDID="41016" name="Supprimer le fichier actuel"/>
 				<Item CMDID="41014" name="Recharger"/>
 				<Item CMDID="41010" name="Imprimer"/>
-				<Item CMDID="42028" name="Lecture seule dans Notepad++"/>
+				<Item CMDID="42028" name="Lecture seule dans Nextpad++"/>
 				<Item CMDID="42033" name="Attribut de lecture seule du fichier"/>
 				<Item CMDID="2" name="Copier dans le presse-papiers"/>
 				<Item CMDID="42029" name="Copier le chemin complet du document actuel"/>
@@ -1120,7 +1120,7 @@ Translation note:
 				</DefaultDir>
 
 				<FileAssoc title="Extensions de fichier">
-					<Item id="4008" name="Veuillez quitter Notepad++ et relancer Notepad++ en mode « Administrateur » pour pouvoir utiliser cette fonctionnalité."/>
+					<Item id="4008" name="Veuillez quitter Nextpad++ et relancer Nextpad++ en mode « Administrateur » pour pouvoir utiliser cette fonctionnalité."/>
 					<Item id="4009" name="Extensions supportées :"/>
 					<Item id="4010" name="Extensions associées :"/>
 				</FileAssoc>
@@ -1273,7 +1273,7 @@ Translation note:
 					<Item id="6152" name="Ouverture de session dans une nouvelle instance (et enregistrer la session automatiquement en sortant)"/>
 					<Item id="6153" name="Toujours en mode instance multiple"/>
 					<Item id="6154" name="Par défaut (instance unique)"/>
-					<Item id="6155" name="* Redémarrez Notepad++ pour prendre en compte la modification"/>
+					<Item id="6155" name="* Redémarrez Nextpad++ pour prendre en compte la modification"/>
 					<Item id="6171" name="Personnalisation de l’insertion de la date et de l’heure"/>
 					<Item id="6175" name="Inverser l’ordre de la date et de l’heure par défaut (format court &amp;&amp; long)"/>
 					<Item id="6172" name="Format personnalisé :"/>
@@ -1356,8 +1356,8 @@ Translation note:
 					</ComboBox>
 					<ComboBox id="6364">
 						<Element name="Désactiver"/>
-						<Element name="Activer au démarage de Notepad++"/>
-						<Element name="Activer à la fermeture de Notepad++"/>
+						<Element name="Activer au démarage de Nextpad++"/>
+						<Element name="Activer à la fermeture de Nextpad++"/>
 					</ComboBox>
 					<Item id="6308" name="la barre de notifications"/>
 					<Item id="6363" name="mode de rendu"/>
@@ -1642,7 +1642,7 @@ Vous pourrez réactiver cette boîte de dialogue dans les Préférences ultérie
 				<Item id="90189" name="Windows (CRLF)"/>
 				<Item id="90190" name="Mac (CR)"/>
 				<Item id="90191" name="Dépôt de liste de plugins"/>
-				<Item id="90192" name="Sélectionnez un fichier XML de thème Notepad++ à appliquer"/>
+				<Item id="90192" name="Sélectionnez un fichier XML de thème Nextpad++ à appliquer"/>
 				<Item id="90193" name="Créer un nouveau\u2026"/>
 				<Item id="90194" name="Enregistrer sous\u2026"/>
 				<Item id="90195" name="Langue de l'utilisateur :"/>
@@ -1655,7 +1655,7 @@ Vous pourrez réactiver cette boîte de dialogue dans les Préférences ultérie
 				<Item id="90202" name="Plage invalide"/>
 				<Item id="90203" name="Les valeurs de la plage doivent être comprises entre 0 et 255 et le début doit être &lt;= fin."/>
 				<Item id="90204" name="contextMenu.xml introuvable"/>
-				<Item id="90205" name="Redémarrez Notepad++ pour régénérer le contextMenu.xml par défaut."/>
+				<Item id="90205" name="Redémarrez Nextpad++ pour régénérer le contextMenu.xml par défaut."/>
 				<Item id="90206" name="Le fichier comporte des modifications non enregistrées.Le rechargement avec le nouvel encodage les supprimera.Continuer?"/>
 				<Item id="90207" name="Aucune réponse du serveur."/>
 				<Item id="90208" name="Le serveur a renvoyé l'état"/>
@@ -1678,8 +1678,8 @@ Vous pourrez réactiver cette boîte de dialogue dans les Préférences ultérie
 		</Dialog>
 		<MessageBox>
 			<!-- $INT_REPLACE$ and $STR_REPLACE$ are place holders, don't translate these place holders. -->
-			<ContextMenuXmlEditWarning title="Édition du Menu Contextuel" message="L’édition de « contextMenu.xml » vous permet de modifier le menu contextuel de Notepad++.
-Vous devrez redémarrer votre Notepad++ pour prendre en compte les modifications du fichier."/>
+			<ContextMenuXmlEditWarning title="Édition du Menu Contextuel" message="L’édition de « contextMenu.xml » vous permet de modifier le menu contextuel de Nextpad++.
+Vous devrez redémarrer votre Nextpad++ pour prendre en compte les modifications du fichier."/>
 			<SaveCurrentModifWarning title="Sauvegarder la modification en cours" message="Vous devriez enregistrer la modification en cours.
 Toutes les modifications enregistrées ne peuvent pas être annulées.
 
@@ -1688,16 +1688,16 @@ Continuer ?"/><!-- HowToReproduce: when you opened file is modified but unsaved 
 Toutes les modifications enregistrées ne peuvent pas être annulées.
 
 Continuer ?"/><!-- HowToReproduce: when you opened file is modified and saved, then you are changing file encoding. -->
-			<CannotMoveDoc title="Déplacement vers une nouvelle instance Notepad++" message="Le document est en cours d’utilisation, le sauvegarder puis réessayer."/><!-- HowToReproduce: From your Notepad++ drag & drop a clean (not dirty) file to outside of Notepad++, another instance of Notepad++ will be created. Then from your first Notepad++ drag & drop an unsaved file to the new instance. -->
-			<DocReloadWarning title="Recharger" message="Êtes-vous sûr de vouloir recharger le fichier en cours et de perdre les modifications apportées dans Notepad++ ?"/>
+			<CannotMoveDoc title="Déplacement vers une nouvelle instance Nextpad++" message="Le document est en cours d’utilisation, le sauvegarder puis réessayer."/><!-- HowToReproduce: From your Nextpad++ drag & drop a clean (not dirty) file to outside of Nextpad++, another instance of Nextpad++ will be created. Then from your first Nextpad++ drag & drop an unsaved file to the new instance. -->
+			<DocReloadWarning title="Recharger" message="Êtes-vous sûr de vouloir recharger le fichier en cours et de perdre les modifications apportées dans Nextpad++ ?"/>
 			<FileLockedWarning title="Échec de la sauvegarde" message="Veuillez vérifier si ce fichier est ouvert par un autre programme"/>
-			<FileAlreadyOpenedInNpp title="" message="Le fichier est toujours ouvert dans Notepad++."/><!-- HowToReproduce: Open a new document and open a file "c:/tmp/foo", save this new document by choosing "c:/tmp/foo" as file to save, reply the override popup "yes", then this message appears. -->
+			<FileAlreadyOpenedInNpp title="" message="Le fichier est toujours ouvert dans Nextpad++."/><!-- HowToReproduce: Open a new document and open a file "c:/tmp/foo", save this new document by choosing "c:/tmp/foo" as file to save, reply the override popup "yes", then this message appears. -->
 			<RenameTabTemporaryNameAlreadyInUse title="Échec du renommage" message="Le nom spécifié est déjà utilisé dans un autre onglet."/><!-- HowToReproduce: Rename the tab of an untitled document and provide a name that is the same as an already-existing tab of an untitled document. -->
 			<RenameTabTemporaryNameIsEmpty title="Échec du renommage" message="Le nom spécifié ne peut pas être vide, ou il ne peut pas contenir uniquement des espaces ou des tabulations."/><!-- HowToReproduce: Rename the tab of an untitled document and provide an empty string or only some white speces. -->
 			<DeleteFileFailed title="Suppression du fichier" message="La suppression du fichier a échoué."/><!-- HowToReproduce: this message prevents from system failure. It's hard to reproduce. -->
 
 			<NbFileToOpenImportantWarning title="Nombre trop important de fichiers à ouvrir." message="$INT_REPLACE$ fichiers sont sur le point d’être ouverts.
-Êtes-vous sûr de vouloir les ouvrir ?"/><!-- HowToReproduce: Check "Open all files of folder instead of launching Folder as Workspace on folder dropping" in "Default Directory" of Preferences dialog, then drop a folder which contains more then 200 files into Notepad++. -->
+Êtes-vous sûr de vouloir les ouvrir ?"/><!-- HowToReproduce: Check "Open all files of folder instead of launching Folder as Workspace on folder dropping" in "Default Directory" of Preferences dialog, then drop a folder which contains more then 200 files into Nextpad++. -->
 			<SettingsOnCloudError title="Les paramètres dans le cloud" message="Il semble que les paramètres dans le cloud se trouve sur un lecteur en lecture seule,
 ou à un dossier restreint. Vos paramètres dans le cloud seront annulés.
 Veuillez réinitialiser une valeur cohérente au dialogue Préférences."/>
@@ -1734,14 +1734,14 @@ Voulez-vous le recharger ?"/>
 			<DoReloadOrNotAndLooseChange title="Recharger" message="« $STR_REPLACE$ »
 
 Ce fichier a été modifié par un autre programme.
-Voulez-vous le recharger et perdre les modifications effectuées dans Notepad++ ?"/>
+Voulez-vous le recharger et perdre les modifications effectuées dans Nextpad++ ?"/>
 			<PrehistoricSystemDetected title="Système préhistorique détecté" message="Il semble que vous utilisez toujours un système préhistorique, cette fonctionnalité ne fonctionne que sur un système moderne, désolé."/><!-- HowToReproduce: Launch "Document Map" under Windows XP. -->
-			<XpUpdaterProblem title="Mettre à jour Notepad++" message="Le metteur à jour de Notepad++ est incompatible avec XP en raison de la couche de sécurité obsolète de XP.
-Voulez-vous télécharger la dernière version de Notepad++ sur le site officiel ?"/><!-- HowToReproduce: Run menu "? -> Update Notepad++" under Windows XP. -->
-			<GUpProxyConfNeedAdminMode title="Paramétrage de Proxy" message=" Afin de pouvoir configurer le proxy, relancez Notepad++ en mode « Administrateur »."/>
+			<XpUpdaterProblem title="Mettre à jour Nextpad++" message="Le metteur à jour de Nextpad++ est incompatible avec XP en raison de la couche de sécurité obsolète de XP.
+Voulez-vous télécharger la dernière version de Nextpad++ sur le site officiel ?"/><!-- HowToReproduce: Run menu "? -> Update Nextpad++" under Windows XP. -->
+			<GUpProxyConfNeedAdminMode title="Paramétrage de Proxy" message=" Afin de pouvoir configurer le proxy, relancez Nextpad++ en mode « Administrateur »."/>
 			<DocTooDirtyToMonitor title="Surveillance de Log" message="Le document a été modifié. Veuillez l’enregistrer d’abord."/>
 			<DocNoExistToMonitor title="Surveillance de Log" message="Le fichier doit exister pour être surveillé."/>
-			<FileTooBigToOpen title="Fichier trop volumineux" message="Ce fichier est trop volumineux pour être ouvert avec Notepad++."/>
+			<FileTooBigToOpen title="Fichier trop volumineux" message="Ce fichier est trop volumineux pour être ouvert avec Nextpad++."/>
 			<FileLoadingException title="Code d’exception : $STR_REPLACE$" message="Une erreur s’est produite lors du chargement du fichier !"/>
 			<WantToOpenHugeFile title="Avertissement d’ouverture de fichier volumineux" message="L’ouverture d’un fichier de plus de 2 Go peut prendre plusieurs minutes.
 Voulez-vous continuer ?"/>
@@ -1756,7 +1756,7 @@ Voulez-vous quand même enregistrer le fichier courant ?"/><!-- HowToReproduce: 
 			<LoadStylersFailed title="Échec de chargement des styles" message="Échec de chargement du fichier « $STR_REPLACE$ » !"/>
 			<LoadLangsFailed title="Configuration" message="Échec de chargement du fichier « langs.xml ».
 Voulez-vous récupérer « langs.xml » ?"/>
-			<LoadLangsFailedFinal title="Configuration" message="Échec de chargement du fichier « langs.xml » !"/><!-- HowToReproduce: Close Notepad++. Use another editor to make "langs.xml" an invalid xml file then save it. Open Notepad++. -->
+			<LoadLangsFailedFinal title="Configuration" message="Échec de chargement du fichier « langs.xml » !"/><!-- HowToReproduce: Close Nextpad++. Use another editor to make "langs.xml" an invalid xml file then save it. Open Nextpad++. -->
 			<FolderAsWorspaceSubfolderExists title="Dossier en tant qu’espace de travail" message="Il existe un sous-dossier du dossier que vous souhaitez ajouter.
 Veuillez supprimer le sous-dossier avant d’ajouter « $STR_REPLACE$ »."/><!-- HowToReproduce: Add a folder like "c:\temp\aFolder\" into "Folder as Workspace" panel, then try to add "c:\temp\". -->
 
@@ -1784,26 +1784,26 @@ veuillez en donner un autre."/>
 			<SCMapperDoDeleteOrNot title="Supprimer un raccourci clavier" message="Êtes-vous sûr de vouloir supprimer ce raccourci clavier ?"/>
 			<FindCharRangeValueError title="Valeur en dehors des limites" message="Veuillez entrer une valeur entre 0 et 255."/> <!-- HowToReproduce: Search menu, then Find characters in range, select Custom range, enter 999 in either edit box, press Find. -->
 			<OpenInAdminMode title="L’enregistrement a échoué" message="Le fichier ne peut pas être enregistré et il est peut-être protégé.
-Voulez-vous lancer Notepad++ en mode « Administrateur » ?"/>
+Voulez-vous lancer Nextpad++ en mode « Administrateur » ?"/>
 			<OpenInAdminModeWithoutCloseCurrent title="L’enregistrement a échoué" message="Le fichier ne peut pas être enregistré et il est peut-être protégé.
-Voulez-vous lancer Notepad++ en mode « Administrateur » ?"/>
-			<OpenInAdminModeFailed title="L’ouverture en mode « Administrateur » a échoué" message="Notepad++ ne peut pas être lancé en mode « Administrateur »."/><!-- HowToReproduce: When you have no Admin privilege and you try to save a modified file in a protected location (for example: any file in sub-folder of "C:\Program Files\". This message will appear after replying "Yes" to "Open in Admin mode" dialog. -->
+Voulez-vous lancer Nextpad++ en mode « Administrateur » ?"/>
+			<OpenInAdminModeFailed title="L’ouverture en mode « Administrateur » a échoué" message="Nextpad++ ne peut pas être lancé en mode « Administrateur »."/><!-- HowToReproduce: When you have no Admin privilege and you try to save a modified file in a protected location (for example: any file in sub-folder of "C:\Program Files\". This message will appear after replying "Yes" to "Open in Admin mode" dialog. -->
 			<ViewInBrowser title="Afficher le fichier actuel dans le navigateur" message="Application introuvable sur votre ordinateur."/>
-			<ExitToUpdatePlugins title="Notepad++ sera fermé" message="Si vous cliquez Oui, vous allez quitter Notepad++ pour poursuivre les opérations.
-Notepad++ sera relancé après.
+			<ExitToUpdatePlugins title="Nextpad++ sera fermé" message="Si vous cliquez Oui, vous allez quitter Nextpad++ pour poursuivre les opérations.
+Nextpad++ sera relancé après.
 Continuer ?"/>
-			<NeedToRestartToLoadPlugins title="Notepad++ a besoin d’être redémarré" message="Vous devez redémarrer Notepad++ pour charger les modules d’extension installés."/><!-- HowToReproduce: Import a plugin via menu "Settings->Import->Import Plugin(s)...". -->
-			<ChangeHistoryEnabledWarning title="Notepad++ a besoin d’être redémarré" message="Vous devez redémarrer Notepad++ pour activer l’historique de modification."/><!-- HowToReproduce: uncheck "Display Change History" via Preferences dialog "Marges/Border/Edge. -->
-			<WindowsSessionExit title="Notepad++ - Fermeture de session Windows" message="La session Windows session est sur le point d’être fermée, mais vous avez des données non-sauvegardées. Voulez-vous quitter Notepad++ maintenant ?"/>
+			<NeedToRestartToLoadPlugins title="Nextpad++ a besoin d’être redémarré" message="Vous devez redémarrer Nextpad++ pour charger les modules d’extension installés."/><!-- HowToReproduce: Import a plugin via menu "Settings->Import->Import Plugin(s)...". -->
+			<ChangeHistoryEnabledWarning title="Nextpad++ a besoin d’être redémarré" message="Vous devez redémarrer Nextpad++ pour activer l’historique de modification."/><!-- HowToReproduce: uncheck "Display Change History" via Preferences dialog "Marges/Border/Edge. -->
+			<WindowsSessionExit title="Nextpad++ - Fermeture de session Windows" message="La session Windows session est sur le point d’être fermée, mais vous avez des données non-sauvegardées. Voulez-vous quitter Nextpad++ maintenant ?"/>
 			<LanguageMenuCompactWarning title="Menu compact des langages" message="Cette option sera appliquée au prochain lancement."/><!-- HowToReproduce: toggle "Make language menu compact" via Preferences dialog "Language/Language Menu. -->
 			<SwitchUnsavedThemeWarning title="$STR_REPLACE$" message="Les modifications non-enregistrées vont être perdues !
 Voulez-vous enregistrer vos modifications avant de changer de thème ?"/><!-- HowToReproduce: In the Style Configurator dialog change some theme and switch to other theme without saving. -->
-			<MacroAndRunCmdlWarning title="Compatibilité des commandes Macro et Exécuter" message="Vos commandes Macro et Exécuter enregistrées dans Notepad++ v.8.5.2 (ou antérieur) peuvent ne pas être compatibles avec la version courante de Notepad++.
+			<MacroAndRunCmdlWarning title="Compatibilité des commandes Macro et Exécuter" message="Vos commandes Macro et Exécuter enregistrées dans Nextpad++ v.8.5.2 (ou antérieur) peuvent ne pas être compatibles avec la version courante de Nextpad++.
 Veuillez tester ces commandes et, si besoin, ré-éditer celles-ci.
 
-Autrement, vous pouvez revenir vers Notepad++ v8.5.2 et restaurer les données précédentes.
-Notepad++ va sauvegarder votre ancien « shortcuts.xml » et l’enregistrer sous « shortcuts.xml.v8.5.2.backup ».
-En renommant « shortcuts.xml.v8.5.2.backup » -&gt; « shortcuts.xml », vos commandes devraient être proprement restaurées."/><!-- HowToReproduce: Close Notepad++, remove shortcuts.xml.v8.5.2.backup & v852ShortcutsCompatibilityWarning.xml if present, relaunch Notepad++, delete or modify a shortcuts via Shortcut Mapper, close Notepad++, then the message will show up -->
+Autrement, vous pouvez revenir vers Nextpad++ v8.5.2 et restaurer les données précédentes.
+Nextpad++ va sauvegarder votre ancien « shortcuts.xml » et l’enregistrer sous « shortcuts.xml.v8.5.2.backup ».
+En renommant « shortcuts.xml.v8.5.2.backup » -&gt; « shortcuts.xml », vos commandes devraient être proprement restaurées."/><!-- HowToReproduce: Close Nextpad++, remove shortcuts.xml.v8.5.2.backup & v852ShortcutsCompatibilityWarning.xml if present, relaunch Nextpad++, delete or modify a shortcuts via Shortcut Mapper, close Nextpad++, then the message will show up -->
 			<NotEnoughRoom4Saving title="Échec de l’enregistrement" message="Échec de l’enregistrement du fichier.
 Il semblerait qu’il n’y a pas assez d’espace sur le disque. Votre fichier n’est pas enregistré."/>
 			<FileInaccessibleUserSession title="Fichier inaccessible" message="Certains fichiers de votre session sauvegardée manuellement « $STR_REPLACE$ » sont inaccessibles. Ils peuvent être ouverts comme des documents vides et en lecture seule en tant qu’espaces réservés.
@@ -1816,8 +1816,8 @@ REMARQUE : si vous choisissez de ne pas créer d’espaces réservés ou de les 
 Voulez-vous créer des espaces réservés pour eux ?
 
 REMARQUE : Si vous choisissez de ne pas créer d’espaces réservés ou de les fermer plus tard, votre fichier de session sera modifié à la sortie. Nous vous suggérons de faire une sauvegarde du fichier de session « session.xml » maintenant."/>
-			<RTLvsDirectWrite title="Exécution de la commande « Texte de droite à gauche » impossible" message="« Texte de droite à gauche » n’est pas compatible avec le mode « DirectWrite ». Veuillez désactiver ce mode dans la section « Divers » du dialogue Préférences, et redémarer Notepad++."/>
-			<FileMemoryAllocationFailed title="Exception : échec de l’allocation de mémoire du fichier" message="Il n’y a probablement pas assez de mémoire libre contiguë pour le fichier chargé par Notepad++."/><!-- HowToReproduce: Try to open multiple files with total size > ~700MB in the x86 Notepad++ (it will depend on the PC memory configuration and the current system memory usage...). -->
+			<RTLvsDirectWrite title="Exécution de la commande « Texte de droite à gauche » impossible" message="« Texte de droite à gauche » n’est pas compatible avec le mode « DirectWrite ». Veuillez désactiver ce mode dans la section « Divers » du dialogue Préférences, et redémarer Nextpad++."/>
+			<FileMemoryAllocationFailed title="Exception : échec de l’allocation de mémoire du fichier" message="Il n’y a probablement pas assez de mémoire libre contiguë pour le fichier chargé par Nextpad++."/><!-- HowToReproduce: Try to open multiple files with total size > ~700MB in the x86 Nextpad++ (it will depend on the PC memory configuration and the current system memory usage...). -->
 			<FindRegexBackwardDisabled title="Recherche par expression régulière inversée, désactivée" message="Par défaut, la recherche par expression régulière inversée est désactivée en raison des résultats potentiellement inattendus qu’elle peut produire. Pour effectuer une recherche inversée, ouvrir la boîte de dialogue de recherche et sélectionner le mode de recherche normal ou étendu au lieu de l’option expression régulière.
 Appuyez sur le bouton OK pour ouvrir la boîte de dialogue de recherche ou lui donner la priorité.
 
@@ -1825,8 +1825,8 @@ Si vous avez besoin de la fonction de recherche d’expression régulière inver
 			<PrintError title="0" message="Impossible de démarrer l'imprimante de document."/><!-- Use title="0" to use Windows OS default translated "Error" title. -->
 			<FindAutoChangeOfInSelectionWarning title="Avertissement de recherche" message="L'état de laa case à cocher &quot;Dans la sélection&quot; a été automatiquement modifié.
 Veuillez vérifier la condition de recherche avant de procéder à l'action."/> <!-- HowToReproduce: https://github.com/notepad-plus-plus/notepad-plus-plus/issues/14897#issuecomment-2564316224 -->
-			<Need2Restart2ShowMenuShortcuts title="Redémarrer Notepad++" message="Vous avez besoins de redémarrer Notepad++ afin d'afficher menu ＋ ▼ ✕ "/>
-			<NoAdminRight2ChangeReadOnlyFileAttribute title="Impossible de modifier l'attribut lecture seule" message="Veuillez lancer Notepad++ en mode « Administrateur » pour modifier cet attribut du fichier."/>
+			<Need2Restart2ShowMenuShortcuts title="Redémarrer Nextpad++" message="Vous avez besoins de redémarrer Nextpad++ afin d'afficher menu ＋ ▼ ✕ "/>
+			<NoAdminRight2ChangeReadOnlyFileAttribute title="Impossible de modifier l'attribut lecture seule" message="Veuillez lancer Nextpad++ en mode « Administrateur » pour modifier cet attribut du fichier."/>
 		</MessageBox>
 		<ClipboardHistory>
 			<PanelTitle name="Historique du presse-papier"/>
@@ -1946,8 +1946,8 @@ Veuillez vérifier la condition de recherche avant de procéder à l'action."/> 
 			<word-chars-list-warning-end value="  dans votre liste des caractères."/><!-- HowToReproduce: In "Delimiter" section of Preferences dialog, check "Add your character as part of word\r(don't choose it unless you know what you're doing)", then type a white-space in the text field. -->
 			<backup-select-folder value="Sélectionner un dossier pour le répertoire de sauvegarde (Backup)"/><!-- HowToReproduce: Settings > Preferences > Backup > [...] -->
 			<cloud-invalid-warning value="Chemin invalide."/>
-			<cloud-restart-warning value="Veuillez redémarrer Notepad++ afin que le changement prenne effet."/>
-			<cloud-select-folder value="Sélectionner un répertoire où Notepad++ lit ou écrit ses paramètres"/><!-- HowToReproduce: In "Cloud" section of Preferences dialog, check "Set your cloud location path here: ", then click the button "...". This message is displayed in the "Browse For Folder" dialog. -->
+			<cloud-restart-warning value="Veuillez redémarrer Nextpad++ afin que le changement prenne effet."/>
+			<cloud-select-folder value="Sélectionner un répertoire où Nextpad++ lit ou écrit ses paramètres"/><!-- HowToReproduce: In "Cloud" section of Preferences dialog, check "Set your cloud location path here: ", then click the button "...". This message is displayed in the "Browse For Folder" dialog. -->
 			<default-open-save-select-folder value="Sélectionner un dossier pour le répertoire par défaut"/><!-- HowToReproduce: Settings > Preferences > Default Directory > [...] -->
 			<shift-change-direction-tip value="Utilisez Maj + Entrée pour rechercher dans le sens inverse"/>
 			<two-find-buttons-tip value="2 boutons Recherche"/>
@@ -2106,7 +2106,7 @@ Si vous sélectionnez le mode avancé sans modifier les fichiers des langues men
 
 			<!-- Don't translate "Global override" and "Default Style" -->
 			<global-override-tip value="Activer le « global override » ici substituera ces paramètres dans tous les styles pour tous les langages de programmation. Vous préférerez probablement utiliser les paramètres « Default Style » à la place"/>
-			<scintillaRenderingTechnology-tip value="Cela peut améliorer le rendu des caractères spéciaux ou résoudre certains problèmes graphiques. Veuillez redémarrer Notepad++ pour appliquer le changement."/>
+			<scintillaRenderingTechnology-tip value="Cela peut améliorer le rendu des caractères spéciaux ou résoudre certains problèmes graphiques. Veuillez redémarrer Nextpad++ pour appliquer le changement."/>
 
 			<!-- Due to the limited space on the status bar, if the translations for 'length' & 'lines' are much longer than the English words, please leave them in English instead of translating them. -->
 			<statusbar-length-lines value="longueur : $STR_REPLACE1$    lignes : $STR_REPLACE2$"/>

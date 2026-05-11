@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <!--
-    Swahili (Kiswahili) language file for Notepad++ macOS
+    Swahili (Kiswahili) language file for Nextpad++ macOS
     Based on English template - community translations welcome
     Created: 2026-04-04
 -->
@@ -41,7 +41,7 @@
 					<Item subMenuId="edit-onSelection" name="Kwenye Uchaguzi"/>
 					<Item subMenuId="edit-multiSelectALL" name="Chagua nyingi ZOTE"/>
 					<Item subMenuId="edit-multiSelectNext" name="Chagua mara nyingi Inayofuata"/>
-					<Item subMenuId="edit-readonlyInNotepad++" name="Soma-Pekee katika Notepad++"/>
+					<Item subMenuId="edit-readonlyInNextpad++" name="Soma-Pekee katika Nextpad++"/>
 					<Item subMenuId="search-changeHistory" name="Badilisha Historia"/>
 					<Item subMenuId="search-markAll" name="Mtindo wa Matukio Yote ya Tokeni"/>
 					<Item subMenuId="search-markOne" name="Style One Token"/>
@@ -367,17 +367,17 @@
 					<Item id="46016" name="Hakuna (Maandishi ya Kawaida)"/>
 					<Item id="46250" name="Bainisha lugha yako..."/>
 					<Item id="46300" name="Fungua folda ya Lugha Iliyobainishwa na Mtumiaji..."/>
-					<Item id="46301" name="Mkusanyiko wa Lugha Zilizofafanuliwa za Mtumiaji Notepad++"/>
+					<Item id="46301" name="Mkusanyiko wa Lugha Zilizofafanuliwa za Mtumiaji Nextpad++"/>
 					<Item id="46180" name="Imefafanuliwa na Mtumiaji"/>
-					<Item id="47000" name="Kuhusu Notepad++"/>
+					<Item id="47000" name="Kuhusu Nextpad++"/>
 					<Item id="47010" name="Hoja za Mstari wa Amri..."/>
-					<Item id="47001" name="Notepad++ Nyumbani"/>
-					<Item id="47002" name="Ukurasa wa Mradi wa Notepad++"/>
-					<Item id="47003" name="Notepad++ Mwongozo wa Mtumiaji wa Mtandao"/>
-					<Item id="47004" name="Jumuiya ya Notepad++ (Jukwaa)"/>
+					<Item id="47001" name="Nextpad++ Nyumbani"/>
+					<Item id="47002" name="Ukurasa wa Mradi wa Nextpad++"/>
+					<Item id="47003" name="Nextpad++ Mwongozo wa Mtumiaji wa Mtandao"/>
+					<Item id="47004" name="Jumuiya ya Nextpad++ (Jukwaa)"/>
 					<Item id="47012" name="Maelezo ya Utatuzi..."/>
 					<Item id="47005" name="Pata Programu-jalizi Zaidi"/>
-					<Item id="47006" name="Sasisha Notepad++"/>
+					<Item id="47006" name="Sasisha Nextpad++"/>
 					<Item id="47009" name="Weka Wakala wa Kisasishaji..."/>
 					<Item id="48005" name="Leta programu-jalizi..."/>
 					<Item id="48006" name="Leta mandhari ya mtindo..."/>
@@ -446,7 +446,7 @@
 				<Item CMDID="41016" name="Hamisha hadi kwenye Recycle Bin"/>
 				<Item CMDID="41014" name="Pakia upya"/>
 				<Item CMDID="41010" name="Chapisha..."/>
-				<Item CMDID="42028" name="Soma-Pekee katika Notepad++"/>
+				<Item CMDID="42028" name="Soma-Pekee katika Nextpad++"/>
 				<Item CMDID="42033" name="Sifa ya Kusoma Pekee katika Windows"/>
 				<Item CMDID="2" name="Nakili kwenye Ubao wa kunakili"/>
 				<Item CMDID="42029" name="Nakili Njia Kamili ya Faili"/>
@@ -1128,7 +1128,7 @@
 				</DefaultDir>
 
 				<FileAssoc title="Chama cha Faili">
-					<Item id="4008" name="Tafadhali ondoka kwenye Notepad++ na uzindue upya Notepad++ katika hali ya Msimamizi ili kutumia kipengele hiki."/>
+					<Item id="4008" name="Tafadhali ondoka kwenye Nextpad++ na uzindue upya Nextpad++ katika hali ya Msimamizi ili kutumia kipengele hiki."/>
 					<Item id="4009" name="Viendelezi vinavyotumika:"/>
 					<Item id="4010" name="Viendelezi vilivyosajiliwa:"/>
 				</FileAssoc>
@@ -1213,7 +1213,7 @@
 				</Print>
 
 				<Searching title="Inatafuta">
-					<Item id="6902" name="Tumia fonti iliyo na nafasi moja kwenye kidirisha cha Tafuta (Inahitaji kuwasha tena Notepad++)"/>
+					<Item id="6902" name="Tumia fonti iliyo na nafasi moja kwenye kidirisha cha Tafuta (Inahitaji kuwasha tena Nextpad++)"/>
 					<Item id="6903" name="Kidirisha cha Tafuta kinasalia kufunguliwa baada ya utafutaji unaotoa kwenye dirisha la matokeo"/>
 					<Item id="6904" name="Thibitisha Badilisha Nafasi Zote katika Hati Zote Zilizofunguliwa"/>
 					<Item id="6905" name="Badilisha: Usihamie kwa tukio lifuatalo"/>
@@ -1281,7 +1281,7 @@
 					<Item id="6152" name="Fungua kipindi katika tukio jipya (na uhifadhi kipindi kiotomatiki unapotoka)"/>
 					<Item id="6153" name="Kila mara katika hali ya matukio mengi"/>
 					<Item id="6154" name="Chaguomsingi (mfano-mono)"/>
-					<Item id="6155" name="* Marekebisho ya mpangilio huu yanahitaji kuanzisha upya Notepad++"/>
+					<Item id="6155" name="* Marekebisho ya mpangilio huu yanahitaji kuanzisha upya Nextpad++"/>
 					<Item id="6171" name="Geuza kukufaa kuingiza Tarehe"/>
 					<Item id="6175" name="Badilisha mpangilio wa tarehe chaguomsingi (miundo fupi ndefu)"/>
 					<Item id="6172" name="Umbizo maalum:"/>
@@ -1364,8 +1364,8 @@
 					</ComboBox>
 					<ComboBox id="6364">
 						<Element name="Zima"/>
-						<Element name="Washa kwenye uanzishaji wa Notepad++"/>
-						<Element name="Washa kwenye Notepad++ kutoka"/>
+						<Element name="Washa kwenye uanzishaji wa Nextpad++"/>
+						<Element name="Washa kwenye Nextpad++ kutoka"/>
 					</ComboBox>
 					<Item id="6308" name="trei ya mfumo"/>
 					<Item id="6363" name="hali ya uwasilishaji"/>
@@ -1564,7 +1564,7 @@ Unaweza kuwezesha tena kidirisha hiki katika Mapendeleo baadaye."/>
 				<Item id="90104" name="Pakia upya kutoka kwa Disk"/>
 				<Item id="90105" name="Badilisha Injini ya Kutafuta"/>
 				<Item id="90106" name="Hitilafu ya Kutekeleza"/>
-				<Item id="90107" name="Muda wa Kupakia Notepad++"/>
+				<Item id="90107" name="Muda wa Kupakia Nextpad++"/>
 				<Item id="90108" name="Imeshindwa Kuangalia Usasisho"/>
 				<Item id="90109" name="Umesasishwa"/>
 				<Item id="90110" name="Pakua"/>
@@ -1650,7 +1650,7 @@ Unaweza kuwezesha tena kidirisha hiki katika Mapendeleo baadaye."/>
 				<Item id="90189" name="Windows (CRLF)"/>
 				<Item id="90190" name="Mac (CR)"/>
 				<Item id="90191" name="Hazina ya orodha ya programu-jalizi"/>
-				<Item id="90192" name="Chagua faili ya XML ya mandhari ya Notepad++ ili kutumia"/>
+				<Item id="90192" name="Chagua faili ya XML ya mandhari ya Nextpad++ ili kutumia"/>
 				<Item id="90193" name="Unda mpya\u2026"/>
 				<Item id="90194" name="Hifadhi kama\u2026"/>
 				<Item id="90195" name="Lugha ya mtumiaji:"/>
@@ -1663,7 +1663,7 @@ Unaweza kuwezesha tena kidirisha hiki katika Mapendeleo baadaye."/>
 				<Item id="90202" name="Masafa Batili"/>
 				<Item id="90203" name="Thamani za safu lazima ziwe 0-255 na mwanzo lazima iwe &lt;= mwisho."/>
 				<Item id="90204" name="contextMenu.xml Haijapatikana"/>
-				<Item id="90205" name="Anzisha upya Notepad++ ili kuunda upya muktadha chaguo-msingiMenu.xml."/>
+				<Item id="90205" name="Anzisha upya Nextpad++ ili kuunda upya muktadha chaguo-msingiMenu.xml."/>
 				<Item id="90206" name="Faili ina mabadiliko ambayo hayajahifadhiwa.Kupakia upya kwa usimbaji mpya kutazitupa.Ungependa kuendelea?"/>
 				<Item id="90207" name="Hakuna jibu kutoka kwa seva."/>
 				<Item id="90208" name="Hali ya seva iliyorejeshwa"/>
@@ -1686,8 +1686,8 @@ Unaweza kuwezesha tena kidirisha hiki katika Mapendeleo baadaye."/>
 		</Dialog>
 		<MessageBox>
 			<!-- $INT_REPLACE$ and $STR_REPLACE$ are place holders, don't translate these place holders. -->
-			<ContextMenuXmlEditWarning title="Kuhariri muktadhaMenu" message="Kuhariri muktadhaMenu.xml hukuruhusu kurekebisha menyu ibukizi ya Notepad++ yako.
-Inabidi uanzishe tena Notepad++ yako ili ianze kutumika baada ya kurekebisha contextMenu.xml."/>
+			<ContextMenuXmlEditWarning title="Kuhariri muktadhaMenu" message="Kuhariri muktadhaMenu.xml hukuruhusu kurekebisha menyu ibukizi ya Nextpad++ yako.
+Inabidi uanzishe tena Nextpad++ yako ili ianze kutumika baada ya kurekebisha contextMenu.xml."/>
 			<SaveCurrentModifWarning title="Hifadhi Marekebisho ya Sasa" message="Unapaswa kuhifadhi urekebishaji wa sasa.
 Marekebisho yote yaliyohifadhiwa hayawezi kutenduliwa.
 
@@ -1696,16 +1696,16 @@ Ungependa kuendelea?"/><!-- HowToReproduce: when you openned file is modified bu
 Marekebisho yote yaliyohifadhiwa hayawezi kutenduliwa.
 
 Ungependa kuendelea?"/><!-- HowToReproduce: when you openned file is modified and saved, then you are changing file encoding. -->
-			<CannotMoveDoc title="Hamisha hadi kwenye Notepad++ mpya ya Instance" message="Hati imerekebishwa, ihifadhi kisha ujaribu tena."/><!-- HowToReproduce: From your Notepad++ drag & drop a clean (not dirty) file to outside of Notepad++, another instance of Notepad++ will be created. Then from your first Notepad++ drag & drop an unsaved file to the new instance. -->
-			<DocReloadWarning title="Pakia upya" message="Je, una uhakika unataka kupakia upya faili ya sasa na kupoteza mabadiliko yaliyofanywa katika Notepad++?"/>
+			<CannotMoveDoc title="Hamisha hadi kwenye Nextpad++ mpya ya Instance" message="Hati imerekebishwa, ihifadhi kisha ujaribu tena."/><!-- HowToReproduce: From your Nextpad++ drag & drop a clean (not dirty) file to outside of Nextpad++, another instance of Nextpad++ will be created. Then from your first Nextpad++ drag & drop an unsaved file to the new instance. -->
+			<DocReloadWarning title="Pakia upya" message="Je, una uhakika unataka kupakia upya faili ya sasa na kupoteza mabadiliko yaliyofanywa katika Nextpad++?"/>
 			<FileLockedWarning title="Imeshindwa kuhifadhi" message="Tafadhali angalia ikiwa faili hii imefunguliwa katika programu nyingine"/>
-			<FileAlreadyOpenedInNpp title="" message="Faili tayari imefunguliwa katika Notepad++."/><!-- HowToReproduce: Open a new document and open a file "c:/tmp/foo", save this new document by choosing "c:/tmp/foo" as file to save, reply the override popup "yes", then this message appears. -->
+			<FileAlreadyOpenedInNpp title="" message="Faili tayari imefunguliwa katika Nextpad++."/><!-- HowToReproduce: Open a new document and open a file "c:/tmp/foo", save this new document by choosing "c:/tmp/foo" as file to save, reply the override popup "yes", then this message appears. -->
 			<RenameTabTemporaryNameAlreadyInUse title="Imeshindwa kubadilisha jina" message="Jina lililobainishwa tayari linatumika kwenye kichupo kingine."/><!-- HowToReproduce: Rename the tab of an untitled document and provide a name that is the same as an already-existing tab of an untitled document. -->
 			<RenameTabTemporaryNameIsEmpty title="Imeshindwa kubadilisha jina" message="Jina lililobainishwa haliwezi kuwa tupu, au haliwezi kuwa na nafasi au TAB pekee."/><!-- HowToReproduce: Rename the tab of an untitled document and provide an empty string or only some white speces. -->
 			<DeleteFileFailed title="Futa Faili" message="Imeshindwa kufuta Faili"/><!-- HowToReproduce: this message prevents from system failure. It's hard to reproduce. -->
 
 			<NbFileToOpenImportantWarning title="Kiasi cha faili za kufungua ni kikubwa mno" message="$INT_REPLACE$ files are about to be opened.
-Are you sure you want to open them?"/><!-- HowToReproduce: Check "Open all files of folder instead of launching Folder as Workspace on folder dropping" in "Default Directory" of Preferences dialog, then drop a folder which contains more then 200 files into Notepad++. -->
+Are you sure you want to open them?"/><!-- HowToReproduce: Check "Open all files of folder instead of launching Folder as Workspace on folder dropping" in "Default Directory" of Preferences dialog, then drop a folder which contains more then 200 files into Nextpad++. -->
 			<SettingsOnCloudError title="Mipangilio kwenye Cloud" message="Inaonekana njia ya mipangilio kwenye wingu imewekwa kwenye kiendeshi cha kusoma tu,
 au kwenye folda ilihitaji haki ya upendeleo kwa ufikiaji wa kuandika.
 Mipangilio yako kwenye wingu itaghairiwa.Tafadhali weka upya thamani thabiti kupitia kidirisha cha Mapendeleo."/>
@@ -1716,7 +1716,7 @@ Lazima uwashe &quot;Fungua faili zote za folda badala ya kuzindua Folda kama Naf
 			<SortingError title="Hitilafu ya Kupanga" message="Imeshindwa kupanga nambari kwa sababu ya mstari $INT_REPLACE$."/><!-- HowToReproduce: this message prevents from system failure. It's hard to reproduce. -->
 			<SortLocaleMultiple title="Upangaji haujatekelezwa" message="Kupanga chaguo nyingi hakutumiki."/><!-- HowToReproduce: Make a multiple selection and choose Edit | Line Operations | Sort Lines In Locale Order. -->
 			<SortLocaleUnknown title="Kupanga Haijafaulu" message="Sababu ya upangaji kushindwa haiwezi kubainishwa."/><!-- HowToReproduce: This condition is theoretical; it is unknown what could cause it. -->
-			<SortLocaleExcept title="Kupanga Haijafaulu" message="$STR_REPLACE$"/><!-- HowToReproduce: Open a large file, e.g. 500MB / 90k lines, in 32-bit Notepad++ and choose Edit | Line Operations | Sort Lines In Locale Order. -->
+			<SortLocaleExcept title="Kupanga Haijafaulu" message="$STR_REPLACE$"/><!-- HowToReproduce: Open a large file, e.g. 500MB / 90k lines, in 32-bit Nextpad++ and choose Edit | Line Operations | Sort Lines In Locale Order. -->
 			<ColumnModeTip title="Kidokezo cha Hali ya Safu" message="Kuna njia 3 za kubadilisha hadi hali ya kuchagua safu:
 
 1. (Kibodi na Kipanya) Shikilia Alt huku ukiburuta kwa kubofya kushoto
@@ -1744,14 +1744,14 @@ Je, ungependa kuipakia upya?"/>
 			<DoReloadOrNotAndLooseChange title="Pakia upya" message="&quot;$STR_REPLACE$&quot;
 
 Faili hii imebadilishwa na programu nyingine.
-Je, ungependa kuipakia upya na kupoteza mabadiliko yaliyofanywa katika Notepad++?"/>
+Je, ungependa kuipakia upya na kupoteza mabadiliko yaliyofanywa katika Nextpad++?"/>
 			<PrehistoricSystemDetected title="Mfumo wa kabla ya historia umegunduliwa" message="Inaonekana bado unatumia mfumo wa prehistoric.Kipengele hiki hufanya kazi tu kwenye mfumo wa kisasa, samahani."/><!-- HowToReproduce: Launch "Document Map" under Windows XP. -->
-			<XpUpdaterProblem title="Kisasisho cha Notepad++" message="Kisasisho cha Notepad++ hakioani na XP kwa sababu ya safu ya usalama ya kizamani chini ya XP.
-Je, ungependa kwenda kwenye ukurasa wa Notepad++ ili kupakua toleo jipya zaidi?"/><!-- HowToReproduce: Run menu "? -> Update Notepad++" under Windows XP. -->
-			<GUpProxyConfNeedAdminMode title="Mipangilio ya Seva" message="Tafadhali zindua upya Notepad++ katika hali ya Msimamizi ili kusanidi seva mbadala."/>
+			<XpUpdaterProblem title="Kisasisho cha Nextpad++" message="Kisasisho cha Nextpad++ hakioani na XP kwa sababu ya safu ya usalama ya kizamani chini ya XP.
+Je, ungependa kwenda kwenye ukurasa wa Nextpad++ ili kupakua toleo jipya zaidi?"/><!-- HowToReproduce: Run menu "? -> Update Nextpad++" under Windows XP. -->
+			<GUpProxyConfNeedAdminMode title="Mipangilio ya Seva" message="Tafadhali zindua upya Nextpad++ katika hali ya Msimamizi ili kusanidi seva mbadala."/>
 			<DocTooDirtyToMonitor title="Tatizo la ufuatiliaji" message="Hati ni chafu.Tafadhali hifadhi marekebisho kabla ya kuyafuatilia."/>
 			<DocNoExistToMonitor title="Tatizo la ufuatiliaji" message="Faili inapaswa kuwepo ili kufuatiliwa."/>
-			<FileTooBigToOpen title="Tatizo la ukubwa wa faili" message="Faili ni kubwa sana kufunguliwa na Notepad++"/><!-- HowToReproduce: Try to open a 4GB file (it's not easy to reproduce, it depends on your system). -->
+			<FileTooBigToOpen title="Tatizo la ukubwa wa faili" message="Faili ni kubwa sana kufunguliwa na Nextpad++"/><!-- HowToReproduce: Try to open a 4GB file (it's not easy to reproduce, it depends on your system). -->
 			<FileLoadingException title="Msimbo wa ubaguzi: $STR_REPLACE$" message="Hitilafu imetokea wakati wa kupakia faili!"/>
 			<WantToOpenHugeFile title="Inafungua onyo kubwa la faili" message="Kufungua faili kubwa ya 2GB+ kunaweza kuchukua dakika kadhaa.
 Je, ungependa kuifungua?"/>
@@ -1765,8 +1765,8 @@ Folda &quot;$STR_REPLACE2$&quot; haipo."/>
 Je, ungependa kuhifadhi faili ya sasa hata hivyo?"/><!-- HowToReproduce: this message prevents from system failure. It's hard to reproduce. -->
 			<LoadStylersFailed title="Pakia stylers.xml imeshindwa" message="Upakiaji &quot;$STR_REPLACE$&quot; haukufaulu!"/>
 			<LoadLangsFailed title="Kisanidi" message="Imeshindwa kupakia langs.xml!
-Je, ungependa kurejesha langs.xml yako?"/><!-- HowToReproduce: Close Notepad++. Use another editor to remove all content of "langs.xml" (0 length) then save it. Open Notepad++. -->
-			<LoadLangsFailedFinal title="Kisanidi" message="Imeshindwa kupakia langs.xml!"/><!-- HowToReproduce: Close Notepad++. Use another editor to make "langs.xml" an invalid xml file then save it. Open Notepad++. -->
+Je, ungependa kurejesha langs.xml yako?"/><!-- HowToReproduce: Close Nextpad++. Use another editor to remove all content of "langs.xml" (0 length) then save it. Open Nextpad++. -->
+			<LoadLangsFailedFinal title="Kisanidi" message="Imeshindwa kupakia langs.xml!"/><!-- HowToReproduce: Close Nextpad++. Use another editor to make "langs.xml" an invalid xml file then save it. Open Nextpad++. -->
 			<FolderAsWorspaceSubfolderExists title="Folda kama Nafasi ya kazi ya kuongeza tatizo la folda" message="Folda ndogo ya folda unayotaka kuongeza ipo.
 Tafadhali ondoa mzizi wake kwenye paneli kabla ya kuongeza folda &quot;$STR_REPLACE$&quot;."/><!-- HowToReproduce: Add a folder like "c:\temp\aFolder\" into "Folder as Workspace" panel, then try to add "c:\temp\". -->
 
@@ -1794,28 +1794,28 @@ tafadhali nipe nyingine."/>
 			<SCMapperDoDeleteOrNot title="Je, una uhakika?" message="Je, una uhakika unataka kufuta njia hii ya mkato?"/>
 			<FindCharRangeValueError title="Tatizo la Thamani ya Masafa" message="Unapaswa kuandika kati ya 0 na 255."/> <!-- HowToReproduce: Search menu, then Find characters in range, select Custom range, enter 999 in either edit box, press Find. -->
 			<OpenInAdminMode title="Imeshindwa kuhifadhi" message="Faili haiwezi kuhifadhiwa na inaweza kulindwa.
-Je, ungependa kuzindua Notepad++ katika hali ya Msimamizi?"/>
+Je, ungependa kuzindua Nextpad++ katika hali ya Msimamizi?"/>
 			<OpenInAdminModeWithoutCloseCurrent title="Imeshindwa kuhifadhi" message="Faili haiwezi kuhifadhiwa na inaweza kulindwa.
-Je, ungependa kuzindua Notepad++ katika hali ya Msimamizi?"/>
-			<OpenInAdminModeFailed title="Imeshindwa kufungua katika hali ya Msimamizi" message="Notepad++ haiwezi kufunguliwa katika hali ya Msimamizi."/><!-- HowToReproduce: When you have no Admin privilege and you try to save a modified file in a protected location (for example: any file in sub-folder of "C:\Program Files\". This message will appear after replying "Yes" to "Open in Admin mode" dialog. -->
+Je, ungependa kuzindua Nextpad++ katika hali ya Msimamizi?"/>
+			<OpenInAdminModeFailed title="Imeshindwa kufungua katika hali ya Msimamizi" message="Nextpad++ haiwezi kufunguliwa katika hali ya Msimamizi."/><!-- HowToReproduce: When you have no Admin privilege and you try to save a modified file in a protected location (for example: any file in sub-folder of "C:\Program Files\". This message will appear after replying "Yes" to "Open in Admin mode" dialog. -->
 			<ViewInBrowser title="Tazama Faili ya Sasa katika Kivinjari" message="Programu haiwezi kupatikana kwenye mfumo wako."/>
-			<ExitToUpdatePlugins title="Notepad++ inakaribia kuondoka" message="Ukibofya NDIYO, utaacha Notepad++ ili kuendelea na shughuli.
-Notepad++ itaanzishwa upya baada ya shughuli zote kukomeshwa.
+			<ExitToUpdatePlugins title="Nextpad++ inakaribia kuondoka" message="Ukibofya NDIYO, utaacha Nextpad++ ili kuendelea na shughuli.
+Nextpad++ itaanzishwa upya baada ya shughuli zote kukomeshwa.
 Ungependa kuendelea?"/>
-			<NeedToRestartToLoadPlugins title="Notepad++ inahitaji kuzinduliwa upya" message="Lazima uanzishe tena Notepad++ ili kupakia programu jalizi ulizosakinisha."/><!-- HowToReproduce: Import a plugin via menu "Settings->Import->Import Plugin(s)...". -->
-			<ChangeHistoryEnabledWarning title="Notepad++ inahitaji kuzinduliwa upya" message="Lazima uanzishe tena Notepad++ ili kuwezesha Historia ya Mabadiliko."/><!-- HowToReproduce: uncheck "Display Change History" via Preferences dialog "Marges/Border/Edge. -->
-			<WindowsSessionExit title="Notepad++ - Toka kwa kipindi cha Windows" message="Kipindi cha Windows kinakaribia kukomeshwa lakini una data fulani ambayo haijahifadhiwa.Je, ungependa kuondoka kwenye Notepad++ sasa?"/>
+			<NeedToRestartToLoadPlugins title="Nextpad++ inahitaji kuzinduliwa upya" message="Lazima uanzishe tena Nextpad++ ili kupakia programu jalizi ulizosakinisha."/><!-- HowToReproduce: Import a plugin via menu "Settings->Import->Import Plugin(s)...". -->
+			<ChangeHistoryEnabledWarning title="Nextpad++ inahitaji kuzinduliwa upya" message="Lazima uanzishe tena Nextpad++ ili kuwezesha Historia ya Mabadiliko."/><!-- HowToReproduce: uncheck "Display Change History" via Preferences dialog "Marges/Border/Edge. -->
+			<WindowsSessionExit title="Nextpad++ - Toka kwa kipindi cha Windows" message="Kipindi cha Windows kinakaribia kukomeshwa lakini una data fulani ambayo haijahifadhiwa.Je, ungependa kuondoka kwenye Nextpad++ sasa?"/>
 			<LanguageMenuCompactWarning title="Menyu ya Lugha Compact" message="Chaguo hili litabadilishwa kwenye uzinduzi unaofuata."/><!-- HowToReproduce: toggle "Make language menu compact" via Preferences dialog "Language/Language Menu. -->
 			<SwitchUnsavedThemeWarning title="$STR_REPLACE$" message="Mabadiliko ambayo hayajahifadhiwa yanakaribia kutupwa!
 Je, ungependa kuhifadhi mabadiliko yako kabla ya kubadilisha mandhari?"/><!-- HowToReproduce: In the Style Configurator dialog change some theme and switch to other theme without saving. -->
-			<MacroAndRunCmdlWarning title="Utangamano wa Amri za Macro na Run" message="Amri zako za Macro na Run zilizohifadhiwa katika Notepad++ v.8.5.2 (au zaidi) huenda zisioanishwe na toleo la sasa la Notepad++.
+			<MacroAndRunCmdlWarning title="Utangamano wa Amri za Macro na Run" message="Amri zako za Macro na Run zilizohifadhiwa katika Nextpad++ v.8.5.2 (au zaidi) huenda zisioanishwe na toleo la sasa la Nextpad++.
 Tafadhali jaribu amri hizo na, ikihitajika, zihariri upya.
 
-Vinginevyo, unaweza kushusha gredi hadi Notepad++ v8.5.2 na kurejesha data yako ya awali.
-Notepad++ itahifadhi nakala ya &quot;shortcuts.xml&quot; yako ya zamani na kuihifadhi kama &quot;shortcuts.xml.v8.5.2.backup&quot;.
-Kubadilisha jina la &quot;shortcuts.xml.v8.5.2.backup&quot; -&gt; &quot;shortcuts.xml&quot;, amri zako zinapaswa kurejeshwa na kufanya kazi ipasavyo."/><!-- HowToReproduce: Close Notepad++, remove shortcuts.xml.v8.5.2.backup & v852ShortcutsCompatibilityWarning.xml if present, relaunch Notepad++, delete or modify a shortcuts via Shortcut Mapper, close Notepad++, then the message will show up -->
+Vinginevyo, unaweza kushusha gredi hadi Nextpad++ v8.5.2 na kurejesha data yako ya awali.
+Nextpad++ itahifadhi nakala ya &quot;shortcuts.xml&quot; yako ya zamani na kuihifadhi kama &quot;shortcuts.xml.v8.5.2.backup&quot;.
+Kubadilisha jina la &quot;shortcuts.xml.v8.5.2.backup&quot; -&gt; &quot;shortcuts.xml&quot;, amri zako zinapaswa kurejeshwa na kufanya kazi ipasavyo."/><!-- HowToReproduce: Close Nextpad++, remove shortcuts.xml.v8.5.2.backup & v852ShortcutsCompatibilityWarning.xml if present, relaunch Nextpad++, delete or modify a shortcuts via Shortcut Mapper, close Nextpad++, then the message will show up -->
 			<FullReadOnlySavingForbidden title="Imeshindwa kuhifadhi" message="Haiwezi kuhifadhi faili.
-Notepad++ hali iliyokatazwa ya kuhifadhi kamili ya kusoma pekee ilizuia faili kuhifadhiwa."/>
+Nextpad++ hali iliyokatazwa ya kuhifadhi kamili ya kusoma pekee ilizuia faili kuhifadhiwa."/>
 			<NotEnoughRoom4Saving title="Imeshindwa kuhifadhi" message="Imeshindwa kuhifadhi faili.
 Inaonekana hakuna nafasi ya kutosha kwenye diski kuhifadhi faili.Faili yako haijahifadhiwa."/>
 			<FileInaccessibleUserSession title="Faili haipatikani" message="Baadhi ya faili kutoka kwa kipindi ulichohifadhi kwa mikono &quot;$STR_REPLACE$&quot; hazipatikani.Zinaweza kufunguliwa kama hati tupu na za kusoma tu kama vishikilia nafasi.
@@ -1828,8 +1828,8 @@ KUMBUKA: Ukichagua kutounda vishikilia nafasi au kuvifunga baadaye, kipindi chak
 Je, ungependa kuunda vishika nafasi hivyo?
 
 KUMBUKA: Ukichagua kutounda vishikilia nafasi au kuvifunga baadaye, kipindi chako KITABADILISHWA UTAKAPOONDOKA!Tunapendekeza uhifadhi nakala ya &quot;session.xml&quot; yako sasa."/>
-			<RTLvsDirectWrite title="Haiwezi kuendesha RTL" message="RTL haioani na modi ya DirectWrite.Tafadhali zima hali ya DirectWrite katika MISC.sehemu ya mazungumzo ya Mapendeleo, na uanze tena Notepad++."/>
-			<FileMemoryAllocationFailed title="Isipokuwa: Ugawaji wa kumbukumbu ya faili haukufaulu" message="Labda hakuna kumbukumbu ya kutosha ya bure ya faili inayopakiwa na Notepad++."/><!-- HowToReproduce: Try to open multiple files with total size > ~700MB in the x86 Notepad++ (it will depend on the PC memory configuration and the current system memory usage...). -->
+			<RTLvsDirectWrite title="Haiwezi kuendesha RTL" message="RTL haioani na modi ya DirectWrite.Tafadhali zima hali ya DirectWrite katika MISC.sehemu ya mazungumzo ya Mapendeleo, na uanze tena Nextpad++."/>
+			<FileMemoryAllocationFailed title="Isipokuwa: Ugawaji wa kumbukumbu ya faili haukufaulu" message="Labda hakuna kumbukumbu ya kutosha ya bure ya faili inayopakiwa na Nextpad++."/><!-- HowToReproduce: Try to open multiple files with total size > ~700MB in the x86 Nextpad++ (it will depend on the PC memory configuration and the current system memory usage...). -->
 			<FindRegexBackwardDisabled title="Utafutaji wa nyuma wa Regex umezimwa" message="Kwa chaguo-msingi, utafutaji wa nyuma wa regex umezimwa kutokana na uwezekano wa matokeo yasiyotarajiwa.Ili kufanya utafutaji wa nyuma, fungua kidirisha cha Tafuta na uchague hali ya utafutaji ya kawaida au iliyopanuliwa badala ya kujieleza mara kwa mara.
 Bonyeza kitufe cha Sawa ili kufungua kidirisha cha Tafuta au uweke umakini juu yake.
 
@@ -1837,8 +1837,8 @@ Ikiwa unahitaji kipengele cha utafutaji cha nyuma cha regex, wasiliana na mwongo
 			<PrintError title="0" message="Haiwezi kuanzisha hati ya kichapishi."/><!-- Use title="0" to use Windows OS default translated "Error" title. -->
 			<FindAutoChangeOfInSelectionWarning title="Tafuta onyo" message="Hali ya kisanduku cha kuteua &quot;Katika uteuzi&quot; imebadilishwa kiotomatiki.
 Tafadhali thibitisha hali ya utafutaji kabla ya kutekeleza kitendo."/> <!-- HowToReproduce: https://github.com/notepad-plus-plus/notepad-plus-plus/issues/14897#issuecomment-2564316224 -->
-			<Need2Restart2ShowMenuShortcuts title="Notepad++ inahitaji kuwashwa upya" message="Notepad++ inahitaji kuwashwa upya ili kuonyesha mikato ya menyu ya kulia."/>
-			<NoAdminRight2ChangeReadOnlyFileAttribute title="Imeshindwa kubadilisha sifa ya kusoma tu ya faili" message="Tafadhali endesha Notepad++ kama msimamizi ili kubadilisha sifa za faili."/>
+			<Need2Restart2ShowMenuShortcuts title="Nextpad++ inahitaji kuwashwa upya" message="Nextpad++ inahitaji kuwashwa upya ili kuonyesha mikato ya menyu ya kulia."/>
+			<NoAdminRight2ChangeReadOnlyFileAttribute title="Imeshindwa kubadilisha sifa ya kusoma tu ya faili" message="Tafadhali endesha Nextpad++ kama msimamizi ili kubadilisha sifa za faili."/>
 		</MessageBox>
 		<ClipboardHistory>
 			<PanelTitle name="Historia ya Ubao wa kunakili"/>
@@ -1958,8 +1958,8 @@ Tafadhali thibitisha hali ya utafutaji kabla ya kutekeleza kitendo."/> <!-- HowT
 			<word-chars-list-warning-end value="katika orodha yako ya wahusika."/><!-- HowToReproduce: In "Delimiter" section of Preferences dialog, check "Add your character as part of word\r(don't choose it unless you know what you're doing)", then type a white-space in the text field. -->
 			<backup-select-folder value="Chagua folda kama saraka ya chelezo"/><!-- HowToReproduce: Settings > Preferences > Backup > [...] -->
 			<cloud-invalid-warning value="Njia batili."/>
-			<cloud-restart-warning value="Tafadhali anzisha upya Notepad++ ili ianze kutumika."/>
-			<cloud-select-folder value="Chagua folda kutoka/ambapo Notepad++ inasoma/kuandika mipangilio yake"/><!-- HowToReproduce: In "Cloud" section of Preferences dialog, check "Set your cloud location path here: ", then click the button "...". This message is displayed in the "Browse For Folder" dialog. -->
+			<cloud-restart-warning value="Tafadhali anzisha upya Nextpad++ ili ianze kutumika."/>
+			<cloud-select-folder value="Chagua folda kutoka/ambapo Nextpad++ inasoma/kuandika mipangilio yake"/><!-- HowToReproduce: In "Cloud" section of Preferences dialog, check "Set your cloud location path here: ", then click the button "...". This message is displayed in the "Browse For Folder" dialog. -->
 			<default-open-save-select-folder value="Chagua folda kama saraka chaguo-msingi"/><!-- HowToReproduce: Settings > Preferences > Default Directory > [...] -->
 			<shift-change-direction-tip value="Tumia Shift+Enter kutafuta upande tofauti"/>
 			<two-find-buttons-tip value="Njia 2 za kupata vitufe"/>
@@ -2118,7 +2118,7 @@ Ukichagua hali ya juu lakini usihariri faili katika lugha zilizotajwa hapo juu, 
 
 			<!-- Don't translate "Global override" and "Default Style" -->
 			<global-override-tip value="Kuwasha &quot;ubatilishaji wa kimataifa&quot; hapa kutabatilisha kigezo hicho katika mitindo yote ya lugha.Unachotaka hasa ni kutumia mipangilio ya &quot;Mtindo Chaguomsingi&quot; badala yake"/>
-			<scintillaRenderingTechnology-tip value="Inaweza kuboresha uonyeshaji wa herufi maalum au kutatua masuala kadhaa ya michoro, anzisha tena Notepad++ ili kutekeleza mabadiliko."/>
+			<scintillaRenderingTechnology-tip value="Inaweza kuboresha uonyeshaji wa herufi maalum au kutatua masuala kadhaa ya michoro, anzisha tena Nextpad++ ili kutekeleza mabadiliko."/>
 
 			<!-- Due to the limited space on the status bar, if the translations for 'length' & 'lines' are much longer than the English words, please leave them in English instead of translating them. -->
 			<statusbar-length-lines value="urefu: $STR_REPLACE1$ mistari: $STR_REPLACE2$"/>

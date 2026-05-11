@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <!--
-    Yoruba (Yorùbá) language file for Notepad++ macOS
+    Yoruba (Yorùbá) language file for Nextpad++ macOS
     Based on English template - community translations welcome
     Created: 2026-04-04
 -->
@@ -41,7 +41,7 @@
 					<Item subMenuId="edit-onSelection" name="Lori Yiyan"/>
 					<Item subMenuId="edit-multiSelectALL" name="Multi-yan GBOGBO"/>
 					<Item subMenuId="edit-multiSelectNext" name="Multi-yan Next"/>
-					<Item subMenuId="edit-readonlyInNotepad++" name="Ka-Nikan ni Notepad++"/>
+					<Item subMenuId="edit-readonlyInNextpad++" name="Ka-Nikan ni Nextpad++"/>
 					<Item subMenuId="search-changeHistory" name="Yi itan pada"/>
 					<Item subMenuId="search-markAll" name="Style Gbogbo Awọn iṣẹlẹ ti Tokini"/>
 					<Item subMenuId="search-markOne" name="Ara Ọkan Tokini"/>
@@ -367,14 +367,14 @@
 					<Item id="46016" name="Ko si (ọrọ deede)"/>
 					<Item id="46250" name="Setumo ede rẹ..."/>
 					<Item id="46300" name="Ṣii folda Ede asọye Olumulo..."/>
-					<Item id="46301" name="Notepad++ Akojọpọ Awọn ede Itumọ Olumulo"/>
+					<Item id="46301" name="Nextpad++ Akojọpọ Awọn ede Itumọ Olumulo"/>
 					<Item id="46180" name="Olumulo-itumọ"/>
-					<Item id="47000" name="Nipa Notepad++"/>
+					<Item id="47000" name="Nipa Nextpad++"/>
 					<Item id="47010" name="Awọn ariyanjiyan Laini aṣẹ..."/>
-					<Item id="47001" name="Notepad++ Home"/>
-					<Item id="47002" name="Notepad++ Oju-iwe Ise agbese"/>
-					<Item id="47003" name="Notepad++ Afọwọṣe Olumulo Ayelujara"/>
-					<Item id="47004" name="Notepad++ Community (Forum)"/>
+					<Item id="47001" name="Nextpad++ Home"/>
+					<Item id="47002" name="Nextpad++ Oju-iwe Ise agbese"/>
+					<Item id="47003" name="Nextpad++ Afọwọṣe Olumulo Ayelujara"/>
+					<Item id="47004" name="Nextpad++ Community (Forum)"/>
 					<Item id="47012" name="Alaye yokokoro..."/>
 					<Item id="47005" name="Gba Awọn afikun diẹ sii"/>
 					<Item id="47006" name="Ṣe imudojuiwọn Akọsilẹ Akọsilẹ++"/>
@@ -446,7 +446,7 @@
 				<Item CMDID="41016" name="Gbe lọ si Atunlo Bin"/>
 				<Item CMDID="41014" name="Tun gbee"/>
 				<Item CMDID="41010" name="Titẹ..."/>
-				<Item CMDID="42028" name="Ka-Nikan ni Notepad++"/>
+				<Item CMDID="42028" name="Ka-Nikan ni Nextpad++"/>
 				<Item CMDID="42033" name="Iwa Ka-nikan ni Windows"/>
 				<Item CMDID="2" name="Daakọ si Agekuru"/>
 				<Item CMDID="42029" name="Daakọ Ọna Faili ni kikun"/>
@@ -1128,7 +1128,7 @@
 				</DefaultDir>
 
 				<FileAssoc title="Ẹgbẹ faili">
-					<Item id="4008" name="Jọwọ jade kuro ni Notepad++ ki o tun bẹrẹ Notepad++ ni ipo Alakoso lati lo ẹya yii."/>
+					<Item id="4008" name="Jọwọ jade kuro ni Nextpad++ ki o tun bẹrẹ Nextpad++ ni ipo Alakoso lati lo ẹya yii."/>
 					<Item id="4009" name="Awọn amugbooro atilẹyin:"/>
 					<Item id="4010" name="Iforukọsilẹ awọn amugbooro:"/>
 				</FileAssoc>
@@ -1213,7 +1213,7 @@
 				</Print>
 
 				<Searching title="Wiwa">
-					<Item id="6902" name="Lo fonti monospaced ni Wa ajọṣọ (Nilo lati tun Notepad++ bẹrẹ)"/>
+					<Item id="6902" name="Lo fonti monospaced ni Wa ajọṣọ (Nilo lati tun Nextpad++ bẹrẹ)"/>
 					<Item id="6903" name="Wa ọrọ sisọ ṣi silẹ lẹhin wiwa ti o jade si window awọn abajade"/>
 					<Item id="6904" name="Jẹrisi Rọpo Gbogbo ni Gbogbo Awọn iwe aṣẹ Ṣii"/>
 					<Item id="6905" name="Rọpo: Maṣe gbe si iṣẹlẹ atẹle"/>
@@ -1281,7 +1281,7 @@
 					<Item id="6152" name="Ṣii igba ni apẹẹrẹ titun (ati fi igba pamọ laifọwọyi ni ijade)"/>
 					<Item id="6153" name="Nigbagbogbo ni ipo ọpọ-apeere"/>
 					<Item id="6154" name="Aiyipada (ọkan-apeere)"/>
-					<Item id="6155" name="* Iyipada eto yii nilo lati tun Notepad++ bẹrẹ"/>
+					<Item id="6155" name="* Iyipada eto yii nilo lati tun Nextpad++ bẹrẹ"/>
 					<Item id="6171" name="Ṣe akanṣe Aago Ọjọ Fi sii"/>
 					<Item id="6175" name="Yiyipada akoko akoko aiyipada aiyipada (awọn ọna kika gigun kukuru)"/>
 					<Item id="6172" name="Aṣa kika:"/>
@@ -1564,7 +1564,7 @@ O le tun mu ibaraẹnisọrọ yii ṣiṣẹ ni Awọn ayanfẹ nigbamii."/>
 				<Item id="90104" name="Tun gbee lati Disk"/>
 				<Item id="90105" name="Yi ẹrọ wiwa pada"/>
 				<Item id="90106" name="Ṣiṣe aṣiṣe"/>
-				<Item id="90107" name="Notepad++ Akoko ikojọpọ"/>
+				<Item id="90107" name="Nextpad++ Akoko ikojọpọ"/>
 				<Item id="90108" name="Ko le Ṣayẹwo fun Awọn imudojuiwọn"/>
 				<Item id="90109" name="O ti wa ni imudojuiwọn"/>
 				<Item id="90110" name="Download"/>
@@ -1650,7 +1650,7 @@ O le tun mu ibaraẹnisọrọ yii ṣiṣẹ ni Awọn ayanfẹ nigbamii."/>
 				<Item id="90189" name="Windows (CRLF)"/>
 				<Item id="90190" name="Mac (CR)"/>
 				<Item id="90191" name="Ibi ipamọ akojọ ohun itanna"/>
-				<Item id="90192" name="Yan akori XML Notepad++ kan lati lo"/>
+				<Item id="90192" name="Yan akori XML Nextpad++ kan lati lo"/>
 				<Item id="90193" name="Ṣẹda titun\u2026"/>
 				<Item id="90194" name="Fipamọ bi\u2026"/>
 				<Item id="90195" name="Ede olumulo:"/>
@@ -1663,7 +1663,7 @@ O le tun mu ibaraẹnisọrọ yii ṣiṣẹ ni Awọn ayanfẹ nigbamii."/>
 				<Item id="90202" name="Ibiti aiṣedeede"/>
 				<Item id="90203" name="Awọn iye iwọn gbọdọ jẹ 0-255 ati pe ibẹrẹ gbọdọ jẹ &lt;= opin."/>
 				<Item id="90204" name="contextMenu.xml Ko ri"/>
-				<Item id="90205" name="Tun Notepad++ bẹrẹ lati tun ipilẹ contextMenu.xml pada."/>
+				<Item id="90205" name="Tun Nextpad++ bẹrẹ lati tun ipilẹ contextMenu.xml pada."/>
 				<Item id="90206" name="Faili naa ni awọn ayipada ti a ko fipamọ.Ṣiṣatunkun pẹlu fifi koodu titun yoo sọ wọn nù.Tesiwaju bi?"/>
 				<Item id="90207" name="Ko si esi lati olupin."/>
 				<Item id="90208" name="Ipo olupin pada"/>
@@ -1686,8 +1686,8 @@ O le tun mu ibaraẹnisọrọ yii ṣiṣẹ ni Awọn ayanfẹ nigbamii."/>
 		</Dialog>
 		<MessageBox>
 			<!-- $INT_REPLACE$ and $STR_REPLACE$ are place holders, don't translate these place holders. -->
-			<ContextMenuXmlEditWarning title="Nsatunkọ awọn contextMenu" message="Nsatunkọ awọn contextMenu.xml faye gba o lati yi Notepad++ agbejade rẹ akojọ aṣayan.
-O ni lati tun Notepad++ bẹrẹ lati ṣiṣẹ lẹhin ti o yipada contextMenu.xml."/>
+			<ContextMenuXmlEditWarning title="Nsatunkọ awọn contextMenu" message="Nsatunkọ awọn contextMenu.xml faye gba o lati yi Nextpad++ agbejade rẹ akojọ aṣayan.
+O ni lati tun Nextpad++ bẹrẹ lati ṣiṣẹ lẹhin ti o yipada contextMenu.xml."/>
 			<SaveCurrentModifWarning title="Fipamọ Iyipada lọwọlọwọ" message="O yẹ ki o fipamọ iyipada lọwọlọwọ.
 Gbogbo awọn iyipada ti a fipamọ ko le ṣe tunṣe.
 
@@ -1696,16 +1696,16 @@ Tesiwaju bi?"/><!-- HowToReproduce: when you openned file is modified but unsave
 Gbogbo awọn iyipada ti a fipamọ ko le ṣe tunṣe.
 
 Tesiwaju bi?"/><!-- HowToReproduce: when you openned file is modified and saved, then you are changing file encoding. -->
-			<CannotMoveDoc title="Gbe si titun Notepad++ Apeere" message="Iwe-ipamọ ti yipada, fipamọ lẹhinna gbiyanju lẹẹkansi."/><!-- HowToReproduce: From your Notepad++ drag & drop a clean (not dirty) file to outside of Notepad++, another instance of Notepad++ will be created. Then from your first Notepad++ drag & drop an unsaved file to the new instance. -->
-			<DocReloadWarning title="Tun gbee" message="Ṣe o da ọ loju pe o fẹ gbe faili lọwọlọwọ pada ki o padanu awọn ayipada ti a ṣe ni Notepad++?"/>
+			<CannotMoveDoc title="Gbe si titun Nextpad++ Apeere" message="Iwe-ipamọ ti yipada, fipamọ lẹhinna gbiyanju lẹẹkansi."/><!-- HowToReproduce: From your Nextpad++ drag & drop a clean (not dirty) file to outside of Nextpad++, another instance of Nextpad++ will be created. Then from your first Nextpad++ drag & drop an unsaved file to the new instance. -->
+			<DocReloadWarning title="Tun gbee" message="Ṣe o da ọ loju pe o fẹ gbe faili lọwọlọwọ pada ki o padanu awọn ayipada ti a ṣe ni Nextpad++?"/>
 			<FileLockedWarning title="Fipamọ kuna" message="Jọwọ ṣayẹwo boya ti faili yii ba ṣii ni eto miiran"/>
-			<FileAlreadyOpenedInNpp title="" message="Faili naa ti ṣii tẹlẹ ni Notepad++."/><!-- HowToReproduce: Open a new document and open a file "c:/tmp/foo", save this new document by choosing "c:/tmp/foo" as file to save, reply the override popup "yes", then this message appears. -->
+			<FileAlreadyOpenedInNpp title="" message="Faili naa ti ṣii tẹlẹ ni Nextpad++."/><!-- HowToReproduce: Open a new document and open a file "c:/tmp/foo", save this new document by choosing "c:/tmp/foo" as file to save, reply the override popup "yes", then this message appears. -->
 			<RenameTabTemporaryNameAlreadyInUse title="Lorukọmii kuna" message="Orukọ pàtó ti wa ni lilo tẹlẹ lori taabu miiran."/><!-- HowToReproduce: Rename the tab of an untitled document and provide a name that is the same as an already-existing tab of an untitled document. -->
 			<RenameTabTemporaryNameIsEmpty title="Lorukọmii kuna" message="Orukọ pàtó kan ko le jẹ ofo, tabi ko le ni aaye nikan ninu tabi TAB(s)."/><!-- HowToReproduce: Rename the tab of an untitled document and provide an empty string or only some white speces. -->
 			<DeleteFileFailed title="Pa faili rẹ" message="Paarẹ Faili kuna"/><!-- HowToReproduce: this message prevents from system failure. It's hard to reproduce. -->
 
 			<NbFileToOpenImportantWarning title="Iye awọn faili lati ṣii ti tobi ju" message="$INT_REPLACE$ files are about to be opened.
-Are you sure you want to open them?"/><!-- HowToReproduce: Check "Open all files of folder instead of launching Folder as Workspace on folder dropping" in "Default Directory" of Preferences dialog, then drop a folder which contains more then 200 files into Notepad++. -->
+Are you sure you want to open them?"/><!-- HowToReproduce: Check "Open all files of folder instead of launching Folder as Workspace on folder dropping" in "Default Directory" of Preferences dialog, then drop a folder which contains more then 200 files into Nextpad++. -->
 			<SettingsOnCloudError title="Eto lori Awọsanma" message="O dabi pe ọna ti awọn eto lori awọsanma ti ṣeto lori awakọ kika nikan,
 tabi lori folda ti o nilo ẹtọ ẹtọ fun wiwọle kikọ.
 Awọn eto rẹ lori awọsanma yoo paarẹ.Jọwọ tunto iye isomọ nipasẹ ajọṣọrọ Ayanfẹ."/>
@@ -1716,7 +1716,7 @@ O ni lati mu ṣiṣẹ &quot;Ṣi gbogbo awọn faili ti folda dipo ifilọlẹ
 			<SortingError title="Aṣiṣe lẹsẹsẹ" message="Ko le ṣe tito lẹsẹsẹ nọmba nitori laini $INT_REPLACE$."/><!-- HowToReproduce: this message prevents from system failure. It's hard to reproduce. -->
 			<SortLocaleMultiple title="Too ko ṣe" message="Tito awọn aṣayan pupọ ko ni atilẹyin."/><!-- HowToReproduce: Make a multiple selection and choose Edit | Line Operations | Sort Lines In Locale Order. -->
 			<SortLocaleUnknown title="Ti kuna" message="Idi ti too kuna ko le ṣe ipinnu."/><!-- HowToReproduce: This condition is theoretical; it is unknown what could cause it. -->
-			<SortLocaleExcept title="Ti kuna" message="$STR_REPLACE$"/><!-- HowToReproduce: Open a large file, e.g. 500MB / 90k lines, in 32-bit Notepad++ and choose Edit | Line Operations | Sort Lines In Locale Order. -->
+			<SortLocaleExcept title="Ti kuna" message="$STR_REPLACE$"/><!-- HowToReproduce: Open a large file, e.g. 500MB / 90k lines, in 32-bit Nextpad++ and choose Edit | Line Operations | Sort Lines In Locale Order. -->
 			<ColumnModeTip title="Italolobo Ipo Ọwọn" message="Awọn ọna mẹta lo wa lati yipada si ipo ọwọ-yan:
 
 1. (Kọtẹọdù ati Asin) Mu alt mu lakoko fifa-osi titẹ
@@ -1744,14 +1744,14 @@ Faili yii ti jẹ atunṣe nipasẹ eto miiran.
 			<DoReloadOrNotAndLooseChange title="Tun gbee" message="&quot;$STR_REPLACE$&quot;
 
 Faili yii ti jẹ atunṣe nipasẹ eto miiran.
-Ṣe o fẹ tun gbee si ki o padanu awọn ayipada ti a ṣe ni Notepad++?"/>
+Ṣe o fẹ tun gbee si ki o padanu awọn ayipada ti a ṣe ni Nextpad++?"/>
 			<PrehistoricSystemDetected title="Ti ṣe awari eto itan-iṣaaju" message="O dabi pe o tun lo eto itan-akọọlẹ kan.Ẹya yii ṣiṣẹ nikan lori eto igbalode, binu."/><!-- HowToReproduce: Launch "Document Map" under Windows XP. -->
-			<XpUpdaterProblem title="Notepad++ Updater" message="Notepad++ imudojuiwọn ko ni ibamu pẹlu XP nitori ti atijo aabo Layer labẹ XP.
-Ṣe o fẹ lọ si oju-iwe Notepad++ lati ṣe igbasilẹ ẹya tuntun bi?"/><!-- HowToReproduce: Run menu "? -> Update Notepad++" under Windows XP. -->
-			<GUpProxyConfNeedAdminMode title="Awọn Eto Aṣoju" message="Jọwọ tun bẹrẹ Notepad++ ni ipo Abojuto lati tunto aṣoju."/>
+			<XpUpdaterProblem title="Nextpad++ Updater" message="Nextpad++ imudojuiwọn ko ni ibamu pẹlu XP nitori ti atijo aabo Layer labẹ XP.
+Ṣe o fẹ lọ si oju-iwe Nextpad++ lati ṣe igbasilẹ ẹya tuntun bi?"/><!-- HowToReproduce: Run menu "? -> Update Nextpad++" under Windows XP. -->
+			<GUpProxyConfNeedAdminMode title="Awọn Eto Aṣoju" message="Jọwọ tun bẹrẹ Nextpad++ ni ipo Abojuto lati tunto aṣoju."/>
 			<DocTooDirtyToMonitor title="Iṣoro abojuto" message="Iwe naa jẹ idọti.Jọwọ ṣafipamọ iyipada ṣaaju ṣiṣe abojuto rẹ."/>
 			<DocNoExistToMonitor title="Iṣoro abojuto" message="Faili yẹ ki o wa lati ṣe abojuto."/>
-			<FileTooBigToOpen title="Iṣoro iwọn faili" message="Faili ti tobi ju lati ṣii nipasẹ Notepad++"/><!-- HowToReproduce: Try to open a 4GB file (it's not easy to reproduce, it depends on your system). -->
+			<FileTooBigToOpen title="Iṣoro iwọn faili" message="Faili ti tobi ju lati ṣii nipasẹ Nextpad++"/><!-- HowToReproduce: Try to open a 4GB file (it's not easy to reproduce, it depends on your system). -->
 			<FileLoadingException title="Koodu iyasoto: $STR_REPLACE$" message="Aṣiṣe waye lakoko ikojọpọ faili naa!"/>
 			<WantToOpenHugeFile title="Ṣiṣii ikilọ faili nla" message="Ṣii faili nla ti 2GB+ le gba awọn iṣẹju pupọ.
 Ṣe o fẹ ṣii rẹ?"/>
@@ -1765,8 +1765,8 @@ Folda &quot;$STR_REPLACE2$&quot; ko si."/>
 Ṣe o fẹ lati fipamọ faili lọwọlọwọ lonakona?"/><!-- HowToReproduce: this message prevents from system failure. It's hard to reproduce. -->
 			<LoadStylersFailed title="Load stylers.xml kuna" message="Kojọpọ &quot;$STR_REPLACE$&quot; kuna!"/>
 			<LoadLangsFailed title="Configurator" message="Fifuye langs.xml kuna!
-Ṣe o fẹ lati gba pada rẹ langs.xml?"/><!-- HowToReproduce: Close Notepad++. Use another editor to remove all content of "langs.xml" (0 length) then save it. Open Notepad++. -->
-			<LoadLangsFailedFinal title="Configurator" message="Fifuye langs.xml kuna!"/><!-- HowToReproduce: Close Notepad++. Use another editor to make "langs.xml" an invalid xml file then save it. Open Notepad++. -->
+Ṣe o fẹ lati gba pada rẹ langs.xml?"/><!-- HowToReproduce: Close Nextpad++. Use another editor to remove all content of "langs.xml" (0 length) then save it. Open Nextpad++. -->
+			<LoadLangsFailedFinal title="Configurator" message="Fifuye langs.xml kuna!"/><!-- HowToReproduce: Close Nextpad++. Use another editor to make "langs.xml" an invalid xml file then save it. Open Nextpad++. -->
 			<FolderAsWorspaceSubfolderExists title="Folda bi Workspace fifi isoro folda" message="Apo-apo folda ti o fẹ fikun wa.
 Jọ̀wọ́ yọ gbòǹgbò rẹ̀ kúrò nínú pánẹ́ẹ̀lì kí o tó ṣàfikún fódà &quot;$STR_REPLACE$&quot;."/><!-- HowToReproduce: Add a folder like "c:\temp\aFolder\" into "Folder as Workspace" panel, then try to add "c:\temp\". -->
 
@@ -1794,26 +1794,26 @@ jọwọ fun miiran."/>
 			<SCMapperDoDeleteOrNot title="Ṣe o da ọ loju?" message="Ṣe o da ọ loju pe o fẹ pa ọna abuja yii rẹ bi?"/>
 			<FindCharRangeValueError title="Isoro iye ibiti o" message="O yẹ ki o tẹ laarin 0 ati 255."/> <!-- HowToReproduce: Search menu, then Find characters in range, select Custom range, enter 999 in either edit box, press Find. -->
 			<OpenInAdminMode title="Fipamọ kuna" message="Faili naa ko le wa ni fipamọ ati pe o le ni aabo.
-Ṣe o fẹ lati ṣe ifilọlẹ Notepad++ ni ipo Alakoso?"/>
+Ṣe o fẹ lati ṣe ifilọlẹ Nextpad++ ni ipo Alakoso?"/>
 			<OpenInAdminModeWithoutCloseCurrent title="Fipamọ kuna" message="Faili naa ko le wa ni fipamọ ati pe o le ni aabo.
-Ṣe o fẹ lati ṣe ifilọlẹ Notepad++ ni ipo Alakoso?"/>
-			<OpenInAdminModeFailed title="Ṣii ni Ipo Alakoso kuna" message="Notepad++ ko le ṣii ni ipo Alakoso."/><!-- HowToReproduce: When you have no Admin privilege and you try to save a modified file in a protected location (for example: any file in sub-folder of "C:\Program Files\". This message will appear after replying "Yes" to "Open in Admin mode" dialog. -->
+Ṣe o fẹ lati ṣe ifilọlẹ Nextpad++ ni ipo Alakoso?"/>
+			<OpenInAdminModeFailed title="Ṣii ni Ipo Alakoso kuna" message="Nextpad++ ko le ṣii ni ipo Alakoso."/><!-- HowToReproduce: When you have no Admin privilege and you try to save a modified file in a protected location (for example: any file in sub-folder of "C:\Program Files\". This message will appear after replying "Yes" to "Open in Admin mode" dialog. -->
 			<ViewInBrowser title="Wo Faili lọwọlọwọ ni Aṣàwákiri" message="Ohun elo ko le rii ninu eto rẹ."/>
-			<ExitToUpdatePlugins title="Notepad++ ti fẹrẹ jade" message="Ti o ba tẹ BẸẸNI, iwọ yoo jáwọ́ Notepad++ lati tẹsiwaju awọn iṣẹ ṣiṣe.
-Notepad++ yoo tun bẹrẹ lẹhin ti gbogbo awọn iṣẹ ti pari.
+			<ExitToUpdatePlugins title="Nextpad++ ti fẹrẹ jade" message="Ti o ba tẹ BẸẸNI, iwọ yoo jáwọ́ Nextpad++ lati tẹsiwaju awọn iṣẹ ṣiṣe.
+Nextpad++ yoo tun bẹrẹ lẹhin ti gbogbo awọn iṣẹ ti pari.
 Tesiwaju bi?"/>
-			<NeedToRestartToLoadPlugins title="Paadi++ nilo lati tun bẹrẹ" message="O ni lati tun Notepad++ bẹrẹ lati gbe awọn afikun ti o fi sii."/><!-- HowToReproduce: Import a plugin via menu "Settings->Import->Import Plugin(s)...". -->
-			<ChangeHistoryEnabledWarning title="Paadi++ nilo lati tun bẹrẹ" message="O ni lati tun Notepad++ bẹrẹ lati mu Iyipada Itan ṣiṣẹ."/><!-- HowToReproduce: uncheck "Display Change History" via Preferences dialog "Marges/Border/Edge. -->
-			<WindowsSessionExit title="Notepad++ - Windows igba ijade" message="Igba Windows fẹrẹ pari ṣugbọn o ni diẹ ninu awọn data ti a ko fi pamọ.Ṣe o fẹ lati jade Notepad++ bayi?"/>
+			<NeedToRestartToLoadPlugins title="Paadi++ nilo lati tun bẹrẹ" message="O ni lati tun Nextpad++ bẹrẹ lati gbe awọn afikun ti o fi sii."/><!-- HowToReproduce: Import a plugin via menu "Settings->Import->Import Plugin(s)...". -->
+			<ChangeHistoryEnabledWarning title="Paadi++ nilo lati tun bẹrẹ" message="O ni lati tun Nextpad++ bẹrẹ lati mu Iyipada Itan ṣiṣẹ."/><!-- HowToReproduce: uncheck "Display Change History" via Preferences dialog "Marges/Border/Edge. -->
+			<WindowsSessionExit title="Nextpad++ - Windows igba ijade" message="Igba Windows fẹrẹ pari ṣugbọn o ni diẹ ninu awọn data ti a ko fi pamọ.Ṣe o fẹ lati jade Nextpad++ bayi?"/>
 			<LanguageMenuCompactWarning title="Akojọ ede Iwapọ" message="Aṣayan yii yoo yipada ni ifilọlẹ atẹle."/><!-- HowToReproduce: toggle "Make language menu compact" via Preferences dialog "Language/Language Menu. -->
 			<SwitchUnsavedThemeWarning title="$STR_REPLACE$" message="Awọn ayipada ti a ko fipamọ ti fẹrẹ parẹ!
 Ṣe o fẹ lati ṣafipamọ awọn ayipada rẹ ṣaaju yiyipada awọn akori bi?"/><!-- HowToReproduce: In the Style Configurator dialog change some theme and switch to other theme without saving. -->
-			<MacroAndRunCmdlWarning title="Makiro ati Ṣiṣe Awọn aṣẹ ibamu" message="Awọn pipaṣẹ Makiro ati Ṣiṣe rẹ ti o fipamọ ni Notepad++ v.8.5.2 (tabi agbalagba) le ma ni ibaramu pẹlu ẹya lọwọlọwọ ti Notepad++.
+			<MacroAndRunCmdlWarning title="Makiro ati Ṣiṣe Awọn aṣẹ ibamu" message="Awọn pipaṣẹ Makiro ati Ṣiṣe rẹ ti o fipamọ ni Nextpad++ v.8.5.2 (tabi agbalagba) le ma ni ibaramu pẹlu ẹya lọwọlọwọ ti Nextpad++.
 Jọwọ ṣe idanwo awọn aṣẹ wọnyẹn ati, ti o ba nilo, tun ṣe atunṣe wọn.
 
 Ni omiiran, o le dinku si Notepad ++ v8.5.2 ati mu pada data iṣaaju rẹ pada.
-Notepad++ yoo ṣe afẹyinti atijọ rẹ &quot;shortcuts.xml&quot; ati fi sii bi &quot;shortcuts.xml.v8.5.2.backup&quot;.
-Ṣe atunṣe &quot;shortcuts.xml.v8.5.2.backup&quot; -&gt; &quot;shortcuts.xml&quot;, awọn aṣẹ rẹ yẹ ki o tun pada ki o ṣiṣẹ daradara."/><!-- HowToReproduce: Close Notepad++, remove shortcuts.xml.v8.5.2.backup & v852ShortcutsCompatibilityWarning.xml if present, relaunch Notepad++, delete or modify a shortcuts via Shortcut Mapper, close Notepad++, then the message will show up -->
+Nextpad++ yoo ṣe afẹyinti atijọ rẹ &quot;shortcuts.xml&quot; ati fi sii bi &quot;shortcuts.xml.v8.5.2.backup&quot;.
+Ṣe atunṣe &quot;shortcuts.xml.v8.5.2.backup&quot; -&gt; &quot;shortcuts.xml&quot;, awọn aṣẹ rẹ yẹ ki o tun pada ki o ṣiṣẹ daradara."/><!-- HowToReproduce: Close Nextpad++, remove shortcuts.xml.v8.5.2.backup & v852ShortcutsCompatibilityWarning.xml if present, relaunch Nextpad++, delete or modify a shortcuts via Shortcut Mapper, close Nextpad++, then the message will show up -->
 			<FullReadOnlySavingForbidden title="Fipamọ kuna" message="Ko le fi faili pamọ.
 Akọsilẹ Akọsilẹ ++ ni kikun kika-nikan fifipamọ ipo eewọ ṣe idiwọ faili lati wa ni fipamọ."/>
 			<NotEnoughRoom4Saving title="Fipamọ kuna" message="Kuna lati fi faili pamọ.
@@ -1828,8 +1828,8 @@ AKIYESI: Yiyan lati ma ṣẹda awọn aaye tabi pipade wọn nigbamii, igba ti 
 Ṣe o fẹ lati ṣẹda awọn oniduro wọnyẹn?
 
 AKIYESI: Yiyan lati ma ṣẹda awọn oniduro tabi pipade wọn nigbamii, igba rẹ YOO ṢE ṢE ṢE tunṣe NIPA Ijade!A daba pe ki o ṣe afẹyinti &quot;session.xml&quot; rẹ ni bayi."/>
-			<RTLvsDirectWrite title="Ko le ṣiṣe RTL" message="RTL ko ni ibamu pẹlu DirectWrite mode.Jọwọ mu ipo DirectWrite kuro ni MISC.apakan ti ibaraẹnisọrọ Awọn ayanfẹ, ki o tun bẹrẹ Notepad++."/>
-			<FileMemoryAllocationFailed title="Iyatọ: Pipin iranti faili kuna" message="O ṣee ṣe ko si iranti ọfẹ ti o ni contiguous fun faili ti o kojọpọ nipasẹ Notepad++."/><!-- HowToReproduce: Try to open multiple files with total size > ~700MB in the x86 Notepad++ (it will depend on the PC memory configuration and the current system memory usage...). -->
+			<RTLvsDirectWrite title="Ko le ṣiṣe RTL" message="RTL ko ni ibamu pẹlu DirectWrite mode.Jọwọ mu ipo DirectWrite kuro ni MISC.apakan ti ibaraẹnisọrọ Awọn ayanfẹ, ki o tun bẹrẹ Nextpad++."/>
+			<FileMemoryAllocationFailed title="Iyatọ: Pipin iranti faili kuna" message="O ṣee ṣe ko si iranti ọfẹ ti o ni contiguous fun faili ti o kojọpọ nipasẹ Nextpad++."/><!-- HowToReproduce: Try to open multiple files with total size > ~700MB in the x86 Nextpad++ (it will depend on the PC memory configuration and the current system memory usage...). -->
 			<FindRegexBackwardDisabled title="Regex sẹhin wiwa alaabo" message="Nipa aiyipada, wiwa regex sẹhin jẹ alaabo nitori awọn abajade airotẹlẹ ti o lagbara.Lati ṣe wiwa sẹhin, ṣii ọrọ sisọ Wa ki o yan boya deede tabi ipo wiwa ti o gbooro dipo ikosile deede.
 Tẹ bọtini O dara lati ṣii Wa ọrọ sisọ tabi ṣeto idojukọ lori rẹ.
 
@@ -1837,8 +1837,8 @@ Ti o ba nilo ẹya wiwa regex sẹhin, kan si iwe afọwọkọ olumulo fun aw�
 			<PrintError title="0" message="Ko le bẹrẹ iwe itẹwe."/><!-- Use title="0" to use Windows OS default translated "Error" title. -->
 			<FindAutoChangeOfInSelectionWarning title="Ìkìlọ àwárí" message="Ipo apoti ayẹwo &quot;Ninu aṣayan&quot; ti jẹ atunṣe laifọwọyi.
 Jọwọ ṣayẹwo ipo wiwa ṣaaju ṣiṣe iṣe naa."/> <!-- HowToReproduce: https://github.com/notepad-plus-plus/notepad-plus-plus/issues/14897#issuecomment-2564316224 -->
-			<Need2Restart2ShowMenuShortcuts title="Notepad++ nilo lati tun bẹrẹ" message="Notepad++ nilo lati tun bẹrẹ lati ṣafihan awọn ọna abuja akojọ aṣayan ọtun."/>
-			<NoAdminRight2ChangeReadOnlyFileAttribute title="Iyipada abuda kika-nikan faili kuna" message="Jọwọ ṣiṣẹ Notepad++ bi olutọju lati yi awọn abuda faili pada."/>
+			<Need2Restart2ShowMenuShortcuts title="Nextpad++ nilo lati tun bẹrẹ" message="Nextpad++ nilo lati tun bẹrẹ lati ṣafihan awọn ọna abuja akojọ aṣayan ọtun."/>
+			<NoAdminRight2ChangeReadOnlyFileAttribute title="Iyipada abuda kika-nikan faili kuna" message="Jọwọ ṣiṣẹ Nextpad++ bi olutọju lati yi awọn abuda faili pada."/>
 		</MessageBox>
 		<ClipboardHistory>
 			<PanelTitle name="Itan agekuru"/>
@@ -1958,8 +1958,8 @@ Jọwọ ṣayẹwo ipo wiwa ṣaaju ṣiṣe iṣe naa."/> <!-- HowToReproduce:
 			<word-chars-list-warning-end value="ninu rẹ kikọ akojọ."/><!-- HowToReproduce: In "Delimiter" section of Preferences dialog, check "Add your character as part of word\r(don't choose it unless you know what you're doing)", then type a white-space in the text field. -->
 			<backup-select-folder value="Yan folda kan bi itọsọna afẹyinti"/><!-- HowToReproduce: Settings > Preferences > Backup > [...] -->
 			<cloud-invalid-warning value="Ọna ti ko tọ."/>
-			<cloud-restart-warning value="Jọwọ tun Notepad++ bẹrẹ lati mu ṣiṣẹ."/>
-			<cloud-select-folder value="Yan folda kan lati/si ibi ti Notepad++ ti ka/kọ awọn eto rẹ"/><!-- HowToReproduce: In "Cloud" section of Preferences dialog, check "Set your cloud location path here: ", then click the button "...". This message is displayed in the "Browse For Folder" dialog. -->
+			<cloud-restart-warning value="Jọwọ tun Nextpad++ bẹrẹ lati mu ṣiṣẹ."/>
+			<cloud-select-folder value="Yan folda kan lati/si ibi ti Nextpad++ ti ka/kọ awọn eto rẹ"/><!-- HowToReproduce: In "Cloud" section of Preferences dialog, check "Set your cloud location path here: ", then click the button "...". This message is displayed in the "Browse For Folder" dialog. -->
 			<default-open-save-select-folder value="Yan folda kan gẹgẹbi itọsọna aiyipada"/><!-- HowToReproduce: Settings > Preferences > Default Directory > [...] -->
 			<shift-change-direction-tip value="Lo Shift+Tẹ lati wa ni ọna idakeji"/>
 			<two-find-buttons-tip value="2 wa awọn bọtini mode"/>

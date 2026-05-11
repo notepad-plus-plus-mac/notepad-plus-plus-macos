@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <!--
-	Luxembourgish translation for Notepad++ 5.1.
+	Luxembourgish translation for Nextpad++ 5.1.
 	Last modified 02 December 2008 by Steve Gengler.
 -->
 <NotepadPlus>
@@ -141,8 +141,8 @@
 					<Item id="46001" name="&amp;Stile ..."/>
 					<Item id="46180" name="Benotzerdefinéiert"/>
 					<Item id="47000" name="&amp;Info ..."/>
-					<Item id="47001" name="Notepad++ am &amp;Web"/>
-					<Item id="47002" name="Notepad++ bei &amp;Sourceforge"/>
+					<Item id="47001" name="Nextpad++ am &amp;Web"/>
+					<Item id="47002" name="Nextpad++ bei &amp;Sourceforge"/>
 					<Item id="47003" name="Online-&amp;Hëllef"/>
 					<Item id="47004" name="&amp;Forum"/>
 					<Item id="47005" name="&amp;Erweiderungen"/>
@@ -676,7 +676,7 @@
 				<Item id="90202" name="Invalid Range"/>
 				<Item id="90203" name="Range Wäerter mussen 0-255 sinn an Ufank muss &lt;= Enn sinn."/>
 				<Item id="90204" name="contextMenu.xml Net fonnt"/>
-				<Item id="90205" name="Restart Notepad++ fir de StandardcontextMenu.xml ze regeneréieren."/>
+				<Item id="90205" name="Restart Nextpad++ fir de StandardcontextMenu.xml ze regeneréieren."/>
 				<Item id="90206" name="De Fichier huet net gespäichert Ännerungen.Reloading mat der neier Kodéierung wäert se ofginn.Fuert weider?"/>
 				<Item id="90207" name="Keng Äntwert vum Server."/>
 				<Item id="90208" name="Server zréckginn Status"/>

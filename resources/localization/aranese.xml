@@ -466,7 +466,7 @@
 				<Item id="90104" name="Reload from Disk"/>
 				<Item id="90105" name="Change Search Engine"/>
 				<Item id="90106" name="Run Error"/>
-				<Item id="90107" name="Notepad++ Loading Time"/>
+				<Item id="90107" name="Nextpad++ Loading Time"/>
 				<Item id="90108" name="Unable to Check for Updates"/>
 				<Item id="90109" name="You're Up to Date"/>
 				<Item id="90110" name="Download"/>
@@ -552,7 +552,7 @@
 				<Item id="90189" name="Windows (CRLF)"/>
 				<Item id="90190" name="Mac (CR)"/>
 				<Item id="90191" name="Plugin list repository"/>
-				<Item id="90192" name="Select a Notepad++ theme XML file to apply"/>
+				<Item id="90192" name="Select a Nextpad++ theme XML file to apply"/>
 				<Item id="90193" name="Create new\u2026"/>
 				<Item id="90194" name="Save as\u2026"/>
 				<Item id="90195" name="User language:"/>
@@ -565,7 +565,7 @@
 				<Item id="90202" name="Invalid Range"/>
 				<Item id="90203" name="Range values must be 0-255 and start must be &lt;= end."/>
 				<Item id="90204" name="contextMenu.xml Not Found"/>
-				<Item id="90205" name="Restart Notepad++ to regenerate the default contextMenu.xml."/>
+				<Item id="90205" name="Restart Nextpad++ to regenerate the default contextMenu.xml."/>
 				<Item id="90206" name="The file has unsaved changes. Reloading with the new encoding will discard them. Continue?"/>
 				<Item id="90207" name="No response from server."/>
 				<Item id="90208" name="Server returned status"/>

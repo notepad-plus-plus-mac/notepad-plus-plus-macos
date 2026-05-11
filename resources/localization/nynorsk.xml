@@ -228,13 +228,13 @@
 
 					<Item id="46001" name="Stilar..."/>
 					<Item id="46180" name="Brukardefinert"/>
-					<Item id="47000" name="Om Notepad++..."/>
-					<Item id="47001" name="Notepad++ heimeside"/>
-					<Item id="47002" name="Notepad++ prosjektheimeside"/>
+					<Item id="47000" name="Om Nextpad++..."/>
+					<Item id="47001" name="Nextpad++ heimeside"/>
+					<Item id="47002" name="Nextpad++ prosjektheimeside"/>
 					<Item id="47003" name="Hjelp på Internett"/>
 					<Item id="47004" name="Forum"/>
 					<Item id="47005" name="Finn fleire programtillegg"/>
-					<Item id="47006" name="Oppdater Notepad++"/>
+					<Item id="47006" name="Oppdater Nextpad++"/>
 					<Item id="47008" name="Innhald i hjelp"/>
 					<Item id="48005" name="Last inn programtillegg ..."/>
 					<Item id="48006" name="Last inn tema ..."/>
@@ -571,7 +571,7 @@
 					<Item id="6319" name="Bruk"/>
 					<Item id="6320" name="Inga understreking"/>
 					<Item id="6322" name="Filending for denne økta:"/>
-					<Item id="6323" name="Bruk automatisk oppdatering i Notepad++"/>
+					<Item id="6323" name="Bruk automatisk oppdatering i Nextpad++"/>
 					<Item id="6324" name="Bytt mellom dokument"/>
 					<Item id="6326" name="Bruk smart framheving"/>
 					<Item id="6329" name="Framhev taggar som høyrer saman"/>
@@ -737,7 +737,7 @@
 				<Item id="90104" name="Last inn på nytt fra disk"/>
 				<Item id="90105" name="Endre søkemotor"/>
 				<Item id="90106" name="Kjør feil"/>
-				<Item id="90107" name="Notepad++ Lastetid"/>
+				<Item id="90107" name="Nextpad++ Lastetid"/>
 				<Item id="90108" name="Kan ikke se etter oppdateringer"/>
 				<Item id="90109" name="Du er oppdatert"/>
 				<Item id="90110" name="Last ned"/>
@@ -823,7 +823,7 @@
 				<Item id="90189" name="Windows (CRLF)"/>
 				<Item id="90190" name="Mac (CR)"/>
 				<Item id="90191" name="Programtilleggslistelager"/>
-				<Item id="90192" name="Velg en XML-fil for Notepad++-tema som skal brukes"/>
+				<Item id="90192" name="Velg en XML-fil for Nextpad++-tema som skal brukes"/>
 				<Item id="90193" name="Opprett ny\u2026"/>
 				<Item id="90194" name="Lagre som\u2026"/>
 				<Item id="90195" name="Brukerspråk:"/>
@@ -836,7 +836,7 @@
 				<Item id="90202" name="Ugyldig område"/>
 				<Item id="90203" name="Områdeverdier må være 0-255 og start må være &lt;= slutt."/>
 				<Item id="90204" name="contextMenu.xml Ikke funnet"/>
-				<Item id="90205" name="Start Notepad++ på nytt for å gjenskape standard contextMenu.xml."/>
+				<Item id="90205" name="Start Nextpad++ på nytt for å gjenskape standard contextMenu.xml."/>
 				<Item id="90206" name="Filen har ulagrede endringer.Lasting på nytt med den nye kodingen vil forkaste dem.Fortsette?"/>
 				<Item id="90207" name="Ingen respons fra server."/>
 				<Item id="90208" name="Server returnerte status"/>
@@ -858,14 +858,14 @@
 			</MacStrings>
 		</Dialog>
 		<MessageBox>
-			<ContextMenuXmlEditWarning title="Rediger kontekstmeny" message="Du kan tilpasse sprettopp-menyen i Notepad++ ved å endre på fila contextMenu.xml. Du må starte Notepad++ på nytt før endringane trer i kraft."/>
-			<NppHelpAbsentWarning title="Fila finst ikkje" message="\rfinst ikkje. Du kan laste den ned frå heimesida til Notepad++."/>
+			<ContextMenuXmlEditWarning title="Rediger kontekstmeny" message="Du kan tilpasse sprettopp-menyen i Nextpad++ ved å endre på fila contextMenu.xml. Du må starte Nextpad++ på nytt før endringane trer i kraft."/>
+			<NppHelpAbsentWarning title="Fila finst ikkje" message="\rfinst ikkje. Du kan laste den ned frå heimesida til Nextpad++."/>
 			<SaveCurrentModifWarning title="Lagre gjeldande endringar" message="Du bør lagre gjeldande endring.\rAlle endringane du har gjort kan ikkje gjerast om.\r\rHald fram?"/>
 			<LoseUndoAbilityWarning title="Lose Undo Ability Waning" message="Du bør lagre gjeldande endring.\rAlle endringane du har gjort kan ikkje gjerast om.\r\rHald fram?"/>
-			<CannotMoveDoc title="Flytt til nytt Notepad++-vindauge" message="Du har endra dokumentet. Lagre det og prøv om att."/>
-			<DocReloadWarning title="Last inn på nytt" message="Er du heilt trygg på at du vil laste inn att den gjeldande fila og misse alle endringane du har gjort i Notepad++?"/>
+			<CannotMoveDoc title="Flytt til nytt Nextpad++-vindauge" message="Du har endra dokumentet. Lagre det og prøv om att."/>
+			<DocReloadWarning title="Last inn på nytt" message="Er du heilt trygg på at du vil laste inn att den gjeldande fila og misse alle endringane du har gjort i Nextpad++?"/>
 			<FileLockedWarning title="Klarte ikkje å lagre" message="Sjekk om denne fila er open i eit anna program"/>
-			<FileAlreadyOpenedInNpp title="" message="Denne fila er allereie open i Notepad++."/>
+			<FileAlreadyOpenedInNpp title="" message="Denne fila er allereie open i Nextpad++."/>
 			<DeleteFileFailed title="Slett fil" message="Klarte ikkje å slette fila"/>
 
 			<!-- $INT_REPLACE$ is a place holder, don't translate it -->

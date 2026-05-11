@@ -2,7 +2,7 @@
 <NotepadPlus>
 	<!--
 	If "RTL" attribute is present and its value is "yes", then user can add "editZoneRTL" attribute beside,
-	and set the value of the attribute in question to "no", so Notepad++ GUI will be RTL,
+	and set the value of the attribute in question to "no", so Nextpad++ GUI will be RTL,
 	but Scintilla zone will be LTR by opening files (see the commented example).
 	Of course, user can set any direction they want afterward, and what they have set on document will be remembered across the sessions.
 	-->
@@ -284,15 +284,15 @@
 					<Item id="46001" name="Style Configurator..."/>
 					<Item id="46250" name="Define your language..."/>
 					<Item id="46180" name="User-Defined"/>
-					<Item id="47000" name="دەربارەی Notepad++..."/>
+					<Item id="47000" name="دەربارەی Nextpad++..."/>
 					<Item id="47010" name="Command Line Arguments..."/>
-					<Item id="47001" name="Notepad++ Home"/>
-					<Item id="47002" name="Notepad++ Project Page"/>
+					<Item id="47001" name="Nextpad++ Home"/>
+					<Item id="47002" name="Nextpad++ Project Page"/>
 					<Item id="47003" name="Online Documentation"/>
-					<Item id="47004" name="Notepad++ Community (Forum)"/>
+					<Item id="47004" name="Nextpad++ Community (Forum)"/>
 					<Item id="47012" name="Debug Info..."/>
 					<Item id="47005" name="پێوەكراوی زیاتر"/>
-					<Item id="47006" name="نوێكردنەوەی Notepad++"/>
+					<Item id="47006" name="نوێكردنەوەی Nextpad++"/>
 					<Item id="47009" name="Set Updater Proxy..."/>
 					<Item id="48005" name="بەرزكردنەوەی پێوەكراوەكان(s) ..."/>
 					<Item id="48006" name="هاوردەكردنی قالبەكان(s) ..."/>
@@ -816,10 +816,10 @@
 
 				<MultiInstance title="Multi-Instance">
 					<Item id="6151" name="Multi-instance settings"/>
-					<Item id="6152" name="Open session in a new instance of Notepad++"/>
+					<Item id="6152" name="Open session in a new instance of Nextpad++"/>
 					<Item id="6153" name="Always in multi-instance mode"/>
 					<Item id="6154" name="Default (mono-instance)"/>
-					<Item id="6155" name="* The modification of this setting needs to restart Notepad++"/>
+					<Item id="6155" name="* The modification of this setting needs to restart Nextpad++"/>
 				</MultiInstance>
 
 				<Delimiter title="Delimiter">
@@ -858,7 +858,7 @@
 					<Item id="6319" name="Enable"/>
 					<Item id="6320" name="No underline"/>
 					<Item id="6322" name="Session file ext.:"/>
-					<Item id="6323" name="چالاكردنی نوێكردنەوەی Notepad++ بەشێوەیەكی خودكار"/>
+					<Item id="6323" name="چالاكردنی نوێكردنەوەی Nextpad++ بەشێوەیەكی خودكار"/>
 					<Item id="6324" name="Document Switcher (Ctrl+TAB)"/>
 					<Item id="6331" name="Show only filename in title bar"/>
 					<Item id="6334" name="Autodetect character encoding"/>
@@ -1007,7 +1007,7 @@
 				<Item id="90104" name="Ji dîskê ji nû ve barkirin"/>
 				<Item id="90105" name="Biguherîne Engine Search"/>
 				<Item id="90106" name="Çewtiya Rêvekirinê"/>
-				<Item id="90107" name="Notepad++ Dema barkirinê"/>
+				<Item id="90107" name="Nextpad++ Dema barkirinê"/>
 				<Item id="90108" name="Nikare Ji bo Nûvekirinan Kontrol bike"/>
 				<Item id="90109" name="Tu Rojane"/>
 				<Item id="90110" name="Daxistin"/>
@@ -1093,7 +1093,7 @@
 				<Item id="90189" name="Windows (CRLF)"/>
 				<Item id="90190" name="Mac (CR)"/>
 				<Item id="90191" name="Depoya lîsteya pêvekan"/>
-				<Item id="90192" name="Pelê XML-a mijara Notepad++ hilbijêrin ku hûn bicîh bikin"/>
+				<Item id="90192" name="Pelê XML-a mijara Nextpad++ hilbijêrin ku hûn bicîh bikin"/>
 				<Item id="90193" name="Nû biafirîne\u2026"/>
 				<Item id="90194" name="Wek tomar bike\u2026"/>
 				<Item id="90195" name="Zimanê bikarhêner:"/>
@@ -1106,7 +1106,7 @@
 				<Item id="90202" name="Rêjeya Nederbasdar"/>
 				<Item id="90203" name="Divê nirxên rêzê 0-255 bin û destpêk divê &lt;= dawî be."/>
 				<Item id="90204" name="contextMenu.xml nehat dîtin"/>
-				<Item id="90205" name="Notepad++ ji nû ve bidin destpêkirin da ku konteksta xwerû Menu.xml ji nû ve çêbike."/>
+				<Item id="90205" name="Nextpad++ ji nû ve bidin destpêkirin da ku konteksta xwerû Menu.xml ji nû ve çêbike."/>
 				<Item id="90206" name="Di pelê de guhertinên neparastkirî hene.Ji nû ve barkirina bi kodkirina nû dê wan ji holê rake.Berdewamkirin?"/>
 				<Item id="90207" name="No bersiv ji server."/>
 				<Item id="90208" name="Server statûya vegerand"/>
@@ -1128,10 +1128,10 @@
 			</MacStrings>
 		</Dialog>
 		<MessageBox>
-			<ContextMenuXmlEditWarning title="Editing contextMenu" message="Editing contextMenu.xml allows you to modify your Notepad++ popup context menu.
-You have to restart your Notepad++ to take effect after modifying contextMenu.xml."/>
+			<ContextMenuXmlEditWarning title="Editing contextMenu" message="Editing contextMenu.xml allows you to modify your Nextpad++ popup context menu.
+You have to restart your Nextpad++ to take effect after modifying contextMenu.xml."/>
 			<NppHelpAbsentWarning title="File does not exist" message="
-doesn't exist. Please download it on Notepad++ site."/>
+doesn't exist. Please download it on Nextpad++ site."/>
 			<SaveCurrentModifWarning title="Save Current Modification" message="You should save the current modification.
 All the saved modifications can not be undone.
 
@@ -1140,10 +1140,10 @@ Continue?"/>
 All the saved modifications can not be undone.
 
 Continue?"/>
-			<CannotMoveDoc title="Move to new Notepad++ Instance" message="Document is modified, save it then try again."/>
-			<DocReloadWarning title="Reload" message="Are you sure you want to reload the current file and lose the changes made in Notepad++?"/>
+			<CannotMoveDoc title="Move to new Nextpad++ Instance" message="Document is modified, save it then try again."/>
+			<DocReloadWarning title="Reload" message="Are you sure you want to reload the current file and lose the changes made in Nextpad++?"/>
 			<FileLockedWarning title="Save failed" message="Please check whether if this file is opened in another program"/>
-			<FileAlreadyOpenedInNpp title="" message="The file is already opened in Notepad++."/>
+			<FileAlreadyOpenedInNpp title="" message="The file is already opened in Nextpad++."/>
 			<DeleteFileFailed title="Delete File" message="Delete File failed"/>
 
 			<!-- $INT_REPLACE$ is a place holder, don't translate it -->
@@ -1232,7 +1232,7 @@ Your settings on cloud will be canceled. Please reset a coherent value via Prefe
 			<word-chars-list-tab-warning value="$INT_REPLACE$ TAB(s)"/>
 			<word-chars-list-warning-end value="  in your character list."/>
 			<cloud-invalid-warning value="Invalid path."/>
-			<cloud-restart-warning value="Please restart Notepad++ to take effect."/>
+			<cloud-restart-warning value="Please restart Nextpad++ to take effect."/>
 			<shift-change-direction-tip value="Use Shift + Enter to search in the opposite direction"/>
 		</MiscStrings>
 	</Native-Langue>

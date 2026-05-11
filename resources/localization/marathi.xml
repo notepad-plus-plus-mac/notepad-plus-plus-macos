@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--
-	::Marathi language file for Notepad++ ::
+	::Marathi language file for Nextpad++ ::
 
 	** created By:- Nikhil Tamhankar **
 		Email- iamnik.mailme@gmail.com
@@ -786,7 +786,7 @@
 				<Item id="90189" name="विंडोज (CRLF)"/>
 				<Item id="90190" name="मॅक (CR)"/>
 				<Item id="90191" name="प्लगइन सूची भांडार"/>
-				<Item id="90192" name="लागू करण्यासाठी Notepad++ थीम XML फाइल निवडा"/>
+				<Item id="90192" name="लागू करण्यासाठी Nextpad++ थीम XML फाइल निवडा"/>
 				<Item id="90193" name="नवीन तयार करा\u2026"/>
 				<Item id="90194" name="म्हणून जतन करा\u2026"/>
 				<Item id="90195" name="वापरकर्ता भाषा:"/>
@@ -799,7 +799,7 @@
 				<Item id="90202" name="अवैध श्रेणी"/>
 				<Item id="90203" name="श्रेणी मूल्ये 0-255 असणे आवश्यक आहे आणि प्रारंभ &lt;= समाप्त असणे आवश्यक आहे."/>
 				<Item id="90204" name="contextMenu.xml आढळले नाही"/>
-				<Item id="90205" name="डीफॉल्ट contextMenu.xml पुन्हा निर्माण करण्यासाठी Notepad++ रीस्टार्ट करा."/>
+				<Item id="90205" name="डीफॉल्ट contextMenu.xml पुन्हा निर्माण करण्यासाठी Nextpad++ रीस्टार्ट करा."/>
 				<Item id="90206" name="फाइलमध्ये जतन न केलेले बदल आहेत.नवीन एन्कोडिंगसह रीलोड केल्याने ते काढून टाकले जातील.सुरू ठेवायचे?"/>
 				<Item id="90207" name="सर्व्हरकडून प्रतिसाद नाही."/>
 				<Item id="90208" name="सर्व्हरने स्थिती परत केली"/>

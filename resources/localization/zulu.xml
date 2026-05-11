@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <!--
 ***********************************************************************************
-	zulu language binary translations file for Notepad++ ::
+	zulu language binary translations file for Nextpad++ ::
 	Created By:- Roshan K. Rathod
 	Email id- rathodroshan0137@gmail.com,rkinfoteh28@gmail.com
 ************************************************************************************
@@ -1061,7 +1061,7 @@
 				<Item id="90104" name="Layisha kabusha kusuka kuDiski"/>
 				<Item id="90105" name="Shintsha Injini Yokusesha"/>
 				<Item id="90106" name="Qalisa Iphutha"/>
-				<Item id="90107" name="I-Notepad++ Isikhathi Sokulayisha"/>
+				<Item id="90107" name="I-Nextpad++ Isikhathi Sokulayisha"/>
 				<Item id="90108" name="Ayikwazi Ukuhlolela Izibuyekezo"/>
 				<Item id="90109" name="Unolwazi Lwakamuva"/>
 				<Item id="90110" name="Landa"/>
@@ -1147,7 +1147,7 @@
 				<Item id="90189" name="IWindows (CRLF)"/>
 				<Item id="90190" name="I-Mac (CR)"/>
 				<Item id="90191" name="Inqolobane yohlu lwe-plugin"/>
-				<Item id="90192" name="Khetha ifayela le-XML letimu ye-Notepad++ ozolisebenzisa"/>
+				<Item id="90192" name="Khetha ifayela le-XML letimu ye-Nextpad++ ozolisebenzisa"/>
 				<Item id="90193" name="Dala okusha\u2026"/>
 				<Item id="90194" name="Londoloza njenge\u2026"/>
 				<Item id="90195" name="Ulimi lomsebenzisi:"/>
@@ -1160,7 +1160,7 @@
 				<Item id="90202" name="Ibanga elingavumelekile"/>
 				<Item id="90203" name="Amanani obubanzi kufanele abe ngu-0-255 futhi isiqalo kufanele sibe &lt;= ekupheleni."/>
 				<Item id="90204" name="contextMenu.xml Ayitholakali"/>
-				<Item id="90205" name="Qala kabusha i-Notepad++ ukuze ukhiqize kabusha umongo omisiweMenu.xml."/>
+				<Item id="90205" name="Qala kabusha i-Nextpad++ ukuze ukhiqize kabusha umongo omisiweMenu.xml."/>
 				<Item id="90206" name="Ifayela linezinguquko ezingalondoloziwe.Ukulayisha kabusha ngombhalo wekhodi omusha kuzozilahla.Qhubeka?"/>
 				<Item id="90207" name="Ayikho impendulo evela kuseva."/>
 				<Item id="90208" name="Isimo sibuyiselwe iseva"/>

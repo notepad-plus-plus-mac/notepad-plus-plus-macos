@@ -2,7 +2,7 @@
 <NotepadPlus>
 	<!--
 	If "RTL" attribute is present and its value is "yes", then user can add "editZoneRTL" attribute beside,
-	and set the value of the attribute in question to "no", so Notepad++ GUI will be RTL,
+	and set the value of the attribute in question to "no", so Nextpad++ GUI will be RTL,
 	but Scintilla zone will be LTR by opening files (see the commented example).
 	Of course, user can set any direction they want afterward, and what they have set on document will be remembered across the sessions.
 	-->
@@ -469,7 +469,7 @@
 				<Item id="90189" name="ونڈوز (CRLF)"/>
 				<Item id="90190" name="میک (CR)"/>
 				<Item id="90191" name="پلگ ان لسٹ ریپوزٹری"/>
-				<Item id="90192" name="لاگو کرنے کے لیے ایک Notepad++ تھیم XML فائل منتخب کریں"/>
+				<Item id="90192" name="لاگو کرنے کے لیے ایک Nextpad++ تھیم XML فائل منتخب کریں"/>
 				<Item id="90193" name="نیا بنائیں\u2026"/>
 				<Item id="90194" name="محفوظ کریں بطور\u2026"/>
 				<Item id="90195" name="صارف کی زبان:"/>
@@ -482,7 +482,7 @@
 				<Item id="90202" name="غلط رینج"/>
 				<Item id="90203" name="رینج کی قدریں 0-255 ہونی چاہئیں اور آغاز &lt;= اختتام ہونا چاہیے۔"/>
 				<Item id="90204" name="contextMenu.xml نہیں ملا"/>
-				<Item id="90205" name="پہلے سے طے شدہ contextMenu.xml کو دوبارہ تخلیق کرنے کے لیے Notepad++ کو دوبارہ شروع کریں۔"/>
+				<Item id="90205" name="پہلے سے طے شدہ contextMenu.xml کو دوبارہ تخلیق کرنے کے لیے Nextpad++ کو دوبارہ شروع کریں۔"/>
 				<Item id="90206" name="فائل میں غیر محفوظ شدہ تبدیلیاں ہیں۔نئی انکوڈنگ کے ساتھ دوبارہ لوڈ کرنے سے وہ ضائع ہو جائیں گے۔جاری رکھیں؟"/>
 				<Item id="90207" name="سرور سے کوئی جواب نہیں۔"/>
 				<Item id="90208" name="سرور نے اسٹیٹس واپس کر دیا"/>

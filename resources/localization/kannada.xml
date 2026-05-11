@@ -759,7 +759,7 @@
 					<Item id="6264" name="ಡ್ೃೊಪ್‌ಬೊಕ್ಶ್‌"/>
 					<Item id="6265" name="ಓನೆಡ್ರಿವೆ"/>
 					<Item id="6266" name="ಗೂಗ್ಲೆ ಡ್ರೈವ್"/>
-					<!--Item id="6261" name="Please restart Notepad++ to take effect."/-->
+					<!--Item id="6261" name="Please restart Nextpad++ to take effect."/-->
 				</Cloud>
 
 				<MISC title="MISC.">
@@ -1021,7 +1021,7 @@
 				<Item id="90202" name="ಅಮಾನ್ಯ ಶ್ರೇಣಿ"/>
 				<Item id="90203" name="ಶ್ರೇಣಿಯ ಮೌಲ್ಯಗಳು 0-255 ಆಗಿರಬೇಕು ಮತ್ತು ಪ್ರಾರಂಭವು &lt;= ಅಂತ್ಯವಾಗಿರಬೇಕು."/>
 				<Item id="90204" name="ContextMenu.xml ಕಂಡುಬಂದಿಲ್ಲ"/>
-				<Item id="90205" name="ಡೀಫಾಲ್ಟ್ ಸನ್ನಿವೇಶMenu.xml ಅನ್ನು ಮರುಸೃಷ್ಟಿಸಲು Notepad++ ಅನ್ನು ಮರುಪ್ರಾರಂಭಿಸಿ."/>
+				<Item id="90205" name="ಡೀಫಾಲ್ಟ್ ಸನ್ನಿವೇಶMenu.xml ಅನ್ನು ಮರುಸೃಷ್ಟಿಸಲು Nextpad++ ಅನ್ನು ಮರುಪ್ರಾರಂಭಿಸಿ."/>
 				<Item id="90206" name="ಫೈಲ್ ಉಳಿಸದ ಬದಲಾವಣೆಗಳನ್ನು ಹೊಂದಿದೆ.ಹೊಸ ಎನ್‌ಕೋಡಿಂಗ್‌ನೊಂದಿಗೆ ಮರುಲೋಡ್ ಮಾಡುವುದರಿಂದ ಅವುಗಳನ್ನು ತ್ಯಜಿಸಲಾಗುತ್ತದೆ.ಮುಂದುವರಿಸುವುದೇ?"/>
 				<Item id="90207" name="ಸರ್ವರ್‌ನಿಂದ ಯಾವುದೇ ಪ್ರತಿಕ್ರಿಯೆ ಇಲ್ಲ."/>
 				<Item id="90208" name="ಸರ್ವರ್ ಹಿಂತಿರುಗಿದ ಸ್ಥಿತಿ"/>
@@ -1043,14 +1043,14 @@
 			</MacStrings>
 		</Dialog>
 		<MessageBox>
-			<ContextMenuXmlEditWarning title="Editing contextMenu" message="Editing contextMenu.xml allows you to modify your Notepad++ popup context menu.\rYou have to restart your Notepad++ to take effect after modifying contextMenu.xml."/>
-			<NppHelpAbsentWarning title="File does not exist" message="\rdoesn't exist. Please download it on Notepad++ site."/>
+			<ContextMenuXmlEditWarning title="Editing contextMenu" message="Editing contextMenu.xml allows you to modify your Nextpad++ popup context menu.\rYou have to restart your Nextpad++ to take effect after modifying contextMenu.xml."/>
+			<NppHelpAbsentWarning title="File does not exist" message="\rdoesn't exist. Please download it on Nextpad++ site."/>
 			<SaveCurrentModifWarning title="Save Current Modification" message="You should save the current modification.\rAll the saved modifications can not be undone.\r\rContinue?"/>
 			<LoseUndoAbilityWarning title="Lose Undo Ability Warning" message="You should save the current modification.\rAll the saved modifications can not be undone.\r\rContinue?"/>
-			<CannotMoveDoc title="Move to new Notepad++ Instance" message="Document is modified, save it then try again."/>
-			<DocReloadWarning title="Reload" message="Are you sure you want to reload the current file and lose the changes made in Notepad++?"/>
+			<CannotMoveDoc title="Move to new Nextpad++ Instance" message="Document is modified, save it then try again."/>
+			<DocReloadWarning title="Reload" message="Are you sure you want to reload the current file and lose the changes made in Nextpad++?"/>
 			<FileLockedWarning title="Save failed" message="Please check whether if this file is opened in another program"/>
-			<FileAlreadyOpenedInNpp title="" message="The file is already opened in Notepad++."/>
+			<FileAlreadyOpenedInNpp title="" message="The file is already opened in Nextpad++."/>
 			<DeleteFileFailed title="Delete File" message="Delete File failed"/>
 
 			<!-- $INT_REPLACE$ is a place holder, don't translate it -->

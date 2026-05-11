@@ -2,7 +2,7 @@
 	<!--
 Author: Andi Rady Kurniawan
 Date: 12 October 2008
-Desc: Malay translation for Notepad++
+Desc: Malay translation for Nextpad++
 -->
 	<Native-Langue name="Bahasa Melayu" filename="malay.xml">
 
@@ -139,8 +139,8 @@ Desc: Malay translation for Notepad++
 					<Item id="10002" name="Klonkan ke Pandangan seterusnya"/>
 					<Item id="46001" name="Penatarajah Penggaya..."/>
 					<Item id="47000" name="Tentang..."/>
-					<Item id="47001" name="Halaman Notepad++"/>
-					<Item id="47002" name="Laman Projek Notepad++"/>
+					<Item id="47001" name="Halaman Nextpad++"/>
+					<Item id="47002" name="Laman Projek Nextpad++"/>
 					<Item id="47003" name="Bantuan atas talian"/>
 					<Item id="47004" name="Forum"/>
 					<Item id="47005" name="Dapatkan lebih plugin"/>
@@ -424,7 +424,7 @@ Desc: Malay translation for Notepad++
 					<Item id="6325" name="Gulung ke baris terakhir selepas kemaskini"/>
 					<Item id="6319" name="Bolehkan"/>
 					<Item id="6320" name="Jangan gariskan"/>
-					<Item id="6323" name="Bolehkan swa-kemaskini Notepad++"/>
+					<Item id="6323" name="Bolehkan swa-kemaskini Nextpad++"/>
 					<Item id="6324" name="Penukar Dokumen (Ctrl+TAB)"/>
 					<Item id="6326" name="Bolehkan penyerlahan pintar"/>
 					<Item id="6114" name="Bolehkan penukar dokumen (Ctrl+Tab)"/>
@@ -589,7 +589,7 @@ Desc: Malay translation for Notepad++
 				<Item id="90104" name="Muat semula daripada Cakera"/>
 				<Item id="90105" name="Tukar Enjin Carian"/>
 				<Item id="90106" name="Ralat Jalankan"/>
-				<Item id="90107" name="Notepad++ Masa Memuatkan"/>
+				<Item id="90107" name="Nextpad++ Masa Memuatkan"/>
 				<Item id="90108" name="Tidak Dapat Menyemak Kemas Kini"/>
 				<Item id="90109" name="Anda Terkini"/>
 				<Item id="90110" name="Muat turun"/>
@@ -675,7 +675,7 @@ Desc: Malay translation for Notepad++
 				<Item id="90189" name="Windows (CRLF)"/>
 				<Item id="90190" name="Mac (CR)"/>
 				<Item id="90191" name="Repositori senarai pemalam"/>
-				<Item id="90192" name="Pilih fail XML tema Notepad++ untuk digunakan"/>
+				<Item id="90192" name="Pilih fail XML tema Nextpad++ untuk digunakan"/>
 				<Item id="90193" name="Buat baharu\u2026"/>
 				<Item id="90194" name="Simpan sebagai\u2026"/>
 				<Item id="90195" name="Bahasa pengguna:"/>
@@ -688,7 +688,7 @@ Desc: Malay translation for Notepad++
 				<Item id="90202" name="Julat Tidak Sah"/>
 				<Item id="90203" name="Nilai julat mestilah 0-255 dan mula mestilah &lt;= tamat."/>
 				<Item id="90204" name="contextMenu.xml Tidak Ditemui"/>
-				<Item id="90205" name="Mulakan semula Notepad++ untuk menjana semula contextMenu.xml lalai."/>
+				<Item id="90205" name="Mulakan semula Nextpad++ untuk menjana semula contextMenu.xml lalai."/>
 				<Item id="90206" name="Fail mempunyai perubahan yang belum disimpan.Memuatkan semula dengan pengekodan baharu akan membuangnya.teruskan?"/>
 				<Item id="90207" name="Tiada respons daripada pelayan."/>
 				<Item id="90208" name="Pelayan mengembalikan status"/>

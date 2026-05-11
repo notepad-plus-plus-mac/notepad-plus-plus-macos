@@ -224,8 +224,8 @@
 
 					<Item id="46001" name="Postavke stilova..."/>
 					<Item id="47000" name="O programu... F1"/>
-					<Item id="47001" name="Internet stranica Notepad++"/>
-					<Item id="47002" name="Stranica projekta Notepad++"/>
+					<Item id="47001" name="Internet stranica Nextpad++"/>
+					<Item id="47002" name="Stranica projekta Nextpad++"/>
 					<Item id="47003" name="Pomoć na Internetu"/>
 					<Item id="47004" name="Forum"/>
 					<Item id="47005" name="Dodaj nove priključke"/>
@@ -684,7 +684,7 @@
 				<Item id="90104" name="Ponovo učitaj sa diska"/>
 				<Item id="90105" name="Promijeni tražilicu"/>
 				<Item id="90106" name="Greška pri pokretanju"/>
-				<Item id="90107" name="Notepad++ Vrijeme učitavanja"/>
+				<Item id="90107" name="Nextpad++ Vrijeme učitavanja"/>
 				<Item id="90108" name="Nije moguće provjeriti ažuriranja"/>
 				<Item id="90109" name="Vi ste u toku"/>
 				<Item id="90110" name="Preuzmi"/>
@@ -770,7 +770,7 @@
 				<Item id="90189" name="Windows (CRLF)"/>
 				<Item id="90190" name="Mac (CR)"/>
 				<Item id="90191" name="Spremište liste dodataka"/>
-				<Item id="90192" name="Odaberite XML datoteku teme Notepad++ koju želite primijeniti"/>
+				<Item id="90192" name="Odaberite XML datoteku teme Nextpad++ koju želite primijeniti"/>
 				<Item id="90193" name="Kreiraj novi\u2026"/>
 				<Item id="90194" name="Sačuvaj kao\u2026"/>
 				<Item id="90195" name="Jezik korisnika:"/>
@@ -783,7 +783,7 @@
 				<Item id="90202" name="Nevažeći raspon"/>
 				<Item id="90203" name="Vrijednosti raspona moraju biti 0-255, a početak mora biti &lt;= kraj."/>
 				<Item id="90204" name="contextMenu.xml Nije pronađeno"/>
-				<Item id="90205" name="Ponovo pokrenite Notepad++ da regenerišete podrazumevani contextMenu.xml."/>
+				<Item id="90205" name="Ponovo pokrenite Nextpad++ da regenerišete podrazumevani contextMenu.xml."/>
 				<Item id="90206" name="Datoteka ima nesačuvane promjene.Ponovno učitavanje s novim kodiranjem će ih odbaciti.Nastaviti?"/>
 				<Item id="90207" name="Nema odgovora sa servera."/>
 				<Item id="90208" name="Server je vratio status"/>

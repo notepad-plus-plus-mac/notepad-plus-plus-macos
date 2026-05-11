@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <!--
-    Javanese (Basa Jawa) language file for Notepad++ macOS
+    Javanese (Basa Jawa) language file for Nextpad++ macOS
     Based on English template - community translations welcome
     Created: 2026-04-04
 -->
@@ -41,7 +41,7 @@
 					<Item subMenuId="edit-onSelection" name="Ing Pamilihan"/>
 					<Item subMenuId="edit-multiSelectALL" name="Multi-pilih ALL"/>
 					<Item subMenuId="edit-multiSelectNext" name="Multi-pilih Sabanjure"/>
-					<Item subMenuId="edit-readonlyInNotepad++" name="Mung Waca ing Notepad++"/>
+					<Item subMenuId="edit-readonlyInNextpad++" name="Mung Waca ing Nextpad++"/>
 					<Item subMenuId="search-changeHistory" name="Sajarah owah-owahan"/>
 					<Item subMenuId="search-markAll" name="Gaya Kabeh Kedadean Token"/>
 					<Item subMenuId="search-markOne" name="Gaya Siji Token"/>
@@ -367,17 +367,17 @@
 					<Item id="46016" name="Ora ana (Teks Normal)"/>
 					<Item id="46250" name="Tegese basamu..."/>
 					<Item id="46300" name="Bukak folder User Defined Language..."/>
-					<Item id="46301" name="Notepad++ User Defined Language Collection"/>
+					<Item id="46301" name="Nextpad++ User Defined Language Collection"/>
 					<Item id="46180" name="Ditetepake panganggo"/>
-					<Item id="47000" name="Babagan Notepad++"/>
+					<Item id="47000" name="Babagan Nextpad++"/>
 					<Item id="47010" name="Argumentasi baris perintah..."/>
-					<Item id="47001" name="Notepad++ Ngarep"/>
-					<Item id="47002" name="Notepad++ Project Page"/>
-					<Item id="47003" name="Notepad++ Online User Manual"/>
-					<Item id="47004" name="Komunitas Notepad++ (Forum)"/>
+					<Item id="47001" name="Nextpad++ Ngarep"/>
+					<Item id="47002" name="Nextpad++ Project Page"/>
+					<Item id="47003" name="Nextpad++ Online User Manual"/>
+					<Item id="47004" name="Komunitas Nextpad++ (Forum)"/>
 					<Item id="47012" name="Info debug..."/>
 					<Item id="47005" name="Entuk Plugins liyane"/>
-					<Item id="47006" name="Nganyari Notepad++"/>
+					<Item id="47006" name="Nganyari Nextpad++"/>
 					<Item id="47009" name="Setel Updater Proxy..."/>
 					<Item id="48005" name="Impor plugin(s)..."/>
 					<Item id="48006" name="Impor gaya tema(s)..."/>
@@ -446,7 +446,7 @@
 				<Item CMDID="41016" name="Pindhah menyang Recycle Bin"/>
 				<Item CMDID="41014" name="Muat maneh"/>
 				<Item CMDID="41010" name="Printah..."/>
-				<Item CMDID="42028" name="Mung Waca ing Notepad++"/>
+				<Item CMDID="42028" name="Mung Waca ing Nextpad++"/>
 				<Item CMDID="42033" name="Atribut Mung Waca ing Windows"/>
 				<Item CMDID="2" name="Salin menyang Clipboard"/>
 				<Item CMDID="42029" name="Salin Path File Lengkap"/>
@@ -1128,7 +1128,7 @@
 				</DefaultDir>
 
 				<FileAssoc title="Asosiasi berkas">
-					<Item id="4008" name="Mangga metu saka Notepad++ lan bukak maneh Notepad++ ing mode Administrator kanggo nggunakake fitur iki."/>
+					<Item id="4008" name="Mangga metu saka Nextpad++ lan bukak maneh Nextpad++ ing mode Administrator kanggo nggunakake fitur iki."/>
 					<Item id="4009" name="Ekstensi sing didhukung:"/>
 					<Item id="4010" name="Ekstensi kadhaptar:"/>
 				</FileAssoc>
@@ -1213,7 +1213,7 @@
 				</Print>
 
 				<Searching title="Nggoleki">
-					<Item id="6902" name="Gunakake font monospace ing dialog Golek (Perlu miwiti maneh Notepad++)"/>
+					<Item id="6902" name="Gunakake font monospace ing dialog Golek (Perlu miwiti maneh Nextpad++)"/>
 					<Item id="6903" name="Dialog temokake tetep mbukak sawise panelusuran sing metu menyang jendhela asil"/>
 					<Item id="6904" name="Konfirmasi Ganti Kabeh ing Kabeh Dokumen sing Dibukak"/>
 					<Item id="6905" name="Ganti: Aja pindhah menyang kedadeyan ing ngisor iki"/>
@@ -1281,7 +1281,7 @@
 					<Item id="6152" name="Bukak sesi ing conto anyar (lan nyimpen sesi kanthi otomatis nalika metu)"/>
 					<Item id="6153" name="Tansah ing mode multi-kaya"/>
 					<Item id="6154" name="Default (mono-instance)"/>
-					<Item id="6155" name="* Modifikasi setelan iki kudu miwiti maneh Notepad++"/>
+					<Item id="6155" name="* Modifikasi setelan iki kudu miwiti maneh Nextpad++"/>
 					<Item id="6171" name="Kustomisasi sisipan Tanggal Wektu"/>
 					<Item id="6175" name="Urutan wektu tanggal standar mbalikke (format dawa cendhak)"/>
 					<Item id="6172" name="Format khusus:"/>
@@ -1365,7 +1365,7 @@
 					<ComboBox id="6364">
 						<Element name="Pateni"/>
 						<Element name="Aktifake ing wiwitan Notepad ++"/>
-						<Element name="Aktifake ing Notepad++ metu"/>
+						<Element name="Aktifake ing Nextpad++ metu"/>
 					</ComboBox>
 					<Item id="6308" name="sistem tray"/>
 					<Item id="6363" name="modus rendering"/>
@@ -1564,7 +1564,7 @@ Sampeyan bisa ngaktifake maneh dialog iki ing Preferensi mengko."/>
 				<Item id="90104" name="Muat maneh saka Disk"/>
 				<Item id="90105" name="Ganti mesin telusur"/>
 				<Item id="90106" name="Kasalahan Run"/>
-				<Item id="90107" name="Notepad++ Loading Time"/>
+				<Item id="90107" name="Nextpad++ Loading Time"/>
 				<Item id="90108" name="Ora bisa mriksa nganyari"/>
 				<Item id="90109" name="Sampeyan lagi Up to date"/>
 				<Item id="90110" name="Ngundhuh"/>
@@ -1650,7 +1650,7 @@ Sampeyan bisa ngaktifake maneh dialog iki ing Preferensi mengko."/>
 				<Item id="90189" name="Windows (CRLF)"/>
 				<Item id="90190" name="Mac (CR)"/>
 				<Item id="90191" name="Repositori dhaptar plugin"/>
-				<Item id="90192" name="Pilih file XML tema Notepad++ sing arep ditrapake"/>
+				<Item id="90192" name="Pilih file XML tema Nextpad++ sing arep ditrapake"/>
 				<Item id="90193" name="Gawe anyar\u2026"/>
 				<Item id="90194" name="Simpen minangka\u2026"/>
 				<Item id="90195" name="Basa panganggo:"/>
@@ -1686,7 +1686,7 @@ Sampeyan bisa ngaktifake maneh dialog iki ing Preferensi mengko."/>
 		</Dialog>
 		<MessageBox>
 			<!-- $INT_REPLACE$ and $STR_REPLACE$ are place holders, don't translate these place holders. -->
-			<ContextMenuXmlEditWarning title="Ngedit contextMenu" message="Ngedit contextMenu.xml ngidini sampeyan ngowahi menu konteks popup Notepad++.
+			<ContextMenuXmlEditWarning title="Ngedit contextMenu" message="Ngedit contextMenu.xml ngidini sampeyan ngowahi menu konteks popup Nextpad++.
 Sampeyan kudu miwiti maneh Notepad ++ supaya bisa ditrapake sawise ngowahi contextMenu.xml."/>
 			<SaveCurrentModifWarning title="Simpen Modifikasi Saiki" message="Sampeyan kudu nyimpen modifikasi saiki.
 Kabeh modifikasi sing disimpen ora bisa dibatalake.
@@ -1696,16 +1696,16 @@ Terus?"/><!-- HowToReproduce: when you openned file is modified but unsaved yet,
 Kabeh modifikasi sing disimpen ora bisa dibatalake.
 
 Terus?"/><!-- HowToReproduce: when you openned file is modified and saved, then you are changing file encoding. -->
-			<CannotMoveDoc title="Pindhah menyang Instance Notepad++ anyar" message="Dokumen diowahi, simpen banjur coba maneh."/><!-- HowToReproduce: From your Notepad++ drag & drop a clean (not dirty) file to outside of Notepad++, another instance of Notepad++ will be created. Then from your first Notepad++ drag & drop an unsaved file to the new instance. -->
+			<CannotMoveDoc title="Pindhah menyang Instance Nextpad++ anyar" message="Dokumen diowahi, simpen banjur coba maneh."/><!-- HowToReproduce: From your Nextpad++ drag & drop a clean (not dirty) file to outside of Nextpad++, another instance of Nextpad++ will be created. Then from your first Nextpad++ drag & drop an unsaved file to the new instance. -->
 			<DocReloadWarning title="Muat maneh" message="Apa sampeyan yakin pengin mbukak maneh file saiki lan ilang owah-owahan sing digawe ing Notepad ++?"/>
 			<FileLockedWarning title="Gagal nyimpen" message="Priksa manawa file iki dibukak ing program liya"/>
-			<FileAlreadyOpenedInNpp title="" message="File wis dibukak ing Notepad++."/><!-- HowToReproduce: Open a new document and open a file "c:/tmp/foo", save this new document by choosing "c:/tmp/foo" as file to save, reply the override popup "yes", then this message appears. -->
+			<FileAlreadyOpenedInNpp title="" message="File wis dibukak ing Nextpad++."/><!-- HowToReproduce: Open a new document and open a file "c:/tmp/foo", save this new document by choosing "c:/tmp/foo" as file to save, reply the override popup "yes", then this message appears. -->
 			<RenameTabTemporaryNameAlreadyInUse title="Ganti jeneng gagal" message="Jeneng sing ditemtokake wis digunakake ing tab liyane."/><!-- HowToReproduce: Rename the tab of an untitled document and provide a name that is the same as an already-existing tab of an untitled document. -->
 			<RenameTabTemporaryNameIsEmpty title="Ganti jeneng gagal" message="Jeneng sing ditemtokake ora bisa kosong, utawa ora mung ngemot spasi utawa TAB."/><!-- HowToReproduce: Rename the tab of an untitled document and provide an empty string or only some white speces. -->
 			<DeleteFileFailed title="Busak File" message="Mbusak File gagal"/><!-- HowToReproduce: this message prevents from system failure. It's hard to reproduce. -->
 
 			<NbFileToOpenImportantWarning title="Jumlah berkas sing arep dibukak kakehan" message="$INT_REPLACE$ files are about to be opened.
-Are you sure you want to open them?"/><!-- HowToReproduce: Check "Open all files of folder instead of launching Folder as Workspace on folder dropping" in "Default Directory" of Preferences dialog, then drop a folder which contains more then 200 files into Notepad++. -->
+Are you sure you want to open them?"/><!-- HowToReproduce: Check "Open all files of folder instead of launching Folder as Workspace on folder dropping" in "Default Directory" of Preferences dialog, then drop a folder which contains more then 200 files into Nextpad++. -->
 			<SettingsOnCloudError title="Setelan ing Cloud" message="Kayane path setelan ing awan disetel ing drive mung diwaca,
 utawa ing folder needed hak istimewa kanggo akses nulis.
 Setelan sampeyan ing awan bakal dibatalake.Mangga setel ulang nilai sing koheren liwat dialog Preferensi."/>
@@ -1716,7 +1716,7 @@ Sampeyan kudu ngaktifake &quot;Mbukak kabeh file folder tinimbang ngluncurake Fo
 			<SortingError title="Kasalahan ngurut" message="Ora bisa ngurutake angka amarga baris $INT_REPLACE$."/><!-- HowToReproduce: this message prevents from system failure. It's hard to reproduce. -->
 			<SortLocaleMultiple title="Urut ora dilakokake" message="Ngurutake macem-macem pilihan ora didhukung."/><!-- HowToReproduce: Make a multiple selection and choose Edit | Line Operations | Sort Lines In Locale Order. -->
 			<SortLocaleUnknown title="Urut Gagal" message="Alesan gagal ngurutake ora bisa ditemtokake."/><!-- HowToReproduce: This condition is theoretical; it is unknown what could cause it. -->
-			<SortLocaleExcept title="Urut Gagal" message="$STR_REPLACE$"/><!-- HowToReproduce: Open a large file, e.g. 500MB / 90k lines, in 32-bit Notepad++ and choose Edit | Line Operations | Sort Lines In Locale Order. -->
+			<SortLocaleExcept title="Urut Gagal" message="$STR_REPLACE$"/><!-- HowToReproduce: Open a large file, e.g. 500MB / 90k lines, in 32-bit Nextpad++ and choose Edit | Line Operations | Sort Lines In Locale Order. -->
 			<ColumnModeTip title="Tip Mode Kolom" message="Ana 3 cara kanggo ngalih menyang mode pilih kolom:
 
 1. (Keyboard lan Mouse) Tahan Alt nalika ngiwa-klik nyeret
@@ -1746,12 +1746,12 @@ Apa sampeyan pengin ngisi maneh?"/>
 Berkas iki wis diowahi dening program liya.
 Apa sampeyan pengin ngisi maneh lan ilang owah-owahan ing Notepad ++?"/>
 			<PrehistoricSystemDetected title="Sistem prasejarah dideteksi" message="Kayane sampeyan isih nggunakake sistem prasejarah.Fitur iki mung dianggo ing sistem modern, nuwun sewu."/><!-- HowToReproduce: Launch "Document Map" under Windows XP. -->
-			<XpUpdaterProblem title="Notepad++ Updater" message="Updater Notepad ++ ora kompatibel karo XP amarga lapisan keamanan lungse ing XP.
-Apa sampeyan pengin menyang kaca Notepad++ kanggo ndownload versi paling anyar?"/><!-- HowToReproduce: Run menu "? -> Update Notepad++" under Windows XP. -->
+			<XpUpdaterProblem title="Nextpad++ Updater" message="Updater Notepad ++ ora kompatibel karo XP amarga lapisan keamanan lungse ing XP.
+Apa sampeyan pengin menyang kaca Nextpad++ kanggo ndownload versi paling anyar?"/><!-- HowToReproduce: Run menu "? -> Update Nextpad++" under Windows XP. -->
 			<GUpProxyConfNeedAdminMode title="Setelan proxy" message="Bukak maneh Notepad ++ ing mode Admin kanggo ngatur proxy."/>
 			<DocTooDirtyToMonitor title="Masalah ngawasi" message="Dokumen kasebut reged.Simpen modifikasi sadurunge ngawasi."/>
 			<DocNoExistToMonitor title="Masalah ngawasi" message="File kasebut kudu ana kanggo dipantau."/>
-			<FileTooBigToOpen title="Masalah ukuran berkas" message="File gedhe banget kanggo dibukak dening Notepad++"/><!-- HowToReproduce: Try to open a 4GB file (it's not easy to reproduce, it depends on your system). -->
+			<FileTooBigToOpen title="Masalah ukuran berkas" message="File gedhe banget kanggo dibukak dening Nextpad++"/><!-- HowToReproduce: Try to open a 4GB file (it's not easy to reproduce, it depends on your system). -->
 			<FileLoadingException title="Kode pangecualian: $STR_REPLACE$" message="Ana kesalahan nalika mbukak file!"/>
 			<WantToOpenHugeFile title="Mbukak bebaya berkas ageng" message="Mbukak file gedhe 2GB+ bisa njupuk sawetara menit.
 Apa sampeyan pengin mbukak?"/>
@@ -1765,8 +1765,8 @@ Folder &quot;$STR_REPLACE2$&quot; ora ana."/>
 Apa sampeyan pengin nyimpen file saiki?"/><!-- HowToReproduce: this message prevents from system failure. It's hard to reproduce. -->
 			<LoadStylersFailed title="Muat stylers.xml gagal" message="Muat &quot;$STR_REPLACE$&quot; gagal!"/>
 			<LoadLangsFailed title="Konfigurator" message="Muat langs.xml gagal!
-Apa sampeyan pengin mbalekake langs.xml sampeyan?"/><!-- HowToReproduce: Close Notepad++. Use another editor to remove all content of "langs.xml" (0 length) then save it. Open Notepad++. -->
-			<LoadLangsFailedFinal title="Konfigurator" message="Muat langs.xml gagal!"/><!-- HowToReproduce: Close Notepad++. Use another editor to make "langs.xml" an invalid xml file then save it. Open Notepad++. -->
+Apa sampeyan pengin mbalekake langs.xml sampeyan?"/><!-- HowToReproduce: Close Nextpad++. Use another editor to remove all content of "langs.xml" (0 length) then save it. Open Nextpad++. -->
+			<LoadLangsFailedFinal title="Konfigurator" message="Muat langs.xml gagal!"/><!-- HowToReproduce: Close Nextpad++. Use another editor to make "langs.xml" an invalid xml file then save it. Open Nextpad++. -->
 			<FolderAsWorspaceSubfolderExists title="Folder minangka Workspace nambah masalah folder" message="Ana subfolder saka folder sing pengin ditambahake.
 Mangga mbusak root saka panel sadurunge sampeyan nambah folder &quot;$STR_REPLACE$&quot;."/><!-- HowToReproduce: Add a folder like "c:\temp\aFolder\" into "Folder as Workspace" panel, then try to add "c:\temp\". -->
 
@@ -1797,14 +1797,14 @@ tulung menehi siji liyane."/>
 Apa sampeyan pengin mbukak Notepad ++ ing mode Administrator?"/>
 			<OpenInAdminModeWithoutCloseCurrent title="Gagal nyimpen" message="File ora bisa disimpen lan bisa uga direksa.
 Apa sampeyan pengin mbukak Notepad ++ ing mode Administrator?"/>
-			<OpenInAdminModeFailed title="Mbukak ing mode Administrator gagal" message="Notepad++ ora bisa dibukak ing mode Administrator."/><!-- HowToReproduce: When you have no Admin privilege and you try to save a modified file in a protected location (for example: any file in sub-folder of "C:\Program Files\". This message will appear after replying "Yes" to "Open in Admin mode" dialog. -->
+			<OpenInAdminModeFailed title="Mbukak ing mode Administrator gagal" message="Nextpad++ ora bisa dibukak ing mode Administrator."/><!-- HowToReproduce: When you have no Admin privilege and you try to save a modified file in a protected location (for example: any file in sub-folder of "C:\Program Files\". This message will appear after replying "Yes" to "Open in Admin mode" dialog. -->
 			<ViewInBrowser title="Deleng File Saiki ing Browser" message="Aplikasi ora bisa ditemokake ing sistem sampeyan."/>
-			<ExitToUpdatePlugins title="Notepad++ arep metu" message="Yen sampeyan ngeklik YA, sampeyan bakal metu saka Notepad ++ kanggo nerusake operasi.
+			<ExitToUpdatePlugins title="Nextpad++ arep metu" message="Yen sampeyan ngeklik YA, sampeyan bakal metu saka Notepad ++ kanggo nerusake operasi.
 Notepad ++ bakal diwiwiti maneh sawise kabeh operasi rampung.
 Terus?"/>
-			<NeedToRestartToLoadPlugins title="Notepad++ kudu diluncurake maneh" message="Sampeyan kudu miwiti maneh Notepad ++ kanggo mbukak plugin sing wis diinstal."/><!-- HowToReproduce: Import a plugin via menu "Settings->Import->Import Plugin(s)...". -->
-			<ChangeHistoryEnabledWarning title="Notepad++ kudu diluncurake maneh" message="Sampeyan kudu miwiti maneh Notepad ++ kanggo ngaktifake Sejarah Ganti."/><!-- HowToReproduce: uncheck "Display Change History" via Preferences dialog "Marges/Border/Edge. -->
-			<WindowsSessionExit title="Notepad++ - metu sesi Windows" message="Sesi Windows bakal diakhiri nanging sampeyan duwe sawetara data sing ora disimpen.Apa sampeyan pengin metu saka Notepad++ saiki?"/>
+			<NeedToRestartToLoadPlugins title="Nextpad++ kudu diluncurake maneh" message="Sampeyan kudu miwiti maneh Notepad ++ kanggo mbukak plugin sing wis diinstal."/><!-- HowToReproduce: Import a plugin via menu "Settings->Import->Import Plugin(s)...". -->
+			<ChangeHistoryEnabledWarning title="Nextpad++ kudu diluncurake maneh" message="Sampeyan kudu miwiti maneh Notepad ++ kanggo ngaktifake Sejarah Ganti."/><!-- HowToReproduce: uncheck "Display Change History" via Preferences dialog "Marges/Border/Edge. -->
+			<WindowsSessionExit title="Nextpad++ - metu sesi Windows" message="Sesi Windows bakal diakhiri nanging sampeyan duwe sawetara data sing ora disimpen.Apa sampeyan pengin metu saka Nextpad++ saiki?"/>
 			<LanguageMenuCompactWarning title="Menu Basa Kompak" message="Opsi iki bakal diganti nalika diluncurake sabanjure."/><!-- HowToReproduce: toggle "Make language menu compact" via Preferences dialog "Language/Language Menu. -->
 			<SwitchUnsavedThemeWarning title="$STR_REPLACE$" message="Owah-owahan sing ora disimpen bakal dibuwang!
 Apa sampeyan pengin nyimpen owah-owahan sadurunge ngganti tema?"/><!-- HowToReproduce: In the Style Configurator dialog change some theme and switch to other theme without saving. -->
@@ -1813,7 +1813,7 @@ Coba printah kasebut lan, yen perlu, owahi maneh.
 
 Utawa, sampeyan bisa downgrade menyang Notepad ++ v8.5.2 lan mulihake data sadurunge.
 Notepad ++ bakal nggawe serep &quot;shortcuts.xml&quot; lawas lan disimpen minangka &quot;shortcuts.xml.v8.5.2.backup&quot;.
-Ganti jeneng &quot;shortcuts.xml.v8.5.2.backup&quot; -&gt; &quot;shortcuts.xml&quot;, printah sampeyan kudu dibalekake lan bisa digunakake kanthi bener."/><!-- HowToReproduce: Close Notepad++, remove shortcuts.xml.v8.5.2.backup & v852ShortcutsCompatibilityWarning.xml if present, relaunch Notepad++, delete or modify a shortcuts via Shortcut Mapper, close Notepad++, then the message will show up -->
+Ganti jeneng &quot;shortcuts.xml.v8.5.2.backup&quot; -&gt; &quot;shortcuts.xml&quot;, printah sampeyan kudu dibalekake lan bisa digunakake kanthi bener."/><!-- HowToReproduce: Close Nextpad++, remove shortcuts.xml.v8.5.2.backup & v852ShortcutsCompatibilityWarning.xml if present, relaunch Nextpad++, delete or modify a shortcuts via Shortcut Mapper, close Nextpad++, then the message will show up -->
 			<FullReadOnlySavingForbidden title="Gagal nyimpen" message="Ora bisa nyimpen file.
 Mode terlarang nyimpen mung diwaca Notepad ++ nyegah file kasebut ora disimpen."/>
 			<NotEnoughRoom4Saving title="Simpen gagal" message="Gagal nyimpen file.
@@ -1829,7 +1829,7 @@ Apa sampeyan pengin nggawe placeholder kasebut?
 
 CATETAN: Milih ora nggawe placeholder utawa nutup mengko, sesi sampeyan bakal diowahi nalika metu!Disaranake sampeyan nggawe serep &quot;session.xml&quot; saiki."/>
 			<RTLvsDirectWrite title="Ora bisa mbukak RTL" message="RTL ora kompatibel karo mode DirectWrite.Mangga mateni mode DirectWrite ing MISC.bagean saka dialog Preferensi, lan miwiti maneh Notepad ++."/>
-			<FileMemoryAllocationFailed title="Pangecualian: Alokasi memori berkas gagal" message="Mesthine ora cukup memori gratis sing cedhak kanggo file sing dimuat dening Notepad ++."/><!-- HowToReproduce: Try to open multiple files with total size > ~700MB in the x86 Notepad++ (it will depend on the PC memory configuration and the current system memory usage...). -->
+			<FileMemoryAllocationFailed title="Pangecualian: Alokasi memori berkas gagal" message="Mesthine ora cukup memori gratis sing cedhak kanggo file sing dimuat dening Notepad ++."/><!-- HowToReproduce: Try to open multiple files with total size > ~700MB in the x86 Nextpad++ (it will depend on the PC memory configuration and the current system memory usage...). -->
 			<FindRegexBackwardDisabled title="Panelusuran mundur regex dipateni" message="Kanthi gawan, telusuran regex mundur dipateni amarga ana asil sing ora dikarepake.Kanggo nindakake telusuran mundur, bukak dialog Temokake banjur pilih mode telusuran normal utawa lengkap tinimbang ekspresi reguler.
 Pencet tombol OK kanggo mbukak dialog Golek utawa nyetel fokus ing.
 
@@ -1837,8 +1837,8 @@ Yen sampeyan mbutuhake fitur telusuran regex mundur, deleng manual pangguna kang
 			<PrintError title="0" message="Ora bisa miwiti dokumen printer."/><!-- Use title="0" to use Windows OS default translated "Error" title. -->
 			<FindAutoChangeOfInSelectionWarning title="pèngêtan pados" message="Status kothak &quot;Ing pilihan&quot; wis diowahi kanthi otomatis.
 Mangga verifikasi kondisi panelusuran sadurunge nindakake tumindak."/> <!-- HowToReproduce: https://github.com/notepad-plus-plus/notepad-plus-plus/issues/14897#issuecomment-2564316224 -->
-			<Need2Restart2ShowMenuShortcuts title="Notepad++ kudu diwiwiti maneh" message="Notepad ++ kudu diwiwiti maneh kanggo nuduhake trabasan menu tengen."/>
-			<NoAdminRight2ChangeReadOnlyFileAttribute title="Ngganti atribut mung diwaca file gagal" message="Bukak Notepad++ minangka administrator kanggo ngganti atribut file."/>
+			<Need2Restart2ShowMenuShortcuts title="Nextpad++ kudu diwiwiti maneh" message="Notepad ++ kudu diwiwiti maneh kanggo nuduhake trabasan menu tengen."/>
+			<NoAdminRight2ChangeReadOnlyFileAttribute title="Ngganti atribut mung diwaca file gagal" message="Bukak Nextpad++ minangka administrator kanggo ngganti atribut file."/>
 		</MessageBox>
 		<ClipboardHistory>
 			<PanelTitle name="Riwayat Clipboard"/>

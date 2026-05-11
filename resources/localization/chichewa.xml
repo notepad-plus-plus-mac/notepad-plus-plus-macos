@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <!--
-    Chichewa (Chichewa) language file for Notepad++ macOS
+    Chichewa (Chichewa) language file for Nextpad++ macOS
     Based on English template - community translations welcome
     Created: 2026-04-04
 -->
@@ -41,7 +41,7 @@
 					<Item subMenuId="edit-onSelection" name="Pa Kusankhidwa"/>
 					<Item subMenuId="edit-multiSelectALL" name="Sankhani zambiri ONSE"/>
 					<Item subMenuId="edit-multiSelectNext" name="Sankhani Zambiri Kenako"/>
-					<Item subMenuId="edit-readonlyInNotepad++" name="Werengani-Pokha mu Notepad++"/>
+					<Item subMenuId="edit-readonlyInNextpad++" name="Werengani-Pokha mu Nextpad++"/>
 					<Item subMenuId="search-changeHistory" name="Kusintha Mbiri"/>
 					<Item subMenuId="search-markAll" name="Mtundu Zonse Zomwe Zimachitika pa Chizindikiro"/>
 					<Item subMenuId="search-markOne" name="Mtundu Woyamba Chizindikiro"/>
@@ -367,17 +367,17 @@
 					<Item id="46016" name="Palibe (Mawu Okhazikika)"/>
 					<Item id="46250" name="Tanthauzirani chilankhulo chanu..."/>
 					<Item id="46300" name="Tsegulani foda ya Chinenero Chofotokozedwa..."/>
-					<Item id="46301" name="Notepad++ User Defined Languages ​​Collection"/>
+					<Item id="46301" name="Nextpad++ User Defined Languages ​​Collection"/>
 					<Item id="46180" name="Kutanthauzira-Wogwiritsa"/>
-					<Item id="47000" name="Za Notepad++"/>
+					<Item id="47000" name="Za Nextpad++"/>
 					<Item id="47010" name="Mikangano ya Mzere Wamalamulo..."/>
-					<Item id="47001" name="Notepad++ Home"/>
-					<Item id="47002" name="Tsamba la Notepad++ Project"/>
-					<Item id="47003" name="Notepad++ Buku Logwiritsa Ntchito Paintaneti"/>
-					<Item id="47004" name="Notepad++ Community (Forum)"/>
+					<Item id="47001" name="Nextpad++ Home"/>
+					<Item id="47002" name="Tsamba la Nextpad++ Project"/>
+					<Item id="47003" name="Nextpad++ Buku Logwiritsa Ntchito Paintaneti"/>
+					<Item id="47004" name="Nextpad++ Community (Forum)"/>
 					<Item id="47012" name="Zambiri Zothetsera..."/>
 					<Item id="47005" name="Pezani Mapulagini Ambiri"/>
-					<Item id="47006" name="Sinthani Notepad++"/>
+					<Item id="47006" name="Sinthani Nextpad++"/>
 					<Item id="47009" name="Khazikitsani Wothandizira Wowonjezera..."/>
 					<Item id="48005" name="Lowetsani mapulogalamu owonjezera..."/>
 					<Item id="48006" name="Mitu ya sitayilo yolowera..."/>
@@ -446,7 +446,7 @@
 				<Item CMDID="41016" name="Pitani ku Recycle Bin"/>
 				<Item CMDID="41014" name="Kwezaninso"/>
 				<Item CMDID="41010" name="Sindikizani..."/>
-				<Item CMDID="42028" name="Werengani-Pokha mu Notepad++"/>
+				<Item CMDID="42028" name="Werengani-Pokha mu Nextpad++"/>
 				<Item CMDID="42033" name="Kuwerenga-Okha mu Windows"/>
 				<Item CMDID="2" name="Lembani ku Clipboard"/>
 				<Item CMDID="42029" name="Lembani Njira Yathunthu Yafayilo"/>
@@ -1128,7 +1128,7 @@
 				</DefaultDir>
 
 				<FileAssoc title="Fayilo Association">
-					<Item id="4008" name="Chonde tulukani Notepad++ ndikuyambitsanso Notepad++ mu Administrator mode kuti mugwiritse ntchito izi."/>
+					<Item id="4008" name="Chonde tulukani Nextpad++ ndikuyambitsanso Nextpad++ mu Administrator mode kuti mugwiritse ntchito izi."/>
 					<Item id="4009" name="Zowonjezera zothandizira:"/>
 					<Item id="4010" name="Zowonjezera zolembetsa:"/>
 				</FileAssoc>
@@ -1213,7 +1213,7 @@
 				</Print>
 
 				<Searching title="Kusaka">
-					<Item id="6902" name="Gwiritsani ntchito font yokhala ndi malo amodzi mu bokosi la Pezani (Muyenera kuyambitsanso Notepad++)"/>
+					<Item id="6902" name="Gwiritsani ntchito font yokhala ndi malo amodzi mu bokosi la Pezani (Muyenera kuyambitsanso Nextpad++)"/>
 					<Item id="6903" name="Pezani kukambirana kumakhalabe kotsegula pambuyo kusaka komwe kumatuluka pazenera lazotsatira"/>
 					<Item id="6904" name="Tsimikizirani Kusintha Zonse M'ma Documents Onse Otsegulidwa"/>
 					<Item id="6905" name="Bwezerani: Osasunthira kuzochitika zotsatirazi"/>
@@ -1281,7 +1281,7 @@
 					<Item id="6152" name="Tsegulani gawo muzochitika zatsopano (ndikusunga gawo pokhapokha mutatuluka)"/>
 					<Item id="6153" name="Nthawi zonse mumachitidwe ambiri"/>
 					<Item id="6154" name="Zosasintha (mwachitsanzo chimodzi)"/>
-					<Item id="6155" name="* Kusintha kwa izi kuyenera kuyambitsanso Notepad++"/>
+					<Item id="6155" name="* Kusintha kwa izi kuyenera kuyambitsanso Nextpad++"/>
 					<Item id="6171" name="Sinthani Mwamakonda Anu Ikani Nthawi Ya Tsiku"/>
 					<Item id="6175" name="Bwezerani sinthani dongosolo la nthawi (mawonekedwe aatali aatali)"/>
 					<Item id="6172" name="Zokonda:"/>
@@ -1365,7 +1365,7 @@
 					<ComboBox id="6364">
 						<Element name="Letsani"/>
 						<Element name="Yambitsani poyambira Notepad ++"/>
-						<Element name="Yambitsani pa Notepad++ kutuluka"/>
+						<Element name="Yambitsani pa Nextpad++ kutuluka"/>
 					</ComboBox>
 					<Item id="6308" name="dongosolo tray"/>
 					<Item id="6363" name="njira yoperekera"/>
@@ -1564,7 +1564,7 @@ Mutha kuyambitsanso zokambiranazi mu Zokonda pambuyo pake."/>
 				<Item id="90104" name="Tsitsaninso kuchokera ku Disk"/>
 				<Item id="90105" name="Sinthani Injini Yosaka"/>
 				<Item id="90106" name="Thamangani Vuto"/>
-				<Item id="90107" name="Notepad++ Loading Time"/>
+				<Item id="90107" name="Nextpad++ Loading Time"/>
 				<Item id="90108" name="Sitinathe Kuwona Zosintha"/>
 				<Item id="90109" name="Mwakudziwa"/>
 				<Item id="90110" name="Tsitsani"/>
@@ -1663,7 +1663,7 @@ Mutha kuyambitsanso zokambiranazi mu Zokonda pambuyo pake."/>
 				<Item id="90202" name="Mtundu Wosalondola"/>
 				<Item id="90203" name="Ziwerengero ziyenera kukhala 0-255 ndipo chiyambi chiyenera kukhala &lt;= mapeto."/>
 				<Item id="90204" name="contextMenu.xml Sanapezeke"/>
-				<Item id="90205" name="Yambitsaninso Notepad++ kuti muyambitsenso nkhani yokhazikikaMenu.xml."/>
+				<Item id="90205" name="Yambitsaninso Nextpad++ kuti muyambitsenso nkhani yokhazikikaMenu.xml."/>
 				<Item id="90206" name="Fayilo ili ndi zosintha zosasungidwa.Kutsegulanso ndi encoding yatsopano kudzawataya.Pitirizani?"/>
 				<Item id="90207" name="Palibe yankho lochokera ku seva."/>
 				<Item id="90208" name="Seva yabweza udindo"/>
@@ -1686,8 +1686,8 @@ Mutha kuyambitsanso zokambiranazi mu Zokonda pambuyo pake."/>
 		</Dialog>
 		<MessageBox>
 			<!-- $INT_REPLACE$ and $STR_REPLACE$ are place holders, don't translate these place holders. -->
-			<ContextMenuXmlEditWarning title="Kusintha contextMenu" message="Kusintha contextMenu.xml kumakupatsani mwayi wosintha menyu yanu ya Notepad++ popup.
-Muyenera kuyambitsanso Notepad++ yanu kuti iyambe kugwira ntchito mutasintha contextMenu.xml."/>
+			<ContextMenuXmlEditWarning title="Kusintha contextMenu" message="Kusintha contextMenu.xml kumakupatsani mwayi wosintha menyu yanu ya Nextpad++ popup.
+Muyenera kuyambitsanso Nextpad++ yanu kuti iyambe kugwira ntchito mutasintha contextMenu.xml."/>
 			<SaveCurrentModifWarning title="Sungani Zosintha Pano" message="Muyenera kusunga zosintha zapano.
 Zosintha zonse zosungidwa sizingasinthidwe.
 
@@ -1696,8 +1696,8 @@ Pitirizani?"/><!-- HowToReproduce: when you openned file is modified but unsaved
 Zosintha zonse zosungidwa sizingasinthidwe.
 
 Pitirizani?"/><!-- HowToReproduce: when you openned file is modified and saved, then you are changing file encoding. -->
-			<CannotMoveDoc title="Pitani ku Notepad++ Instance yatsopano" message="Document yasinthidwa, sungani ndikuyesanso."/><!-- HowToReproduce: From your Notepad++ drag & drop a clean (not dirty) file to outside of Notepad++, another instance of Notepad++ will be created. Then from your first Notepad++ drag & drop an unsaved file to the new instance. -->
-			<DocReloadWarning title="Kwezaninso" message="Kodi mukutsimikiza kuti mukufuna kutsitsanso fayilo yomwe ilipo ndikutaya zosintha zomwe zachitika mu Notepad++?"/>
+			<CannotMoveDoc title="Pitani ku Nextpad++ Instance yatsopano" message="Document yasinthidwa, sungani ndikuyesanso."/><!-- HowToReproduce: From your Nextpad++ drag & drop a clean (not dirty) file to outside of Nextpad++, another instance of Nextpad++ will be created. Then from your first Nextpad++ drag & drop an unsaved file to the new instance. -->
+			<DocReloadWarning title="Kwezaninso" message="Kodi mukutsimikiza kuti mukufuna kutsitsanso fayilo yomwe ilipo ndikutaya zosintha zomwe zachitika mu Nextpad++?"/>
 			<FileLockedWarning title="Kusunga kwalephera" message="Chonde onani ngati fayiloyi yatsegulidwa mu pulogalamu ina"/>
 			<FileAlreadyOpenedInNpp title="" message="Fayilo yatsegulidwa kale mu Notepad ++."/><!-- HowToReproduce: Open a new document and open a file "c:/tmp/foo", save this new document by choosing "c:/tmp/foo" as file to save, reply the override popup "yes", then this message appears. -->
 			<RenameTabTemporaryNameAlreadyInUse title="Kutchulanso kwalephera" message="Dzina lotchulidwa likugwiritsidwa ntchito pa tabu ina."/><!-- HowToReproduce: Rename the tab of an untitled document and provide a name that is the same as an already-existing tab of an untitled document. -->
@@ -1705,7 +1705,7 @@ Pitirizani?"/><!-- HowToReproduce: when you openned file is modified and saved, 
 			<DeleteFileFailed title="Chotsani Fayilo" message="Kuchotsa Fayilo kwalephera"/><!-- HowToReproduce: this message prevents from system failure. It's hard to reproduce. -->
 
 			<NbFileToOpenImportantWarning title="Kuchuluka kwa mafayilo oti mutsegule ndikwambiri" message="$INT_REPLACE$ files are about to be opened.
-Are you sure you want to open them?"/><!-- HowToReproduce: Check "Open all files of folder instead of launching Folder as Workspace on folder dropping" in "Default Directory" of Preferences dialog, then drop a folder which contains more then 200 files into Notepad++. -->
+Are you sure you want to open them?"/><!-- HowToReproduce: Check "Open all files of folder instead of launching Folder as Workspace on folder dropping" in "Default Directory" of Preferences dialog, then drop a folder which contains more then 200 files into Nextpad++. -->
 			<SettingsOnCloudError title="Zokonda pa Cloud" message="Zikuwoneka kuti njira yosinthira pamtambo imayikidwa pa drive yokhayo yowerengera,
 kapena pa chikwatu chomwe chimafunikira mwayi wokhala ndi mwayi wolembera.
 Zokonda zanu pamtambo zichotsedwa.Chonde yambitsaninso mtengo wogwirizana kudzera muzokambirana Zokonda."/>
@@ -1716,7 +1716,7 @@ Muyenera kuyatsa &quot;Tsegulani mafayilo onse a foda m'malo moyambitsa Foda nga
 			<SortingError title="Vuto Losanja" message="Takanika kusanja manambala chifukwa cha mzere $INT_REPLACE$."/><!-- HowToReproduce: this message prevents from system failure. It's hard to reproduce. -->
 			<SortLocaleMultiple title="Kusankha sikunachitike" message="Kusankha zingapo sikutheka."/><!-- HowToReproduce: Make a multiple selection and choose Edit | Line Operations | Sort Lines In Locale Order. -->
 			<SortLocaleUnknown title="Mtundu Walephera" message="Chifukwa chomwe mtunduwo unalepherera sikudziwika."/><!-- HowToReproduce: This condition is theoretical; it is unknown what could cause it. -->
-			<SortLocaleExcept title="Mtundu Walephera" message="$STR_REPLACE$"/><!-- HowToReproduce: Open a large file, e.g. 500MB / 90k lines, in 32-bit Notepad++ and choose Edit | Line Operations | Sort Lines In Locale Order. -->
+			<SortLocaleExcept title="Mtundu Walephera" message="$STR_REPLACE$"/><!-- HowToReproduce: Open a large file, e.g. 500MB / 90k lines, in 32-bit Nextpad++ and choose Edit | Line Operations | Sort Lines In Locale Order. -->
 			<ColumnModeTip title="Upangiri Wamgawo Lazanja" message="Pali njira zitatu zosinthira kukhala mulingo wosankha:
 
 1. (Kiyibodi ndi Mouse) Gwirani Alt pamene dinani-kumanzere kukokera
@@ -1744,14 +1744,14 @@ Kodi mukufuna kuyiyikanso?"/>
 			<DoReloadOrNotAndLooseChange title="Kwezaninso" message="&quot;$STR_REPLACE$&quot;
 
 Fayiloyi yasinthidwa ndi pulogalamu ina.
-Kodi mukufuna kuyiyikanso ndikutaya zosintha zomwe zachitika mu Notepad++?"/>
+Kodi mukufuna kuyiyikanso ndikutaya zosintha zomwe zachitika mu Nextpad++?"/>
 			<PrehistoricSystemDetected title="Mbiri yakale yapezeka" message="Zikuwoneka kuti mukugwiritsabe ntchito mbiri yakale.Izi zimagwira ntchito pamakina amakono okha, pepani."/><!-- HowToReproduce: Launch "Document Map" under Windows XP. -->
-			<XpUpdaterProblem title="Notepad++ Updater" message="Notepad++ updater sagwirizana ndi XP chifukwa chachitetezo chosatha cha XP.
-Kodi mukufuna kupita patsamba la Notepad++ kuti mutsitse mtundu waposachedwa?"/><!-- HowToReproduce: Run menu "? -> Update Notepad++" under Windows XP. -->
-			<GUpProxyConfNeedAdminMode title="Zokonda pa Proxy" message="Chonde yambitsaninso Notepad++ mumchitidwe Woyang'anira kuti mukhazikitse proxy."/>
+			<XpUpdaterProblem title="Nextpad++ Updater" message="Nextpad++ updater sagwirizana ndi XP chifukwa chachitetezo chosatha cha XP.
+Kodi mukufuna kupita patsamba la Nextpad++ kuti mutsitse mtundu waposachedwa?"/><!-- HowToReproduce: Run menu "? -> Update Nextpad++" under Windows XP. -->
+			<GUpProxyConfNeedAdminMode title="Zokonda pa Proxy" message="Chonde yambitsaninso Nextpad++ mumchitidwe Woyang'anira kuti mukhazikitse proxy."/>
 			<DocTooDirtyToMonitor title="Vuto loyang'anira" message="Chikalatacho ndi chonyansa.Chonde sungani zosinthazo musanaziyang'anire."/>
 			<DocNoExistToMonitor title="Vuto loyang'anira" message="Fayilo iyenera kukhalapo kuti iwunthwe."/>
-			<FileTooBigToOpen title="Vuto la kukula kwa fayilo" message="Fayilo ndi yayikulu kwambiri kuti isatsegulidwe ndi Notepad++"/><!-- HowToReproduce: Try to open a 4GB file (it's not easy to reproduce, it depends on your system). -->
+			<FileTooBigToOpen title="Vuto la kukula kwa fayilo" message="Fayilo ndi yayikulu kwambiri kuti isatsegulidwe ndi Nextpad++"/><!-- HowToReproduce: Try to open a 4GB file (it's not easy to reproduce, it depends on your system). -->
 			<FileLoadingException title="Khodi yopatulapo: $STR_REPLACE$" message="Panali vuto potsegula fayilo!"/>
 			<WantToOpenHugeFile title="Kutsegula chenjezo lalikulu la fayilo" message="Kutsegula fayilo yayikulu ya 2GB + kungatenge mphindi zingapo.
 Mukufuna kutsegula?"/>
@@ -1765,8 +1765,8 @@ Foda &quot;$STR_REPLACE2$&quot; palibe."/>
 Mukufuna kusunga fayilo yomwe ilipo?"/><!-- HowToReproduce: this message prevents from system failure. It's hard to reproduce. -->
 			<LoadStylersFailed title="Lowetsani stylers.xml zalephera" message="Kutsitsa &quot;$STR_REPLACE$&quot; kwalephera!"/>
 			<LoadLangsFailed title="Configurator" message="Kutsegula langs.xml kwalephera!
-Kodi mukufuna kupezanso langs.xml yanu?"/><!-- HowToReproduce: Close Notepad++. Use another editor to remove all content of "langs.xml" (0 length) then save it. Open Notepad++. -->
-			<LoadLangsFailedFinal title="Configurator" message="Kutsegula langs.xml kwalephera!"/><!-- HowToReproduce: Close Notepad++. Use another editor to make "langs.xml" an invalid xml file then save it. Open Notepad++. -->
+Kodi mukufuna kupezanso langs.xml yanu?"/><!-- HowToReproduce: Close Nextpad++. Use another editor to remove all content of "langs.xml" (0 length) then save it. Open Nextpad++. -->
+			<LoadLangsFailedFinal title="Configurator" message="Kutsegula langs.xml kwalephera!"/><!-- HowToReproduce: Close Nextpad++. Use another editor to make "langs.xml" an invalid xml file then save it. Open Nextpad++. -->
 			<FolderAsWorspaceSubfolderExists title="Foda ngati Malo Ogwirira ntchito ndikuwonjezera vuto la foda" message="Chikwatu chaching'ono cha chikwatu chomwe mukufuna kuwonjezera chilipo.
 Chonde chotsani mizu yake pagulu musanawonjezere chikwatu &quot;$STR_REPLACE$&quot;."/><!-- HowToReproduce: Add a folder like "c:\temp\aFolder\" into "Folder as Workspace" panel, then try to add "c:\temp\". -->
 
@@ -1794,17 +1794,17 @@ chonde perekani ina."/>
 			<SCMapperDoDeleteOrNot title="Mukutsimikiza?" message="Kodi mukutsimikiza kuti mukufuna kuchotsa njira yachiduleyi?"/>
 			<FindCharRangeValueError title="Vuto la Mtengo Wosiyanasiyana" message="Muyenera kulemba pakati pa 0 ndi 255."/> <!-- HowToReproduce: Search menu, then Find characters in range, select Custom range, enter 999 in either edit box, press Find. -->
 			<OpenInAdminMode title="Kusunga kwalephera" message="Fayiloyo siyingasungidwe ndipo ikhoza kutetezedwa.
-Kodi mukufuna kukhazikitsa Notepad++ mu Administrator mode?"/>
+Kodi mukufuna kukhazikitsa Nextpad++ mu Administrator mode?"/>
 			<OpenInAdminModeWithoutCloseCurrent title="Kusunga kwalephera" message="Fayiloyo siyingasungidwe ndipo ikhoza kutetezedwa.
-Kodi mukufuna kukhazikitsa Notepad++ mu Administrator mode?"/>
+Kodi mukufuna kukhazikitsa Nextpad++ mu Administrator mode?"/>
 			<OpenInAdminModeFailed title="Tsegulani mumayendedwe a Administrator sizinatheke" message="Notepad ++ singatsegulidwe mumayendedwe a Administrator."/><!-- HowToReproduce: When you have no Admin privilege and you try to save a modified file in a protected location (for example: any file in sub-folder of "C:\Program Files\". This message will appear after replying "Yes" to "Open in Admin mode" dialog. -->
 			<ViewInBrowser title="Onani Fayilo Yapano mu Msakatuli" message="Kugwiritsa ntchito sikungapezeke m'dongosolo lanu."/>
-			<ExitToUpdatePlugins title="Notepad++ yatsala pang'ono kutuluka" message="Mukadina YES, mudzasiya Notepad ++ kuti mupitirize kugwira ntchito.
+			<ExitToUpdatePlugins title="Nextpad++ yatsala pang'ono kutuluka" message="Mukadina YES, mudzasiya Notepad ++ kuti mupitirize kugwira ntchito.
 Notepad ++ idzayambiranso ntchito zonse zitathetsedwa.
 Pitirizani?"/>
 			<NeedToRestartToLoadPlugins title="Notepad ++ ikuyenera kukhazikitsidwanso" message="Muyenera kuyambitsanso Notepad ++ kuti mutsegule mapulagini omwe mudayika."/><!-- HowToReproduce: Import a plugin via menu "Settings->Import->Import Plugin(s)...". -->
 			<ChangeHistoryEnabledWarning title="Notepad ++ ikuyenera kukhazikitsidwanso" message="Muyenera kuyambitsanso Notepad ++ kuti muthe Kusintha Mbiri."/><!-- HowToReproduce: uncheck "Display Change History" via Preferences dialog "Marges/Border/Edge. -->
-			<WindowsSessionExit title="Notepad++ - kutuluka kwa gawo la Windows" message="Windows gawo latsala pang'ono kuthetsedwa koma muli ndi zina zomwe sizinasungidwe.Kodi mukufuna kutuluka Notepad++ tsopano?"/>
+			<WindowsSessionExit title="Nextpad++ - kutuluka kwa gawo la Windows" message="Windows gawo latsala pang'ono kuthetsedwa koma muli ndi zina zomwe sizinasungidwe.Kodi mukufuna kutuluka Nextpad++ tsopano?"/>
 			<LanguageMenuCompactWarning title="Menyu Yachiyankhulo Chophatikiza" message="Izi zidzasinthidwa pakukhazikitsa kotsatira."/><!-- HowToReproduce: toggle "Make language menu compact" via Preferences dialog "Language/Language Menu. -->
 			<SwitchUnsavedThemeWarning title="$STR_REPLACE$" message="Zosintha zosasungidwa zatsala pang'ono kutayidwa!
 Kodi mukufuna kusunga zosintha zanu musanasinthe mitu?"/><!-- HowToReproduce: In the Style Configurator dialog change some theme and switch to other theme without saving. -->
@@ -1812,8 +1812,8 @@ Kodi mukufuna kusunga zosintha zanu musanasinthe mitu?"/><!-- HowToReproduce: In
 Chonde yesani malamulowo ndipo, ngati pakufunika, sinthaninso.
 
 Kapenanso, mutha kutsitsa ku Notepad ++ v8.5.2 ndikubwezeretsanso deta yanu yam'mbuyo.
-Notepad++ idzasunga &quot;shortcuts.xml&quot; yanu yakale ndikuisunga ngati &quot;shortcuts.xml.v8.5.2.backup&quot;.
-Kutchulanso &quot;shortcuts.xml.v8.5.2.backup&quot; -&gt; &quot;shortcuts.xml&quot;, malamulo anu ayenera kubwezeretsedwa ndikugwira ntchito moyenera."/><!-- HowToReproduce: Close Notepad++, remove shortcuts.xml.v8.5.2.backup & v852ShortcutsCompatibilityWarning.xml if present, relaunch Notepad++, delete or modify a shortcuts via Shortcut Mapper, close Notepad++, then the message will show up -->
+Nextpad++ idzasunga &quot;shortcuts.xml&quot; yanu yakale ndikuisunga ngati &quot;shortcuts.xml.v8.5.2.backup&quot;.
+Kutchulanso &quot;shortcuts.xml.v8.5.2.backup&quot; -&gt; &quot;shortcuts.xml&quot;, malamulo anu ayenera kubwezeretsedwa ndikugwira ntchito moyenera."/><!-- HowToReproduce: Close Nextpad++, remove shortcuts.xml.v8.5.2.backup & v852ShortcutsCompatibilityWarning.xml if present, relaunch Nextpad++, delete or modify a shortcuts via Shortcut Mapper, close Nextpad++, then the message will show up -->
 			<FullReadOnlySavingForbidden title="Kusunga kwalephera" message="Sitingathe kusunga fayilo.
 Njira ya Notepad ++ yoletsa kuwerenga-yokha yoletsedwa idalepheretsa fayilo kusungidwa."/>
 			<NotEnoughRoom4Saving title="Kusunga kwalephera" message="Zalephera kusunga fayilo.
@@ -1829,7 +1829,7 @@ Mukufuna kupanga zosungiramo malo?
 
 ZINDIKIRANI: Kusankha kusapanga zoikira malo kapena kuzitseka pambuyo pake, gawo lanu LIDZASINTHA POTUMUKA!Tikukulangizani kuti musunge &quot;session.xml&quot; yanu tsopano."/>
 			<RTLvsDirectWrite title="Sitingathe kuyendetsa RTL" message="RTL siyogwirizana ndi DirectWrite mode.Chonde zimitsani DirectWrite mode mu MISC.gawo la Zokonda kukambirana, ndikuyambitsanso Notepad ++."/>
-			<FileMemoryAllocationFailed title="Kupatulapo: Kugawa mafayilo kwalephera" message="Mwina palibe kukumbukira kokwanira kokwanira kwa fayilo yomwe ikukwezedwa ndi Notepad ++."/><!-- HowToReproduce: Try to open multiple files with total size > ~700MB in the x86 Notepad++ (it will depend on the PC memory configuration and the current system memory usage...). -->
+			<FileMemoryAllocationFailed title="Kupatulapo: Kugawa mafayilo kwalephera" message="Mwina palibe kukumbukira kokwanira kokwanira kwa fayilo yomwe ikukwezedwa ndi Notepad ++."/><!-- HowToReproduce: Try to open multiple files with total size > ~700MB in the x86 Nextpad++ (it will depend on the PC memory configuration and the current system memory usage...). -->
 			<FindRegexBackwardDisabled title="Kusaka kwa Regex kumbuyo kwayimitsidwa" message="Mwachisawawa, kusaka kwa regex yakumbuyo kumayimitsidwa chifukwa cha zotsatira zosayembekezereka.Kuti mufufuze chakumbuyo, tsegulani bokosi lakuti Pezani ndikusankha zosaka zanthawi zonse kapena zowonjezera m'malo mongonena zanthawi zonse.
 Dinani batani la OK kuti mutsegule bokosi la Pezani kapena ikani kuyang'ana pa izo.
 
@@ -1958,8 +1958,8 @@ Chonde tsimikizirani zosaka musanachite."/> <!-- HowToReproduce: https://github.
 			<word-chars-list-warning-end value="pamndandanda wamakhalidwe anu."/><!-- HowToReproduce: In "Delimiter" section of Preferences dialog, check "Add your character as part of word\r(don't choose it unless you know what you're doing)", then type a white-space in the text field. -->
 			<backup-select-folder value="Sankhani chikwatu ngati chikwatu zosunga zobwezeretsera"/><!-- HowToReproduce: Settings > Preferences > Backup > [...] -->
 			<cloud-invalid-warning value="Njira yolakwika."/>
-			<cloud-restart-warning value="Chonde yambitsaninso Notepad++ kuti igwire ntchito."/>
-			<cloud-select-folder value="Sankhani chikwatu kuchokera/komwe Notepad++ imawerenga/kulemba zoikamo zake"/><!-- HowToReproduce: In "Cloud" section of Preferences dialog, check "Set your cloud location path here: ", then click the button "...". This message is displayed in the "Browse For Folder" dialog. -->
+			<cloud-restart-warning value="Chonde yambitsaninso Nextpad++ kuti igwire ntchito."/>
+			<cloud-select-folder value="Sankhani chikwatu kuchokera/komwe Nextpad++ imawerenga/kulemba zoikamo zake"/><!-- HowToReproduce: In "Cloud" section of Preferences dialog, check "Set your cloud location path here: ", then click the button "...". This message is displayed in the "Browse For Folder" dialog. -->
 			<default-open-save-select-folder value="Sankhani chikwatu ngati chikwatu chosasintha"/><!-- HowToReproduce: Settings > Preferences > Default Directory > [...] -->
 			<shift-change-direction-tip value="Gwiritsani ntchito Shift+Enter kuti mufufuze mbali ina"/>
 			<two-find-buttons-tip value="2 kupeza mabatani mode"/>

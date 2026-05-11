@@ -167,8 +167,8 @@
 
 					<Item id="46001" name="Услубларни белгилаш..."/>
 					<Item id="47000" name="Дастур ҳақида..."/>
-					<Item id="47001" name="Notepad++ дастури сайти"/>
-					<Item id="47002" name="Notepad++ лойиҳаси сайти"/>
+					<Item id="47001" name="Nextpad++ дастури сайти"/>
+					<Item id="47002" name="Nextpad++ лойиҳаси сайти"/>
 					<Item id="47003" name="Интернетда ёрдам"/>
 					<Item id="47004" name="Форум"/>
 					<Item id="47005" name="Кўпроқ қўшимчалар"/>
@@ -190,7 +190,7 @@
 					<Item id="46016" name="Оддий матн"/>
 					<Item id="46017" name="RC Resource файли"/>
 					<Item id="46180" name="Шахсий танловлар"/>
-					<Item id="47006" name="Notepad++ дастурини янгилаш"/>
+					<Item id="47006" name="Nextpad++ дастурини янгилаш"/>
 					<Item id="47007" name="Вики ТТС"/>
 
 				</Commands>
@@ -633,7 +633,7 @@
 				<Item id="90104" name="Diskdan qayta yuklash"/>
 				<Item id="90105" name="Qidiruv tizimini o'zgartirish"/>
 				<Item id="90106" name="Ishlash xatosi"/>
-				<Item id="90107" name="Notepad++ yuklash vaqti"/>
+				<Item id="90107" name="Nextpad++ yuklash vaqti"/>
 				<Item id="90108" name="Yangilanishlarni tekshirib bo'lmadi"/>
 				<Item id="90109" name="Siz yangilangansiz"/>
 				<Item id="90110" name="Yuklab olish"/>
@@ -719,7 +719,7 @@
 				<Item id="90189" name="Windows (CRLF)"/>
 				<Item id="90190" name="Mac (CR)"/>
 				<Item id="90191" name="Plaginlar ro'yxati ombori"/>
-				<Item id="90192" name="Qo'llash uchun Notepad++ mavzuli XML faylni tanlang"/>
+				<Item id="90192" name="Qo'llash uchun Nextpad++ mavzuli XML faylni tanlang"/>
 				<Item id="90193" name="Yangi yaratish\u2026"/>
 				<Item id="90194" name="Saqlash\u2026"/>
 				<Item id="90195" name="Foydalanuvchi tili:"/>
@@ -732,7 +732,7 @@
 				<Item id="90202" name="Yaroqsiz diapazon"/>
 				<Item id="90203" name="Diapazon qiymatlari 0-255 bo'lishi kerak va boshlanish &lt;= end bo'lishi kerak."/>
 				<Item id="90204" name="contextMenu.xml topilmadi"/>
-				<Item id="90205" name="Standart contextMenu.xml faylini qayta tiklash uchun Notepad++ dasturini qayta ishga tushiring."/>
+				<Item id="90205" name="Standart contextMenu.xml faylini qayta tiklash uchun Nextpad++ dasturini qayta ishga tushiring."/>
 				<Item id="90206" name="Faylda saqlanmagan o'zgarishlar mavjud.Yangi kodlash bilan qayta yuklash ularni bekor qiladi.Davom ettirilsinmi?"/>
 				<Item id="90207" name="Serverdan javob yo'q."/>
 				<Item id="90208" name="Server holatini qaytardi"/>

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <!--
-	Macedonian localization for Notepad++
+	Macedonian localization for Nextpad++
 	Last modified Wednesday, November 11th 2009 18:06 GMT by Kiril Sardjoski.
 	Please e-mail errors, suggestions etc. to kiril.sardjoski(at)gmail(dot)com.
 -->
@@ -167,9 +167,9 @@
 
 
 					<Item id="46001" name="Прилагодување на стилови..."/>
-					<Item id="47000" name="Околу Notepad++..."/>
-					<Item id="47001" name="Notepad++ Дома"/>
-					<Item id="47002" name="Страна на Notepad++ Проектот"/>
+					<Item id="47000" name="Околу Nextpad++..."/>
+					<Item id="47001" name="Nextpad++ Дома"/>
+					<Item id="47002" name="Страна на Nextpad++ Проектот"/>
 					<Item id="47003" name="NpWiki++ (Помош преку Интернет)"/>
 					<Item id="47004" name="Форум"/>
 					<Item id="47005" name="Набави повеќе Plugin-ови"/>
@@ -628,7 +628,7 @@
 				<Item id="90104" name="Вчитај повторно од диск"/>
 				<Item id="90105" name="Промена на пребарувач"/>
 				<Item id="90106" name="Грешка при извршување"/>
-				<Item id="90107" name="Notepad++ Време на вчитување"/>
+				<Item id="90107" name="Nextpad++ Време на вчитување"/>
 				<Item id="90108" name="Не можам да проверам за ажурирања"/>
 				<Item id="90109" name="Во тек сте"/>
 				<Item id="90110" name="Преземи"/>
@@ -714,7 +714,7 @@
 				<Item id="90189" name="Windows (CRLF)"/>
 				<Item id="90190" name="Mac (CR)"/>
 				<Item id="90191" name="Складиште за листа на приклучоци"/>
-				<Item id="90192" name="Изберете XML-датотека со тема Notepad++ за примена"/>
+				<Item id="90192" name="Изберете XML-датотека со тема Nextpad++ за примена"/>
 				<Item id="90193" name="Креирај нов\u2026"/>
 				<Item id="90194" name="Зачувај како\u2026"/>
 				<Item id="90195" name="Кориснички јазик:"/>
@@ -727,7 +727,7 @@
 				<Item id="90202" name="Неважечки опсег"/>
 				<Item id="90203" name="Вредностите на опсегот мора да бидат 0-255, а почетокот мора да биде &lt;= крај."/>
 				<Item id="90204" name="contextMenu.xml Не е пронајдено"/>
-				<Item id="90205" name="Рестартирајте го Notepad++ за да го регенерирате стандардниот контекстMenu.xml."/>
+				<Item id="90205" name="Рестартирајте го Nextpad++ за да го регенерирате стандардниот контекстMenu.xml."/>
 				<Item id="90206" name="Датотеката има незачувани промени.Повторното вчитување со новото кодирање ќе ги отфрли.Продолжи?"/>
 				<Item id="90207" name="Нема одговор од серверот."/>
 				<Item id="90208" name="Серверот го врати статусот"/>

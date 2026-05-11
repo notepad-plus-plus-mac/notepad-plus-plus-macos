@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <!--
-    Hausa (Hausa) language file for Notepad++ macOS
+    Hausa (Hausa) language file for Nextpad++ macOS
     Based on English template - community translations welcome
     Created: 2026-04-04
 -->
@@ -41,7 +41,7 @@
 					<Item subMenuId="edit-onSelection" name="Akan Zabi"/>
 					<Item subMenuId="edit-multiSelectALL" name="Multi-zaɓi DUKA"/>
 					<Item subMenuId="edit-multiSelectNext" name="Multi-zaɓi Gaba"/>
-					<Item subMenuId="edit-readonlyInNotepad++" name="Karanta-kawai a cikin Notepad++"/>
+					<Item subMenuId="edit-readonlyInNextpad++" name="Karanta-kawai a cikin Nextpad++"/>
 					<Item subMenuId="search-changeHistory" name="Canja Tarihi"/>
 					<Item subMenuId="search-markAll" name="Salo Duk abubuwan da suka faru na Token"/>
 					<Item subMenuId="search-markOne" name="Alamar Salo Daya"/>
@@ -367,17 +367,17 @@
 					<Item id="46016" name="Babu (Rubutun Al'ada)"/>
 					<Item id="46250" name="ayyana harshen ku..."/>
 					<Item id="46300" name="Buɗe Fayil ɗin Harshen Ƙa'idar Mai Amfani..."/>
-					<Item id="46301" name="Tarin Ma'anar Harsunan Mai Amfani da Notepad++"/>
+					<Item id="46301" name="Tarin Ma'anar Harsunan Mai Amfani da Nextpad++"/>
 					<Item id="46180" name="Ma'anar Mai Amfani"/>
-					<Item id="47000" name="Game da Notepad++"/>
+					<Item id="47000" name="Game da Nextpad++"/>
 					<Item id="47010" name="Hujja Layin Umurni..."/>
-					<Item id="47001" name="Notepad++ Home"/>
-					<Item id="47002" name="Shafin aikin Notepad++"/>
-					<Item id="47003" name="Notepad++ Manual mai amfani ta kan layi"/>
-					<Item id="47004" name="Notepad++ Community (Forum)"/>
+					<Item id="47001" name="Nextpad++ Home"/>
+					<Item id="47002" name="Shafin aikin Nextpad++"/>
+					<Item id="47003" name="Nextpad++ Manual mai amfani ta kan layi"/>
+					<Item id="47004" name="Nextpad++ Community (Forum)"/>
 					<Item id="47012" name="Bayanin gyara kuskure..."/>
 					<Item id="47005" name="Samun Ƙarin Abubuwan Haɓakawa"/>
-					<Item id="47006" name="Sabunta Notepad++"/>
+					<Item id="47006" name="Sabunta Nextpad++"/>
 					<Item id="47009" name="Saita Proxy Updater..."/>
 					<Item id="48005" name="Shigo da plugin(s)..."/>
 					<Item id="48006" name="Shigo da jigo (s) salo..."/>
@@ -446,7 +446,7 @@
 				<Item CMDID="41016" name="Matsar zuwa Maimaita Bin"/>
 				<Item CMDID="41014" name="Sake saukewa"/>
 				<Item CMDID="41010" name="Buga..."/>
-				<Item CMDID="42028" name="Karanta-kawai a cikin Notepad++"/>
+				<Item CMDID="42028" name="Karanta-kawai a cikin Nextpad++"/>
 				<Item CMDID="42033" name="Siffar Karatu-kawai a cikin Windows"/>
 				<Item CMDID="2" name="Kwafi zuwa Clipboard"/>
 				<Item CMDID="42029" name="Kwafi Cikakken Hanyar Fayil"/>
@@ -1128,7 +1128,7 @@
 				</DefaultDir>
 
 				<FileAssoc title="Ƙungiyar Fayil">
-					<Item id="4008" name="Da fatan za a fita daga Notepad++ kuma sake kunna Notepad++ a yanayin Mai gudanarwa don amfani da wannan fasalin."/>
+					<Item id="4008" name="Da fatan za a fita daga Nextpad++ kuma sake kunna Nextpad++ a yanayin Mai gudanarwa don amfani da wannan fasalin."/>
 					<Item id="4009" name="Ƙwayoyin tallafi:"/>
 					<Item id="4010" name="Sabuntawa mai rijista:"/>
 				</FileAssoc>
@@ -1213,7 +1213,7 @@
 				</Print>
 
 				<Searching title="Neman">
-					<Item id="6902" name="Yi amfani da rubutu guda ɗaya a Nemo maganganu (Bukatar sake kunna Notepad++)"/>
+					<Item id="6902" name="Yi amfani da rubutu guda ɗaya a Nemo maganganu (Bukatar sake kunna Nextpad++)"/>
 					<Item id="6903" name="Nemo maganganu yana buɗewa bayan binciken da ke fitowa zuwa taga sakamako"/>
 					<Item id="6904" name="Tabbatar da Sauya Duk a cikin Duk Takardun Buɗe"/>
 					<Item id="6905" name="Sauya: Kar a matsa zuwa abin da ke biyo baya"/>
@@ -1281,7 +1281,7 @@
 					<Item id="6152" name="Bude zama a cikin sabon misali (kuma ajiye zaman ta atomatik lokacin fita)"/>
 					<Item id="6153" name="Koyaushe cikin yanayin misali da yawa"/>
 					<Item id="6154" name="Default (mono-misali)"/>
-					<Item id="6155" name="* Gyaran wannan saitin yana buƙatar sake kunna Notepad++"/>
+					<Item id="6155" name="* Gyaran wannan saitin yana buƙatar sake kunna Nextpad++"/>
 					<Item id="6171" name="Keɓance Lokacin Saka Kwanan Wata"/>
 					<Item id="6175" name="Juya tsarin lokacin kwanan wata (gajerun dogon tsari)"/>
 					<Item id="6172" name="Tsarin al'ada:"/>
@@ -1364,8 +1364,8 @@
 					</ComboBox>
 					<ComboBox id="6364">
 						<Element name="Kashe"/>
-						<Element name="Kunna kan Notepad++ farawa"/>
-						<Element name="Kunna kan hanyar Notepad++"/>
+						<Element name="Kunna kan Nextpad++ farawa"/>
+						<Element name="Kunna kan hanyar Nextpad++"/>
 					</ComboBox>
 					<Item id="6308" name="tsarin tray"/>
 					<Item id="6363" name="yanayin ma'ana"/>
@@ -1564,7 +1564,7 @@ Kuna iya sake kunna wannan maganganun a cikin Zaɓuɓɓuka daga baya."/>
 				<Item id="90104" name="Sake saukewa daga Disk"/>
 				<Item id="90105" name="Canza Injin Bincike"/>
 				<Item id="90106" name="Kuskuren Gudu"/>
-				<Item id="90107" name="Notepad++ Load Time"/>
+				<Item id="90107" name="Nextpad++ Load Time"/>
 				<Item id="90108" name="Rashin iya Duba Sabuntawa"/>
 				<Item id="90109" name="Kuna Da Sabunta"/>
 				<Item id="90110" name="Download"/>
@@ -1650,7 +1650,7 @@ Kuna iya sake kunna wannan maganganun a cikin Zaɓuɓɓuka daga baya."/>
 				<Item id="90189" name="Windows (CRLF)"/>
 				<Item id="90190" name="Mac (CR)"/>
 				<Item id="90191" name="Ma'ajiyar lissafin plugin"/>
-				<Item id="90192" name="Zaɓi fayil ɗin XML na Notepad++ don amfani"/>
+				<Item id="90192" name="Zaɓi fayil ɗin XML na Nextpad++ don amfani"/>
 				<Item id="90193" name="Ƙirƙiri sabuwa\u2026"/>
 				<Item id="90194" name="Ajiye azaman\u2026"/>
 				<Item id="90195" name="Harshen mai amfani:"/>
@@ -1663,7 +1663,7 @@ Kuna iya sake kunna wannan maganganun a cikin Zaɓuɓɓuka daga baya."/>
 				<Item id="90202" name="Rage mara inganci"/>
 				<Item id="90203" name="Dole ne ƙimar kewa ta zama 0-255 kuma farawa dole ne &lt;= ƙarewa."/>
 				<Item id="90204" name="mahallinMenu.xml Ba a samo shi ba"/>
-				<Item id="90205" name="Sake kunna Notepad++ don sake farfado da tsohowar mahallinMenu.xml."/>
+				<Item id="90205" name="Sake kunna Nextpad++ don sake farfado da tsohowar mahallinMenu.xml."/>
 				<Item id="90206" name="Fayil ɗin yana da canje-canje marasa adanawa.Sake loda tare da sabon rikodi zai watsar da su.Ci gaba?"/>
 				<Item id="90207" name="Babu amsa daga uwar garken."/>
 				<Item id="90208" name="Matsayin uwar garken ya dawo"/>
@@ -1686,7 +1686,7 @@ Kuna iya sake kunna wannan maganganun a cikin Zaɓuɓɓuka daga baya."/>
 		</Dialog>
 		<MessageBox>
 			<!-- $INT_REPLACE$ and $STR_REPLACE$ are place holders, don't translate these place holders. -->
-			<ContextMenuXmlEditWarning title="Editan mahallin Menu" message="Gyara mahallinMenu.xml yana ba ku damar canza menu na mahallin bugu na Notepad++.
+			<ContextMenuXmlEditWarning title="Editan mahallin Menu" message="Gyara mahallinMenu.xml yana ba ku damar canza menu na mahallin bugu na Nextpad++.
 Dole ne ku sake kunna faifan rubutu ++ don fara aiki bayan gyara mahallinMenu.xml."/>
 			<SaveCurrentModifWarning title="Ajiye Canjin Yanzu" message="Ya kamata ku ajiye canjin na yanzu.
 Duk gyare-gyaren da aka ajiye ba za a iya soke su ba.
@@ -1696,16 +1696,16 @@ Ci gaba?"/><!-- HowToReproduce: when you openned file is modified but unsaved ye
 Duk gyare-gyaren da aka ajiye ba za a iya soke su ba.
 
 Ci gaba?"/><!-- HowToReproduce: when you openned file is modified and saved, then you are changing file encoding. -->
-			<CannotMoveDoc title="Matsar zuwa sabon Notepad++ Misali" message="An gyara daftarin aiki, ajiye shi sannan a sake gwadawa."/><!-- HowToReproduce: From your Notepad++ drag & drop a clean (not dirty) file to outside of Notepad++, another instance of Notepad++ will be created. Then from your first Notepad++ drag & drop an unsaved file to the new instance. -->
-			<DocReloadWarning title="Sake saukewa" message="Shin kun tabbata kuna son sake loda fayil ɗin na yanzu kuma ku rasa sauye-sauyen da aka yi a Notepad++?"/>
+			<CannotMoveDoc title="Matsar zuwa sabon Nextpad++ Misali" message="An gyara daftarin aiki, ajiye shi sannan a sake gwadawa."/><!-- HowToReproduce: From your Nextpad++ drag & drop a clean (not dirty) file to outside of Nextpad++, another instance of Nextpad++ will be created. Then from your first Nextpad++ drag & drop an unsaved file to the new instance. -->
+			<DocReloadWarning title="Sake saukewa" message="Shin kun tabbata kuna son sake loda fayil ɗin na yanzu kuma ku rasa sauye-sauyen da aka yi a Nextpad++?"/>
 			<FileLockedWarning title="Ajiye kasa" message="Da fatan za a duba ko an buɗe wannan fayil ɗin a cikin wani shirin"/>
-			<FileAlreadyOpenedInNpp title="" message="An riga an buɗe fayil ɗin a cikin Notepad++."/><!-- HowToReproduce: Open a new document and open a file "c:/tmp/foo", save this new document by choosing "c:/tmp/foo" as file to save, reply the override popup "yes", then this message appears. -->
+			<FileAlreadyOpenedInNpp title="" message="An riga an buɗe fayil ɗin a cikin Nextpad++."/><!-- HowToReproduce: Open a new document and open a file "c:/tmp/foo", save this new document by choosing "c:/tmp/foo" as file to save, reply the override popup "yes", then this message appears. -->
 			<RenameTabTemporaryNameAlreadyInUse title="An kasa sake suna" message="An riga an yi amfani da ƙayyadadden suna a wani shafin."/><!-- HowToReproduce: Rename the tab of an untitled document and provide a name that is the same as an already-existing tab of an untitled document. -->
 			<RenameTabTemporaryNameIsEmpty title="An kasa sake suna" message="Sunan da aka ƙayyade ba zai iya zama fanko ba, ko kuma ba zai iya ƙunsar sarari(s) ko TAB kawai ba."/><!-- HowToReproduce: Rename the tab of an untitled document and provide an empty string or only some white speces. -->
 			<DeleteFileFailed title="Goge Fayil" message="Goge Fayil ya gaza"/><!-- HowToReproduce: this message prevents from system failure. It's hard to reproduce. -->
 
 			<NbFileToOpenImportantWarning title="Adadin fayilolin da za a buɗe ya yi girma da yawa" message="$INT_REPLACE$ files are about to be opened.
-Are you sure you want to open them?"/><!-- HowToReproduce: Check "Open all files of folder instead of launching Folder as Workspace on folder dropping" in "Default Directory" of Preferences dialog, then drop a folder which contains more then 200 files into Notepad++. -->
+Are you sure you want to open them?"/><!-- HowToReproduce: Check "Open all files of folder instead of launching Folder as Workspace on folder dropping" in "Default Directory" of Preferences dialog, then drop a folder which contains more then 200 files into Nextpad++. -->
 			<SettingsOnCloudError title="Saituna akan Cloud" message="Da alama an saita hanyar saitunan akan gajimare akan abin karantawa kawai,
 ko a babban fayil da ake buƙata dama ga dama don samun damar rubutawa.
 Za a soke saitunan ku akan gajimare.Da fatan za a sake saita ƙima mai daidaituwa ta hanyar maganganu na zaɓi."/>
@@ -1716,7 +1716,7 @@ Dole ne ku kunna &quot;Buɗe duk fayiloli na babban fayil maimakon ƙaddamar da 
 			<SortingError title="Kuskuren Rarraba" message="An kasa yin rarrabuwar lambobi saboda layin $INT_REPLACE$."/><!-- HowToReproduce: this message prevents from system failure. It's hard to reproduce. -->
 			<SortLocaleMultiple title="Ba a yi tsari ba" message="Ba a tallafawa rarrabuwa da yawa."/><!-- HowToReproduce: Make a multiple selection and choose Edit | Line Operations | Sort Lines In Locale Order. -->
 			<SortLocaleUnknown title="Ba a Yi Nasara ba" message="Ba za a iya tantance dalilin da ya sa tsarin ya gaza ba."/><!-- HowToReproduce: This condition is theoretical; it is unknown what could cause it. -->
-			<SortLocaleExcept title="Ba a Yi Nasara ba" message="$STR_REPLACE$"/><!-- HowToReproduce: Open a large file, e.g. 500MB / 90k lines, in 32-bit Notepad++ and choose Edit | Line Operations | Sort Lines In Locale Order. -->
+			<SortLocaleExcept title="Ba a Yi Nasara ba" message="$STR_REPLACE$"/><!-- HowToReproduce: Open a large file, e.g. 500MB / 90k lines, in 32-bit Nextpad++ and choose Edit | Line Operations | Sort Lines In Locale Order. -->
 			<ColumnModeTip title="Tukwici Yanayin Rukunin" message="Akwai hanyoyi 3 don canzawa zuwa yanayin zaɓin shafi:
 
 1. (Keyboard da Mouse) Rike Alt yayin da kake latsa hagu
@@ -1744,14 +1744,14 @@ Kuna son sake loda shi?"/>
 			<DoReloadOrNotAndLooseChange title="Sake saukewa" message="&quot;$STR_REPLACE$&quot;
 
 Wani shirin ya canza wannan fayil ɗin.
-Kuna so ku sake loda shi kuma ku rasa sauye-sauyen da aka yi a Notepad++?"/>
+Kuna so ku sake loda shi kuma ku rasa sauye-sauyen da aka yi a Nextpad++?"/>
 			<PrehistoricSystemDetected title="An gano tsarin tarihi na tarihi" message="Da alama har yanzu kuna amfani da tsarin kafin tarihi.Wannan fasalin yana aiki ne kawai akan tsarin zamani, hakuri."/><!-- HowToReproduce: Launch "Document Map" under Windows XP. -->
-			<XpUpdaterProblem title="Notepad++ Updater" message="Sabunta Notepad++ bai dace da XP ba saboda tsayayyen Layer tsaro a ƙarƙashin XP.
-Kuna son zuwa shafin Notepad++ don saukar da sabon sigar?"/><!-- HowToReproduce: Run menu "? -> Update Notepad++" under Windows XP. -->
-			<GUpProxyConfNeedAdminMode title="Saitunan wakili" message="Da fatan za a sake kunna Notepad++ a cikin yanayin Admin don saita wakili."/>
+			<XpUpdaterProblem title="Nextpad++ Updater" message="Sabunta Nextpad++ bai dace da XP ba saboda tsayayyen Layer tsaro a ƙarƙashin XP.
+Kuna son zuwa shafin Nextpad++ don saukar da sabon sigar?"/><!-- HowToReproduce: Run menu "? -> Update Nextpad++" under Windows XP. -->
+			<GUpProxyConfNeedAdminMode title="Saitunan wakili" message="Da fatan za a sake kunna Nextpad++ a cikin yanayin Admin don saita wakili."/>
 			<DocTooDirtyToMonitor title="Matsalar sa ido" message="Takardar ta datti.Da fatan za a ajiye gyaran kafin saka idanu."/>
 			<DocNoExistToMonitor title="Matsalar sa ido" message="Ya kamata fayil ɗin ya wanzu don a sa ido."/>
-			<FileTooBigToOpen title="Matsalar girman fayil" message="Fayil ya yi girma da yawa don buɗe shi ta Notepad++"/><!-- HowToReproduce: Try to open a 4GB file (it's not easy to reproduce, it depends on your system). -->
+			<FileTooBigToOpen title="Matsalar girman fayil" message="Fayil ya yi girma da yawa don buɗe shi ta Nextpad++"/><!-- HowToReproduce: Try to open a 4GB file (it's not easy to reproduce, it depends on your system). -->
 			<FileLoadingException title="Lambar keɓaɓɓen: $STR_REPLACE$" message="An sami kuskure yayin loda fayil ɗin!"/>
 			<WantToOpenHugeFile title="Bude katon fayil gargadi" message="Bude babban fayil na 2GB+ na iya ɗaukar mintuna da yawa.
 Kuna son bude shi?"/>
@@ -1765,8 +1765,8 @@ Jakar &quot;$STR_REPLACE2$&quot; babu shi."/>
 Shin kuna son adana fayil ɗin na yanzu ko ta yaya?"/><!-- HowToReproduce: this message prevents from system failure. It's hard to reproduce. -->
 			<LoadStylersFailed title="Load stylers.xml kasa" message="Load &quot;$STR_REPLACE$&quot; ya kasa!"/>
 			<LoadLangsFailed title="Configurator" message="Load langs.xml ya kasa!
-Kuna so ku dawo da langs.xml naku?"/><!-- HowToReproduce: Close Notepad++. Use another editor to remove all content of "langs.xml" (0 length) then save it. Open Notepad++. -->
-			<LoadLangsFailedFinal title="Configurator" message="Load langs.xml ya kasa!"/><!-- HowToReproduce: Close Notepad++. Use another editor to make "langs.xml" an invalid xml file then save it. Open Notepad++. -->
+Kuna so ku dawo da langs.xml naku?"/><!-- HowToReproduce: Close Nextpad++. Use another editor to remove all content of "langs.xml" (0 length) then save it. Open Nextpad++. -->
+			<LoadLangsFailedFinal title="Configurator" message="Load langs.xml ya kasa!"/><!-- HowToReproduce: Close Nextpad++. Use another editor to make "langs.xml" an invalid xml file then save it. Open Nextpad++. -->
 			<FolderAsWorspaceSubfolderExists title="Jaka azaman Wurin aiki yana ƙara matsalar babban fayil" message="Akwai ƙaramin babban fayil ɗin babban fayil ɗin da kake son ƙarawa.
 Da fatan za a cire tushen sa daga rukunin kafin ku ƙara babban fayil &quot;$STR_REPLACE$&quot;."/><!-- HowToReproduce: Add a folder like "c:\temp\aFolder\" into "Folder as Workspace" panel, then try to add "c:\temp\". -->
 
@@ -1794,26 +1794,26 @@ don Allah a ba da wani."/>
 			<SCMapperDoDeleteOrNot title="Ka tabbata?" message="Shin kun tabbata kuna son share wannan gajeriyar hanya?"/>
 			<FindCharRangeValueError title="Matsalolin Ƙimar Range" message="Ka rubuta tsakanin 0 da 255."/> <!-- HowToReproduce: Search menu, then Find characters in range, select Custom range, enter 999 in either edit box, press Find. -->
 			<OpenInAdminMode title="Ajiye kasa" message="Ba za a iya ajiye fayil ɗin ba kuma ana iya kiyaye shi.
-Shin kuna son ƙaddamar da Notepad++ a cikin yanayin Gudanarwa?"/>
+Shin kuna son ƙaddamar da Nextpad++ a cikin yanayin Gudanarwa?"/>
 			<OpenInAdminModeWithoutCloseCurrent title="Ajiye kasa" message="Ba za a iya ajiye fayil ɗin ba kuma ana iya kiyaye shi.
-Shin kuna son ƙaddamar da Notepad++ a cikin yanayin Gudanarwa?"/>
+Shin kuna son ƙaddamar da Nextpad++ a cikin yanayin Gudanarwa?"/>
 			<OpenInAdminModeFailed title="Bude a Yanayin Gudanarwa ya kasa" message="Ba za a iya buɗe faifan rubutu ++ a yanayin Mai gudanarwa ba."/><!-- HowToReproduce: When you have no Admin privilege and you try to save a modified file in a protected location (for example: any file in sub-folder of "C:\Program Files\". This message will appear after replying "Yes" to "Open in Admin mode" dialog. -->
 			<ViewInBrowser title="Duba Fayil na Yanzu a cikin Mai Binciken Bincike" message="Ba za a iya samun aikace-aikacen a cikin tsarin ku ba."/>
-			<ExitToUpdatePlugins title="Notepad++ yana shirin fita" message="Idan ka danna YES, za ka bar Notepad++ don ci gaba da ayyukan.
-Notepad++ za a sake farawa bayan an ƙare duk ayyukan.
+			<ExitToUpdatePlugins title="Nextpad++ yana shirin fita" message="Idan ka danna YES, za ka bar Nextpad++ don ci gaba da ayyukan.
+Nextpad++ za a sake farawa bayan an ƙare duk ayyukan.
 Ci gaba?"/>
-			<NeedToRestartToLoadPlugins title="Notepad++ yana buƙatar sake buɗewa" message="Dole ne ku sake kunna Notepad++ don loda plugins ɗin da kuka shigar."/><!-- HowToReproduce: Import a plugin via menu "Settings->Import->Import Plugin(s)...". -->
-			<ChangeHistoryEnabledWarning title="Notepad++ yana buƙatar sake buɗewa" message="Dole ne ku sake kunna Notepad++ don kunna Canja Tarihi."/><!-- HowToReproduce: uncheck "Display Change History" via Preferences dialog "Marges/Border/Edge. -->
-			<WindowsSessionExit title="Notepad++ - Fitar zaman Windows" message="Za a ƙare zaman Windows amma kuna da wasu bayanan da ba a adana su ba.Shin kuna son fita Notepad++ yanzu?"/>
+			<NeedToRestartToLoadPlugins title="Nextpad++ yana buƙatar sake buɗewa" message="Dole ne ku sake kunna Nextpad++ don loda plugins ɗin da kuka shigar."/><!-- HowToReproduce: Import a plugin via menu "Settings->Import->Import Plugin(s)...". -->
+			<ChangeHistoryEnabledWarning title="Nextpad++ yana buƙatar sake buɗewa" message="Dole ne ku sake kunna Nextpad++ don kunna Canja Tarihi."/><!-- HowToReproduce: uncheck "Display Change History" via Preferences dialog "Marges/Border/Edge. -->
+			<WindowsSessionExit title="Nextpad++ - Fitar zaman Windows" message="Za a ƙare zaman Windows amma kuna da wasu bayanan da ba a adana su ba.Shin kuna son fita Nextpad++ yanzu?"/>
 			<LanguageMenuCompactWarning title="Karamin Menu na Harshe" message="Za a canza wannan zaɓi a ƙaddamarwa na gaba."/><!-- HowToReproduce: toggle "Make language menu compact" via Preferences dialog "Language/Language Menu. -->
 			<SwitchUnsavedThemeWarning title="$STR_REPLACE$" message="Canje-canjen da ba a ajiye su na gab da yin watsi da su!
 Kuna so ku adana canje-canjenku kafin canza jigogi?"/><!-- HowToReproduce: In the Style Configurator dialog change some theme and switch to other theme without saving. -->
-			<MacroAndRunCmdlWarning title="Macro da Gudun Dokokin Daidaitawa" message="Dokokin Macro da Run da aka adana a cikin Notepad++ v.8.5.2 (ko mafi girma) ƙila ba su dace da sigar Notepad++ na yanzu ba.
+			<MacroAndRunCmdlWarning title="Macro da Gudun Dokokin Daidaitawa" message="Dokokin Macro da Run da aka adana a cikin Nextpad++ v.8.5.2 (ko mafi girma) ƙila ba su dace da sigar Nextpad++ na yanzu ba.
 Da fatan za a gwada waɗannan umarni kuma, idan an buƙata, sake gyara su.
 
-A madadin, zaku iya rage darajar zuwa Notepad++ v8.5.2 kuma ku dawo da bayanan ku na baya.
-Notepad++ zai ajiye tsoffin &quot;shortcuts.xml&quot; kuma ya adana shi azaman &quot;shortcuts.xml.v8.5.2.backup&quot;.
-Sake suna &quot;shortcuts.xml.v8.5.2.backup&quot; -&gt; &quot;shortcuts.xml&quot;, ya kamata a dawo da umarninku kuma suyi aiki yadda ya kamata."/><!-- HowToReproduce: Close Notepad++, remove shortcuts.xml.v8.5.2.backup & v852ShortcutsCompatibilityWarning.xml if present, relaunch Notepad++, delete or modify a shortcuts via Shortcut Mapper, close Notepad++, then the message will show up -->
+A madadin, zaku iya rage darajar zuwa Nextpad++ v8.5.2 kuma ku dawo da bayanan ku na baya.
+Nextpad++ zai ajiye tsoffin &quot;shortcuts.xml&quot; kuma ya adana shi azaman &quot;shortcuts.xml.v8.5.2.backup&quot;.
+Sake suna &quot;shortcuts.xml.v8.5.2.backup&quot; -&gt; &quot;shortcuts.xml&quot;, ya kamata a dawo da umarninku kuma suyi aiki yadda ya kamata."/><!-- HowToReproduce: Close Nextpad++, remove shortcuts.xml.v8.5.2.backup & v852ShortcutsCompatibilityWarning.xml if present, relaunch Nextpad++, delete or modify a shortcuts via Shortcut Mapper, close Nextpad++, then the message will show up -->
 			<FullReadOnlySavingForbidden title="Ajiye kasa" message="Ba za a iya ajiye fayil ba.
 Cikakken bayanin kula ++ yanayin da aka hana adanawa kawai ya hana ajiye fayil ɗin."/>
 			<NotEnoughRoom4Saving title="Ajiye ya kasa" message="An kasa ajiye fayil
@@ -1828,8 +1828,8 @@ NOTE: Zaɓin kar a ƙirƙiri masu riƙe wuri ko rufe su daga baya, ba za a canza
 Kuna so ku ƙirƙiri waɗannan masu riƙewa?
 
 NOTE: Zaɓin kar a ƙirƙiri masu riƙewa ko rufe su daga baya, ZA'A GYARA zaman ku KAN FITA!Muna ba da shawarar ku ajiye &quot;session.xml&quot; ɗinku yanzu."/>
-			<RTLvsDirectWrite title="Ba za a iya gudu RTL" message="RTL bai dace da yanayin DirectWrite ba.Da fatan za a kashe yanayin DirectWrite a MISC.sashe na maganganun Preferences, kuma sake kunna Notepad++."/>
-			<FileMemoryAllocationFailed title="Banda: Rarraba ƙwaƙwalwar ajiyar fayil ya gaza" message="Wataƙila babu isassun ƙwaƙwalwar ajiyar kyauta don fayil ɗin da Notepad++ ke lodawa."/><!-- HowToReproduce: Try to open multiple files with total size > ~700MB in the x86 Notepad++ (it will depend on the PC memory configuration and the current system memory usage...). -->
+			<RTLvsDirectWrite title="Ba za a iya gudu RTL" message="RTL bai dace da yanayin DirectWrite ba.Da fatan za a kashe yanayin DirectWrite a MISC.sashe na maganganun Preferences, kuma sake kunna Nextpad++."/>
+			<FileMemoryAllocationFailed title="Banda: Rarraba ƙwaƙwalwar ajiyar fayil ya gaza" message="Wataƙila babu isassun ƙwaƙwalwar ajiyar kyauta don fayil ɗin da Nextpad++ ke lodawa."/><!-- HowToReproduce: Try to open multiple files with total size > ~700MB in the x86 Nextpad++ (it will depend on the PC memory configuration and the current system memory usage...). -->
 			<FindRegexBackwardDisabled title="An kashe bincike na baya na Regex" message="Ta hanyar tsoho, an kashe binciken regex na baya saboda yiwuwar sakamakon da ba a zata ba.Don yin bincike na baya, buɗe maganganun Nemo kuma zaɓi ko dai yanayin bincike na al'ada ko tsawo maimakon magana ta yau da kullun.
 Danna maɓallin Ok don buɗe maganganun Nemo ko saita mayar da hankali akansa.
 
@@ -1837,8 +1837,8 @@ Idan kuna buƙatar fasalin neman regex na baya, tuntuɓi littafin mai amfani don
 			<PrintError title="0" message="Ba za a iya fara daftarin aiki firinta ba."/><!-- Use title="0" to use Windows OS default translated "Error" title. -->
 			<FindAutoChangeOfInSelectionWarning title="Neman gargadi" message="Yanayin akwatin &quot;A zaɓi&quot; an canza ta atomatik.
 Da fatan za a tabbatar da yanayin bincike kafin yin aikin."/> <!-- HowToReproduce: https://github.com/notepad-plus-plus/notepad-plus-plus/issues/14897#issuecomment-2564316224 -->
-			<Need2Restart2ShowMenuShortcuts title="Notepad++ yana buƙatar sake kunnawa" message="Notepad++ yana buƙatar sake kunnawa don nuna gajerun hanyoyin menu na dama."/>
-			<NoAdminRight2ChangeReadOnlyFileAttribute title="Canza fasalin karatun fayil kawai ya kasa" message="Da fatan za a gudanar da Notepad++ azaman mai gudanarwa don canza halayen fayil."/>
+			<Need2Restart2ShowMenuShortcuts title="Nextpad++ yana buƙatar sake kunnawa" message="Nextpad++ yana buƙatar sake kunnawa don nuna gajerun hanyoyin menu na dama."/>
+			<NoAdminRight2ChangeReadOnlyFileAttribute title="Canza fasalin karatun fayil kawai ya kasa" message="Da fatan za a gudanar da Nextpad++ azaman mai gudanarwa don canza halayen fayil."/>
 		</MessageBox>
 		<ClipboardHistory>
 			<PanelTitle name="Tarihin allo"/>
@@ -1958,8 +1958,8 @@ Da fatan za a tabbatar da yanayin bincike kafin yin aikin."/> <!-- HowToReproduc
 			<word-chars-list-warning-end value="a cikin jerin halayenku."/><!-- HowToReproduce: In "Delimiter" section of Preferences dialog, check "Add your character as part of word\r(don't choose it unless you know what you're doing)", then type a white-space in the text field. -->
 			<backup-select-folder value="Zaɓi babban fayil azaman madadin adireshi"/><!-- HowToReproduce: Settings > Preferences > Backup > [...] -->
 			<cloud-invalid-warning value="Hanya mara inganci."/>
-			<cloud-restart-warning value="Da fatan za a sake kunna Notepad++ don fara aiki."/>
-			<cloud-select-folder value="Zaɓi babban fayil daga/zuwa inda Notepad++ ke karantawa/ rubuta saitunan sa"/><!-- HowToReproduce: In "Cloud" section of Preferences dialog, check "Set your cloud location path here: ", then click the button "...". This message is displayed in the "Browse For Folder" dialog. -->
+			<cloud-restart-warning value="Da fatan za a sake kunna Nextpad++ don fara aiki."/>
+			<cloud-select-folder value="Zaɓi babban fayil daga/zuwa inda Nextpad++ ke karantawa/ rubuta saitunan sa"/><!-- HowToReproduce: In "Cloud" section of Preferences dialog, check "Set your cloud location path here: ", then click the button "...". This message is displayed in the "Browse For Folder" dialog. -->
 			<default-open-save-select-folder value="Zaɓi babban fayil azaman tsoho directory"/><!-- HowToReproduce: Settings > Preferences > Default Directory > [...] -->
 			<shift-change-direction-tip value="Yi amfani da Shift+Enter don bincika akasin shugabanci"/>
 			<two-find-buttons-tip value="2 nemo yanayin maɓalli"/>
@@ -2118,7 +2118,7 @@ Idan ka zaɓi yanayin ci gaba amma ba ka gyara fayiloli a cikin yarukan da aka a
 
 			<!-- Don't translate "Global override" and "Default Style" -->
 			<global-override-tip value="Ƙaddamar da &quot;Global override&quot; a nan zai ƙetare wannan siga a duk salon harshe.Abinda da gaske kuke so shine amfani da saitunan &quot;Default Style&quot; maimakon"/>
-			<scintillaRenderingTechnology-tip value="Yana iya inganta ma'anar haruffa na musamman ko warware wasu al'amurran da suka shafi zane, sake kunna Notepad++ don amfani da canje-canje."/>
+			<scintillaRenderingTechnology-tip value="Yana iya inganta ma'anar haruffa na musamman ko warware wasu al'amurran da suka shafi zane, sake kunna Nextpad++ don amfani da canje-canje."/>
 
 			<!-- Due to the limited space on the status bar, if the translations for 'length' & 'lines' are much longer than the English words, please leave them in English instead of translating them. -->
 			<statusbar-length-lines value="tsayi: $STR_REPLACE1$ layi: $STR_REPLACE2$"/>

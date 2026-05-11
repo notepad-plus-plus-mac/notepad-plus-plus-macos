@@ -261,19 +261,19 @@
 
 					<Item id="10001" name="Deloku al alia vido"/>
 					<Item id="10002" name="Montru ankaŭ en alia vido"/>
-					<Item id="10003" name="Deloku al nova ekzemplo de Notepad++"/>
-					<Item id="10004" name="Montru ankaŭ en nova ekzemplo de Notepad++"/>
+					<Item id="10003" name="Deloku al nova ekzemplo de Nextpad++"/>
+					<Item id="10004" name="Montru ankaŭ en nova ekzemplo de Nextpad++"/>
 
 					<Item id="46001" name="Stilakordilo..."/>
 					<Item id="46250" name="Difinu vian lingvaĵon..."/><!--estis: 44011-->
 					<Item id="46180" name="Propre difinita lingvaĵo"/>
-					<Item id="47000" name="Pri Notepad++..."/>
-					<Item id="47001" name="Hejmpaĝo de Notepad++"/>
-					<Item id="47002" name="Projektpaĝo de Notepad++"/>
+					<Item id="47000" name="Pri Nextpad++..."/>
+					<Item id="47001" name="Hejmpaĝo de Nextpad++"/>
+					<Item id="47002" name="Projektpaĝo de Nextpad++"/>
 					<Item id="47003" name="NpVikio++ (enreta helpo)"/>
 					<Item id="47004" name="Forumo"/>
 					<Item id="47005" name="Akiru pli da kromaĵoj"/>
-					<Item id="47006" name="Ĝisdatigo de Notepad++"/>
+					<Item id="47006" name="Ĝisdatigo de Nextpad++"/>
 					<Item id="47008" name="Loka helpo"/>
 					<Item id="47009" name="Agordu ĝisdatiga prokurilo..."/>
 					<Item id="47010" name="Argumentoj de komandlinio"/>
@@ -319,8 +319,8 @@
 				<Item CMID="11" name="Forigu"/>
 				<Item CMID="12" name="Nurlegigu"/>
 				<Item CMID="13" name="Purigu la indikilon de nurlego"/>
-				<Item CMID="14" name="Deloku al nova ekzemplo de Notepad++"/>
-				<Item CMID="15" name="Montru ankaŭ en nova ekzemplo de Notepad++"/>
+				<Item CMID="14" name="Deloku al nova ekzemplo de Nextpad++"/>
+				<Item CMID="15" name="Montru ankaŭ en nova ekzemplo de Nextpad++"/>
 				<Item CMID="16" name="Reŝargu"/>
 				<Item CMID="17" name="Fermu ĉiujn maldekstre"/>
 				<Item CMID="18" name="Fermu ĉiujn dekstre"/>
@@ -745,7 +745,7 @@
 					<Item id="6319" name="Ŝaltu"/>
 					<Item id="6320" name="Sen substreko"/>
 					<Item id="6322" name="Sufiksoj de seancdosieroj:"/>
-					<Item id="6323" name="Aŭtomata ĝisdatigo de Notepad++"/>
+					<Item id="6323" name="Aŭtomata ĝisdatigo de Nextpad++"/>
 					<Item id="6324" name="Ŝanĝo de dokumento (Ctrl+Tab)"/>
 					<Item id="6326" name="Inteligenta evidentigo"/>
 					<Item id="6329" name="Evidentigo de kongruaj markoj"/>
@@ -802,7 +802,7 @@
 					<Item id="6152" name="Malfermu seancon en nova ekzemplo de Notepadu++"/>
 					<Item id="6153" name="Ĉiam en plurekzempla maniero"/>
 					<Item id="6154" name="Defaŭlte (unu ekzemplo)"/>
-					<Item id="6155" name="* Modifo de ĉi agordoj postulos restartigon de Notepad++"/>
+					<Item id="6155" name="* Modifo de ĉi agordoj postulos restartigon de Nextpad++"/>
 				</MultiInstance>
 
 				<Delimiter title="Limmarkoj">
@@ -951,7 +951,7 @@
 				<Item id="90104" name="Reŝargi el Disko"/>
 				<Item id="90105" name="Ŝanĝi serĉilon"/>
 				<Item id="90106" name="Run Eraro"/>
-				<Item id="90107" name="Notepad++ Ŝarĝtempo"/>
+				<Item id="90107" name="Nextpad++ Ŝarĝtempo"/>
 				<Item id="90108" name="Ne eblas Kontroli ĝisdatigojn"/>
 				<Item id="90109" name="Vi estas Ĝisdata"/>
 				<Item id="90110" name="Elŝutu"/>
@@ -1037,7 +1037,7 @@
 				<Item id="90189" name="Vindozo (CRLF)"/>
 				<Item id="90190" name="Mac (CR)"/>
 				<Item id="90191" name="Deponejo de la listo de kromprogramoj"/>
-				<Item id="90192" name="Elektu Notepad++-teman XML-dosieron por apliki"/>
+				<Item id="90192" name="Elektu Nextpad++-teman XML-dosieron por apliki"/>
 				<Item id="90193" name="Kreu novan\u2026"/>
 				<Item id="90194" name="Konservu kiel\u2026"/>
 				<Item id="90195" name="Uzantlingvo:"/>
@@ -1050,7 +1050,7 @@
 				<Item id="90202" name="Nevalida Gamo"/>
 				<Item id="90203" name="Gamaj valoroj devas esti 0-255 kaj komenco devas esti &lt;= fino."/>
 				<Item id="90204" name="contextMenu.xml Ne Trovita"/>
-				<Item id="90205" name="Rekomencu Notepad++ por regeneri la defaŭltan contextMenu.xml."/>
+				<Item id="90205" name="Rekomencu Nextpad++ por regeneri la defaŭltan contextMenu.xml."/>
 				<Item id="90206" name="La dosiero havas nekonservitajn ŝanĝojn.Reŝargi kun la nova kodado forĵetos ilin.Ĉu daŭrigi?"/>
 				<Item id="90207" name="Neniu respondo de servilo."/>
 				<Item id="90208" name="Servilo redonis statuson"/>
@@ -1072,14 +1072,14 @@
 			</MacStrings>
 		</Dialog>
 		<MessageBox>
-			<ContextMenuXmlEditWarning title="Redaktu kuntekstan menuon" message="Modifo de contextMenu.xml ebligas modifon de kunteksta menuo de Notepad++.&#x0A;Necesas restarti Notepad++ -n por ke modifoj faritaj en contextMenu.xml efikos."/>
-			<NppHelpAbsentWarning title="La dosiero ne ekzistas" message="&#x0A;ne ekzistas. Elŝutu ĝin el la retpaĝaro de Notepad++."/>
+			<ContextMenuXmlEditWarning title="Redaktu kuntekstan menuon" message="Modifo de contextMenu.xml ebligas modifon de kunteksta menuo de Nextpad++.&#x0A;Necesas restarti Nextpad++ -n por ke modifoj faritaj en contextMenu.xml efikos."/>
+			<NppHelpAbsentWarning title="La dosiero ne ekzistas" message="&#x0A;ne ekzistas. Elŝutu ĝin el la retpaĝaro de Nextpad++."/>
 			<SaveCurrentModifWarning title="Konservu faritajn modifiojn" message="Vi devas konservi faritajn modifiojn.&#x0A;Ne eblas malfari iun konservitan modifion.&#x0A;&#x0A;Ĉu vi volas daŭrigi?"/>
 			<LoseUndoAbilityWarning title="Atentu: perdo de ebleco malfari" message="Vi devas konservi faritajn modifiojn.&#x0A;Ne eblas malfari iun konservitan modifion.&#x0A;&#x0A;Ĉu vi volas daŭrigi?"/>
-			<CannotMoveDoc title="Malfermo en alia ekzemplo de Notepad++" message="La dokumento estas modifita, konservu antaŭ daŭrigi."/>
+			<CannotMoveDoc title="Malfermo en alia ekzemplo de Nextpad++" message="La dokumento estas modifita, konservu antaŭ daŭrigi."/>
 			<DocReloadWarning title="Reŝargo" message="Ĉu vi certe volas reŝargi la dosieron? Ĉiuj modifioj faritaj estos perditaj."/>
 			<FileLockedWarning title="Nesukcesa konservo" message="Kontrolu ĉu la dosiero estas malfermita en alia programo."/>
-			<FileAlreadyOpenedInNpp title="Dosiero malfermita" message="La dosiero estas jam malfermita en Notepad++."/>
+			<FileAlreadyOpenedInNpp title="Dosiero malfermita" message="La dosiero estas jam malfermita en Nextpad++."/>
 			<DeleteFileFailed title="Forigo de dosiero" message="La forigo de la dosiero ne sukcesis."/>
 
 			<!-- $INT_REPLACE$ is a place holder, don't translate it -->

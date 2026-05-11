@@ -256,14 +256,14 @@
 					<Item id="46001" name="Stilu izveide..."/>
 					<Item id="46250" name="Izveidot savu valodas aprakstu ..."/>
 					<Item id="46180" name="Lietotāja definēta"/>
-					<Item id="47000" name="Par Notepad++..."/>
+					<Item id="47000" name="Par Nextpad++..."/>
 					<Item id="47010" name="Komandrindas parametri..."/>
-					<Item id="47001" name="Notepad++ mājaslapa"/>
-					<Item id="47002" name="Notepad++ projekta lapa"/>
+					<Item id="47001" name="Nextpad++ mājaslapa"/>
+					<Item id="47002" name="Nextpad++ projekta lapa"/>
 					<Item id="47003" name="NpWiki++ (tiešsaistes palīdzība)"/>
 					<Item id="47004" name="Forums"/>
 					<Item id="47005" name="Iegūt citus spraudņus"/>
-					<Item id="47006" name="Atjaunināt Notepad++"/>
+					<Item id="47006" name="Atjaunināt Nextpad++"/>
 					<Item id="47008" name="Lietotāja pamācība"/>
 					<Item id="47009" name="Proxy serveris atjauninājumiem ..."/>
 					<Item id="48005" name="Importēt spradni(ņus) ..."/>
@@ -758,7 +758,7 @@
 					<Item id="6152" name="Sesiju atvērt jaunā logā"/>
 					<Item id="6153" name="Vienmēr atvērt jaunā logā"/>
 					<Item id="6154" name="Lietot tikai vienu logu"/>
-					<Item id="6155" name="* Lai izmaiņas stātos spēkā, „Notepad++” ir jāaizver"/>
+					<Item id="6155" name="* Lai izmaiņas stātos spēkā, „Nextpad++” ir jāaizver"/>
 				</MultiInstance>
 
 				<Delimiter title="Atdalītāji">
@@ -774,7 +774,7 @@
 					<Item id="6264" name="Dropbox"/>
 					<Item id="6265" name="OneDrive"/>
 					<Item id="6266" name="Google Drive"/>
-					<!--Item id="6261" name="Būs spēkā tikai tad, kad tiks aizvērts un par jaunu atvērts Notepad++."/-->
+					<!--Item id="6261" name="Būs spēkā tikai tad, kad tiks aizvērts un par jaunu atvērts Nextpad++."/-->
 				</Cloud>
 
 				<MISC title="Citi">
@@ -786,7 +786,7 @@
 					<Item id="6319" name="Ieslēgt"/>
 					<Item id="6320" name="Bez pasvītrojuma"/>
 					<Item id="6322" name="Sesijas faila papl.:"/>
-					<Item id="6323" name="Automātiskais Notepad++ atjauninātājs"/>
+					<Item id="6323" name="Automātiskais Nextpad++ atjauninātājs"/>
 					<Item id="6324" name="Dokumentu pārslēdzējs (Ctrl+TAB)"/>
 					<Item id="6326" name="Ieslēgt gudro izcelšanu"/>
 					<Item id="6329" name="Izcelt sakrītošās birkas"/>
@@ -938,7 +938,7 @@
 				<Item id="90104" name="Pārlādēt no diska"/>
 				<Item id="90105" name="Mainīt meklētājprogrammu"/>
 				<Item id="90106" name="Palaist kļūda"/>
-				<Item id="90107" name="Notepad++ ielādes laiks"/>
+				<Item id="90107" name="Nextpad++ ielādes laiks"/>
 				<Item id="90108" name="Nevar pārbaudīt atjauninājumus"/>
 				<Item id="90109" name="Jūs esat lietas kursā"/>
 				<Item id="90110" name="Lejupielādēt"/>
@@ -1024,7 +1024,7 @@
 				<Item id="90189" name="Windows (CRLF)"/>
 				<Item id="90190" name="Mac (CR)"/>
 				<Item id="90191" name="Spraudņu saraksta repozitorijs"/>
-				<Item id="90192" name="Atlasiet Notepad++ motīva XML failu, ko lietot"/>
+				<Item id="90192" name="Atlasiet Nextpad++ motīva XML failu, ko lietot"/>
 				<Item id="90193" name="Izveidot jaunu\u2026"/>
 				<Item id="90194" name="Saglabāt kā\u2026"/>
 				<Item id="90195" name="Lietotāja valoda:"/>
@@ -1037,7 +1037,7 @@
 				<Item id="90202" name="Nederīgs diapazons"/>
 				<Item id="90203" name="Diapazona vērtībām ir jābūt no 0 līdz 255, un sākumam ir jābūt &lt;= beigas."/>
 				<Item id="90204" name="ContextMenu.xml Nav atrasts"/>
-				<Item id="90205" name="Restartējiet Notepad++, lai atjaunotu noklusējuma konteksta Menu.xml."/>
+				<Item id="90205" name="Restartējiet Nextpad++, lai atjaunotu noklusējuma konteksta Menu.xml."/>
 				<Item id="90206" name="Failā ir nesaglabātas izmaiņas.Atkārtoti ielādējot ar jauno kodējumu, tie tiks atmesti.Vai turpināt?"/>
 				<Item id="90207" name="Nav atbildes no servera."/>
 				<Item id="90208" name="Serveris atgrieza statusu"/>
@@ -1059,14 +1059,14 @@
 			</MacStrings>
 		</Dialog>
 		<MessageBox>
-			<ContextMenuXmlEditWarning title="Peles izvēlnes labošana" message="„Notepad++” peles izvēlnes izmaina labojot failu „contextMenu.xml”. Lai izdarītas izmaiņas stātos spēkā, fails „contextMenu.xml” jāsaglabā, savukārt programma „Notepad++” jāaizver un jāatver."/>
-			<NppHelpAbsentWarning title="Dotā faila nav" message=" neeksistē. To var lejuplādēt no Notepad++ vietnes."/>
+			<ContextMenuXmlEditWarning title="Peles izvēlnes labošana" message="„Nextpad++” peles izvēlnes izmaina labojot failu „contextMenu.xml”. Lai izdarītas izmaiņas stātos spēkā, fails „contextMenu.xml” jāsaglabā, savukārt programma „Nextpad++” jāaizver un jāatver."/>
+			<NppHelpAbsentWarning title="Dotā faila nav" message=" neeksistē. To var lejuplādēt no Nextpad++ vietnes."/>
 			<SaveCurrentModifWarning title="Saglabā patreizējās izmaiņas" message="Tev jāsaglabā patreizējās izmaiņas. Saglabātās izmaiņas NEVAR tikt atsauktas. Vai turpināt?"/>
 			<LoseUndoAbilityWarning title="Brīdinājums par atsaukšanas iespēju zaudēšanu" message="Tev jāsaglabā patreizējās izmaiņas. Saglabātās izmaiņas NEVAR tikt atsauktas. Vai turpināt?"/>
-			<CannotMoveDoc title="Pārvieto uz jaunu Notepad++" message="Dokuments ir izmainīts. Saglabā un mēģini vēlreiz."/>
-			<DocReloadWarning title="Atjaunot" message="Vai tiešam gribi ielasīt dokumentu no jauna pazaudējot programmā „Notepad++”  veiktās izmaiņas?"/>
+			<CannotMoveDoc title="Pārvieto uz jaunu Nextpad++" message="Dokuments ir izmainīts. Saglabā un mēģini vēlreiz."/>
+			<DocReloadWarning title="Atjaunot" message="Vai tiešam gribi ielasīt dokumentu no jauna pazaudējot programmā „Nextpad++”  veiktās izmaiņas?"/>
 			<FileLockedWarning title="Neizdevās saglabāt" message="Pārbaudi vai fails nav atvērts arī ar kādu citu programmu, vai arī to atļauts dotajā mapē saglabāt."/>
-			<FileAlreadyOpenedInNpp title="" message="Fails jau ir atvērts ar Notepad++."/>
+			<FileAlreadyOpenedInNpp title="" message="Fails jau ir atvērts ar Nextpad++."/>
 			<DeleteFileFailed title="Faila dzēšana" message="Failu izdzēst neizdevās."/>
 
 			<!-- $INT_REPLACE$ is a place holder, don't translate it -->

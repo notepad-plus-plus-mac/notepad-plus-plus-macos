@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <!--
-	Georgian localization for Notepad++ 6.2.3
+	Georgian localization for Nextpad++ 6.2.3
 	Translated By UGLT.
 	Contact Us: info@uglt.org
 -->
@@ -218,13 +218,13 @@
 
 					<Item id="46001" name="სტილის კონფიგურაცია..."/>
 					<Item id="46180" name="მომხმარებლის მიერ განსაზღვრული"/>
-					<Item id="47000" name="Notepad++-ის შესახებ..."/>
-					<Item id="47001" name="Notepad++-ის ვებ-გვერდი"/>
-					<Item id="47002" name="Notepad++-ის პროექტის გვერდი"/>
+					<Item id="47000" name="Nextpad++-ის შესახებ..."/>
+					<Item id="47001" name="Nextpad++-ის ვებ-გვერდი"/>
+					<Item id="47002" name="Nextpad++-ის პროექტის გვერდი"/>
 					<Item id="47003" name="ინტერნეტ-დოკუმენტაცია"/>
 					<Item id="47004" name="ფორუმი"/>
 					<Item id="47005" name="სხვა დანამატების გადმოწერა"/>
-					<Item id="47006" name="Notepad++-ის განახლება"/>
+					<Item id="47006" name="Nextpad++-ის განახლება"/>
 					<Item id="47008" name="დახმარება"/>
 					<Item id="48005" name="დანამატის იმპორტი..."/>
 					<Item id="48006" name="გაფორმების იმპორტი..."/>
@@ -554,7 +554,7 @@
 					<Item id="6319" name="ჩართვა"/>
 					<Item id="6320" name="ხაზგასმის გარეშე"/>
 					<Item id="6322" name="სესიის ფაილის გაფ.:"/>
-					<Item id="6323" name="Notepad++-ის ავტ.განახლების ჩართვა"/>
+					<Item id="6323" name="Nextpad++-ის ავტ.განახლების ჩართვა"/>
 					<Item id="6324" name="დოკუმენტის გადამრთველი (Ctrl+TAB)"/>
 					<Item id="6326" name="საზრიანი გამოკვეთის ჩართვა"/>
 					<Item id="6329" name="ერთნაირი ტეგების გამოკვეთა"/>
@@ -720,7 +720,7 @@
 				<Item id="90104" name="გადატვირთვა დისკიდან"/>
 				<Item id="90105" name="საძიებო სისტემის შეცვლა"/>
 				<Item id="90106" name="გაშვების შეცდომა"/>
-				<Item id="90107" name="Notepad++ ჩატვირთვის დრო"/>
+				<Item id="90107" name="Nextpad++ ჩატვირთვის დრო"/>
 				<Item id="90108" name="განახლებების შემოწმება შეუძლებელია"/>
 				<Item id="90109" name="თქვენ განახლებული ხართ"/>
 				<Item id="90110" name="ჩამოტვირთვა"/>
@@ -806,7 +806,7 @@
 				<Item id="90189" name="Windows (CRLF)"/>
 				<Item id="90190" name="Mac (CR)"/>
 				<Item id="90191" name="დანამატების სიის საცავი"/>
-				<Item id="90192" name="აირჩიეთ Notepad++ თემის XML ფაილი გამოსაყენებლად"/>
+				<Item id="90192" name="აირჩიეთ Nextpad++ თემის XML ფაილი გამოსაყენებლად"/>
 				<Item id="90193" name="შექმენით ახალი\u2026"/>
 				<Item id="90194" name="შენახვა როგორც\u2026"/>
 				<Item id="90195" name="მომხმარებლის ენა:"/>
@@ -819,7 +819,7 @@
 				<Item id="90202" name="არასწორი დიაპაზონი"/>
 				<Item id="90203" name="დიაპაზონის მნიშვნელობები უნდა იყოს 0-255 და დასაწყისი უნდა იყოს &lt;= დასასრული."/>
 				<Item id="90204" name="contextMenu.xml ვერ მოიძებნა"/>
-				<Item id="90205" name="გადატვირთეთ Notepad++ ნაგულისხმევი contextMenu.xml აღდგენისთვის."/>
+				<Item id="90205" name="გადატვირთეთ Nextpad++ ნაგულისხმევი contextMenu.xml აღდგენისთვის."/>
 				<Item id="90206" name="ფაილს აქვს შენახული ცვლილებები.ახალი კოდირებით გადატვირთვა მათ გაუქმდება.გაგრძელება?"/>
 				<Item id="90207" name="არ არის პასუხი სერვერისგან."/>
 				<Item id="90208" name="სერვერმა დააბრუნა სტატუსი"/>
@@ -841,14 +841,14 @@
 			</MacStrings>
 		</Dialog>
 		<MessageBox>
-			<ContextMenuXmlEditWarning title="კონტექსტური მენიუს შეცვლა" message="ფაილის contextMenu.xml შეცვლა საშუალებას მოგცემთ შეცვალოთ Notepad++-ის კონტექსტური მენიუს პუნქტები.\rcontextMenu.xml-ის შეცვლის შემდეგ გადატვირთეთ Notepad++."/>
-			<NppHelpAbsentWarning title="ფაილი არ არსებობს" message="\rარ არსებობს. გადმოწერეთ იგი Notepad++-ის ვებ-გვერდიდან."/>
+			<ContextMenuXmlEditWarning title="კონტექსტური მენიუს შეცვლა" message="ფაილის contextMenu.xml შეცვლა საშუალებას მოგცემთ შეცვალოთ Nextpad++-ის კონტექსტური მენიუს პუნქტები.\rcontextMenu.xml-ის შეცვლის შემდეგ გადატვირთეთ Nextpad++."/>
+			<NppHelpAbsentWarning title="ფაილი არ არსებობს" message="\rარ არსებობს. გადმოწერეთ იგი Nextpad++-ის ვებ-გვერდიდან."/>
 			<SaveCurrentModifWarning title="მიმდინარე ცვლილების შენახვა" message="შეინახეთ მიმდინარე ცვლილება.\rშენახული ცვლილების გაუქმება შეუძლებელია.\r\rგსურთ გაგრძელება?"/>
 			<LoseUndoAbilityWarning title="გაუქმების შესაძლებლობის დაკარგვა" message="შეინახეთ მიმდინარე ცვლილება.\rენახული ცვლილების გაუქმება შეუძლებელია.\r\rგსურთ გაგრძელება?"/>
-			<CannotMoveDoc title="Notepad++-ის ახალ ინსტანციაში გადატანა" message="დოკუმენტი შეიცვალა. შეინახეთ და სცადეთ ხელახლა."/>
-			<DocReloadWarning title="განახლება" message="ნამდვილად გსურთ, მიმდინარე ფაილის განახლება და Notepad++-ით მოხდენილი ყველა ცვლილების გაუქმება?"/>
+			<CannotMoveDoc title="Nextpad++-ის ახალ ინსტანციაში გადატანა" message="დოკუმენტი შეიცვალა. შეინახეთ და სცადეთ ხელახლა."/>
+			<DocReloadWarning title="განახლება" message="ნამდვილად გსურთ, მიმდინარე ფაილის განახლება და Nextpad++-ით მოხდენილი ყველა ცვლილების გაუქმება?"/>
 			<FileLockedWarning title="შენახვა არ მოხერხდა" message="დარწმუნდით, რომ ეს ფაილი არ არის გახსნილი სხვა პროგრამაში"/>
-			<FileAlreadyOpenedInNpp title="" message="ფაილი უკვე გახსნილია Notepad++-შო."/>
+			<FileAlreadyOpenedInNpp title="" message="ფაილი უკვე გახსნილია Nextpad++-შო."/>
 			<DeleteFileFailed title="ფაილის წაშლა" message="ფაილის წაშლა არ მოხერხდა"/>
 
 			<!-- $INT_REPLACE$ is a place holder, don't translate it -->

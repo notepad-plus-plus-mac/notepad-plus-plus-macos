@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <!--
-    Odia (ଓଡ଼ିଆ) language file for Notepad++ macOS
+    Odia (ଓଡ଼ିଆ) language file for Nextpad++ macOS
     Based on English template - community translations welcome
     Created: 2026-04-04
 -->
@@ -41,7 +41,7 @@
 					<Item subMenuId="edit-onSelection" name="ଚୟନ ଉପରେ"/>
 					<Item subMenuId="edit-multiSelectALL" name="ସମସ୍ତ ମଲ୍ଟି-ସିଲେକ୍ଟ"/>
 					<Item subMenuId="edit-multiSelectNext" name="ପରବର୍ତ୍ତୀ ମଲ୍ଟି-ସିଲେକ୍ଟ"/>
-					<Item subMenuId="edit-readonlyInNotepad++" name="କେବଳ ନୋଟପ୍ୟାଡ୍ ++ ରେ ପ Read ଼ନ୍ତୁ"/>
+					<Item subMenuId="edit-readonlyInNextpad++" name="କେବଳ ନୋଟପ୍ୟାଡ୍ ++ ରେ ପ Read ଼ନ୍ତୁ"/>
 					<Item subMenuId="search-changeHistory" name="ଇତିହାସ ପରିବର୍ତ୍ତନ କରନ୍ତୁ"/>
 					<Item subMenuId="search-markAll" name="ଟୋକେନ୍ ର ସମସ୍ତ ଘଟଣା ଶ Style ଳୀ"/>
 					<Item subMenuId="search-markOne" name="ଷ୍ଟାଇଲ୍ ୱାନ୍ ଟୋକେନ୍"/>
@@ -1696,7 +1696,7 @@
 ସମସ୍ତ ସଞ୍ଚିତ ପରିବର୍ତ୍ତନଗୁଡିକ ପୂର୍ବବତ୍ କରାଯାଇପାରିବ ନାହିଁ |
 
 ଜାରି ରଖନ୍ତୁ?"/><!-- HowToReproduce: when you openned file is modified and saved, then you are changing file encoding. -->
-			<CannotMoveDoc title="ନୂତନ ନୋଟପ୍ୟାଡ୍ ++ ଇନଷ୍ଟାନ୍ସକୁ ଯାଆନ୍ତୁ" message="ଡକ୍ୟୁମେଣ୍ଟ୍ ସଂଶୋଧିତ ହୋଇଛି, ଏହାକୁ ସେଭ୍ କର ଏବଂ ପୁନର୍ବାର ଚେଷ୍ଟା କର"/><!-- HowToReproduce: From your Notepad++ drag & drop a clean (not dirty) file to outside of Notepad++, another instance of Notepad++ will be created. Then from your first Notepad++ drag & drop an unsaved file to the new instance. -->
+			<CannotMoveDoc title="ନୂତନ ନୋଟପ୍ୟାଡ୍ ++ ଇନଷ୍ଟାନ୍ସକୁ ଯାଆନ୍ତୁ" message="ଡକ୍ୟୁମେଣ୍ଟ୍ ସଂଶୋଧିତ ହୋଇଛି, ଏହାକୁ ସେଭ୍ କର ଏବଂ ପୁନର୍ବାର ଚେଷ୍ଟା କର"/><!-- HowToReproduce: From your Nextpad++ drag & drop a clean (not dirty) file to outside of Nextpad++, another instance of Nextpad++ will be created. Then from your first Nextpad++ drag & drop an unsaved file to the new instance. -->
 			<DocReloadWarning title="|ପୁନ elo ଲୋଡ୍" message="ଆପଣ ନିଶ୍ଚିତ କି ଆପଣ ସାମ୍ପ୍ରତିକ ଫାଇଲ୍ ପୁନ o ଲୋଡ୍ କରିବାକୁ ଏବଂ ନୋଟପ୍ୟାଡ୍ ++ ରେ କରାଯାଇଥିବା ପରିବର୍ତ୍ତନଗୁଡିକ ହରାଇବାକୁ ଚାହୁଁଛନ୍ତି କି?"/>
 			<FileLockedWarning title="ସଞ୍ଚୟ ବିଫଳ" message="ଏହି ଫାଇଲ୍ ଅନ୍ୟ ପ୍ରୋଗ୍ରାମରେ ଖୋଲା ଅଛି କି ନାହିଁ ଦୟାକରି ଯାଞ୍ଚ କରନ୍ତୁ"/>
 			<FileAlreadyOpenedInNpp title="" message="ଫାଇଲ୍ ପୂର୍ବରୁ ନୋଟପ୍ୟାଡ୍ ++ ରେ ଖୋଲା ଯାଇଛି"/><!-- HowToReproduce: Open a new document and open a file "c:/tmp/foo", save this new document by choosing "c:/tmp/foo" as file to save, reply the override popup "yes", then this message appears. -->
@@ -1705,7 +1705,7 @@
 			<DeleteFileFailed title="|ଫାଇଲ୍ ଡିଲିଟ୍ କରନ୍ତୁ" message="ଫାଇଲ୍ ଡିଲିଟ୍ ବିଫଳ ହେଲା"/><!-- HowToReproduce: this message prevents from system failure. It's hard to reproduce. -->
 
 			<NbFileToOpenImportantWarning title="ଖୋଲିବାକୁ ଥିବା ଫାଇଲଗୁଡ଼ିକର ପରିମାଣ ବହୁତ ବଡ" message="$INT_REPLACE$ files are about to be opened.
-Are you sure you want to open them?"/><!-- HowToReproduce: Check "Open all files of folder instead of launching Folder as Workspace on folder dropping" in "Default Directory" of Preferences dialog, then drop a folder which contains more then 200 files into Notepad++. -->
+Are you sure you want to open them?"/><!-- HowToReproduce: Check "Open all files of folder instead of launching Folder as Workspace on folder dropping" in "Default Directory" of Preferences dialog, then drop a folder which contains more then 200 files into Nextpad++. -->
 			<SettingsOnCloudError title="କ୍ଲାଉଡ୍ ରେ ସେଟିଂସମୂହ |" message="କ୍ଲାଉଡ୍ ରେ ସେଟିଂସମୂହର ପଥ କେବଳ ପଠନ ଡ୍ରାଇଭରେ ସେଟ୍ ହୋଇଥିବା ପରି ମନେହୁଏ,
 କିମ୍ବା ଏକ ଫୋଲ୍ଡରରେ ଆକ୍ସେସ୍ ଲେଖିବା ପାଇଁ ଅଧିକାର ଅଧିକାର ଆବଶ୍ୟକ |
 କ୍ଲାଉଡ୍ ରେ ଆପଣଙ୍କର ସେଟିଙ୍ଗ୍ ବାତିଲ୍ ହେବ |ପ୍ରିଫରେନ୍ସ ଡାୟଲଗ୍ ମାଧ୍ୟମରେ ଦୟାକରି ଏକ ସମନ୍ୱିତ ମୂଲ୍ୟ ପୁନ res ସେଟ୍ କରନ୍ତୁ"/>
@@ -1716,7 +1716,7 @@ Are you sure you want to open them?"/><!-- HowToReproduce: Check "Open all files
 			<SortingError title="|ତ୍ରୁଟି ସର୍ଟ କରିବା" message="ରେଖା $ INT_REPLACE $ ହେତୁ ସାଂଖ୍ୟିକ ସର୍ଟିଂ କରିବାକୁ ଅସମର୍ଥ"/><!-- HowToReproduce: this message prevents from system failure. It's hard to reproduce. -->
 			<SortLocaleMultiple title="|ସର୍ଟ କରାଯାଇ ନାହିଁ" message="ଏକାଧିକ ଚୟନ ସର୍ଟ କରିବା ସମର୍ଥିତ ନୁହେଁ"/><!-- HowToReproduce: Make a multiple selection and choose Edit | Line Operations | Sort Lines In Locale Order. -->
 			<SortLocaleUnknown title="|ସର୍ଟ ବିଫଳ ହେଲା" message="ସର୍ଟ ବିଫଳ ହେବାର କାରଣ ନିର୍ଣ୍ଣୟ କରାଯାଇପାରିବ ନାହିଁ"/><!-- HowToReproduce: This condition is theoretical; it is unknown what could cause it. -->
-			<SortLocaleExcept title="|ସର୍ଟ ବିଫଳ ହେଲା" message="$STR_REPLACE$"/><!-- HowToReproduce: Open a large file, e.g. 500MB / 90k lines, in 32-bit Notepad++ and choose Edit | Line Operations | Sort Lines In Locale Order. -->
+			<SortLocaleExcept title="|ସର୍ଟ ବିଫଳ ହେଲା" message="$STR_REPLACE$"/><!-- HowToReproduce: Open a large file, e.g. 500MB / 90k lines, in 32-bit Nextpad++ and choose Edit | Line Operations | Sort Lines In Locale Order. -->
 			<ColumnModeTip title="ସ୍ତମ୍ଭ ମୋଡ୍ ଟିପ୍" message="ସ୍ତମ୍ଭ-ଚୟନ ମୋଡ୍ କୁ ପରିବର୍ତ୍ତନ କରିବାର 3 ଟି ଉପାୟ ଅଛି:
 
 1। (କୀବୋର୍ଡ୍ ଏବଂ ମାଉସ୍) ଡ୍ରାଗ୍ କରିବାବେଳେ ବାମ କ୍ଲିକ୍ କର |
@@ -1747,7 +1747,7 @@ Are you sure you want to open them?"/><!-- HowToReproduce: Check "Open all files
 ଆପଣ ଏହାକୁ ପୁନ o ଲୋଡ୍ କରିବାକୁ ଏବଂ ନୋଟପ୍ୟାଡ୍ ++ ରେ କରାଯାଇଥିବା ପରିବର୍ତ୍ତନଗୁଡିକ ହରାଇବାକୁ ଚାହୁଁଛନ୍ତି କି?"/>
 			<PrehistoricSystemDetected title="ପ୍ରିହାଷ୍ଟୋରିକ୍ ​​ସିଷ୍ଟମ ଚିହ୍ନଟ" message="ମନେହୁଏ ତୁମେ ତଥାପି ଏକ ପ୍ରିଷ୍ଟୋଷ୍ଟୋରିକ୍ ​​ସିଷ୍ଟମ୍ ବ୍ୟବହାର କରୁଛ |ଏହି ବ feature ଶିଷ୍ଟ୍ୟ କେବଳ ଏକ ଆଧୁନିକ ସିଷ୍ଟମରେ କାମ କରେ, ଦୁ sorry ଖିତ।"/><!-- HowToReproduce: Launch "Document Map" under Windows XP. -->
 			<XpUpdaterProblem title="ନୋଟପ୍ୟାଡ୍ ++ ଅପଡେଟର୍" message="ନୋଟପ୍ୟାଡ୍ ++ ଅପଡେଟର୍ XP ସହିତ ପୁରୁଣା ସୁରକ୍ଷା ସ୍ତର ହେତୁ XP ସହିତ ସୁସଙ୍ଗତ ନୁହେଁ |
-ଆପଣ ନୂତନତମ ସଂସ୍କରଣ ଡାଉନଲୋଡ୍ କରିବାକୁ ନୋଟପ୍ୟାଡ୍ ++ ପୃଷ୍ଠାକୁ ଯିବାକୁ ଚାହୁଁଛନ୍ତି କି?"/><!-- HowToReproduce: Run menu "? -> Update Notepad++" under Windows XP. -->
+ଆପଣ ନୂତନତମ ସଂସ୍କରଣ ଡାଉନଲୋଡ୍ କରିବାକୁ ନୋଟପ୍ୟାଡ୍ ++ ପୃଷ୍ଠାକୁ ଯିବାକୁ ଚାହୁଁଛନ୍ତି କି?"/><!-- HowToReproduce: Run menu "? -> Update Nextpad++" under Windows XP. -->
 			<GUpProxyConfNeedAdminMode title="ପ୍ରକ୍ସି ସେଟିଂସମୂହ" message="ପ୍ରକ୍ସି ବିନ୍ୟାସ କରିବାକୁ ଦୟାକରି ଆଡମିନି ମୋଡରେ ନୋଟପ୍ୟାଡ୍ ++ ପୁନ un ଆରମ୍ଭ କରନ୍ତୁ"/>
 			<DocTooDirtyToMonitor title="|ମନିଟରିଂ ସମସ୍ୟା" message="ଡକ୍ୟୁମେଣ୍ଟ୍ ମଇଳା ଅଟେ |ଏହାକୁ ମନିଟରିଂ କରିବା ପୂର୍ବରୁ ଦୟାକରି ସଂରକ୍ଷଣକୁ ସଂରକ୍ଷଣ କରନ୍ତୁ"/>
 			<DocNoExistToMonitor title="|ମନିଟରିଂ ସମସ୍ୟା" message="ତଦାରଖ କରିବାକୁ ଫାଇଲ୍ ବିଦ୍ୟମାନ ରହିବା ଉଚିତ୍"/>
@@ -1765,8 +1765,8 @@ Are you sure you want to open them?"/><!-- HowToReproduce: Check "Open all files
 ଆପଣ ଯେକ way ଣସି ପ୍ରକାରେ ସାମ୍ପ୍ରତିକ ଫାଇଲ୍ ସେଭ୍ କରିବାକୁ ଚାହୁଁଛନ୍ତି କି?"/><!-- HowToReproduce: this message prevents from system failure. It's hard to reproduce. -->
 			<LoadStylersFailed title="Stylers.xml ଲୋଡ୍ ବିଫଳ ହେଲା" message="&quot;$ STR_REPLACE $&quot; ଲୋଡ୍ ବିଫଳ ହେଲା!"/>
 			<LoadLangsFailed title="ବିନ୍ୟାସକ" message="Langs.xml ଲୋଡ୍ ବିଫଳ ହେଲା!
-ଆପଣ ଆପଣଙ୍କର langs.xml ପୁନରୁଦ୍ଧାର କରିବାକୁ ଚାହୁଁଛନ୍ତି କି?"/><!-- HowToReproduce: Close Notepad++. Use another editor to remove all content of "langs.xml" (0 length) then save it. Open Notepad++. -->
-			<LoadLangsFailedFinal title="ବିନ୍ୟାସକ" message="Langs.xml ଲୋଡ୍ ବିଫଳ ହେଲା!"/><!-- HowToReproduce: Close Notepad++. Use another editor to make "langs.xml" an invalid xml file then save it. Open Notepad++. -->
+ଆପଣ ଆପଣଙ୍କର langs.xml ପୁନରୁଦ୍ଧାର କରିବାକୁ ଚାହୁଁଛନ୍ତି କି?"/><!-- HowToReproduce: Close Nextpad++. Use another editor to remove all content of "langs.xml" (0 length) then save it. Open Nextpad++. -->
+			<LoadLangsFailedFinal title="ବିନ୍ୟାସକ" message="Langs.xml ଲୋଡ୍ ବିଫଳ ହେଲା!"/><!-- HowToReproduce: Close Nextpad++. Use another editor to make "langs.xml" an invalid xml file then save it. Open Nextpad++. -->
 			<FolderAsWorspaceSubfolderExists title="ୱାର୍କସ୍ପେସ୍ ଭାବରେ ଫୋଲ୍ଡର୍ ଫୋଲ୍ଡର୍ ସମସ୍ୟା ଯୋଡିବା" message="ଆପଣ ଯୋଡିବାକୁ ଚାହୁଁଥିବା ଫୋଲ୍ଡରର ଏକ ସବ୍-ଫୋଲ୍ଡର୍ ବିଦ୍ୟମାନ ଅଛି |
 &quot;$ STR_REPLACE $&quot; ଫୋଲ୍ଡର ଯୋଡିବା ପୂର୍ବରୁ ଦୟାକରି ଏହାର ମୂଳକୁ ପ୍ୟାନେଲରୁ ବାହାର କରନ୍ତୁ"/><!-- HowToReproduce: Add a folder like "c:\temp\aFolder\" into "Folder as Workspace" panel, then try to add "c:\temp\". -->
 
@@ -1813,7 +1813,7 @@ Are you sure you want to open them?"/><!-- HowToReproduce: Check "Open all files
 
 ବ ly କଳ୍ପିକ ଭାବରେ, ଆପଣ ନୋଟପ୍ୟାଡ୍ ++ v8.5.2 କୁ ଡାଉନଗ୍ରେଡ୍ କରିପାରିବେ ଏବଂ ଆପଣଙ୍କର ପୂର୍ବ ତଥ୍ୟକୁ ପୁନ restore ସ୍ଥାପନ କରିପାରିବେ |
 ନୋଟପ୍ୟାଡ୍ ++ ଆପଣଙ୍କର ପୁରୁଣା &quot;ସର୍ଟକଟ୍। Xml&quot; କୁ ବ୍ୟାକଅପ୍ କରିବ ଏବଂ ଏହାକୁ &quot;ସର୍ଟକଟ୍। Xml.v8.5.2.backup&quot; ଭାବରେ ସେଭ୍ କରିବ |
-&quot;ସର୍ଟକଟ୍।"/><!-- HowToReproduce: Close Notepad++, remove shortcuts.xml.v8.5.2.backup & v852ShortcutsCompatibilityWarning.xml if present, relaunch Notepad++, delete or modify a shortcuts via Shortcut Mapper, close Notepad++, then the message will show up -->
+&quot;ସର୍ଟକଟ୍।"/><!-- HowToReproduce: Close Nextpad++, remove shortcuts.xml.v8.5.2.backup & v852ShortcutsCompatibilityWarning.xml if present, relaunch Nextpad++, delete or modify a shortcuts via Shortcut Mapper, close Nextpad++, then the message will show up -->
 			<FullReadOnlySavingForbidden title="ସଞ୍ଚୟ ବିଫଳ" message="ଫାଇଲ୍ ସେଭ୍ କରିପାରିବ ନାହିଁ |
 ନୋଟପ୍ୟାଡ୍ ++ ପୂର୍ଣ୍ଣ ପଠନ-କେବଳ ସଂରକ୍ଷଣ ନିଷେଧ ମୋଡ୍ ଫାଇଲ୍ ସେଭ୍ ହେବାକୁ ବାରଣ କଲା"/>
 			<NotEnoughRoom4Saving title="|ସଞ୍ଚୟ ବିଫଳ ହେଲା |" message="ଫାଇଲ୍ ସେଭ୍ କରିବାରେ ବିଫଳ |
@@ -1829,7 +1829,7 @@ Are you sure you want to open them?"/><!-- HowToReproduce: Check "Open all files
 
 ଟିପ୍ପଣୀ: ସ୍ଥାନଧାରୀ ସୃଷ୍ଟି ନକରିବା କିମ୍ବା ପରେ ବନ୍ଦ ନକରିବା, ଆପଣଙ୍କ ଅଧିବେଶନ ନିର୍ବାହରେ ପରିବର୍ତ୍ତିତ ହେବ!ଆମେ ବର୍ତ୍ତମାନ ତୁମର &quot;session.xml&quot; କୁ ବ୍ୟାକଅପ୍ କରିବାକୁ ପରାମର୍ଶ ଦେଉଛୁ"/>
 			<RTLvsDirectWrite title="|RTL ଚଲାଇପାରିବ ନାହିଁ" message="DirectLrite ମୋଡ୍ ସହିତ RTL ସୁସଙ୍ଗତ ନୁହେଁ |ଦୟାକରି MISC ରେ DirectWrite ମୋଡ୍ ଅକ୍ଷମ କରନ୍ତୁ |ପସନ୍ଦ ସଂଳାପର ବିଭାଗ, ଏବଂ ନୋଟପ୍ୟାଡ୍ ++ କୁ ପୁନ rest ଆରମ୍ଭ କରନ୍ତୁ"/>
-			<FileMemoryAllocationFailed title="|ବ୍ୟତିକ୍ରମ: ଫାଇଲ ମେମୋରୀ ଆବଣ୍ଟନ ବିଫଳ ହେଲା" message="ନୋଟପ୍ୟାଡ୍ ++ ଦ୍ୱାରା ଲୋଡ୍ ହୋଇଥିବା ଫାଇଲ୍ ପାଇଁ ବୋଧହୁଏ ଯଥେଷ୍ଟ ସଂଲଗ୍ନ ମାଗଣା ମେମୋରୀ ନାହିଁ"/><!-- HowToReproduce: Try to open multiple files with total size > ~700MB in the x86 Notepad++ (it will depend on the PC memory configuration and the current system memory usage...). -->
+			<FileMemoryAllocationFailed title="|ବ୍ୟତିକ୍ରମ: ଫାଇଲ ମେମୋରୀ ଆବଣ୍ଟନ ବିଫଳ ହେଲା" message="ନୋଟପ୍ୟାଡ୍ ++ ଦ୍ୱାରା ଲୋଡ୍ ହୋଇଥିବା ଫାଇଲ୍ ପାଇଁ ବୋଧହୁଏ ଯଥେଷ୍ଟ ସଂଲଗ୍ନ ମାଗଣା ମେମୋରୀ ନାହିଁ"/><!-- HowToReproduce: Try to open multiple files with total size > ~700MB in the x86 Nextpad++ (it will depend on the PC memory configuration and the current system memory usage...). -->
 			<FindRegexBackwardDisabled title="|ରେଜେକ୍ସ ପଛୁଆ ସନ୍ଧାନ ଅକ୍ଷମ" message="ଡିଫଲ୍ଟ ଭାବରେ, ସମ୍ଭାବ୍ୟ ଅପ୍ରତ୍ୟାଶିତ ଫଳାଫଳ ହେତୁ ପଛୁଆ ରେଜେକ୍ସ ସନ୍ଧାନ ଅକ୍ଷମ ହୋଇଥାଏ |ଏକ ପଛୁଆ ସନ୍ଧାନ କରିବାକୁ, ସନ୍ଧାନ ସଂଳାପ ଖୋଲ ଏବଂ ନିୟମିତ ଅଭିବ୍ୟକ୍ତି ପରିବର୍ତ୍ତେ ସାଧାରଣ କିମ୍ବା ବିସ୍ତାରିତ ସନ୍ଧାନ ମୋଡ୍ ବାଛ |
 ସନ୍ଧାନ ସଂଳାପ ଖୋଲିବାକୁ କିମ୍ବା ଏହା ଉପରେ ଧ୍ୟାନ ସେଟ୍ କରିବାକୁ ଓକେ ବଟନ୍ ଦବାନ୍ତୁ |
 

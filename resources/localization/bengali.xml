@@ -255,13 +255,13 @@
 					<Item id="46001" name="কনফিগারেশন শৈলী"/>
 					<Item id="46250" name="আপনার ভাষা নির্ধারণ করুন ..."/>
 					<Item id="46180" name="ব্যবহারকারী সংজ্ঞায়িত(User Defined)"/>
-					<Item id="47000" name="Notepad++ আমার ..."/>
-					<Item id="47001" name="Notepad++ বাড়ি"/>
-					<Item id="47002" name="Notepad++ প্রকল্প পাতা"/>
+					<Item id="47000" name="Nextpad++ আমার ..."/>
+					<Item id="47001" name="Nextpad++ বাড়ি"/>
+					<Item id="47002" name="Nextpad++ প্রকল্প পাতা"/>
 					<Item id="47003" name="অনলাইন ডকুমেন্টেশন"/>
 					<Item id="47004" name="ফোরাম"/>
 					<Item id="47005" name="আরো প্লাগইন যোগ করুন"/>
-					<Item id="47006" name="আপডেট করা হয়েছে Notepad++"/>
+					<Item id="47006" name="আপডেট করা হয়েছে Nextpad++"/>
 					<Item id="47008" name="সাহায্যের জন্য বিবরণ "/>
 					<Item id="47009" name="সেট আপডেট প্রক্সি"/>
 					<Item id="48005" name="আমদানি (আমদানি) প্লাগ"/>
@@ -994,7 +994,7 @@
 				<Item id="90189" name="উইন্ডোজ (CRLF)"/>
 				<Item id="90190" name="ম্যাক (সিআর)"/>
 				<Item id="90191" name="প্লাগইন তালিকা সংগ্রহস্থল"/>
-				<Item id="90192" name="আবেদন করতে একটি Notepad++ থিম XML ফাইল নির্বাচন করুন"/>
+				<Item id="90192" name="আবেদন করতে একটি Nextpad++ থিম XML ফাইল নির্বাচন করুন"/>
 				<Item id="90193" name="নতুন তৈরি করুন\u2026"/>
 				<Item id="90194" name="হিসাবে সংরক্ষণ করুন\u2026"/>
 				<Item id="90195" name="ব্যবহারকারীর ভাষা:"/>
@@ -1007,7 +1007,7 @@
 				<Item id="90202" name="অবৈধ পরিসীমা"/>
 				<Item id="90203" name="পরিসরের মান 0-255 হতে হবে এবং শুরু হতে হবে &lt;= শেষ।"/>
 				<Item id="90204" name="contextMenu.xml পাওয়া যায়নি"/>
-				<Item id="90205" name="ডিফল্ট contextMenu.xml পুনরায় তৈরি করতে Notepad++ পুনরায় চালু করুন।"/>
+				<Item id="90205" name="ডিফল্ট contextMenu.xml পুনরায় তৈরি করতে Nextpad++ পুনরায় চালু করুন।"/>
 				<Item id="90206" name="ফাইলটিতে অসংরক্ষিত পরিবর্তন রয়েছে।নতুন এনকোডিংয়ের সাথে পুনরায় লোড করা সেগুলিকে বাতিল করবে।চালিয়ে যান?"/>
 				<Item id="90207" name="সার্ভার থেকে কোন প্রতিক্রিয়া."/>
 				<Item id="90208" name="সার্ভার স্ট্যাটাস ফিরিয়ে দিয়েছে"/>
@@ -1029,14 +1029,14 @@
 			</MacStrings>
 		</Dialog>
 		<MessageBox>
-			<ContextMenuXmlEditWarning title="Editing contextMenu" message="Editing contextMenu.xml allows you to modify your Notepad++ popup context menu.\rYou have to restart your Notepad++ to take effect after modifying contextMenu.xml."/>
-			<NppHelpAbsentWarning title="File does not exist" message="\rdoesn't exist. Please download it on Notepad++ site."/>
+			<ContextMenuXmlEditWarning title="Editing contextMenu" message="Editing contextMenu.xml allows you to modify your Nextpad++ popup context menu.\rYou have to restart your Nextpad++ to take effect after modifying contextMenu.xml."/>
+			<NppHelpAbsentWarning title="File does not exist" message="\rdoesn't exist. Please download it on Nextpad++ site."/>
 			<SaveCurrentModifWarning title="Save Current Modification" message="You should save the current modification.\rAll the saved modifications can not be undone.\r\rContinue?"/>
 			<LoseUndoAbilityWarning title="Lose Undo Ability Warning" message="You should save the current modification.\rAll the saved modifications can not be undone.\r\rContinue?"/>
-			<CannotMoveDoc title="Move to new Notepad++ Instance" message="Document is modified, save it then try again."/>
-			<DocReloadWarning title="Reload" message="Are you sure you want to reload the current file and lose the changes made in Notepad++?"/>
+			<CannotMoveDoc title="Move to new Nextpad++ Instance" message="Document is modified, save it then try again."/>
+			<DocReloadWarning title="Reload" message="Are you sure you want to reload the current file and lose the changes made in Nextpad++?"/>
 			<FileLockedWarning title="Save failed" message="Please check whether if this file is opened in another program"/>
-			<FileAlreadyOpenedInNpp title="" message="The file is already opened in Notepad++."/>
+			<FileAlreadyOpenedInNpp title="" message="The file is already opened in Nextpad++."/>
 			<DeleteFileFailed title="Delete File" message="Delete File failed"/>
 
 			<!-- $INT_REPLACE$ is a place holder, don't translate it -->

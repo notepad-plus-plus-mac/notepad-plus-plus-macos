@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <!--
-    Sesotho (Sesotho) language file for Notepad++ macOS
+    Sesotho (Sesotho) language file for Nextpad++ macOS
     Based on English template - community translations welcome
     Created: 2026-04-04
 -->
@@ -41,7 +41,7 @@
 					<Item subMenuId="edit-onSelection" name="Ka Khetho"/>
 					<Item subMenuId="edit-multiSelectALL" name="Khetho tse ngata KAOFELA"/>
 					<Item subMenuId="edit-multiSelectNext" name="Khethang hangata E latelang"/>
-					<Item subMenuId="edit-readonlyInNotepad++" name="Bala Feela ho Notepad++"/>
+					<Item subMenuId="edit-readonlyInNextpad++" name="Bala Feela ho Nextpad++"/>
 					<Item subMenuId="search-changeHistory" name="Fetola Nalane"/>
 					<Item subMenuId="search-markAll" name="Style Liketsahalo Tsohle Tsa Letšoao"/>
 					<Item subMenuId="search-markOne" name="Style One Token"/>
@@ -367,17 +367,17 @@
 					<Item id="46016" name="Ha ho letho (Mongolo o Tloaelehileng)"/>
 					<Item id="46250" name="Hlalosa puo ya hao..."/>
 					<Item id="46300" name="Bula sephutheli sa User Defined Language..."/>
-					<Item id="46301" name="Pokello ea Lipuo Tse Hlalositsoeng ke Basebelisi Notepad++"/>
+					<Item id="46301" name="Pokello ea Lipuo Tse Hlalositsoeng ke Basebelisi Nextpad++"/>
 					<Item id="46180" name="Mosebelisi-Defined"/>
-					<Item id="47000" name="Mabapi le Notepad++"/>
+					<Item id="47000" name="Mabapi le Nextpad++"/>
 					<Item id="47010" name="Likhohlano tsa Line Line..."/>
-					<Item id="47001" name="Notepad++ Lehae"/>
-					<Item id="47002" name="Notepad++ Project Leqephe"/>
-					<Item id="47003" name="Notepad++ Online User Manual"/>
-					<Item id="47004" name="Sechaba sa Notepad++ (Forum)"/>
+					<Item id="47001" name="Nextpad++ Lehae"/>
+					<Item id="47002" name="Nextpad++ Project Leqephe"/>
+					<Item id="47003" name="Nextpad++ Online User Manual"/>
+					<Item id="47004" name="Sechaba sa Nextpad++ (Forum)"/>
 					<Item id="47012" name="Litaba tsa ho lokisa..."/>
 					<Item id="47005" name="Fumana li-plugins tse ling"/>
-					<Item id="47006" name="Ntlafatsa Notepad++"/>
+					<Item id="47006" name="Ntlafatsa Nextpad++"/>
 					<Item id="47009" name="Beha Proxy ea ho Apdeita..."/>
 					<Item id="48005" name="Fumana li-plugin..."/>
 					<Item id="48006" name="Theme(li)"/>
@@ -446,7 +446,7 @@
 				<Item CMDID="41016" name="Suthela ho Recycle Bin"/>
 				<Item CMDID="41014" name="Kenya hape"/>
 				<Item CMDID="41010" name="Hatisa..."/>
-				<Item CMDID="42028" name="Bala Feela ho Notepad++"/>
+				<Item CMDID="42028" name="Bala Feela ho Nextpad++"/>
 				<Item CMDID="42033" name="Tšobotsi ea ho Bala Feela ho Windows"/>
 				<Item CMDID="2" name="Kopitsa ho Clipboard"/>
 				<Item CMDID="42029" name="Kopitsa Tsela e Felletseng ea Lifaele"/>
@@ -1128,7 +1128,7 @@
 				</DefaultDir>
 
 				<FileAssoc title="Mokhatlo oa Lifaele">
-					<Item id="4008" name="Ka kopo, tsoa Notepad++ 'me u tsosolose Notepad++ ka mokhoa oa Administrator ho sebelisa tšobotsi ena."/>
+					<Item id="4008" name="Ka kopo, tsoa Nextpad++ 'me u tsosolose Nextpad++ ka mokhoa oa Administrator ho sebelisa tšobotsi ena."/>
 					<Item id="4009" name="Katoloso e tšehelitsoeng:"/>
 					<Item id="4010" name="Katoloso e ngolisitsoeng:"/>
 				</FileAssoc>
@@ -1213,7 +1213,7 @@
 				</Print>
 
 				<Searching title="Batla">
-					<Item id="6902" name="Sebelisa mohala o nang le sebaka se le seng lebokoseng la Fumana (O hloka ho qala Notepad++ bocha)"/>
+					<Item id="6902" name="Sebelisa mohala o nang le sebaka se le seng lebokoseng la Fumana (O hloka ho qala Nextpad++ bocha)"/>
 					<Item id="6903" name="Fumana puisano e lula e butsoe ka mor'a ho batla e hlahang fensetereng ea liphetho"/>
 					<Item id="6904" name="Netefatsa Hore Tlosa Tsohle Litokomaneng Tsohle Tse Butsoeng"/>
 					<Item id="6905" name="Fetola: Se ke oa fetela ketsahalong e latelang"/>
@@ -1281,7 +1281,7 @@
 					<Item id="6152" name="Bula seshene ketsahalong e ncha ('me u boloke nako ka bo eona ha u tsoa)"/>
 					<Item id="6153" name="E lula e le maemong a mangata"/>
 					<Item id="6154" name="Ea kamehla (mono-setšoantšo)"/>
-					<Item id="6155" name="* Phetoho ea tlhophiso ena e hloka ho qala Notepad++"/>
+					<Item id="6155" name="* Phetoho ea tlhophiso ena e hloka ho qala Nextpad++"/>
 					<Item id="6171" name="Iketsetse kenya Nako ea Letsatsi"/>
 					<Item id="6175" name="Khutlisetsa morao tatellano ea nako ea kamehla (lifomate tse telele tse khutšoane)"/>
 					<Item id="6172" name="Mokhoa o ikhethileng:"/>
@@ -1364,8 +1364,8 @@
 					</ComboBox>
 					<ComboBox id="6364">
 						<Element name="Tlosa"/>
-						<Element name="E nolofalletsa ho qala Notepad++"/>
-						<Element name="Bulela ho Notepad++ ho tsoa"/>
+						<Element name="E nolofalletsa ho qala Nextpad++"/>
+						<Element name="Bulela ho Nextpad++ ho tsoa"/>
 					</ComboBox>
 					<Item id="6308" name="terei ea tsamaiso"/>
 					<Item id="6363" name="mokhoa oa ho fana"/>
@@ -1564,7 +1564,7 @@ O ka kenya tshebetsong puisano ena hape ho Dikgethollo hamorao."/>
 				<Item id="90104" name="Khoasolla hape ho tsoa ho Disk"/>
 				<Item id="90105" name="Fetola Enjine ea ho Batla"/>
 				<Item id="90106" name="Matha Phoso"/>
-				<Item id="90107" name="Notepad++ Loading Time"/>
+				<Item id="90107" name="Nextpad++ Loading Time"/>
 				<Item id="90108" name="Ha e khone ho Sheba Lintlafatso"/>
 				<Item id="90109" name="U Lingoliloeng Tsa Nako"/>
 				<Item id="90110" name="Khoasolla"/>
@@ -1650,7 +1650,7 @@ O ka kenya tshebetsong puisano ena hape ho Dikgethollo hamorao."/>
 				<Item id="90189" name="Windows (CRLF)"/>
 				<Item id="90190" name="Mac (CR)"/>
 				<Item id="90191" name="Sebaka sa polokelo ea lenane la plugin"/>
-				<Item id="90192" name="Khetha faele ea XML ea sehlooho sa Notepad++ eo u ka e sebelisang"/>
+				<Item id="90192" name="Khetha faele ea XML ea sehlooho sa Nextpad++ eo u ka e sebelisang"/>
 				<Item id="90193" name="Etsa e ncha\u2026"/>
 				<Item id="90194" name="Boloka e le\u2026"/>
 				<Item id="90195" name="Puo ea mosebelisi:"/>
@@ -1663,7 +1663,7 @@ O ka kenya tshebetsong puisano ena hape ho Dikgethollo hamorao."/>
 				<Item id="90202" name="Sebaka se Fosahetseng"/>
 				<Item id="90203" name="Boleng ba boleng bo tlameha ho ba 0-255 mme qalo e be &lt;= pheletso."/>
 				<Item id="90204" name="contextMenu.xml Ha e Fumane"/>
-				<Item id="90205" name="Qala hape Notepad++ ho nchafatsa moelelo oa kamehla oa Menu.xml."/>
+				<Item id="90205" name="Qala hape Nextpad++ ho nchafatsa moelelo oa kamehla oa Menu.xml."/>
 				<Item id="90206" name="Faele e na le liphetoho tse sa bolokoang.Ho kenya khouto e ncha ho tla li lahla.Na u batla ho tsoela pele?"/>
 				<Item id="90207" name="Ha ho karabo ho tsoa ho seva."/>
 				<Item id="90208" name="Boemo ba sevara bo khutlisitsoeng"/>
@@ -1687,7 +1687,7 @@ O ka kenya tshebetsong puisano ena hape ho Dikgethollo hamorao."/>
 		<MessageBox>
 			<!-- $INT_REPLACE$ and $STR_REPLACE$ are place holders, don't translate these place holders. -->
 			<ContextMenuXmlEditWarning title="Editing contextMenu" message="Ho hlophisa contextMenu.xml ho u lumella ho fetola menu ea hau ea popup++ popup.
-U tlameha ho qala Notepad++ ea hau bocha hore e sebetse ka mor'a ho fetola contextMenu.xml."/>
+U tlameha ho qala Nextpad++ ea hau bocha hore e sebetse ka mor'a ho fetola contextMenu.xml."/>
 			<SaveCurrentModifWarning title="Boloka Phetoho ea Hona Joale" message="U lokela ho boloka phetoho ea hajoale.
 Liphetoho tsohle tse bolokiloeng li ke ke tsa etsolloa.
 
@@ -1696,8 +1696,8 @@ Na u batla ho tsoela pele?"/><!-- HowToReproduce: when you openned file is modif
 Liphetoho tsohle tse bolokiloeng li ke ke tsa etsolloa.
 
 Na u batla ho tsoela pele?"/><!-- HowToReproduce: when you openned file is modified and saved, then you are changing file encoding. -->
-			<CannotMoveDoc title="Fetela ho Notepad++ e ncha Instance" message="Tokomane e fetotsoe, e boloke ebe u leka hape."/><!-- HowToReproduce: From your Notepad++ drag & drop a clean (not dirty) file to outside of Notepad++, another instance of Notepad++ will be created. Then from your first Notepad++ drag & drop an unsaved file to the new instance. -->
-			<DocReloadWarning title="Kenya hape" message="Na u na le bonnete ba hore u batla ho kenya faele ea hajoale bocha 'me u lahleheloe ke liphetoho tse entsoeng ho Notepad++?"/>
+			<CannotMoveDoc title="Fetela ho Nextpad++ e ncha Instance" message="Tokomane e fetotsoe, e boloke ebe u leka hape."/><!-- HowToReproduce: From your Nextpad++ drag & drop a clean (not dirty) file to outside of Nextpad++, another instance of Nextpad++ will be created. Then from your first Nextpad++ drag & drop an unsaved file to the new instance. -->
+			<DocReloadWarning title="Kenya hape" message="Na u na le bonnete ba hore u batla ho kenya faele ea hajoale bocha 'me u lahleheloe ke liphetoho tse entsoeng ho Nextpad++?"/>
 			<FileLockedWarning title="Ho boloka ho hlolehile" message="Ka kopo sheba hore na faele ena e buletsoe lenaneong le leng"/>
 			<FileAlreadyOpenedInNpp title="" message="Faele e se e butsoe ho Notepad ++."/><!-- HowToReproduce: Open a new document and open a file "c:/tmp/foo", save this new document by choosing "c:/tmp/foo" as file to save, reply the override popup "yes", then this message appears. -->
 			<RenameTabTemporaryNameAlreadyInUse title="Ho reha bocha ho hlotsoe" message="Lebitso le boletsoeng le se le ntse le sebelisoa tabeng e 'ngoe."/><!-- HowToReproduce: Rename the tab of an untitled document and provide a name that is the same as an already-existing tab of an untitled document. -->
@@ -1705,7 +1705,7 @@ Na u batla ho tsoela pele?"/><!-- HowToReproduce: when you openned file is modif
 			<DeleteFileFailed title="Hlakola Faele" message="Ho phumula Faele ho hlolehile"/><!-- HowToReproduce: this message prevents from system failure. It's hard to reproduce. -->
 
 			<NbFileToOpenImportantWarning title="Lifaele tse lokelang ho buloa li kholo haholo" message="$INT_REPLACE$ files are about to be opened.
-Are you sure you want to open them?"/><!-- HowToReproduce: Check "Open all files of folder instead of launching Folder as Workspace on folder dropping" in "Default Directory" of Preferences dialog, then drop a folder which contains more then 200 files into Notepad++. -->
+Are you sure you want to open them?"/><!-- HowToReproduce: Check "Open all files of folder instead of launching Folder as Workspace on folder dropping" in "Default Directory" of Preferences dialog, then drop a folder which contains more then 200 files into Nextpad++. -->
 			<SettingsOnCloudError title="Litlhophiso ho Cloud" message="Ho bonahala eka tsela ea litlhophiso ho leru e behiloe ho drive ea ho bala feela,
 kapa foldareng ho hlokahala tokelo ea tokelo bakeng sa phihlello ea ho ngola.
 Litlhophiso tsa hau ho cloud li tla hlakoloa.Ka kopo, seta botjha boleng bo momahaneng ka puisano ya Dikgethollo."/>
@@ -1716,7 +1716,7 @@ U tlameha ho nolofalletsa &quot;Bula lifaele tsohle tsa foldara ho e-na le ho qa
 			<SortingError title="Phoso ea ho Hlopha" message="Ha re khone ho hlophisa linomoro ka lebaka la mola $INT_REPLACE$."/><!-- HowToReproduce: this message prevents from system failure. It's hard to reproduce. -->
 			<SortLocaleMultiple title="Hlophisa ha e etsoe" message="Ho hlopha likhetho tse ngata ha hoa tšehetsoa."/><!-- HowToReproduce: Make a multiple selection and choose Edit | Line Operations | Sort Lines In Locale Order. -->
 			<SortLocaleUnknown title="Hlophisa E hlolehile" message="Lebaka leo mofuta o hlōlehileng ka lona ha le khone ho tsejoa."/><!-- HowToReproduce: This condition is theoretical; it is unknown what could cause it. -->
-			<SortLocaleExcept title="Hlophisa E hlolehile" message="$STR_REPLACE$"/><!-- HowToReproduce: Open a large file, e.g. 500MB / 90k lines, in 32-bit Notepad++ and choose Edit | Line Operations | Sort Lines In Locale Order. -->
+			<SortLocaleExcept title="Hlophisa E hlolehile" message="$STR_REPLACE$"/><!-- HowToReproduce: Open a large file, e.g. 500MB / 90k lines, in 32-bit Nextpad++ and choose Edit | Line Operations | Sort Lines In Locale Order. -->
 			<ColumnModeTip title="Keletso ea Mokhoa oa Kholomo" message="Ho na le mekhoa e 3 ea ho fetohela ho mokhoa oa ho khetha likholomo:
 
 1. (Keyboard le Mouse) Tšoara Alt ha u ntse u penya ka ho le letšehali
@@ -1744,14 +1744,14 @@ Na u batla ho e kenya hape?"/>
 			<DoReloadOrNotAndLooseChange title="Kenya hape" message="&quot;$STR_REPLACE$&quot;
 
 Faele ena e fetotsoe ke lenaneo le leng.
-Na u batla ho e kenya hape 'me u lahleheloe ke liphetoho tse entsoeng ho Notepad++?"/>
+Na u batla ho e kenya hape 'me u lahleheloe ke liphetoho tse entsoeng ho Nextpad++?"/>
 			<PrehistoricSystemDetected title="Sistimi ea prehistoric e fumanoe" message="Ho bonahala o ntse o sebelisa sistimi ea prehistoric.Karolo ena e sebetsa feela tsamaisong ea sejoale-joale, masoabi."/><!-- HowToReproduce: Launch "Document Map" under Windows XP. -->
-			<XpUpdaterProblem title="Notepad++ Updater" message="Notepad++ updater ha e tsamaellane le XP ka lebaka la lera la tšireletso le sa sebetseng tlas'a XP.
-Na u batla ho ea leqepheng la Notepad++ ho khoasolla mofuta oa morao-rao?"/><!-- HowToReproduce: Run menu "? -> Update Notepad++" under Windows XP. -->
-			<GUpProxyConfNeedAdminMode title="Litlhophiso tsa Proxy" message="Ka kopo qala Notepad++ hape ka mokhoa oa Admin ho lokisa proxy."/>
+			<XpUpdaterProblem title="Nextpad++ Updater" message="Nextpad++ updater ha e tsamaellane le XP ka lebaka la lera la tšireletso le sa sebetseng tlas'a XP.
+Na u batla ho ea leqepheng la Nextpad++ ho khoasolla mofuta oa morao-rao?"/><!-- HowToReproduce: Run menu "? -> Update Nextpad++" under Windows XP. -->
+			<GUpProxyConfNeedAdminMode title="Litlhophiso tsa Proxy" message="Ka kopo qala Nextpad++ hape ka mokhoa oa Admin ho lokisa proxy."/>
 			<DocTooDirtyToMonitor title="Bothata ba ho beha leihlo" message="Tokomane e litšila.Ka kopo, boloka phetoho pele u e beha leihlo."/>
 			<DocNoExistToMonitor title="Bothata ba ho beha leihlo" message="Faele e lokela ho ba teng hore e behoe leihlo."/>
-			<FileTooBigToOpen title="Bothata ba boholo ba faele" message="Faele e kholo haholo hore e ka buloa ke Notepad++"/><!-- HowToReproduce: Try to open a 4GB file (it's not easy to reproduce, it depends on your system). -->
+			<FileTooBigToOpen title="Bothata ba boholo ba faele" message="Faele e kholo haholo hore e ka buloa ke Nextpad++"/><!-- HowToReproduce: Try to open a 4GB file (it's not easy to reproduce, it depends on your system). -->
 			<FileLoadingException title="Mokhelo khoutu: $STR_REPLACE$" message="Ho hlahile phoso ha re bula faele!"/>
 			<WantToOpenHugeFile title="Ho bula temoso e kholo ea faele" message="Ho bula faele e kholo ea 2GB+ ho ka nka metsotso e mengata.
 O batla ho e bula?"/>
@@ -1765,8 +1765,8 @@ Sephutheli &quot;$STR_REPLACE2$&quot; ha se teng."/>
 Na u batla ho boloka faele ea hajoale?"/><!-- HowToReproduce: this message prevents from system failure. It's hard to reproduce. -->
 			<LoadStylersFailed title="Laola stylers.xml hlolehile" message="Mojaro &quot;$STR_REPLACE$&quot; o hlolehile!"/>
 			<LoadLangsFailed title="Configurator" message="Langs.xml e hlotsoe!
-Na u batla ho khutlisa langs.xml ea hau?"/><!-- HowToReproduce: Close Notepad++. Use another editor to remove all content of "langs.xml" (0 length) then save it. Open Notepad++. -->
-			<LoadLangsFailedFinal title="Configurator" message="Langs.xml e hlotsoe!"/><!-- HowToReproduce: Close Notepad++. Use another editor to make "langs.xml" an invalid xml file then save it. Open Notepad++. -->
+Na u batla ho khutlisa langs.xml ea hau?"/><!-- HowToReproduce: Close Nextpad++. Use another editor to remove all content of "langs.xml" (0 length) then save it. Open Nextpad++. -->
+			<LoadLangsFailedFinal title="Configurator" message="Langs.xml e hlotsoe!"/><!-- HowToReproduce: Close Nextpad++. Use another editor to make "langs.xml" an invalid xml file then save it. Open Nextpad++. -->
 			<FolderAsWorspaceSubfolderExists title="Sephutheli joalo ka Sebaka sa Mosebetsi se eketsa bothata ba foldara" message="Sephutheli se senyane sa sephutheli seo u batlang ho se kenya se teng.
 Ka kopo tlosa motso oa eona phanele pele o kenya sephutheli &quot;$STR_REPLACE$&quot;."/><!-- HowToReproduce: Add a folder like "c:\temp\aFolder\" into "Folder as Workspace" panel, then try to add "c:\temp\". -->
 
@@ -1799,12 +1799,12 @@ Na u batla ho qala Notepad ++ ka mokhoa oa Administrator?"/>
 Na u batla ho qala Notepad ++ ka mokhoa oa Administrator?"/>
 			<OpenInAdminModeFailed title="Ho buloa ka mokhoa oa Administrator ho hlotsoe" message="Notepad ++ e ke ke ea buloa ka mokhoa oa Administrator."/><!-- HowToReproduce: When you have no Admin privilege and you try to save a modified file in a protected location (for example: any file in sub-folder of "C:\Program Files\". This message will appear after replying "Yes" to "Open in Admin mode" dialog. -->
 			<ViewInBrowser title="Sheba Faele ea Hona Joale ho Sebatli" message="Sesebelisoa ha se fumanehe ho sistimi ea hau."/>
-			<ExitToUpdatePlugins title="Notepad++ e mothating oa ho tsoa" message="Haeba u tobetsa YES, u tla tlohela Notepad++ ho ntšetsa pele ts'ebetso.
+			<ExitToUpdatePlugins title="Nextpad++ e mothating oa ho tsoa" message="Haeba u tobetsa YES, u tla tlohela Nextpad++ ho ntšetsa pele ts'ebetso.
 Notepad ++ e tla qala hape kamora hore lits'ebetso tsohle li felisoe.
 Na u batla ho tsoela pele?"/>
-			<NeedToRestartToLoadPlugins title="Notepad++ e hloka ho hlahisoa bocha" message="U tlameha ho qala Notepad ++ hape ho kenya li-plugins tseo u li kentseng."/><!-- HowToReproduce: Import a plugin via menu "Settings->Import->Import Plugin(s)...". -->
-			<ChangeHistoryEnabledWarning title="Notepad++ e hloka ho hlahisoa bocha" message="U tlameha ho qala Notepad ++ hape ho nolofalletsa Phetoho ea nalane."/><!-- HowToReproduce: uncheck "Display Change History" via Preferences dialog "Marges/Border/Edge. -->
-			<WindowsSessionExit title="Notepad++ - Ho tsoa ha nako ea Windows" message="Session ea Windows e haufi le ho felisoa empa u na le data e sa bolokoang.Na u batla ho tsoa Notepad++ hona joale?"/>
+			<NeedToRestartToLoadPlugins title="Nextpad++ e hloka ho hlahisoa bocha" message="U tlameha ho qala Notepad ++ hape ho kenya li-plugins tseo u li kentseng."/><!-- HowToReproduce: Import a plugin via menu "Settings->Import->Import Plugin(s)...". -->
+			<ChangeHistoryEnabledWarning title="Nextpad++ e hloka ho hlahisoa bocha" message="U tlameha ho qala Notepad ++ hape ho nolofalletsa Phetoho ea nalane."/><!-- HowToReproduce: uncheck "Display Change History" via Preferences dialog "Marges/Border/Edge. -->
+			<WindowsSessionExit title="Nextpad++ - Ho tsoa ha nako ea Windows" message="Session ea Windows e haufi le ho felisoa empa u na le data e sa bolokoang.Na u batla ho tsoa Nextpad++ hona joale?"/>
 			<LanguageMenuCompactWarning title="Menu ea Puo e Kopanetsoeng" message="Khetho ena e tla fetoloa lenaneong le latelang."/><!-- HowToReproduce: toggle "Make language menu compact" via Preferences dialog "Language/Language Menu. -->
 			<SwitchUnsavedThemeWarning title="$STR_REPLACE$" message="Liphetoho tse sa bolokehang li haufi le ho lahloa!
 Na u batla ho boloka liphetoho tsa hau pele u fetola lihlooho?"/><!-- HowToReproduce: In the Style Configurator dialog change some theme and switch to other theme without saving. -->
@@ -1812,10 +1812,10 @@ Na u batla ho boloka liphetoho tsa hau pele u fetola lihlooho?"/><!-- HowToRepro
 Ka kopo, leka litaelo tseo, 'me, ha ho hlokahala, u li hlophise bocha.
 
 Ntle le moo, o ka theolela ho Notepad ++ v8.5.2 mme o khutlisa data ea hau e fetileng.
-Notepad++ e tla boloka &quot;shortcuts.xml&quot; ea hau ea khale 'me e e boloke e le &quot;shortcuts.xml.v8.5.2.backup&quot;.
-Ho reha &quot;shortcuts.xml.v8.5.2.backup&quot; -&gt; &quot;shortcuts.xml&quot;, litaelo tsa hau li lokela ho khutlisoa 'me li sebetse hantle."/><!-- HowToReproduce: Close Notepad++, remove shortcuts.xml.v8.5.2.backup & v852ShortcutsCompatibilityWarning.xml if present, relaunch Notepad++, delete or modify a shortcuts via Shortcut Mapper, close Notepad++, then the message will show up -->
+Nextpad++ e tla boloka &quot;shortcuts.xml&quot; ea hau ea khale 'me e e boloke e le &quot;shortcuts.xml.v8.5.2.backup&quot;.
+Ho reha &quot;shortcuts.xml.v8.5.2.backup&quot; -&gt; &quot;shortcuts.xml&quot;, litaelo tsa hau li lokela ho khutlisoa 'me li sebetse hantle."/><!-- HowToReproduce: Close Nextpad++, remove shortcuts.xml.v8.5.2.backup & v852ShortcutsCompatibilityWarning.xml if present, relaunch Nextpad++, delete or modify a shortcuts via Shortcut Mapper, close Nextpad++, then the message will show up -->
 			<FullReadOnlySavingForbidden title="Ho boloka ho hlolehile" message="Ha e khone ho boloka faele.
-Mokhoa o thibetsoeng oa ho boloka ho bala feela oa Notepad++ o thibetse faele ho bolokoa."/>
+Mokhoa o thibetsoeng oa ho boloka ho bala feela oa Nextpad++ o thibetse faele ho bolokoa."/>
 			<NotEnoughRoom4Saving title="Ho boloka ho hlolehile" message="E hlolehile ho boloka faele.
 Ho bonahala eka ha ho na sebaka se lekaneng disk ho boloka faele.Faele ea hau ha e ea bolokoa."/>
 			<FileInaccessibleUserSession title="Faele ha e fumanehe" message="Lifaele tse ling tsa lenaneo leo u li bolokileng ka letsoho &quot;$STR_REPLACE$&quot; ha li fumanehe.Li ka buloa e le litokomane tse se nang letho le tse baloang feela joalo ka litšoantšiso.
@@ -1828,8 +1828,8 @@ ELA HLOKO: Ka ho khetha ho se thehe litšoantšiso kapa ho se koala hamorao, ses
 O ka rata ho theha litšoantšiso tseo?
 
 ELA HLOKO: Ka ho khetha ho se thehe litšoantšiso kapa ho li koala hamorao, lenaneo la hau le TLA FETOLA HA U TSOA!Re khothaletsa hore u boloke &quot;session.xml&quot; ea hau hona joale."/>
-			<RTLvsDirectWrite title="Ha e khone ho matha RTL" message="RTL ha e tsamaisane le mokhoa oa DirectWrite.Ka kopo tima mokhoa oa DirectWrite ho MISC.karolo ea Likhetho, 'me u qale Notepad++ hape."/>
-			<FileMemoryAllocationFailed title="Mokhelo: Kabo ea memori ea faele e hlotsoe" message="Mohlomong ha ho na memori e lekaneng ea mahala bakeng sa faele e laetsoeng ke Notepad ++."/><!-- HowToReproduce: Try to open multiple files with total size > ~700MB in the x86 Notepad++ (it will depend on the PC memory configuration and the current system memory usage...). -->
+			<RTLvsDirectWrite title="Ha e khone ho matha RTL" message="RTL ha e tsamaisane le mokhoa oa DirectWrite.Ka kopo tima mokhoa oa DirectWrite ho MISC.karolo ea Likhetho, 'me u qale Nextpad++ hape."/>
+			<FileMemoryAllocationFailed title="Mokhelo: Kabo ea memori ea faele e hlotsoe" message="Mohlomong ha ho na memori e lekaneng ea mahala bakeng sa faele e laetsoeng ke Notepad ++."/><!-- HowToReproduce: Try to open multiple files with total size > ~700MB in the x86 Nextpad++ (it will depend on the PC memory configuration and the current system memory usage...). -->
 			<FindRegexBackwardDisabled title="Regex backward search e koetsoe" message="Ka kamehla, ho batla ka morao ho regex ho koetsoe ka lebaka la liphetho tse ka bang teng tse neng li sa lebelloa.Ho batlisisa ka morao, bula lebokose la Fumana 'me u khethe mokhoa oa ho batla o tloaelehileng kapa o atolositsoeng ho fapana le polelo e tloaelehileng.
 Tobetsa konopo ea OK ho bula lebokose la Fumana kapa ho beha tsepamiso ho eona.
 
@@ -1837,7 +1837,7 @@ Haeba o hloka karolo ea morao-rao ea ho batla regex, sheba bukana ea mosebelisi 
 			<PrintError title="0" message="Ha e khone ho qala tokomane ea khatiso."/><!-- Use title="0" to use Windows OS default translated "Error" title. -->
 			<FindAutoChangeOfInSelectionWarning title="Batla temoso" message="Boemo ba lebokose la &quot;Ho khetha&quot; bo fetotsoe ka bohona.
 Ka kopo, netefatsa boemo ba ho batla pele u etsa ketso."/> <!-- HowToReproduce: https://github.com/notepad-plus-plus/notepad-plus-plus/issues/14897#issuecomment-2564316224 -->
-			<Need2Restart2ShowMenuShortcuts title="Notepad++ e hloka ho qalisoa bocha" message="Notepad ++ e hloka ho qalisoa bocha ho bonts'a likhutšoane tse nepahetseng tsa menyu."/>
+			<Need2Restart2ShowMenuShortcuts title="Nextpad++ e hloka ho qalisoa bocha" message="Notepad ++ e hloka ho qalisoa bocha ho bonts'a likhutšoane tse nepahetseng tsa menyu."/>
 			<NoAdminRight2ChangeReadOnlyFileAttribute title="Ho hloleha ho fetola faele e baloang feela" message="Ka kopo, tsamaisa Notepad ++ joalo ka molaoli ho fetola litšobotsi tsa faele."/>
 		</MessageBox>
 		<ClipboardHistory>
@@ -1958,8 +1958,8 @@ Ka kopo, netefatsa boemo ba ho batla pele u etsa ketso."/> <!-- HowToReproduce: 
 			<word-chars-list-warning-end value="lethathamong la libapali tsa hau."/><!-- HowToReproduce: In "Delimiter" section of Preferences dialog, check "Add your character as part of word\r(don't choose it unless you know what you're doing)", then type a white-space in the text field. -->
 			<backup-select-folder value="Khetha foldara e le bukana ea bekapo"/><!-- HowToReproduce: Settings > Preferences > Backup > [...] -->
 			<cloud-invalid-warning value="Tsela e fosahetseng."/>
-			<cloud-restart-warning value="Ka kopo qala Notepad++ bocha hore e sebetse."/>
-			<cloud-select-folder value="Khetha foldara ho tloha/ho ea moo Notepad++ e balang/e ngolang litlhophiso tsa eona"/><!-- HowToReproduce: In "Cloud" section of Preferences dialog, check "Set your cloud location path here: ", then click the button "...". This message is displayed in the "Browse For Folder" dialog. -->
+			<cloud-restart-warning value="Ka kopo qala Nextpad++ bocha hore e sebetse."/>
+			<cloud-select-folder value="Khetha foldara ho tloha/ho ea moo Nextpad++ e balang/e ngolang litlhophiso tsa eona"/><!-- HowToReproduce: In "Cloud" section of Preferences dialog, check "Set your cloud location path here: ", then click the button "...". This message is displayed in the "Browse For Folder" dialog. -->
 			<default-open-save-select-folder value="Khetha foldara e le bukana ea kamehla"/><!-- HowToReproduce: Settings > Preferences > Default Directory > [...] -->
 			<shift-change-direction-tip value="Sebelisa Shift+Enter ho batla ka nqa e 'ngoe"/>
 			<two-find-buttons-tip value="2 fumana likonopo mokhoa"/>

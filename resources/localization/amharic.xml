@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <!--
-    Amharic (አማርኛ) language file for Notepad++ macOS
+    Amharic (አማርኛ) language file for Nextpad++ macOS
     Based on English template - community translations welcome
     Created: 2026-04-04
 -->
@@ -41,7 +41,7 @@
 					<Item subMenuId="edit-onSelection" name="ምርጫ ላይ"/>
 					<Item subMenuId="edit-multiSelectALL" name="ሁሉንም ይምረጡ"/>
 					<Item subMenuId="edit-multiSelectNext" name="ባለብዙ ምረጥ ቀጣይ"/>
-					<Item subMenuId="edit-readonlyInNotepad++" name="በማስታወሻ ደብተር++ ውስጥ ማንበብ-ብቻ"/>
+					<Item subMenuId="edit-readonlyInNextpad++" name="በማስታወሻ ደብተር++ ውስጥ ማንበብ-ብቻ"/>
 					<Item subMenuId="search-changeHistory" name="ታሪክ ቀይር"/>
 					<Item subMenuId="search-markAll" name="የቅጡ ሁሉም የቶከን ክስተቶች"/>
 					<Item subMenuId="search-markOne" name="ስታይል አንድ ማስመሰያ"/>
@@ -1663,7 +1663,7 @@
 				<Item id="90202" name="ልክ ያልሆነ ክልል"/>
 				<Item id="90203" name="የክልሎች እሴቶች ከ0-255 እና ጅምር &lt;= መጨረሻ መሆን አለባቸው።"/>
 				<Item id="90204" name="አውድ ሜኑ.xml አልተገኘም።"/>
-				<Item id="90205" name="Restart Notepad++ to regenerate the default contextMenu.xml."/>
+				<Item id="90205" name="Restart Nextpad++ to regenerate the default contextMenu.xml."/>
 				<Item id="90206" name="The file has unsaved changes. Reloading with the new encoding will discard them. Continue?"/>
 				<Item id="90207" name="No response from server."/>
 				<Item id="90208" name="Server returned status"/>
@@ -1696,16 +1696,16 @@
 ሁሉም የተቀመጡ ማሻሻያዎች ሊቀለበስ አይችሉም።
 
 ይቀጥል?"/><!-- HowToReproduce: when you openned file is modified and saved, then you are changing file encoding. -->
-			<CannotMoveDoc title="ወደ አዲስ የማስታወሻ ደብተር++ ምሳሌ" message="ሰነዱ ተስተካክሏል፣ ያስቀምጡት ከዚያ እንደገና ይሞክሩ።"/><!-- HowToReproduce: From your Notepad++ drag & drop a clean (not dirty) file to outside of Notepad++, another instance of Notepad++ will be created. Then from your first Notepad++ drag & drop an unsaved file to the new instance. -->
-			<DocReloadWarning title="ዳግም ጫን" message="እርግጠኛ ነዎት የአሁኑን ፋይል እንደገና ለመጫን እና በ Notepad++ ውስጥ የተደረጉ ለውጦችን ማጣት ይፈልጋሉ?"/>
+			<CannotMoveDoc title="ወደ አዲስ የማስታወሻ ደብተር++ ምሳሌ" message="ሰነዱ ተስተካክሏል፣ ያስቀምጡት ከዚያ እንደገና ይሞክሩ።"/><!-- HowToReproduce: From your Nextpad++ drag & drop a clean (not dirty) file to outside of Nextpad++, another instance of Nextpad++ will be created. Then from your first Nextpad++ drag & drop an unsaved file to the new instance. -->
+			<DocReloadWarning title="ዳግም ጫን" message="እርግጠኛ ነዎት የአሁኑን ፋይል እንደገና ለመጫን እና በ Nextpad++ ውስጥ የተደረጉ ለውጦችን ማጣት ይፈልጋሉ?"/>
 			<FileLockedWarning title="ማስቀመጥ አልተሳካም" message="እባኮትን ይህ ፋይል በሌላ ፕሮግራም መከፈቱን ያረጋግጡ"/>
-			<FileAlreadyOpenedInNpp title="" message="ፋይሉ አስቀድሞ በ Notepad++ ውስጥ ተከፍቷል።"/><!-- HowToReproduce: Open a new document and open a file "c:/tmp/foo", save this new document by choosing "c:/tmp/foo" as file to save, reply the override popup "yes", then this message appears. -->
+			<FileAlreadyOpenedInNpp title="" message="ፋይሉ አስቀድሞ በ Nextpad++ ውስጥ ተከፍቷል።"/><!-- HowToReproduce: Open a new document and open a file "c:/tmp/foo", save this new document by choosing "c:/tmp/foo" as file to save, reply the override popup "yes", then this message appears. -->
 			<RenameTabTemporaryNameAlreadyInUse title="ዳግም መሰየም አልተሳካም" message="የተገለጸው ስም አስቀድሞ በሌላ ትር ላይ ጥቅም ላይ ውሏል።"/><!-- HowToReproduce: Rename the tab of an untitled document and provide a name that is the same as an already-existing tab of an untitled document. -->
 			<RenameTabTemporaryNameIsEmpty title="ዳግም መሰየም አልተሳካም" message="የተገለጸው ስም ባዶ ሊሆን አይችልም፣ ወይም ባዶ(ቦታ(ዎች) ወይም TAB(ዎች) ብቻ ሊይዝ አይችልም።"/><!-- HowToReproduce: Rename the tab of an untitled document and provide an empty string or only some white speces. -->
 			<DeleteFileFailed title="ፋይል ሰርዝ" message="ፋይል መሰረዝ አልተሳካም"/><!-- HowToReproduce: this message prevents from system failure. It's hard to reproduce. -->
 
 			<NbFileToOpenImportantWarning title="የሚከፈቱት የፋይሎች መጠን በጣም ትልቅ ነው" message="$INT_REPLACE$ files are about to be opened.
-Are you sure you want to open them?"/><!-- HowToReproduce: Check "Open all files of folder instead of launching Folder as Workspace on folder dropping" in "Default Directory" of Preferences dialog, then drop a folder which contains more then 200 files into Notepad++. -->
+Are you sure you want to open them?"/><!-- HowToReproduce: Check "Open all files of folder instead of launching Folder as Workspace on folder dropping" in "Default Directory" of Preferences dialog, then drop a folder which contains more then 200 files into Nextpad++. -->
 			<SettingsOnCloudError title="በደመና ላይ ቅንብሮች" message="በደመና ላይ የቅንብሮች መንገድ በተነበበ ብቻ ድራይቭ ላይ የተቀናበረ ይመስላል ፣
 ወይም ለመጻፍ መዳረሻ መብት በሚያስፈልግ አቃፊ ላይ።
 በደመና ላይ ያሉ ቅንብሮችዎ ይሰረዛሉ።እባክዎ በምርጫ ንግግር በኩል አንድ ወጥ የሆነ እሴት ዳግም ያስጀምሩ።"/>
@@ -1716,7 +1716,7 @@ Are you sure you want to open them?"/><!-- HowToReproduce: Check "Open all files
 			<SortingError title="የመደርደር ስህተት" message="በመስመር $INT_REPLACE$ ምክንያት የቁጥር መደርደርን ማከናወን አልተቻለም።"/><!-- HowToReproduce: this message prevents from system failure. It's hard to reproduce. -->
 			<SortLocaleMultiple title="አልተደረገም" message="ብዙ ምርጫዎችን መደርደር አይደገፍም።"/><!-- HowToReproduce: Make a multiple selection and choose Edit | Line Operations | Sort Lines In Locale Order. -->
 			<SortLocaleUnknown title="መደርደር አልተሳካም" message="ዝርዝሩ ያልተሳካበት ምክንያት ሊታወቅ አይችልም."/><!-- HowToReproduce: This condition is theoretical; it is unknown what could cause it. -->
-			<SortLocaleExcept title="መደርደር አልተሳካም" message="$STR_REPLACE$"/><!-- HowToReproduce: Open a large file, e.g. 500MB / 90k lines, in 32-bit Notepad++ and choose Edit | Line Operations | Sort Lines In Locale Order. -->
+			<SortLocaleExcept title="መደርደር አልተሳካም" message="$STR_REPLACE$"/><!-- HowToReproduce: Open a large file, e.g. 500MB / 90k lines, in 32-bit Nextpad++ and choose Edit | Line Operations | Sort Lines In Locale Order. -->
 			<ColumnModeTip title="የአምድ ሁነታ ጠቃሚ ምክር" message="ወደ አምድ ምረጥ ሁነታ ለመቀየር 3 መንገዶች አሉ።
 
 1. (የቁልፍ ሰሌዳ እና መዳፊት) በግራ ጠቅታ በመጎተት Altን ይያዙ
@@ -1744,14 +1744,14 @@ Are you sure you want to open them?"/><!-- HowToReproduce: Check "Open all files
 			<DoReloadOrNotAndLooseChange title="ዳግም ጫን" message="&quot;$STR_REPLACE$&quot;
 
 ይህ ፋይል በሌላ ፕሮግራም ተስተካክሏል።
-እንደገና ለመጫን እና በ Notepad++ ላይ የተደረጉ ለውጦችን ማጣት ይፈልጋሉ?"/>
+እንደገና ለመጫን እና በ Nextpad++ ላይ የተደረጉ ለውጦችን ማጣት ይፈልጋሉ?"/>
 			<PrehistoricSystemDetected title="ቅድመ ታሪክ ስርዓት ተገኝቷል" message="አሁንም የቅድመ ታሪክ ሥርዓትን የምትጠቀም ይመስላል።ይህ ባህሪ የሚሰራው በዘመናዊ ስርዓት ላይ ብቻ ነው፣ ይቅርታ።"/><!-- HowToReproduce: Launch "Document Map" under Windows XP. -->
 			<XpUpdaterProblem title="ማስታወሻ ደብተር++ አዘምን" message="የማስታወሻ ደብተር++ ማዘመኛ ከኤክስፒ ጋር ተኳሃኝ አይደለም ምክንያቱም በ XP ስር ባለው ጊዜ ያለፈበት የደህንነት ሽፋን።
-የቅርብ ጊዜውን ስሪት ለማውረድ ወደ Notepad++ ገጽ መሄድ ይፈልጋሉ?"/><!-- HowToReproduce: Run menu "? -> Update Notepad++" under Windows XP. -->
+የቅርብ ጊዜውን ስሪት ለማውረድ ወደ Nextpad++ ገጽ መሄድ ይፈልጋሉ?"/><!-- HowToReproduce: Run menu "? -> Update Nextpad++" under Windows XP. -->
 			<GUpProxyConfNeedAdminMode title="የተኪ ቅንብሮች" message="እባክህ ተኪን ለማዋቀር ኖትፓድ++ን በአስተዳዳሪ ሁነታ እንደገና ያስጀምሩ።"/>
 			<DocTooDirtyToMonitor title="የክትትል ችግር" message="ሰነዱ ቆሻሻ ነው።እባክዎን ከመከታተልዎ በፊት ማሻሻያውን ያስቀምጡ።"/>
 			<DocNoExistToMonitor title="የክትትል ችግር" message="ፋይሉ ለመከታተል መኖር አለበት።"/>
-			<FileTooBigToOpen title="የፋይል መጠን ችግር" message="ፋይሉ በNotepad++ እንዳይከፈት በጣም ትልቅ ነው።"/><!-- HowToReproduce: Try to open a 4GB file (it's not easy to reproduce, it depends on your system). -->
+			<FileTooBigToOpen title="የፋይል መጠን ችግር" message="ፋይሉ በNextpad++ እንዳይከፈት በጣም ትልቅ ነው።"/><!-- HowToReproduce: Try to open a 4GB file (it's not easy to reproduce, it depends on your system). -->
 			<FileLoadingException title="ልዩ ኮድ፡ $STR_REPLACE$" message="ፋይሉን በመጫን ላይ ስህተት አጋጥሟል!"/>
 			<WantToOpenHugeFile title="የተከፈተ ትልቅ የፋይል ማስጠንቀቂያ" message="2GB+ የሆነ ትልቅ ፋይል መክፈት ብዙ ደቂቃዎችን ሊወስድ ይችላል።
 መክፈት ትፈልጋለህ?"/>
@@ -1765,8 +1765,8 @@ Are you sure you want to open them?"/><!-- HowToReproduce: Check "Open all files
 ለማንኛውም የአሁኑን ፋይል ማስቀመጥ ይፈልጋሉ?"/><!-- HowToReproduce: this message prevents from system failure. It's hard to reproduce. -->
 			<LoadStylersFailed title="ስታይልተሮችን ጫን።xml አልተሳካም" message="&quot;$STR_REPLACE$&quot; መጫን አልተሳካም!"/>
 			<LoadLangsFailed title="አዋቅር" message="langs.xml ን መጫን አልተሳካም!
-የእርስዎን langs.xml መልሰው ማግኘት ይፈልጋሉ?"/><!-- HowToReproduce: Close Notepad++. Use another editor to remove all content of "langs.xml" (0 length) then save it. Open Notepad++. -->
-			<LoadLangsFailedFinal title="አዋቅር" message="langs.xml ን መጫን አልተሳካም!"/><!-- HowToReproduce: Close Notepad++. Use another editor to make "langs.xml" an invalid xml file then save it. Open Notepad++. -->
+የእርስዎን langs.xml መልሰው ማግኘት ይፈልጋሉ?"/><!-- HowToReproduce: Close Nextpad++. Use another editor to remove all content of "langs.xml" (0 length) then save it. Open Nextpad++. -->
+			<LoadLangsFailedFinal title="አዋቅር" message="langs.xml ን መጫን አልተሳካም!"/><!-- HowToReproduce: Close Nextpad++. Use another editor to make "langs.xml" an invalid xml file then save it. Open Nextpad++. -->
 			<FolderAsWorspaceSubfolderExists title="አቃፊ እንደ የስራ ቦታ የአቃፊን ችግር ማከል" message="ማከል የሚፈልጉት አቃፊ ንዑስ-አቃፊ አለ።
 አቃፊ &quot;$STR_REPLACE$&quot; ከማከልዎ በፊት እባክዎ ከፓነሉ ስር ያለውን ያስወግዱት።"/><!-- HowToReproduce: Add a folder like "c:\temp\aFolder\" into "Folder as Workspace" panel, then try to add "c:\temp\". -->
 
@@ -1802,18 +1802,18 @@ Are you sure you want to open them?"/><!-- HowToReproduce: Check "Open all files
 			<ExitToUpdatePlugins title="ማስታወሻ ደብተር++ ሊወጣ ነው" message="አዎ የሚለውን ጠቅ ካደረጉ ስራዎቹን ለመቀጠል ኖትፓድ++ን ያቆማሉ።
 ሁሉም ክዋኔዎች ከተቋረጡ በኋላ የማስታወሻ ደብተር++ እንደገና ይጀመራል።
 ይቀጥል?"/>
-			<NeedToRestartToLoadPlugins title="ማስታወሻ ደብተር++ እንደገና መጀመር አለበት" message="የጫኗቸውን ፕለጊኖች ለመጫን Notepad++ እንደገና ማስጀመር አለቦት።"/><!-- HowToReproduce: Import a plugin via menu "Settings->Import->Import Plugin(s)...". -->
-			<ChangeHistoryEnabledWarning title="ማስታወሻ ደብተር++ እንደገና መጀመር አለበት" message="ታሪክ ለውጥን ለማንቃት Notepad++ እንደገና ማስጀመር አለብህ።"/><!-- HowToReproduce: uncheck "Display Change History" via Preferences dialog "Marges/Border/Edge. -->
-			<WindowsSessionExit title="የማስታወሻ ደብተር++ - የዊንዶውስ ክፍለ ጊዜ መውጫ" message="የዊንዶውስ ክፍለ ጊዜ ሊቋረጥ ነው ነገር ግን የተወሰነ ያልተቀመጠ ውሂብ አለዎት።አሁን ከ Notepad++ መውጣት ይፈልጋሉ?"/>
+			<NeedToRestartToLoadPlugins title="ማስታወሻ ደብተር++ እንደገና መጀመር አለበት" message="የጫኗቸውን ፕለጊኖች ለመጫን Nextpad++ እንደገና ማስጀመር አለቦት።"/><!-- HowToReproduce: Import a plugin via menu "Settings->Import->Import Plugin(s)...". -->
+			<ChangeHistoryEnabledWarning title="ማስታወሻ ደብተር++ እንደገና መጀመር አለበት" message="ታሪክ ለውጥን ለማንቃት Nextpad++ እንደገና ማስጀመር አለብህ።"/><!-- HowToReproduce: uncheck "Display Change History" via Preferences dialog "Marges/Border/Edge. -->
+			<WindowsSessionExit title="የማስታወሻ ደብተር++ - የዊንዶውስ ክፍለ ጊዜ መውጫ" message="የዊንዶውስ ክፍለ ጊዜ ሊቋረጥ ነው ነገር ግን የተወሰነ ያልተቀመጠ ውሂብ አለዎት።አሁን ከ Nextpad++ መውጣት ይፈልጋሉ?"/>
 			<LanguageMenuCompactWarning title="የታመቀ የቋንቋ ምናሌ" message="ይህ አማራጭ በሚቀጥለው ጅምር ላይ ይቀየራል።"/><!-- HowToReproduce: toggle "Make language menu compact" via Preferences dialog "Language/Language Menu. -->
 			<SwitchUnsavedThemeWarning title="$STR_REPLACE$" message="ያልተቀመጡ ለውጦች ሊወገዱ ነው!
 ገጽታዎችን ከመቀየርዎ በፊት ለውጦችዎን ማስቀመጥ ይፈልጋሉ?"/><!-- HowToReproduce: In the Style Configurator dialog change some theme and switch to other theme without saving. -->
-			<MacroAndRunCmdlWarning title="የማክሮ እና አሂድ ትዕዛዞች ተኳሃኝነት" message="በማስታወሻ ደብተር++ v.8.5.2 (ወይም ከዚያ በላይ) የተቀመጡ የማክሮ እና አሂድ ትዕዛዞች ከአሁኑ የNotepad++ ስሪት ጋር ተኳሃኝ ላይሆኑ ይችላሉ።
+			<MacroAndRunCmdlWarning title="የማክሮ እና አሂድ ትዕዛዞች ተኳሃኝነት" message="በማስታወሻ ደብተር++ v.8.5.2 (ወይም ከዚያ በላይ) የተቀመጡ የማክሮ እና አሂድ ትዕዛዞች ከአሁኑ የNextpad++ ስሪት ጋር ተኳሃኝ ላይሆኑ ይችላሉ።
 እባክህ እነዚያን ትእዛዞች ፈትናቸው እና ካስፈለገም እንደገና አርማቸው።
 
 በአማራጭ፣ ወደ ኖትፓድ++ v8.5.2 ዝቅ ማድረግ እና የቀደመ ውሂብዎን ወደነበረበት መመለስ ይችላሉ።
 የማስታወሻ ደብተር++ የድሮውን &quot;shortcuts.xml&quot; ምትኬ ያደርግና እንደ &quot;shortcuts.xml.v8.5.2.backup&quot; ያስቀምጣል።
-&quot;shortcuts.xml.v8.5.2.backup&quot; -&gt; &quot;shortcuts.xml&quot; በመሰየም ላይ ትእዛዞችህ ወደነበሩበት መመለስ እና በትክክል መስራት አለባቸው።"/><!-- HowToReproduce: Close Notepad++, remove shortcuts.xml.v8.5.2.backup & v852ShortcutsCompatibilityWarning.xml if present, relaunch Notepad++, delete or modify a shortcuts via Shortcut Mapper, close Notepad++, then the message will show up -->
+&quot;shortcuts.xml.v8.5.2.backup&quot; -&gt; &quot;shortcuts.xml&quot; በመሰየም ላይ ትእዛዞችህ ወደነበሩበት መመለስ እና በትክክል መስራት አለባቸው።"/><!-- HowToReproduce: Close Nextpad++, remove shortcuts.xml.v8.5.2.backup & v852ShortcutsCompatibilityWarning.xml if present, relaunch Nextpad++, delete or modify a shortcuts via Shortcut Mapper, close Nextpad++, then the message will show up -->
 			<FullReadOnlySavingForbidden title="ማስቀመጥ አልተሳካም" message="ፋይል ማስቀመጥ አልተቻለም።
 የማስታወሻ ደብተር++ ሙሉ ተነባቢ-ብቻ ቁጠባ የተከለከለ ሁነታ ፋይሉ እንዳይቀመጥ ከልክሏል።"/>
 			<NotEnoughRoom4Saving title="ማስቀመጥ አልተሳካም።" message="ፋይል ማስቀመጥ አልተሳካም።
@@ -1829,7 +1829,7 @@ Are you sure you want to open them?"/><!-- HowToReproduce: Check "Open all files
 
 ማሳሰቢያ፡ ቦታ ያዥዎችን ላለመፍጠር በመምረጥ ወይም በኋላ ላይ መዝጋት፣ ክፍለ ጊዜዎ በሚወጣበት ጊዜ ይሻሻላል!የእርስዎን &quot;session.xml&quot; አሁኑኑ ምትኬ እንዲያደርጉ እንመክርዎታለን።"/>
 			<RTLvsDirectWrite title="RTL ማሄድ አይቻልም" message="RTL ከ DirectWrite ሁነታ ጋር ተኳሃኝ አይደለም።እባክዎ በMISC ውስጥ የDirectWrite ሁነታን ያሰናክሉ።የምርጫዎች መገናኛ ክፍል፣ እና ማስታወሻ ደብተር++ እንደገና ያስጀምሩ።"/>
-			<FileMemoryAllocationFailed title="ልዩ፡ የፋይል ማህደረ ትውስታ ድልድል አልተሳካም" message="በማስታወሻ ደብተር++ ለሚጫነው ፋይል በቂ ተከታታይ ነፃ ማህደረ ትውስታ ላይኖር ይችላል።"/><!-- HowToReproduce: Try to open multiple files with total size > ~700MB in the x86 Notepad++ (it will depend on the PC memory configuration and the current system memory usage...). -->
+			<FileMemoryAllocationFailed title="ልዩ፡ የፋይል ማህደረ ትውስታ ድልድል አልተሳካም" message="በማስታወሻ ደብተር++ ለሚጫነው ፋይል በቂ ተከታታይ ነፃ ማህደረ ትውስታ ላይኖር ይችላል።"/><!-- HowToReproduce: Try to open multiple files with total size > ~700MB in the x86 Nextpad++ (it will depend on the PC memory configuration and the current system memory usage...). -->
 			<FindRegexBackwardDisabled title="Regex ወደ ኋላ ፍለጋ ተሰናክሏል" message="በነባሪ ያልተጠበቁ ሊሆኑ በሚችሉ ውጤቶች ወደ ኋላ ሬጅክስ ፍለጋ ተሰናክሏል።ወደ ኋላ ፍለጋ ለማካሄድ፣ አግኝ መገናኛውን ይክፈቱ እና ከመደበኛ አገላለጽ ይልቅ መደበኛ ወይም የተራዘመ የፍለጋ ሁነታን ይምረጡ።
 የአግኙን ንግግር ለመክፈት እሺን ተጫን ወይም ትኩረትን በእሱ ላይ አስቀምጥ።
 
@@ -1837,8 +1837,8 @@ Are you sure you want to open them?"/><!-- HowToReproduce: Check "Open all files
 			<PrintError title="0" message="የአታሚ ሰነድ መጀመር አልተቻለም።"/><!-- Use title="0" to use Windows OS default translated "Error" title. -->
 			<FindAutoChangeOfInSelectionWarning title="የፍለጋ ማስጠንቀቂያ" message="የ&quot;በምርጫ&quot; አመልካች ሳጥን ሁኔታ በራስ-ሰር ተስተካክሏል።
 እባክዎ እርምጃውን ከማድረግዎ በፊት የፍለጋውን ሁኔታ ያረጋግጡ።"/> <!-- HowToReproduce: https://github.com/notepad-plus-plus/notepad-plus-plus/issues/14897#issuecomment-2564316224 -->
-			<Need2Restart2ShowMenuShortcuts title="ማስታወሻ ደብተር++ እንደገና መጀመር አለበት" message="የቀኝ ምናሌ አቋራጮችን ለማሳየት Notepad++ እንደገና መጀመር አለበት።"/>
-			<NoAdminRight2ChangeReadOnlyFileAttribute title="የፋይል ተነባቢ-ብቻ ባህሪን መቀየር አልተሳካም" message="የፋይሉን ባህሪያት ለመለወጥ እባክዎ Notepad++ን እንደ አስተዳዳሪ ያሂዱ።"/>
+			<Need2Restart2ShowMenuShortcuts title="ማስታወሻ ደብተር++ እንደገና መጀመር አለበት" message="የቀኝ ምናሌ አቋራጮችን ለማሳየት Nextpad++ እንደገና መጀመር አለበት።"/>
+			<NoAdminRight2ChangeReadOnlyFileAttribute title="የፋይል ተነባቢ-ብቻ ባህሪን መቀየር አልተሳካም" message="የፋይሉን ባህሪያት ለመለወጥ እባክዎ Nextpad++ን እንደ አስተዳዳሪ ያሂዱ።"/>
 		</MessageBox>
 		<ClipboardHistory>
 			<PanelTitle name="የቅንጥብ ሰሌዳ ታሪክ"/>
@@ -1958,7 +1958,7 @@ Are you sure you want to open them?"/><!-- HowToReproduce: Check "Open all files
 			<word-chars-list-warning-end value="በባህሪ ዝርዝርዎ ውስጥ።"/><!-- HowToReproduce: In "Delimiter" section of Preferences dialog, check "Add your character as part of word\r(don't choose it unless you know what you're doing)", then type a white-space in the text field. -->
 			<backup-select-folder value="ማህደርን እንደ ምትኬ ማውጫ ምረጥ"/><!-- HowToReproduce: Settings > Preferences > Backup > [...] -->
 			<cloud-invalid-warning value="ልክ ያልሆነ መንገድ።"/>
-			<cloud-restart-warning value="እባክዎን ተግባራዊ ለማድረግ Notepad++ን እንደገና ያስጀምሩ።"/>
+			<cloud-restart-warning value="እባክዎን ተግባራዊ ለማድረግ Nextpad++ን እንደገና ያስጀምሩ።"/>
 			<cloud-select-folder value="የማስታወሻ ደብተር++ ቅንብሩን የሚያነብ/የሚጽፍበት/ወደላይ ማህደር ምረጥ"/><!-- HowToReproduce: In "Cloud" section of Preferences dialog, check "Set your cloud location path here: ", then click the button "...". This message is displayed in the "Browse For Folder" dialog. -->
 			<default-open-save-select-folder value="ማህደርን እንደ ነባሪ ማውጫ ምረጥ"/><!-- HowToReproduce: Settings > Preferences > Default Directory > [...] -->
 			<shift-change-direction-tip value="በተቃራኒ አቅጣጫ ለመፈለግ Shift+Enterን ይጠቀሙ"/>
@@ -2118,7 +2118,7 @@ C፣ C++፣ Java፣ C#፣ Objective-C፣ PHP፣ JavaScript፣ JSP፣ CSS፣ Perl
 
 			<!-- Don't translate "Global override" and "Default Style" -->
 			<global-override-tip value="እዚህ &quot;አለምአቀፍ መሻር&quot;ን ማንቃት ያንን ልኬት በሁሉም የቋንቋ ዘይቤዎች ይሽራል።እርስዎ የሚፈልጉት ነገር በምትኩ የ&quot;Default Style&quot; መቼቶችን መጠቀም ነው"/>
-			<scintillaRenderingTechnology-tip value="የልዩ ቁምፊዎችን አተረጓጎም ሊያሻሽል ወይም አንዳንድ የግራፊክስ ችግሮችን ሊፈታ ይችላል፣ ለውጦቹን ተግባራዊ ለማድረግ Notepad++ን እንደገና ያስጀምሩ።"/>
+			<scintillaRenderingTechnology-tip value="የልዩ ቁምፊዎችን አተረጓጎም ሊያሻሽል ወይም አንዳንድ የግራፊክስ ችግሮችን ሊፈታ ይችላል፣ ለውጦቹን ተግባራዊ ለማድረግ Nextpad++ን እንደገና ያስጀምሩ።"/>
 
 			<!-- Due to the limited space on the status bar, if the translations for 'length' & 'lines' are much longer than the English words, please leave them in English instead of translating them. -->
 			<statusbar-length-lines value="ርዝመት፡ $STR_REPLACE1$ መስመሮች፡ $STR_REPLACE2$"/>

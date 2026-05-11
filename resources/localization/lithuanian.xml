@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <!--
-    Lithuanian localization for Notepad++
+    Lithuanian localization for Nextpad++
     =====================================
     2012.11.05 - v. 6.2   - Dmitrijus Skunčikas (dmitrijus.skuncikas@gmail.com)
     2018.07.11 - v. 7.5.7 - Andrius Burokas
@@ -283,15 +283,15 @@
 					<Item id="46001" name="Stilių redaktorius..."/>
 					<Item id="46250" name="Apibrėžti savo kalbą..."/>
 					<Item id="46180" name="Vartotojo apibrėžta"/>
-					<Item id="47000" name="Apie Notepad++..."/>
+					<Item id="47000" name="Apie Nextpad++..."/>
 					<Item id="47010" name="Komandų eilutės parametrai..."/>
-					<Item id="47001" name="Notepad++ tinklapis"/>
-					<Item id="47002" name="Notepad++ projekto puslapis"/>
+					<Item id="47001" name="Nextpad++ tinklapis"/>
+					<Item id="47002" name="Nextpad++ projekto puslapis"/>
 					<Item id="47003" name="Dokumentacija internete"/>
 					<Item id="47004" name="Forumas"/>
 					<Item id="47012" name="Derinimo informacija..."/>
 					<Item id="47005" name="Daugiau priedų"/>
-					<Item id="47006" name="Atnaujinti Notepad++"/>
+					<Item id="47006" name="Atnaujinti Nextpad++"/>
 					<Item id="47009" name="Nustatyti įgaliotąjį serverį..."/>
 					<Item id="48005" name="Importuoti priedą(us) ..."/>
 					<Item id="48006" name="Importuoti temą(as) ..."/>
@@ -842,10 +842,10 @@
 
 				<MultiInstance title="Programos langai">
 					<Item id="6151" name="Programos langų nustatymai"/>
-					<Item id="6152" name="Atidayti sesiją naujame Notepad++ lange"/>
+					<Item id="6152" name="Atidayti sesiją naujame Nextpad++ lange"/>
 					<Item id="6153" name="Daugelio programos langų režimas"/>
 					<Item id="6154" name="Pagal nutylėjimą (vieno lango režimas)"/>
-					<Item id="6155" name="* Nustatymų pakeitimai reikalauja paleisti Notepad++ iš naujo"/>
+					<Item id="6155" name="* Nustatymų pakeitimai reikalauja paleisti Nextpad++ iš naujo"/>
 				</MultiInstance>
 
 				<Delimiter title="Skirtukas">
@@ -884,7 +884,7 @@
 					<Item id="6319" name="Įgalinti"/>
 					<Item id="6320" name="Nepabrauktas"/>
 					<Item id="6322" name="Sesijos failo išplėtimas:"/>
-					<Item id="6323" name="Įgalinti Notepad++ automatinį naujinimą"/>
+					<Item id="6323" name="Įgalinti Nextpad++ automatinį naujinimą"/>
 					<Item id="6324" name="Dokumentų perjungimas (Ctrl+TAB)"/>
 					<Item id="6331" name="Rodyti tik failo pavadinimą antraštės juostoje"/>
 					<Item id="6334" name="Automatiškai aptikti koduotę"/>
@@ -1046,7 +1046,7 @@
 				<Item id="90104" name="Iš naujo įkelti iš disko"/>
 				<Item id="90105" name="Pakeisti paieškos variklį"/>
 				<Item id="90106" name="Vykdymo klaida"/>
-				<Item id="90107" name="Notepad++ įkėlimo laikas"/>
+				<Item id="90107" name="Nextpad++ įkėlimo laikas"/>
 				<Item id="90108" name="Nepavyko patikrinti, ar nėra naujinimų"/>
 				<Item id="90109" name="Jūs esate naujausia"/>
 				<Item id="90110" name="Parsisiųsti"/>
@@ -1132,7 +1132,7 @@
 				<Item id="90189" name="„Windows“ (CRLF)"/>
 				<Item id="90190" name="Mac (CR)"/>
 				<Item id="90191" name="Papildinių sąrašo saugykla"/>
-				<Item id="90192" name="Pasirinkite Notepad++ temos XML failą, kurį norite taikyti"/>
+				<Item id="90192" name="Pasirinkite Nextpad++ temos XML failą, kurį norite taikyti"/>
 				<Item id="90193" name="Sukurti naują\u2026"/>
 				<Item id="90194" name="Išsaugoti kaip\u2026"/>
 				<Item id="90195" name="Vartotojo kalba:"/>
@@ -1145,7 +1145,7 @@
 				<Item id="90202" name="Neteisingas diapazonas"/>
 				<Item id="90203" name="Diapazono reikšmės turi būti 0–255, o pradžia turi būti &lt;= pabaiga."/>
 				<Item id="90204" name="ContextMenu.xml Nerasta"/>
-				<Item id="90205" name="Iš naujo paleiskite Notepad++, kad atkurtumėte numatytąjį kontekstinį meniu.xml."/>
+				<Item id="90205" name="Iš naujo paleiskite Nextpad++, kad atkurtumėte numatytąjį kontekstinį meniu.xml."/>
 				<Item id="90206" name="Faile yra neišsaugotų pakeitimų.Iš naujo įkeliant su nauja koduote jie bus atmesti.Tęsti?"/>
 				<Item id="90207" name="Nėra atsakymo iš serverio."/>
 				<Item id="90208" name="Serveris grąžino būseną"/>
@@ -1167,10 +1167,10 @@
 			</MacStrings>
 		</Dialog>
 		<MessageBox><!-- $INT_REPLACE$ saugo bylos vietą, jo neversti -->
-			<ContextMenuXmlEditWarning title="Kontekstinio meniu keitimas" message="contextMenu.xml redagavimas leidžia keisti Notepad++ išklylantį kontekstinį meniu.
-Jūs turite perkrauti Notepad++ tam, kad pakeitimas contextMenu.xml būtų veiksmingas."/>
+			<ContextMenuXmlEditWarning title="Kontekstinio meniu keitimas" message="contextMenu.xml redagavimas leidžia keisti Nextpad++ išklylantį kontekstinį meniu.
+Jūs turite perkrauti Nextpad++ tam, kad pakeitimas contextMenu.xml būtų veiksmingas."/>
 			<NppHelpAbsentWarning title="Failas neegzistuoja" message="
-neegzistuoja. Prašome ją įkelti iš Notepad++ puslapio."/>
+neegzistuoja. Prašome ją įkelti iš Nextpad++ puslapio."/>
 			<SaveCurrentModifWarning title="Išsaugoti dabartinius pakeitimus" message="Jūs turite išsaugoti dabartinius pakeitimus.
 Visi išsaugoti pakeitimai bus negrįžtami.
 
@@ -1179,10 +1179,10 @@ Ar norite tęsti?"/>
 Visi išsaugoti pakeitimai bus negrįžtami.
 
 Ar norite tęsti??"/>
-			<CannotMoveDoc title="Pereiti prie naujo Notepad++ programos lango" message="Dokumentas yra pakeistas, išsaugokite ir mėginkite dar kartą."/>
-			<DocReloadWarning title="Įkėlimas iš naujo" message="Ar jūs tikrai norite iš naujo įkelti dabartinę bylą ir prarasti visus pakeitimus atliktus su Notepad++?"/>
+			<CannotMoveDoc title="Pereiti prie naujo Nextpad++ programos lango" message="Dokumentas yra pakeistas, išsaugokite ir mėginkite dar kartą."/>
+			<DocReloadWarning title="Įkėlimas iš naujo" message="Ar jūs tikrai norite iš naujo įkelti dabartinę bylą ir prarasti visus pakeitimus atliktus su Nextpad++?"/>
 			<FileLockedWarning title="Nepavyko išsaugoti" message="Prašome patikrinti ar šis failas nėra atidaryta kitoje programoje"/>
-			<FileAlreadyOpenedInNpp title="" message="Failas jau yra atidarytas su Notepad++."/>
+			<FileAlreadyOpenedInNpp title="" message="Failas jau yra atidarytas su Nextpad++."/>
 			<DeleteFileFailed title="Failo šalinimas" message="Nepavyko pašalinti failo"/>
             
 			<NbFileToOpenImportantWarning title="Atidaromų failų kiekis yra per didelis" message="Atidaromų failų skaičius: $INT_REPLACE$.
@@ -1213,13 +1213,13 @@ Ar norite jį įkelti iš naujo?"/>
 			<DoReloadOrNotAndLooseChange title="Įkėlimas iš naujo" message="&quot;$STR_REPLACE$&quot;
 
 Šis failas buvo pakeistas kitoje programoje.
-Ar norite jį įkelti iš naujo ir prarasti pakeitimus atliktus su Notepad++?"/>
+Ar norite jį įkelti iš naujo ir prarasti pakeitimus atliktus su Nextpad++?"/>
 			<PrehistoricSystemDetected title="Aptikta sena sistema" message="Naudojate seną sistemą. Ši savybė veikia tik naujesnėse sistemose."/>
-			<XpUpdaterProblem title="Notepad++ atnaujinimas" message="Notepad++ atnaujinimas negalimas XP sistemoje dėl mažo saugumo lygio.
-Ar norite parsisiųsti naujausią versiją iš Notepad++ puslapio?"/>
+			<XpUpdaterProblem title="Nextpad++ atnaujinimas" message="Nextpad++ atnaujinimas negalimas XP sistemoje dėl mažo saugumo lygio.
+Ar norite parsisiųsti naujausią versiją iš Nextpad++ puslapio?"/>
 			<DocTooDirtyToMonitor title="Nuolatinio stebėjimo klaida" message="Dokumentas turi pakeitimų. Išsaugokite juos prieš įjungdami nuolatinį stebėjimą."/>
 			<DocNoExistToMonitor title="Nuolatinio stebėjimo klaida" message="Failas turi egzistuoti."/>
-			<FileTooBigToOpen title="Failo dydžio problema" message="Failas yra per didelis ir negali būti atidarytas su Notepad++"/>
+			<FileTooBigToOpen title="Failo dydžio problema" message="Failas yra per didelis ir negali būti atidarytas su Nextpad++"/>
 			<CreateNewFileOrNot title="Naujas failas" message="&quot;$STR_REPLACE$&quot; neegzistuoja. Ar jį sukurti?"/>
 			<CreateNewFileError title="Naujas failas" message="Nepavyko sukurti failo &quot;$STR_REPLACE$&quot;."/>
 			<OpenFileError title="Klaida" message="Nepavyko atidaryti failo &quot;$STR_REPLACE$&quot;."/>
@@ -1251,10 +1251,10 @@ pakeiskite jį kitu."/>
 			<SCMapperDoDeleteOrNot title="Sparčiojo klavišo šalinimas" message="Ar norite pašalintį spartųjį klavišą?"/>
 			<FindCharRangeValueError title="Ženklų sekos klaida" message="Leidžiama reikšmės yra tarp 0 ir 255."/>
 			<OpenInAdminMode title="Išsaugojimo klaida" message="Failo nepavyko išsaugoti, gali trūkti teisių.
-Ar norite paleisti Notepad++ administratoriaus teisėmis?"/>
+Ar norite paleisti Nextpad++ administratoriaus teisėmis?"/>
 			<OpenInAdminModeWithoutCloseCurrent title="Išsaugojimo klaida" message="Failo nepavyko išsaugoti, gali trūkti teisių.
-Ar norite paleisti Notepad++ administratoriaus teisėmis?"/>
-			<OpenInAdminModeFailed title="Notepad++ paleidimo klaida" message="Notepad++ negali būti paleistas administratoriaus teisėmis."/>
+Ar norite paleisti Nextpad++ administratoriaus teisėmis?"/>
+			<OpenInAdminModeFailed title="Nextpad++ paleidimo klaida" message="Nextpad++ negali būti paleistas administratoriaus teisėmis."/>
 		</MessageBox>
 		<ClipboardHistory>
 			<PanelTitle name="Mainų srities istorija"/>
@@ -1352,7 +1352,7 @@ Ar norite paleisti Notepad++ administratoriaus teisėmis?"/>
 			<word-chars-list-tab-warning value="$INT_REPLACE$ tabuliatorius(iai)"/>
 			<word-chars-list-warning-end value="  ženklų sąraše."/>
 			<cloud-invalid-warning value="Neteisingas kelias."/>
-			<cloud-restart-warning value="Norėdami pritaikyti pakeitimus, paleiskite Notepad++ iš naujo."/>
+			<cloud-restart-warning value="Norėdami pritaikyti pakeitimus, paleiskite Nextpad++ iš naujo."/>
 			<cloud-select-folder value="Pasirinkite katalogą kuriame bus saugomi debesijos nustatymai"/>
 			<shift-change-direction-tip value="Naudokite Shift+Enter paieškai atvirkštine kryptimi"/>
 			<two-find-buttons-tip value="2 paieškos mygtukų režimas"/>

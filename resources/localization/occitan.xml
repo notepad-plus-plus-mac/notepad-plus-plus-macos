@@ -286,13 +286,13 @@
 					<Item id="46250" name="Definís lo lengage..."/>
 					<Item id="46180" name="Definit per l'utilizaire"/>
 					
-					<Item id="47000" name="A prepaus de Notepad++..."/>
-					<Item id="47001" name="Pagina web de Notepad++"/>
-					<Item id="47002" name="Pagina del projècte Notepad++"/>
+					<Item id="47000" name="A prepaus de Nextpad++..."/>
+					<Item id="47001" name="Pagina web de Nextpad++"/>
+					<Item id="47002" name="Pagina del projècte Nextpad++"/>
 					<Item id="47003" name="Documentacion en linha"/>
-					<Item id="47004" name="Comunautat Notepad++ (Forum)"/>
+					<Item id="47004" name="Comunautat Nextpad++ (Forum)"/>
 					<Item id="47005" name="Obténer mai d'ajustons"/>
-					<Item id="47006" name="Actualizar Notepad++"/>
+					<Item id="47006" name="Actualizar Nextpad++"/>
 					<Item id="47009" name="Configurar lo proxy d'actualizacion..."/>
 					<Item id="47010" name="Arguments en linha de comandas..."/>
 					<Item id="47012" name="Informacions de debug..."/>
@@ -852,10 +852,10 @@
 				
 				<MultiInstance title="Multi-instància">
 					<Item id="6151" name="Paramètres de multi-instància"/>
-					<Item id="6152" name="Dobrir la session dins una nòva instància de Notepad++"/>
+					<Item id="6152" name="Dobrir la session dins una nòva instància de Nextpad++"/>
 					<Item id="6153" name="Totjorn en mòde multi-instància"/>
 					<Item id="6154" name="Defaut (mono-instància)"/>
-					<Item id="6155" name="La modificacion d'aquel paramètre necessita de tornar lançar Notepad++"/>
+					<Item id="6155" name="La modificacion d'aquel paramètre necessita de tornar lançar Nextpad++"/>
 				</MultiInstance>
 				
 				<Delimiter title="Delimitador">
@@ -1037,7 +1037,7 @@
 				<Item id="90104" name="Reload from Disk"/>
 				<Item id="90105" name="Change Search Engine"/>
 				<Item id="90106" name="Run Error"/>
-				<Item id="90107" name="Notepad++ Loading Time"/>
+				<Item id="90107" name="Nextpad++ Loading Time"/>
 				<Item id="90108" name="Unable to Check for Updates"/>
 				<Item id="90109" name="You're Up to Date"/>
 				<Item id="90110" name="Download"/>
@@ -1123,7 +1123,7 @@
 				<Item id="90189" name="Windows (CRLF)"/>
 				<Item id="90190" name="Mac (CR)"/>
 				<Item id="90191" name="Plugin list repository"/>
-				<Item id="90192" name="Select a Notepad++ theme XML file to apply"/>
+				<Item id="90192" name="Select a Nextpad++ theme XML file to apply"/>
 				<Item id="90193" name="Create new\u2026"/>
 				<Item id="90194" name="Save as\u2026"/>
 				<Item id="90195" name="User language:"/>
@@ -1136,7 +1136,7 @@
 				<Item id="90202" name="Invalid Range"/>
 				<Item id="90203" name="Range values must be 0-255 and start must be &lt;= end."/>
 				<Item id="90204" name="contextMenu.xml Not Found"/>
-				<Item id="90205" name="Restart Notepad++ to regenerate the default contextMenu.xml."/>
+				<Item id="90205" name="Restart Nextpad++ to regenerate the default contextMenu.xml."/>
 				<Item id="90206" name="The file has unsaved changes. Reloading with the new encoding will discard them. Continue?"/>
 				<Item id="90207" name="No response from server."/>
 				<Item id="90208" name="Server returned status"/>
@@ -1158,20 +1158,20 @@
 			</MacStrings>
 		</Dialog>
 		<MessageBox><!-- $INT_REPLACE$ is a place holder, don't translate it -->
-			<ContextMenuXmlEditWarning title="Modificacion de contextMenu.xml" message="Modificar contextMenu.xml vos permet de modificar lo menú contextual de Notepad++.
-Deuretz tornar lançar Notepad++ per que siá efectiu."/>
+			<ContextMenuXmlEditWarning title="Modificacion de contextMenu.xml" message="Modificar contextMenu.xml vos permet de modificar lo menú contextual de Nextpad++.
+Deuretz tornar lançar Nextpad++ per que siá efectiu."/>
 			<NppHelpAbsentWarning title="Lo fichièr exista pas" message="
-			exista pas. Mercés de lo descargar sul site de Notepad++."/>
+			exista pas. Mercés de lo descargar sul site de Nextpad++."/>
 			<SaveCurrentModifWarning title="Salvar las modificacions" message="Deuriatz salvar la modificacion actuala.
 			Podètz desfar totas las modificacions salvadas.
 			Contunhar ?"/>
 			<LoseUndoAbilityWarning title="Avertiment : pèrda de possibilitat de desfar" message="Deuriatz salvar la modificacion actuala.
 			Las modificacions salvadas pòdon pas èsser desfachas.
 			Contunhar ?"/>
-			<CannotMoveDoc title="Desplaçar dins una nòva instància de Notepad++" message="Lo document es estat modificat, salvatz e tornatz ensajar."/>
-			<DocReloadWarning title="Tornar cargar" message="Sètz segur(a) de voler tornar cargar lo document actiu e pèrdre los cambiaments efectuats dins Notepad++ ?"/>
+			<CannotMoveDoc title="Desplaçar dins una nòva instància de Nextpad++" message="Lo document es estat modificat, salvatz e tornatz ensajar."/>
+			<DocReloadWarning title="Tornar cargar" message="Sètz segur(a) de voler tornar cargar lo document actiu e pèrdre los cambiaments efectuats dins Nextpad++ ?"/>
 			<FileLockedWarning title="Salvar lo fichièr" message="Mercés de verificar s'aquel fichièr es dobèrt dins un autre programa"/>
-			<FileAlreadyOpenedInNpp title="" message="Aqueste fichièr es dejà dobèrt dins Notepad++."/>
+			<FileAlreadyOpenedInNpp title="" message="Aqueste fichièr es dejà dobèrt dins Nextpad++."/>
 			<DeleteFileFailed title="Suprimir lo fichièr" message="La supression del fichièr a pas capitat"/>
 
 			<NbFileToOpenImportantWarning title="I a tròp de fichièrs de dobrir" message="$INT_REPLACE$ fichièrs son a mand d'èsser dobèrts
@@ -1200,13 +1200,13 @@ Deuretz tornar lançar Notepad++ per que siá efectiu."/>
 			Lo volètz tornar cargar ?"/>
 			<DoReloadOrNotAndLooseChange title="Tornar cargar" message="&quot;$STR_REPLACE$&quot;
 			Aquel fichièr a estat modificat per un autre programa.
-			Lo volètz tornar cargar e pèrdre los cambiaments efectuats dins Notepad++ ?"/>
+			Lo volètz tornar cargar e pèrdre los cambiaments efectuats dins Nextpad++ ?"/>
 			<PrehistoricSystemDetected title="Sistèma preistoric detectat" message="Semblariá qu'utilizetz encara un sistèma preistoric. Aquela fonccionalitat marcha pas que sus un sistèma modèrne, excusatz."/>
-			<XpUpdaterProblem title="Actualizador Notepad++" message="L'actualizador Notepad++ es pas compatible amb XP a causa que lo jaç de seguretat jos XP es obsolèt.
-			Volètz anar a la pagina d'acuèlh de Notepad++ per descargar la darrièra version ?"/>
+			<XpUpdaterProblem title="Actualizador Nextpad++" message="L'actualizador Nextpad++ es pas compatible amb XP a causa que lo jaç de seguretat jos XP es obsolèt.
+			Volètz anar a la pagina d'acuèlh de Nextpad++ per descargar la darrièra version ?"/>
 			<DocTooDirtyToMonitor title="Problèma de susvelhança" message="Aqueste document a pas estat salvat. Mercés de salvar las modificacions abans de lo susvelhar."/>
 			<DocNoExistToMonitor title="Problèma de susvelhança" message="Lo fichièr deu existar per èsser susvelhat."/>
-			<FileTooBigToOpen title="Problèma de talha de fichièr" message="Lo fichièr es tròp voluminós per èsser dobèrt amb Notepad++"/>
+			<FileTooBigToOpen title="Problèma de talha de fichièr" message="Lo fichièr es tròp voluminós per èsser dobèrt amb Nextpad++"/>
 			<CreateNewFileOrNot title="Crear un fichièr novèl" message="&quot;$INT_REPLACE$&quot; exista pas. Lo volètz crear ?"/>
 			<CreateNewFileError title="Crear un fichièr novèl" message="Impossible de crear lo fichièr &quot;$INT_REPLACE$&quot;."/>
 			<OpenFileError title="ERROR" message="Impossible de dobrir lo fichièr &quot;$INT_REPLACE$&quot;."/>
@@ -1329,8 +1329,8 @@ Deuretz tornar lançar Notepad++ per que siá efectiu."/>
 			<word-chars-list-tab-warning value="$INT_REPLACE$ tabulacion(s)"/>
 			<word-chars-list-warning-end value="  dins la vòstra tièra de caractèrs."/>
 			<cloud-invalid-warning value="Camin invalid."/>
-			<cloud-restart-warning value="Mercés de tornar lançar Notepad++ per que siá efectiu."/>
-			<cloud-select-folder value="Seleccionar un dorsièr d'ont Notepad++ escriu/legís sos paramètres"/>
+			<cloud-restart-warning value="Mercés de tornar lançar Nextpad++ per que siá efectiu."/>
+			<cloud-select-folder value="Seleccionar un dorsièr d'ont Nextpad++ escriu/legís sos paramètres"/>
 			<shift-change-direction-tip value="Utilizar Maj. + Entradaper cercar dins l'autre sens"/>
 			<two-find-buttons-tip value="2 mòdes de boton Cercar"/>
 

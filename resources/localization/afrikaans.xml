@@ -163,8 +163,8 @@
 
 					<Item id="46001" name="Styler Konfigurator..."/>
 					<Item id="47000" name="Hier oor..."/>
-					<Item id="47001" name="Notepad++ Tuis"/>
-					<Item id="47002" name="Notepad++ Projek Bladsy"/>
+					<Item id="47001" name="Nextpad++ Tuis"/>
+					<Item id="47002" name="Nextpad++ Projek Bladsy"/>
 					<Item id="47003" name="Oplyn help"/>
 					<Item id="47004" name="Forum"/>
 					<Item id="47005" name="Kry meer inkoppelings"/>
@@ -462,7 +462,7 @@
 					<Item id="6319" name="Aktiveer"/>
 					<Item id="6320" name="Moet nie onderstreep teken nie"/>
 					<Item id="6322" name="Sessie Leêr ext:"/>
-					<Item id="6323" name="Aktiveer Notepad++ auto-opdateerder"/>
+					<Item id="6323" name="Aktiveer Nextpad++ auto-opdateerder"/>
 					<Item id="6324" name="Dokument skakelaar (Ctrl+TAB)"/>
 					<Item id="6326" name="Aktiveer slim uitligting"/>
 					<Item id="6329" name="Uitligting vergelykte tags"/>
@@ -628,7 +628,7 @@
 				<Item id="90104" name="Herlaai vanaf skyf"/>
 				<Item id="90105" name="Verander soekenjin"/>
 				<Item id="90106" name="Hardloopfout"/>
-				<Item id="90107" name="Notepad++ Laaityd"/>
+				<Item id="90107" name="Nextpad++ Laaityd"/>
 				<Item id="90108" name="Kan nie kyk vir opdaterings nie"/>
 				<Item id="90109" name="Jy is op datum"/>
 				<Item id="90110" name="Laai af"/>
@@ -714,7 +714,7 @@
 				<Item id="90189" name="Windows (CRLF)"/>
 				<Item id="90190" name="Mac (CR)"/>
 				<Item id="90191" name="Inproplys-bewaarplek"/>
-				<Item id="90192" name="Kies 'n Notepad++-tema XML-lêer om toe te pas"/>
+				<Item id="90192" name="Kies 'n Nextpad++-tema XML-lêer om toe te pas"/>
 				<Item id="90193" name="Skep nuwe\u2026"/>
 				<Item id="90194" name="Stoor as\u2026"/>
 				<Item id="90195" name="Gebruikerstaal:"/>
@@ -727,7 +727,7 @@
 				<Item id="90202" name="Ongeldige reeks"/>
 				<Item id="90203" name="Reekswaardes moet 0-255 wees en begin moet &lt;= einde wees."/>
 				<Item id="90204" name="contextMenu.xml Nie gevind nie"/>
-				<Item id="90205" name="Herbegin Notepad++ om die verstek contextMenu.xml te herstel."/>
+				<Item id="90205" name="Herbegin Nextpad++ om die verstek contextMenu.xml te herstel."/>
 				<Item id="90206" name="Die lêer het ongestoorde veranderinge.Herlaai met die nuwe enkodering sal hulle weggooi.Gaan voort?"/>
 				<Item id="90207" name="Geen reaksie vanaf bediener nie."/>
 				<Item id="90208" name="Bediener het status teruggegee"/>
