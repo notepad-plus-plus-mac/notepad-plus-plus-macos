@@ -950,10 +950,13 @@ static NSUInteger nppLargeFileThreshold(void) {
     // No change if mtime matches what we last recorded.
     if (_lastKnownModDate && [mtime compare:_lastKnownModDate] != NSOrderedDescending) return;
 
+    if (![[NSUserDefaults standardUserDefaults] boolForKey:kPrefFileStatusAutoDetection]) return;
+
     _lastKnownModDate = mtime;
     _externalChangePending = YES;
 
-    if (_monitoringMode) {
+    BOOL updateSilently = [[NSUserDefaults standardUserDefaults] boolForKey:kPrefFileStatusUpdateSilently];
+    if (_monitoringMode || (updateSilently && !_isModified)) {
         NSError *err;
         [self loadFileAtPath:_filePath error:&err];
         _externalChangePending = NO;

@@ -339,6 +339,8 @@ void writeConfigXML(void) {
     NSInteger inSelThr = [ud integerForKey:kPrefInSelThreshold];
     NSInteger darkMode = [ud integerForKey:kPrefDarkMode];
     BOOL spellCheck    = [ud boolForKey:kPrefSpellCheck];
+    BOOL fileAutoDetect = [ud boolForKey:kPrefFileStatusAutoDetection];
+    BOOL fileUpdateSilent = [ud boolForKey:kPrefFileStatusUpdateSilently];
 
     // Fold style names matching Windows: box, circle, arrow, simple, none
     NSArray *foldNames = @[@"box", @"circle", @"arrow", @"simple", @"none"];
@@ -451,8 +453,10 @@ void writeConfigXML(void) {
     BOOL funcListXML = [ud boolForKey:kPrefFuncListUseXML];
     [xml appendFormat:@"        <GUIConfig name=\"MISC\" muteSounds=\"%@\" "
      @"disableTextDragDrop=\"%@\" spellCheck=\"%@\" "
-     @"panelKeepState=\"%@\" funcListUseXML=\"%@\" />\n",
-     _yn(muteSounds), _yn(disableDrag), _yn(spellCheck), _yn(panelKeep), _yn(funcListXML)];
+     @"panelKeepState=\"%@\" funcListUseXML=\"%@\" "
+     @"fileAutoDetection=\"%@\" fileAutoDetectionUpdate=\"%@\" />\n",
+     _yn(muteSounds), _yn(disableDrag), _yn(spellCheck), _yn(panelKeep), _yn(funcListXML),
+     _yn(fileAutoDetect), _yn(fileUpdateSilent)];
 
     // ScintillaPrimaryView
     [xml appendFormat:@"        <GUIConfig name=\"ScintillaPrimaryView\" "
@@ -641,6 +645,14 @@ void readConfigXML(void) {
                 [ud setBool:_ynBool(v) forKey:kPrefPanelKeepState];
             if ((v = [el attributeForName:@"funcListUseXML"].stringValue))
                 [ud setBool:_ynBool(v) forKey:kPrefFuncListUseXML];
+            if ((v = [el attributeForName:@"fileAutoDetection"].stringValue))
+                [ud setBool:_ynBool(v) forKey:kPrefFileStatusAutoDetection];
+            if ((v = [el attributeForName:@"fileAutoDetectionUpdate"].stringValue))
+                [ud setBool:_ynBool(v) forKey:kPrefFileStatusUpdateSilently];
+            if ((v = [el attributeForName:@"fileStatusAutoDetection"].stringValue))
+                [ud setBool:_ynBool(v) forKey:kPrefFileStatusAutoDetection];
+            if ((v = [el attributeForName:@"fileStatusUpdateSilently"].stringValue))
+                [ud setBool:_ynBool(v) forKey:kPrefFileStatusUpdateSilently];
         }
         else if ([name isEqualToString:@"ScintillaPrimaryView"]) {
             NSString *v;
