@@ -102,11 +102,19 @@ static gboolean on_map_motion(GtkWidget *w, GdkEventMotion *ev, gpointer d)
 /* Apply minimap-specific view settings                               */
 /* ------------------------------------------------------------------ */
 
+static gboolean on_mini_key_press(GtkWidget *w, GdkEventKey *ev, gpointer d)
+{
+    (void)w; (void)ev; (void)d;
+    return TRUE;  /* swallow all key events — minimap is display-only */
+}
+
 static void apply_minimap_settings(void)
 {
     if (!s_mini) return;
 
-    scintilla_send_message(SCINTILLA(s_mini), SCI_SETREADONLY, 1, 0);
+    /* Do NOT call SCI_SETREADONLY here: after SCI_SETDOCPOINTER the minimap
+     * shares the main editor's Document, so setting readonly would lock the
+     * main editor too.  Keyboard input is blocked via on_mini_key_press. */
     scintilla_send_message(SCINTILLA(s_mini), SCI_SETZOOM,
                            (uptr_t)(sptr_t)(-10), 0);
     scintilla_send_message(SCINTILLA(s_mini), SCI_SETWRAPMODE,
@@ -133,6 +141,9 @@ GtkWidget *docmap_init(void)
 {
     /* Minimap Scintilla */
     s_mini = scintilla_new();
+    gtk_widget_add_events(s_mini, GDK_KEY_PRESS_MASK);
+    g_signal_connect(s_mini, "key-press-event",
+                     G_CALLBACK(on_mini_key_press), NULL);
     apply_minimap_settings();
 
     /* Overlay drawing area: captures all pointer events so Scintilla

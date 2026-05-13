@@ -89,6 +89,7 @@ static void reload_doc_from_disk(NppDoc *doc)
     doc->encoding = g_strdup(enc_name);
 
     Sci_Position saved_pos = (Sci_Position)sci_msg(doc->sci, SCI_GETCURRENTPOS, 0, 0);
+    sci_msg(doc->sci, SCI_SETREADONLY, 0, 0);
     s_loading_file = TRUE;
     sci_msg(doc->sci, SCI_SETTEXT, 0, (sptr_t)utf8);
     sci_msg(doc->sci, SCI_SETSAVEPOINT, 0, 0);
@@ -698,15 +699,25 @@ gboolean editor_open_path(const char *path)
     NppDoc *cur = editor_current_doc();
     int page;
     GtkWidget *sci;
-    gboolean reuse = FALSE;
     if (cur && !cur->filepath && !cur->modified &&
         sci_msg(cur->sci, SCI_GETLENGTH, 0, 0) == 0) {
+        /* Replace the old empty Scintilla with a fresh widget so it goes
+         * through the same realize→map lifecycle as the new-tab case. */
         page = editor_current_page();
-        sci  = cur->sci;
+        sci = scintilla_new();
+        cur->sci = sci;
         g_free(cur->filepath);
-        cur->filepath   = g_strdup(path);
-        cur->new_index  = 0;
-        reuse = TRUE;
+        cur->filepath  = g_strdup(path);
+        cur->new_index = 0;
+        g_object_set_data(G_OBJECT(sci), "npp-doc", cur);
+        setup_sci(sci);
+        g_signal_connect(sci, "sci-notify", G_CALLBACK(on_sci_notify), NULL);
+        GtkWidget *label = make_tab_label(cur, sci);
+        gtk_notebook_remove_page(GTK_NOTEBOOK(s_notebook), page);
+        gtk_notebook_insert_page(GTK_NOTEBOOK(s_notebook), sci, label, page);
+        gtk_notebook_set_tab_reorderable(GTK_NOTEBOOK(s_notebook), sci, TRUE);
+        gtk_widget_show_all(s_notebook);
+        gtk_notebook_set_current_page(GTK_NOTEBOOK(s_notebook), page);
     } else {
         s_new_count++;
         NppDoc *doc = g_new0(NppDoc, 1);
@@ -736,22 +747,17 @@ gboolean editor_open_path(const char *path)
     g_free(cur->encoding);
     cur->encoding = g_strdup(enc_name);
 
-    if (reuse) {
-        /* The reuse path skips gtk_notebook_set_current_page, so Scintilla
-         * never gets a fresh size-allocate before we load the text.  Send
-         * one explicitly so its internal linesOnScreen / scroll-range state
-         * is current; without this the widget renders blank after SCI_SETTEXT. */
-        GtkAllocation alloc;
-        gtk_widget_get_allocation(sci, &alloc);
-        gtk_widget_size_allocate(sci, &alloc);
-    }
-
+    /* docmap_update (triggered by switch-page above) shares this widget's
+     * Document with the minimap via SCI_SETDOCPOINTER, which can leave it
+     * read-only.  Clear that before loading to ensure SCI_SETTEXT succeeds. */
+    sci_msg(sci, SCI_SETREADONLY, 0, 0);
     s_loading_file = TRUE;
     sci_msg(sci, SCI_SETTEXT, 0, (sptr_t)utf8);
     sci_msg(sci, SCI_SETSAVEPOINT, 0, 0);
     sci_msg(sci, SCI_EMPTYUNDOBUFFER, 0, 0);
     s_loading_file = FALSE;
     sci_msg(sci, SCI_GOTOPOS, 0, 0);
+
     g_free(utf8);
 
     lexer_apply_from_path(sci, path);
