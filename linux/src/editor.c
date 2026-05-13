@@ -698,6 +698,7 @@ gboolean editor_open_path(const char *path)
     NppDoc *cur = editor_current_doc();
     int page;
     GtkWidget *sci;
+    gboolean reuse = FALSE;
     if (cur && !cur->filepath && !cur->modified &&
         sci_msg(cur->sci, SCI_GETLENGTH, 0, 0) == 0) {
         page = editor_current_page();
@@ -705,6 +706,7 @@ gboolean editor_open_path(const char *path)
         g_free(cur->filepath);
         cur->filepath   = g_strdup(path);
         cur->new_index  = 0;
+        reuse = TRUE;
     } else {
         s_new_count++;
         NppDoc *doc = g_new0(NppDoc, 1);
@@ -733,6 +735,16 @@ gboolean editor_open_path(const char *path)
     g_free(contents);
     g_free(cur->encoding);
     cur->encoding = g_strdup(enc_name);
+
+    if (reuse) {
+        /* The reuse path skips gtk_notebook_set_current_page, so Scintilla
+         * never gets a fresh size-allocate before we load the text.  Send
+         * one explicitly so its internal linesOnScreen / scroll-range state
+         * is current; without this the widget renders blank after SCI_SETTEXT. */
+        GtkAllocation alloc;
+        gtk_widget_get_allocation(sci, &alloc);
+        gtk_widget_size_allocate(sci, &alloc);
+    }
 
     s_loading_file = TRUE;
     sci_msg(sci, SCI_SETTEXT, 0, (sptr_t)utf8);
