@@ -1676,7 +1676,13 @@ static NSDictionary<NSString *, NSArray *> *toolbarGroupMap(void) {
     // would only render empty space below the icons. See
     // docs/issue-26-toolbar-icon-and-text.md for the full analysis. Will be
     // re-enabled when toolbar is refactored to one NSToolbarItem per button.
-    if (@available(macOS 13.0, *)) {
+    // Issue #114 — `allowsDisplayModeCustomization` was actually added in
+    // macOS 15 Sequoia (not 13, as the original commit message claimed). On
+    // macOS 13/14 the runtime selector doesn't exist, and the bad @available
+    // gate triggered an unrecognized-selector exception during init that
+    // partially destroyed the window setup and made File > New fall through
+    // to NSDocumentController. Gate set to the correct minimum below.
+    if (@available(macOS 15.0, *)) {
         tb.allowsDisplayModeCustomization = NO;
     }
     self.window.toolbar = tb;
