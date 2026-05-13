@@ -3855,6 +3855,20 @@ static gboolean on_delete_event(GtkWidget *w, GdkEvent *e, gpointer app)
 /* Application activate                                               */
 /* ------------------------------------------------------------------ */
 
+static gboolean on_session_restore_idle(gpointer unused)
+{
+    (void)unused;
+    session_restore();
+    NppDoc *doc = editor_current_doc();
+    statusbar_update_from_sci(doc->sci);
+    lang_menu_sync((const char *)g_object_get_data(G_OBJECT(doc->sci), "npp-lang"));
+    eol_menu_sync((int)scintilla_send_message(SCINTILLA(doc->sci), SCI_GETEOLMODE, 0, 0));
+    apply_view_symbols(doc->sci);
+    apply_edge(doc->sci);
+    gtk_widget_grab_focus(doc->sci);
+    return G_SOURCE_REMOVE;
+}
+
 static void on_activate(GtkApplication *app, gpointer data)
 {
     (void)data;
@@ -3970,19 +3984,20 @@ static void on_activate(GtkApplication *app, gpointer data)
     charpanel_set_visible(FALSE);
     editor_incr_search_close(); /* hide the incremental search bar */
 
-    /* Restore previous session (only when no files given on CLI) */
-    if (s_restore_session)
-        session_restore();
-
-    NppDoc *initial = editor_current_doc();
-    statusbar_update_from_sci(initial->sci);
-    lang_menu_sync((const char *)g_object_get_data(G_OBJECT(initial->sci), "npp-lang"));
-    eol_menu_sync((int)scintilla_send_message(SCINTILLA(initial->sci), SCI_GETEOLMODE, 0, 0));
-    apply_view_symbols(initial->sci);
-    apply_edge(initial->sci);
-
-    /* Defer focus grab until after the window's first map+layout pass */
-    g_idle_add((GSourceFunc)gtk_widget_grab_focus, initial->sci);
+    /* Restore previous session after the first layout pass so Scintilla has
+     * real pixel dimensions before SCI_SETTEXT is called (avoids blank view
+     * on large files opened via session restore). */
+    if (s_restore_session) {
+        g_idle_add(on_session_restore_idle, NULL);
+    } else {
+        NppDoc *initial = editor_current_doc();
+        statusbar_update_from_sci(initial->sci);
+        lang_menu_sync((const char *)g_object_get_data(G_OBJECT(initial->sci), "npp-lang"));
+        eol_menu_sync((int)scintilla_send_message(SCINTILLA(initial->sci), SCI_GETEOLMODE, 0, 0));
+        apply_view_symbols(initial->sci);
+        apply_edge(initial->sci);
+        g_idle_add((GSourceFunc)gtk_widget_grab_focus, initial->sci);
+    }
 }
 
 /* ------------------------------------------------------------------ */
