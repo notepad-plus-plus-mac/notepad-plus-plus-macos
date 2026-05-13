@@ -112,7 +112,14 @@
     if (opts.matchCase) flags |= SCFIND_MATCHCASE;
     if (opts.wholeWord && opts.searchType != NPPSearchRegex) flags |= SCFIND_WHOLEWORD;
     if (opts.searchType == NPPSearchRegex) {
-        flags |= SCFIND_REGEXP | SCFIND_POSIX;
+        // Issue #108 — SCFIND_POSIX selects Scintilla's RESearch engine which
+        // lacks `|` alternation, lookaheads, non-capturing groups, and `\b`
+        // word boundaries (RESearch uses `\<` and `\>` instead). SCFIND_CXX11REGEX
+        // routes to std::regex (ECMAScript flavor), giving feature parity with
+        // Windows NPP Boost.Regex for in-line patterns. Multi-line patterns
+        // crossing `\n` still don't work because our build doesn't define
+        // REGEX_MULTILINE — the line-by-line scan in MatchOnLines remains.
+        flags |= SCFIND_REGEXP | SCFIND_CXX11REGEX;
         if (opts.dotMatchesNewline) flags |= 0x10000000; // SCFIND_REGEXP_DOTMATCHESNL
     }
     return flags;

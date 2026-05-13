@@ -3408,7 +3408,9 @@ static NSSet<NSString *> *_cLikeLanguages() {
     sptr_t endPos   = [sci message:SCI_GETLINEENDPOSITION wParam:(uptr_t)line];
     if (startPos >= endPos) return NO;
 
-    [sci message:SCI_SETSEARCHFLAGS wParam:SCFIND_REGEXP | SCFIND_POSIX];
+    // Use std::regex (CXX11REGEX) so the `|` alternations in `expr` actually
+    // work — Scintilla's POSIX RESearch treats `|` as a literal pipe.
+    [sci message:SCI_SETSEARCHFLAGS wParam:SCFIND_REGEXP | SCFIND_CXX11REGEX];
     [sci message:SCI_SETTARGETRANGE wParam:(uptr_t)startPos lParam:endPos];
 
     const char expr[] = "((else[ \t]+)?if|for|while)[ \t]*[(].*[)][ \t]*|else[ \t]*";
@@ -3583,7 +3585,9 @@ static NSSet<NSString *> *_cLikeLanguages() {
         sptr_t endPos   = [sci message:SCI_GETLINEENDPOSITION wParam:(uptr_t)prevLine];
 
         if (startPos < endPos) {
-            [sci message:SCI_SETSEARCHFLAGS wParam:SCFIND_REGEXP | SCFIND_POSIX];
+            // Use std::regex (CXX11REGEX) so the `(#|$)` alternation works —
+            // POSIX RESearch would match the parens/pipe literally.
+            [sci message:SCI_SETSEARCHFLAGS wParam:SCFIND_REGEXP | SCFIND_CXX11REGEX];
             [sci message:SCI_SETTARGETRANGE wParam:(uptr_t)startPos lParam:endPos];
 
             const char colonExpr[] = ":[ \t]*(#|$)";
