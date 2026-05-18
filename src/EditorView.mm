@@ -646,6 +646,19 @@ static NSUInteger nppLargeFileThreshold(void) {
     // without this every line would show as orange immediately after file open.
     [_scintillaView message:SCI_SETSAVEPOINT];
 
+    // Issue #111 — the full-file SCI_ADDTEXT above was recorded into the
+    // change-history object while it was live, and SCI_EMPTYUNDOBUFFER then
+    // emptied the undo history without resetting that object, leaving it
+    // inconsistent so later edits no longer register as modifications (no
+    // orange marker). Disable + re-enable frees the stale object and
+    // rebuilds a fresh one on the loaded content as the clean baseline —
+    // the undo buffer is already empty here, which ChangeHistorySet requires.
+    // Marker styles set in applyDefaultTheme live in the ViewStyle and are
+    // unaffected by toggling change history.
+    [_scintillaView message:SCI_SETCHANGEHISTORY wParam:SC_CHANGE_HISTORY_DISABLED];
+    [_scintillaView message:SCI_SETCHANGEHISTORY
+                     wParam:SC_CHANGE_HISTORY_ENABLED | SC_CHANGE_HISTORY_MARKERS];
+
     // SCI_SETWORDCHARS is per-document; Phase 2 always swaps to a fresh doc
     // on each load, so re-apply the user's word-char preference here (issue #42).
     [self applyWordCharsFromDefaults];
@@ -1531,6 +1544,13 @@ static NSColor *nppColorFromHex(NSString *hex) {
     [sci message:SCI_AUTOCSETDROPRESTOFWORD wParam:0];
     [sci message:SCI_AUTOCSETMAXHEIGHT     wParam:10];
     [sci message:SCI_AUTOCSETMAXWIDTH      wParam:40];
+
+    // Issue #111 — track the widest displayed line so the horizontal
+    // scrollbar can reach the end of long lines. Without tracking the
+    // scroll width only grows where the caret has been, so a freshly
+    // loaded file's long lines (caret never visited) stay partly
+    // unreachable.
+    [sci message:SCI_SETSCROLLWIDTHTRACKING wParam:1];
 
     // ── Change-history bar (margin 2, 2 px) ──────────────────────────────────
     // When SC_CHANGE_HISTORY_MARKERS is enabled Scintilla auto-assigns default
