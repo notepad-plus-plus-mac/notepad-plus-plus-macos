@@ -3343,6 +3343,8 @@ static void removeMacroFromShortcutsXML(NSString *name) {
         [mgr refreshAllTabTitles];
     }
     [self updateTitle];
+    if (_docListPanel && [_sidePanelHost hasPanel:_docListPanel])
+        [_docListPanel refreshModifiedStates];
 }
 
 - (void)closeCurrentTab:(id)sender {
@@ -4227,13 +4229,16 @@ static NSArray<NSDictionary *> *convertRecordedToXmlFormat(NSArray<NSDictionary 
 // indirection the editor would have to spawn /usr/bin/git on every save,
 // which on a Mac without Xcode CLT triggers the install prompt.
 - (void)_editorDidSave:(NSNotification *)note {
-    if (!_gitPanel || ![_sidePanelHost hasPanel:_gitPanel]) return;
     EditorView *editor = note.object;
     if (![editor isKindOfClass:[EditorView class]]) return;
-    // Multi-window safety: only refresh editors that belong to this window.
-    // Without this check, saving in window A while window B's GitPanel is
-    // open would spawn git on window A's account.
+    // Multi-window safety: only react to editors that belong to this window.
     if (editor.window != self.window) return;
+
+    // Refresh the Document List panel's floppy indicators on save.
+    if (_docListPanel && [_sidePanelHost hasPanel:_docListPanel])
+        [_docListPanel refreshModifiedStates];
+
+    if (!_gitPanel || ![_sidePanelHost hasPanel:_gitPanel]) return;
     [editor updateGitDiffMarkers];
     [self _updateGitBranch:editor.filePath];
 }
@@ -8932,6 +8937,8 @@ static NSString *languageDisplayName(NSString *langCode) {
 - (void)refreshCurrentTab {
     [_tabManager refreshCurrentTabTitle];
     [self updateTitle];
+    if (_docListPanel && [_sidePanelHost hasPanel:_docListPanel])
+        [_docListPanel refreshModifiedStates];
 }
 
 - (void)saveWindowFrame {

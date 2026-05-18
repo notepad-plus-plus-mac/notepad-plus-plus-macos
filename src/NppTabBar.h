@@ -45,6 +45,12 @@ NS_ASSUME_NONNULL_BEGIN
 /// The view's intrinsic height grows to fit all rows.
 @property (nonatomic) BOOL wrapMode;
 
+/// Builds the tab right-click context menu (from tabContextMenu.xml, with a
+/// bundled fallback). Exposed so other surfaces — e.g. the Document List
+/// panel — can present the identical menu. The menu's commands act on the
+/// current document, so callers should select the target tab first.
+- (NSMenu *)buildTabContextMenu;
+
 @end
 
 NS_ASSUME_NONNULL_END

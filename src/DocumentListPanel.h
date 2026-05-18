@@ -20,6 +20,11 @@ NS_ASSUME_NONNULL_BEGIN
 /// Reload the list from the tab manager (call after tab open/close/select).
 - (void)reloadData;
 
+/// Lightweight refresh of the per-row saved/unsaved floppy indicators
+/// without disturbing selection or scroll position. Call when an editor's
+/// modified state may have changed (e.g. on edit or save).
+- (void)refreshModifiedStates;
+
 @end
 
 NS_ASSUME_NONNULL_END
