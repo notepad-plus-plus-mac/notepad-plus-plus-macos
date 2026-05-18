@@ -954,8 +954,32 @@ static NSUInteger nppLargeFileThreshold(void) {
     _externalChangePending = YES;
 
     if (_monitoringMode) {
+        ScintillaView *sci = _scintillaView;
+        // Preserve the caret (line + column) and the scroll position across
+        // the reload. loadFileAtPath: resets the caret to position 0, which
+        // would otherwise snap a monitored (tail -f) view back to the top on
+        // every external change.
+        sptr_t savedPos          = [sci message:SCI_GETCURRENTPOS];
+        sptr_t savedLine         = [sci message:SCI_LINEFROMPOSITION wParam:(uptr_t)savedPos];
+        sptr_t savedColumn       = [sci message:SCI_GETCOLUMN wParam:(uptr_t)savedPos];
+        sptr_t savedFirstVisible = [sci message:SCI_GETFIRSTVISIBLELINE];
+
         NSError *err;
         [self loadFileAtPath:_filePath error:&err];
+
+        // Clamp to the reloaded file's bounds — guards the case where the
+        // file shrank and the old caret line no longer exists. SCI_FINDCOLUMN
+        // clamps the column to the target line's length on its own.
+        sptr_t lineCount  = [sci message:SCI_GETLINECOUNT];
+        sptr_t targetLine = MIN(savedLine, lineCount - 1);
+        sptr_t targetPos  = [sci message:SCI_FINDCOLUMN
+                                   wParam:(uptr_t)targetLine
+                                   lParam:(sptr_t)savedColumn];
+        [sci message:SCI_GOTOPOS wParam:(uptr_t)targetPos];
+        // Restore the viewport last so it wins over GOTOPOS's scroll-to-caret.
+        [sci message:SCI_SETFIRSTVISIBLELINE
+                wParam:(uptr_t)MIN(savedFirstVisible, lineCount - 1)];
+
         _externalChangePending = NO;
         return;
     }
