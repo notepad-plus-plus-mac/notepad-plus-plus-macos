@@ -3702,9 +3702,15 @@ static NSSet<NSString *> *_cLikeLanguages() {
         unsigned int code = notification->nmhdr.code;
         BOOL isMacroActive = _isRecordingMacro ||
                              [(NppApplication *)NSApp playingBackMacro];
+        // SCN_DWELLSTART / SCN_DWELLEND let plugins show hover calltips.
+        // Scintilla only raises them once a plugin arms the dwell timer
+        // itself via SCI_SETMOUSEDWELLTIME — the host leaves it unset
+        // (default TimeForever), so there is no cost for sessions with no
+        // dwell-consuming plugin.
         if (code == SCN_CHARADDED || code == SCN_MODIFIED ||
             code == SCN_AUTOCSELECTION || code == SCN_AUTOCCANCELLED ||
-            code == SCN_UPDATEUI || code == SCN_PAINTED) {
+            code == SCN_UPDATEUI || code == SCN_PAINTED ||
+            code == SCN_DWELLSTART || code == SCN_DWELLEND) {
             if (!isMacroActive) {
                 [[NppPluginManager shared] forwardScintillaNotification:notification];
             } else if (_isRecordingMacro) {
