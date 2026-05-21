@@ -432,8 +432,8 @@ set_target_properties(NotepadPlusPlusMac PROPERTIES
     MACOSX_BUNDLE_INFO_PLIST "${CMAKE_SOURCE_DIR}/resources/Info.plist"
     MACOSX_BUNDLE_BUNDLE_NAME "Nextpad++"
     MACOSX_BUNDLE_GUI_IDENTIFIER "org.nextpadplusplus.mac"
-    MACOSX_BUNDLE_BUNDLE_VERSION "1.0.6"
-    MACOSX_BUNDLE_SHORT_VERSION_STRING "1.0.6"
+    MACOSX_BUNDLE_BUNDLE_VERSION "1.0.7"
+    MACOSX_BUNDLE_SHORT_VERSION_STRING "1.0.7"
 )
 
 target_include_directories(NotepadPlusPlusMac PRIVATE
