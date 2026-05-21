@@ -3337,8 +3337,16 @@ static const int kIndicatorIncSearch = 28; // Scintilla indicator slot for incre
         // ── Recorded format: menu command by selector name ──
         NSString *menuCmd = action[@"menuCommand"];
         if (menuCmd) {
-            SEL sel = NSSelectorFromString(menuCmd);
-            [NSApp sendAction:sel to:nil from:self];
+            NSNumber *pluginCmdID = action[@"pluginCmdID"];
+            if (pluginCmdID && [menuCmd isEqualToString:@"pluginMenuAction:"]) {
+                // Plugin commands share one selector (pluginMenuAction:); the
+                // responder-chain sendAction: can't pick the right one, so
+                // dispatch the recorded cmdID directly.
+                [[NppPluginManager shared] runPluginCommandWithID:(int)pluginCmdID.integerValue];
+            } else {
+                SEL sel = NSSelectorFromString(menuCmd);
+                [NSApp sendAction:sel to:nil from:self];
+            }
             continue;
         }
 
@@ -3354,8 +3362,14 @@ static const int kIndicatorIncSearch = 28; // Scintilla indicator slot for incre
             if (type == 2) {
                 // Menu command: sParam = macOS selector name
                 if (sParam.length) {
-                    SEL menuAction = NSSelectorFromString(sParam);
-                    [NSApp sendAction:menuAction to:nil from:self];
+                    if (wp != 0 && [sParam isEqualToString:@"pluginMenuAction:"]) {
+                        // Plugin command: cmdID stored in wParam (see
+                        // convertRecordedToXmlFormat). Dispatch it directly.
+                        [[NppPluginManager shared] runPluginCommandWithID:(int)wp];
+                    } else {
+                        SEL menuAction = NSSelectorFromString(sParam);
+                        [NSApp sendAction:menuAction to:nil from:self];
+                    }
                 }
             } else if (type == 1 && sParam.length > 0) {
                 [sci message:(uint32_t)msg wParam:(uptr_t)wp lParam:(sptr_t)sParam.UTF8String];
@@ -3395,11 +3409,20 @@ static const int kIndicatorIncSearch = 28; // Scintilla indicator slot for incre
 }
 
 - (void)recordMenuCommand:(NSString *)selectorName {
+    [self recordMenuCommand:selectorName pluginCmdID:0];
+}
+
+- (void)recordMenuCommand:(NSString *)selectorName pluginCmdID:(NSInteger)cmdID {
     if (!_isRecordingMacro || !selectorName.length) return;
-    [_macroActions addObject:@{
-        @"menuCommand": selectorName,  // type 2: menu command by selector name
-    }];
-    NSLog(@"[Macro] Recorded menu command: %@", selectorName);
+    NSMutableDictionary *step = [NSMutableDictionary dictionaryWithObject:selectorName
+                                                                  forKey:@"menuCommand"];
+    // Plugin command IDs start at 22000 (see NppPluginManager); 0 means "not a
+    // plugin command". Stored so playback can dispatch the exact command rather
+    // than the broken shared-selector sendAction: path.
+    if (cmdID != 0) step[@"pluginCmdID"] = @(cmdID);
+    [_macroActions addObject:step];
+    NSLog(@"[Macro] Recorded menu command: %@%@", selectorName,
+          cmdID != 0 ? [NSString stringWithFormat:@" (plugin cmdID %ld)", (long)cmdID] : @"");
 }
 
 - (void)runMacro {
@@ -3411,8 +3434,13 @@ static const int kIndicatorIncSearch = 28; // Scintilla indicator slot for incre
         // Type 2: menu command by selector name
         NSString *menuCmd = action[@"menuCommand"];
         if (menuCmd) {
-            SEL sel = NSSelectorFromString(menuCmd);
-            [NSApp sendAction:sel to:nil from:self];
+            NSNumber *pluginCmdID = action[@"pluginCmdID"];
+            if (pluginCmdID && [menuCmd isEqualToString:@"pluginMenuAction:"]) {
+                [[NppPluginManager shared] runPluginCommandWithID:(int)pluginCmdID.integerValue];
+            } else {
+                SEL sel = NSSelectorFromString(menuCmd);
+                [NSApp sendAction:sel to:nil from:self];
+            }
             continue;
         }
         // Type 0/1: Scintilla message

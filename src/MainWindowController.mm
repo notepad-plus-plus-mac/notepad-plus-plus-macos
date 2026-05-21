@@ -3793,9 +3793,13 @@ static NSArray<NSDictionary *> *convertRecordedToXmlFormat(NSArray<NSDictionary 
         // Type 2: menu command by selector name
         NSString *menuCmd = act[@"menuCommand"];
         if (menuCmd) {
+            // Plugin commands (pluginMenuAction:) carry a cmdID; store it in
+            // wParam so playback can dispatch the exact command. Mirrors the
+            // <PluginCommand internalID=…> handle used by shortcuts.xml.
+            NSNumber *pluginCmdID = act[@"pluginCmdID"];
             xmlAct[@"type"]    = @2;   // mtMenuCommand
             xmlAct[@"message"] = @0;
-            xmlAct[@"wParam"]  = @0;
+            xmlAct[@"wParam"]  = pluginCmdID ?: @0;
             xmlAct[@"lParam"]  = @0;
             xmlAct[@"sParam"]  = menuCmd;  // store selector name in sParam
             [xmlActions addObject:xmlAct];

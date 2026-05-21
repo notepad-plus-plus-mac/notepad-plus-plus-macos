@@ -135,6 +135,10 @@ extern NSNotificationName const EditorViewDidSaveNotification;
 - (void)runMacroActions:(NSArray<NSDictionary *> *)actions;
 /// Record a menu command action (type 2) by selector name during macro recording.
 - (void)recordMenuCommand:(NSString *)selectorName;
+/// Record a menu command together with a plugin command ID. For plugin
+/// commands (selector pluginMenuAction:), cmdID is the FuncItem _cmdID so
+/// playback can dispatch the exact command; pass 0 for ordinary menu items.
+- (void)recordMenuCommand:(NSString *)selectorName pluginCmdID:(NSInteger)cmdID;
 /// The currently recorded macro actions (nil / empty if nothing recorded).
 @property (nonatomic, readonly, nullable) NSArray<NSDictionary *> *macroActions;
 
