@@ -963,15 +963,25 @@ static NSUInteger nppLargeFileThreshold(void) {
     // No change if mtime matches what we last recorded.
     if (_lastKnownModDate && [mtime compare:_lastKnownModDate] != NSOrderedDescending) return;
 
+    // File Status Auto-Detection (Preferences > MISC, PR #116). When off, ignore
+    // external on-disk changes — but never override an explicit tail -f
+    // monitoring tab, which is a per-tab opt-in independent of this global setting.
+    NSUserDefaults *ud  = [NSUserDefaults standardUserDefaults];
+    BOOL autoDetect     = [ud boolForKey:kPrefFileStatusAutoDetection];
+    BOOL updateSilently = [ud boolForKey:kPrefFileStatusUpdateSilently];
+    if (!autoDetect && !_monitoringMode) return;
+
     _lastKnownModDate = mtime;
     _externalChangePending = YES;
 
-    if (_monitoringMode) {
+    // Reload without prompting when this tab is monitoring (tail -f), or when
+    // "Update silently" is on and the buffer has no unsaved edits. Dirty buffers
+    // always fall through to the prompt so unsaved changes are never discarded
+    // silently. Both silent paths preserve the caret (line + column) and scroll
+    // position; loadFileAtPath: otherwise resets the caret to 0, which would
+    // snap the view back to the top on every external change.
+    if (_monitoringMode || (updateSilently && !_isModified)) {
         ScintillaView *sci = _scintillaView;
-        // Preserve the caret (line + column) and the scroll position across
-        // the reload. loadFileAtPath: resets the caret to position 0, which
-        // would otherwise snap a monitored (tail -f) view back to the top on
-        // every external change.
         sptr_t savedPos          = [sci message:SCI_GETCURRENTPOS];
         sptr_t savedLine         = [sci message:SCI_LINEFROMPOSITION wParam:(uptr_t)savedPos];
         sptr_t savedColumn       = [sci message:SCI_GETCOLUMN wParam:(uptr_t)savedPos];

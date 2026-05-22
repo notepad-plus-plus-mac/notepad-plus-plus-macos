@@ -82,6 +82,8 @@ NSString *const kPrefLineNumDynWidth     = @"lineNumDynWidth";
 NSString *const kPrefInSelThreshold      = @"inSelThreshold";
 NSString *const kPrefFuncListUseXML      = @"funcListUseXML";
 NSString *const kPrefToolbarIconScale    = @"toolbarIconScale";
+NSString *const kPrefFileStatusAutoDetection  = @"fileStatusAutoDetection";
+NSString *const kPrefFileStatusUpdateSilently = @"fileStatusUpdateSilently";
 
 // Delimiter pane (issue #42)
 NSString *const kPrefWordCharsUseDefault = @"wordCharsUseDefault";
@@ -223,6 +225,8 @@ NSString *const kPrefStyleFontSize      = @"styleFontSize";
         kPrefInSelThreshold:       @1024,
         kPrefFuncListUseXML:       @YES,
         kPrefToolbarIconScale:     @1.0,  // 0.50/0.75/0.90/1.00/1.25/1.50 — restart required
+        kPrefFileStatusAutoDetection:  @YES,
+        kPrefFileStatusUpdateSilently: @NO,
         kPrefDarkMode:             @0,   // 0=Auto, 1=Light, 2=Dark
         // Performance / Large File Restriction
         kPrefLargeFileEnabled:            @YES,
@@ -1850,6 +1854,8 @@ static NSDictionary<NSString *, NSString *> *_langDisplayNames() {
         @[[loc translate:@"Remember panel visibility across sessions"], @1204, kPrefPanelKeepState],
         @[[loc translate:@"Use XML-based function list parsers"],      @1205, kPrefFuncListUseXML],
         @[@"Route plugin messages to split view editors",            @1206, kPrefPluginSplitViewRouting],
+        @[[loc translate:@"File Status Auto-Detection"],              @1208, kPrefFileStatusAutoDetection],
+        @[[loc translate:@"Update silently"],                         @1209, kPrefFileStatusUpdateSilently],
     ];
     for (NSArray *def in checks) {
         NSButton *chk = [NSButton checkboxWithTitle:def[0] target:self action:@selector(prefChanged:)];
@@ -1859,6 +1865,11 @@ static NSDictionary<NSString *, NSString *> *_langDisplayNames() {
         [v addSubview:chk];
         y -= 28;
     }
+
+    // "Update silently" only applies while auto-detection is on — grey it out
+    // when the parent is off (matches Windows' sub-option behavior).
+    [(NSButton *)[v viewWithTag:1209]
+        setEnabled:[ud boolForKey:kPrefFileStatusAutoDetection]];
 
     // ── Toolbar icon size dropdown ─────────────────────────────────────────────
     // Restart-required (per design — toolbar metrics are cached on first use
@@ -2005,6 +2016,14 @@ static NSDictionary<NSString *, NSString *> *_langDisplayNames() {
         case 1204: [ud setBool:[(NSButton *)sender state] == NSControlStateValueOn forKey:kPrefPanelKeepState]; break;
         case 1205: [ud setBool:[(NSButton *)sender state] == NSControlStateValueOn forKey:kPrefFuncListUseXML]; break;
         case 1206: [ud setBool:[(NSButton *)sender state] == NSControlStateValueOn forKey:kPrefPluginSplitViewRouting]; break;
+        case 1208: {  // File Status Auto-Detection
+            BOOL on = [(NSButton *)sender state] == NSControlStateValueOn;
+            [ud setBool:on forKey:kPrefFileStatusAutoDetection];
+            // Enable/disable the dependent "Update silently" checkbox.
+            [(NSButton *)[[(NSButton *)sender superview] viewWithTag:1209] setEnabled:on];
+            break;
+        }
+        case 1209: [ud setBool:[(NSButton *)sender state] == NSControlStateValueOn forKey:kPrefFileStatusUpdateSilently]; break;
         // Performance / Large File Restriction (1400-1407 — 1300s collide with Indentation)
         case 1400: [ud setBool:[(NSButton *)sender state] == NSControlStateValueOn forKey:kPrefLargeFileEnabled]; break;
         case 1401: {
