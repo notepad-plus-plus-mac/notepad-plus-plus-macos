@@ -1,4 +1,5 @@
 #import "MenuBuilder.h"
+#import "NppBuiltinLanguages.h"
 
 // Top-level menu-item tags. See MenuBuilder.h for rationale.
 const NSInteger kMenuTagMacro    = 9900;
@@ -60,142 +61,53 @@ static NSMenuItem *langItem(NSString *display, NSString *langName) {
 
 static NSMenu *buildLanguageMenu() {
     NSMenu *m = submenu(@"Language");
-    [m addItem:langItem(@"None (Normal Text)", @"")];
+
+    // Generate from the Windows-authoritative built-in language table (issue
+    // #144 follow-up). The table is sorted alphabetically by caption with
+    // "None (Normal Text)" pinned at index 0.
+    NSUInteger count = 0;
+    const NppBuiltinLang *langs = NppBuiltinLanguagesAll(&count);
+
+    // ── Pinned top: "None (Normal Text)" ────────────────────────────────────
+    // Empty representedObject → setLanguageFromMenu: routes through
+    // setLanguage:@"" → plain branch in EditorView.
+    [m addItem:langItem(@(langs[0].caption), @"")];
     addSep(m);
 
-    NSMenu *mA = submenu(@"A");
-    [mA addItem:langItem(@"Ada",      @"ada")];
-    [mA addItem:langItem(@"ASP",      @"asp")];
-    [mA addItem:langItem(@"Assembly", @"asm")];
-    [m addItem:withSubmenu(@"A", mA)];
+    // ── Letter-grouped submenus (entries 1..count-1) ────────────────────────
+    // Walk the pre-sorted table in one pass; flush each letter's submenu
+    // when we hit a new first-letter.
+    NSMenu *letterMenu = nil;
+    NSString *letterTitle = nil;
+    unichar currentLetter = 0;
+    for (NSUInteger i = 1; i < count; i++) {
+        NSString *cap      = @(langs[i].caption);
+        NSString *internal = @(langs[i].internalName);
+        unichar firstChar  = (unichar)toupper((int)[cap characterAtIndex:0]);
+        if (firstChar != currentLetter) {
+            if (letterMenu) [m addItem:withSubmenu(letterTitle, letterMenu)];
+            currentLetter = firstChar;
+            letterTitle   = [NSString stringWithCharacters:&firstChar length:1];
+            letterMenu    = submenu(letterTitle);
+        }
+        [letterMenu addItem:langItem(cap, internal)];
+    }
+    if (letterMenu) [m addItem:withSubmenu(letterTitle, letterMenu)];
 
-    NSMenu *mB = submenu(@"B");
-    [mB addItem:langItem(@"Bash",  @"bash")];
-    [mB addItem:langItem(@"Batch", @"batch")];
-    [m addItem:withSubmenu(@"B", mB)];
-
-    NSMenu *mC = submenu(@"C");
-    [mC addItem:langItem(@"C",          @"c")];
-    [mC addItem:langItem(@"C#",         @"cs")];
-    [mC addItem:langItem(@"C++",        @"cpp")];
-    [mC addItem:langItem(@"CMake",      @"cmake")];
-    [mC addItem:langItem(@"COBOL",      @"cobol")];
-    [mC addItem:langItem(@"CSS",        @"css")];
-    [m addItem:withSubmenu(@"C", mC)];
-
-    NSMenu *mD = submenu(@"D");
-    [mD addItem:langItem(@"D",    @"d")];
-    [mD addItem:langItem(@"Diff", @"diff")];
-    [m addItem:withSubmenu(@"D", mD)];
-
-    NSMenu *mE = submenu(@"E");
-    [mE addItem:langItem(@"Erlang", @"erlang")];
-    [m addItem:withSubmenu(@"E", mE)];
-
-    NSMenu *mF = submenu(@"F");
-    [mF addItem:langItem(@"Fortran", @"fortran")];
-    [m addItem:withSubmenu(@"F", mF)];
-
-    NSMenu *mG = submenu(@"G");
-    [mG addItem:langItem(@"Go",     @"go")];
-    [mG addItem:langItem(@"Groovy", @"groovy")];
-    [m addItem:withSubmenu(@"G", mG)];
-
-    NSMenu *mH = submenu(@"H");
-    [mH addItem:langItem(@"Haskell", @"haskell")];
-    [mH addItem:langItem(@"HTML",    @"html")];
-    [m addItem:withSubmenu(@"H", mH)];
-
-    NSMenu *mI = submenu(@"I");
-    [mI addItem:langItem(@"INI", @"ini")];
-    [m addItem:withSubmenu(@"I", mI)];
-
-    NSMenu *mJ = submenu(@"J");
-    [mJ addItem:langItem(@"Java",       @"java")];
-    // representedObject must match the value stored in EditorView.currentLanguage.
-    // langs.xml's <Language> entry for .js/.jsx/.mjs/.jsm is named "javascript.js"
-    // (Windows NPP's canonical L_JAVASCRIPT name), so file auto-detect stores
-    // "javascript.js". Use the same spelling here so the menu-click path ends up
-    // with the same _currentLanguage value and the checkmark matches.
-    [mJ addItem:langItem(@"JavaScript", @"javascript.js")];
-    [mJ addItem:langItem(@"JSON",       @"json")];
-    [m addItem:withSubmenu(@"J", mJ)];
-
-    [m addItem:langItem(@"KIXtart", @"kix")];
-
-    NSMenu *mL = submenu(@"L");
-    [mL addItem:langItem(@"Lisp", @"lisp")];
-    [mL addItem:langItem(@"Lua",  @"lua")];
-    [m addItem:withSubmenu(@"L", mL)];
-
-    NSMenu *mM = submenu(@"M");
-    [mM addItem:langItem(@"Makefile", @"makefile")];
-    [mM addItem:langItem(@"Markdown", @"markdown")];
-    [m addItem:withSubmenu(@"M", mM)];
-
-    NSMenu *mN = submenu(@"N");
-    [mN addItem:langItem(@"Nim",  @"nim")];
-    [mN addItem:langItem(@"NSIS", @"nsis")];
-    [m addItem:withSubmenu(@"N", mN)];
-
-    NSMenu *mO = submenu(@"O");
-    [mO addItem:langItem(@"Objective-C", @"objc")];
-    [m addItem:withSubmenu(@"O", mO)];
-
-    NSMenu *mP = submenu(@"P");
-    [mP addItem:langItem(@"Pascal",     @"pascal")];
-    [mP addItem:langItem(@"Perl",       @"perl")];
-    [mP addItem:langItem(@"PHP",        @"php")];
-    [mP addItem:langItem(@"PowerShell", @"powershell")];
-    [mP addItem:langItem(@"Properties", @"props")];
-    [mP addItem:langItem(@"Python",     @"python")];
-    [m addItem:withSubmenu(@"P", mP)];
-
-    NSMenu *mR = submenu(@"R");
-    [mR addItem:langItem(@"R",    @"r")];
-    [mR addItem:langItem(@"Ruby", @"ruby")];
-    [mR addItem:langItem(@"Rust", @"rust")];
-    [m addItem:withSubmenu(@"R", mR)];
-
-    NSMenu *mS = submenu(@"S");
-    [mS addItem:langItem(@"SQL",   @"sql")];
-    [mS addItem:langItem(@"Swift", @"swift")];
-    [m addItem:withSubmenu(@"S", mS)];
-
-    NSMenu *mT = submenu(@"T");
-    [mT addItem:langItem(@"TOML",       @"toml")];
-    [mT addItem:langItem(@"TypeScript", @"typescript")];
-    [m addItem:withSubmenu(@"T", mT)];
-
-    NSMenu *mV = submenu(@"V");
-    // Same reasoning as JavaScript above: langs.xml's <Language> entry for
-    // .vb/.vba/.vbs is named "vb" (Windows NPP's canonical L_VB name), so file
-    // auto-detect stores "vb". Using "vbscript" here would also break the
-    // lexer path: languageLexerNameMap has "vb"→"vb" but no "vbscript" key,
-    // so clicking VBScript never applied syntax highlighting.
-    [mV addItem:langItem(@"VBScript", @"vb")];
-    [mV addItem:langItem(@"Verilog",  @"verilog")];
-    [m addItem:withSubmenu(@"V", mV)];
-
-    [m addItem:langItem(@"XML",  @"xml")];
-    [m addItem:langItem(@"YAML", @"yaml")];
-
+    // ── UDL section ────────────────────────────────────────────────────────
     addSep(m);
     NSMenu *udlMenu = submenu(@"User Defined Language");
     [udlMenu addItem:item(@"Define your language…", @selector(showDefineLanguage:), @"")];
     [udlMenu addItem:item(@"Open User Defined Language Folder…", @selector(openUDLFolder:), @"")];
     [udlMenu addItem:item(@"Nextpad++ User Defined Languages Collection", @selector(openUDLCollection:), @"")];
     [m addItem:withSubmenu(@"User Defined Language", udlMenu)];
-    // Pre-installed Markdown UDLs — use UDL action (not built-in lexer)
-    NSMenuItem *mdItem = item(@"Markdown (preinstalled)", @selector(setUDLLanguageFromMenu:), @"");
-    mdItem.representedObject = @"Markdown (preinstalled)";
-    [m addItem:mdItem];
-    NSMenuItem *mdDmItem = item(@"Markdown (preinstalled dark mode)", @selector(setUDLLanguageFromMenu:), @"");
-    mdDmItem.representedObject = @"Markdown (preinstalled dark mode)";
-    [m addItem:mdDmItem];
 
-    // User UDLs are inserted dynamically after the separator by
-    // MainWindowController.rebuildUDLLanguageMenu.
+    // Trailing separator anchors the dynamic UDL-insertion zone. ALL loaded
+    // UDLs (including the preinstalled Markdown variants) are inserted by
+    // MainWindowController.rebuildUDLLanguageMenu after this separator —
+    // there are no static preinstalled entries here anymore (the previous
+    // hardcoded menu had them; the generated table doesn't include markdown
+    // since Windows doesn't ship it as a built-in lexer).
     addSep(m);
     m.title = @"Language";
 

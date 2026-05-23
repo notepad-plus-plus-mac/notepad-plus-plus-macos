@@ -1,6 +1,8 @@
 #import "EditorView.h"
 #import "NppApplication.h"
 #import "NppLangsManager.h"
+#import "UserDefineLangManager.h"
+#import "NppBuiltinLanguages.h"
 #import "NppPluginManager.h"
 #import "PreferencesWindowController.h"
 
@@ -79,98 +81,23 @@ static NSDictionary<NSString *, NSString *> *languageLexerNameMap() {
     static NSDictionary *map;
     static dispatch_once_t once;
     dispatch_once(&once, ^{
-        map = @{
-            // ── C-family (all use "cpp" lexer) ──
-            @"c"            : @"cpp",
-            @"cpp"          : @"cpp",
-            @"objc"         : @"cpp",
-            @"cs"           : @"cpp",        // C#
-            @"java"         : @"cpp",
-            @"javascript"   : @"cpp",
-            @"javascript.js": @"cpp",
-            @"typescript"   : @"cpp",
-            @"swift"        : @"cpp",
-            @"rc"           : @"cpp",        // Resource script
-            @"actionscript" : @"cpp",
-            // ── Web ──
-            @"html"         : @"hypertext",
-            @"asp"          : @"hypertext",
-            @"xml"          : @"xml",
-            @"css"          : @"css",
-            @"json"         : @"json",
-            @"php"          : @"phpscript",
-            // ── Scripting ──
-            @"python"       : @"python",
-            @"ruby"         : @"ruby",
-            @"perl"         : @"perl",
-            @"lua"          : @"lua",
-            @"bash"         : @"bash",
-            @"powershell"   : @"powershell",
-            @"batch"        : @"batch",
-            @"tcl"          : @"tcl",
-            @"r"            : @"r",
-            @"raku"         : @"raku",
-            @"coffeescript"  : @"coffeescript",
-            // ── Systems ──
-            @"rust"         : @"rust",
-            @"go"           : @"cpp",        // Go uses cpp lexer
-            @"d"            : @"d",
-            // ── Markup / Config ──
-            @"markdown"     : @"markdown",
-            @"latex"        : @"latex",
-            @"tex"          : @"tex",
-            @"yaml"         : @"yaml",
-            @"toml"         : @"toml",
-            @"ini"          : @"props",      // INI uses "props" lexer
-            @"props"        : @"props",
-            @"makefile"     : @"makefile",
-            @"cmake"        : @"cmake",
-            @"diff"         : @"diff",
-            @"registry"     : @"registry",
-            @"nsis"         : @"nsis",
-            @"inno"         : @"inno",
-            // ── Database ──
-            @"sql"          : @"sql",
-            @"mssql"        : @"mssql",
-            // ── Scientific / Academic ──
-            @"fortran"      : @"fortran",
-            @"fortran77"    : @"f77",
-            @"pascal"       : @"pascal",
-            @"haskell"      : @"haskell",
-            @"caml"         : @"caml",
-            @"lisp"         : @"lisp",
-            @"scheme"       : @"lisp",       // Scheme uses Lisp lexer
-            @"erlang"       : @"erlang",
-            @"nim"          : @"nim",
-            @"gdscript"     : @"gdscript",
-            @"sas"          : @"sas",
-            // ── Hardware ──
-            @"vhdl"         : @"vhdl",
-            @"verilog"      : @"verilog",
-            @"spice"        : @"spice",
-            @"asm"          : @"asm",
-            // ── Other ──
-            @"ada"          : @"ada",
-            @"cobol"        : @"COBOL",
-            @"vb"           : @"vb",
-            @"autoit"       : @"au3",
-            @"postscript"   : @"ps",
-            @"smalltalk"    : @"smalltalk",
-            @"forth"        : @"forth",
-            @"oscript"      : @"oscript",
-            @"avs"          : @"avs",
-            @"hollywood"    : @"hollywood",
-            @"purebasic"    : @"purebasic",
-            @"freebasic"    : @"freebasic",
-            @"blitzbasic"   : @"blitzbasic",
-            @"kix"          : @"kix",
-            @"matlab"       : @"matlab",
-            @"visualprolog" : @"visualprolog",
-            @"baanc"        : @"baan",
-            @"nncrontab"    : @"nncrontab",
-            @"csound"       : @"csound",
-            @"escript"      : @"escript",
-        };
+        // Single source of truth: derive every entry from the Windows-derived
+        // built-in language table (NppBuiltinLanguages.mm). Guarantees the menu,
+        // the open-by-extension path, and session-restore all resolve to the
+        // same lexer for every built-in language. Issue #144 follow-up.
+        NSUInteger count = 0;
+        const NppBuiltinLang *langs = NppBuiltinLanguagesAll(&count);
+        NSMutableDictionary *m = [NSMutableDictionary dictionaryWithCapacity:count + 1];
+        for (NSUInteger i = 0; i < count; i++) {
+            m[@(langs[i].internalName)] = @(langs[i].lexerID);
+        }
+        // Backwards-compat alias: pre-overhaul sessions / extension map may
+        // have stored "javascript" (Windows' L_JS_EMBEDDED internal name) as a
+        // tab's language. Route it to the same lexer as L_JAVASCRIPT so old
+        // sessions still highlight; the canonical name going forward is
+        // "javascript.js" (matches the Windows Language menu entry).
+        m[@"javascript"] = @"cpp";
+        map = [m copy];
     });
     return map;
 }
@@ -189,7 +116,11 @@ static NSDictionary<NSString *, NSString *> *extensionLanguageMap() {
             @"m"    : @"objc",    @"mm"   : @"objc",
             @"cs"   : @"cs",
             @"java" : @"java",
-            @"js"   : @"javascript", @"mjs"  : @"javascript", @"jsx" : @"javascript",
+            // Use "javascript.js" (Windows L_JAVASCRIPT internal name) so the
+            // open-by-extension result matches the Language menu's "JavaScript"
+            // entry — keeps the active-language checkmark correct. The lexer
+            // map keeps "javascript" as a backwards-compat alias.
+            @"js"   : @"javascript.js", @"mjs"  : @"javascript.js", @"jsx" : @"javascript.js",
             @"ts"   : @"typescript", @"tsx" : @"typescript",
             @"swift": @"swift",
             @"rc"   : @"rc",
@@ -623,6 +554,12 @@ static NSUInteger nppLargeFileThreshold(void) {
 
     NSString *ext = path.pathExtension.lowercaseString;
     NSString *lang = extensionLanguageMap()[ext] ?: @"";
+    // Issue #130 — built-in extensions take precedence; if none matches, fall
+    // back to a User Defined Language whose ext= list claims this extension.
+    if (!lang.length) {
+        UserDefinedLang *udl = [[UserDefineLangManager shared] languageForExtension:ext];
+        if (udl) lang = udl.name;
+    }
     if (large) {
         // Syntax highlighting off (undo was already disabled before SCI_ADDTEXT
         // above — see "Pre-insert undo gate" comment).
@@ -791,6 +728,10 @@ static NSUInteger nppLargeFileThreshold(void) {
     NSString *newExt = path.pathExtension.lowercaseString ?: @"";
     if (![oldExt isEqualToString:newExt]) {
         NSString *lang = extensionLanguageMap()[newExt] ?: @"";
+        if (!lang.length) {  // issue #130 — UDL extension fallback
+            UserDefinedLang *udl = [[UserDefineLangManager shared] languageForExtension:newExt];
+            if (udl) lang = udl.name;
+        }
         [self setLanguage:lang];
     }
 
@@ -1055,7 +996,18 @@ static NSUInteger nppLargeFileThreshold(void) {
 
     NSString *lexerName = languageLexerNameMap()[languageName.lowercaseString];
     if (!lexerName) {
-        [self applyPreferencesFromDefaults];
+        // Not a built-in language. Try a User Defined Language of this exact
+        // name (issue #130). Routing UDLs through setLanguage: makes them work
+        // for every name-based path — file open by extension, rename, session
+        // restore, and the Language menu — not just the manual menu selection.
+        // STYLECLEARALL above already reset styles; applyLanguage: then installs
+        // the user lexer and the UDL's WordsStyle colors on top.
+        UserDefinedLang *udl = [[UserDefineLangManager shared] languageNamed:languageName];
+        if (udl) {
+            [[UserDefineLangManager shared] applyLanguage:udl toScintillaView:_scintillaView];
+        } else {
+            [self applyPreferencesFromDefaults];
+        }
         [[NppPluginManager shared] notifyPluginsWithCode:NPPN_LANGCHANGED
                                                 bufferID:(intptr_t)(__bridge void *)self];
         return;

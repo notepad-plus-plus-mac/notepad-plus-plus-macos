@@ -1,5 +1,6 @@
 #import "MainWindowController.h"
 #import "AppDelegate.h"
+#import "NppBuiltinLanguages.h"
 #import "NppCommandLineParams.h"
 #import "TabManager.h"
 #import "EditorView.h"
@@ -6382,9 +6383,11 @@ static NSArray<NSDictionary *> *convertRecordedToXmlFormat(NSArray<NSDictionary 
     }
     if (insertIdx < 0) insertIdx = langMenu.itemArray.count;
 
-    // Insert UDL items (skip pre-installed Markdown to avoid duplicates)
+    // Insert ALL UDL items (including preinstalled Markdown variants — they
+    // used to be static entries in the hardcoded Language menu, but the menu
+    // is now generated from the Windows-authoritative built-in table, which
+    // excludes markdown. The preinstalled UDLs land here like any other UDL.)
     for (UserDefinedLang *udl in udls) {
-        if ([udl.name.lowercaseString containsString:@"preinstalled"]) continue;
         NSMenuItem *mi = [[NSMenuItem alloc] initWithTitle:udl.name
                                                     action:@selector(setUDLLanguageFromMenu:)
                                              keyEquivalent:@""];
@@ -9209,7 +9212,15 @@ static NSString *languageDisplayName(NSString *langCode) {
             @"escript"      : @"ESCRIPT file",
         };
     });
-    return map[langCode.lowercaseString] ?: langCode;
+    // Try the descriptive long-name map first; if missing, fall back to the
+    // Windows-derived short menu caption (asn1 → "ASN.1", mmixal → "MMIXAL",
+    // ihex → "Intel HEX", etc.) so newly-restored built-in languages get a
+    // human-readable status-bar name instead of the raw internal code.
+    NSString *low = langCode.lowercaseString;
+    NSString *hit = map[low];
+    if (hit) return hit;
+    NSString *caption = NppBuiltinLanguageCaptionForInternal(low);
+    return caption ?: langCode;
 }
 
 - (void)updateStatusBar {

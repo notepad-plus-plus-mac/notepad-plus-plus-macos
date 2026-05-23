@@ -15,6 +15,10 @@ extern "C" Scintilla::ILexer5 *CreateLexer(const char *name);
 
 @implementation UserDefineLangManager {
     NSMutableArray<UserDefinedLang *> *_languages;
+    // O(1) lookup indices, rebuilt whenever _languages changes (issue #130).
+    // _nameIndex is keyed by exact name; _extIndex by lowercased extension.
+    NSMutableDictionary<NSString *, UserDefinedLang *> *_nameIndex;
+    NSMutableDictionary<NSString *, UserDefinedLang *> *_extIndex;
 }
 
 + (instancetype)shared {
@@ -28,6 +32,8 @@ extern "C" Scintilla::ILexer5 *CreateLexer(const char *name);
     self = [super init];
     if (self) {
         _languages = [NSMutableArray array];
+        _nameIndex = [NSMutableDictionary dictionary];
+        _extIndex  = [NSMutableDictionary dictionary];
     }
     return self;
 }
@@ -71,6 +77,25 @@ extern "C" Scintilla::ILexer5 *CreateLexer(const char *name);
     [_languages sortUsingComparator:^NSComparisonResult(UserDefinedLang *a, UserDefinedLang *b) {
         return [a.name localizedCaseInsensitiveCompare:b.name];
     }];
+
+    [self _rebuildIndexes];
+}
+
+/// Rebuild the name/extension lookup indices from _languages. First entry wins
+/// on a collision (e.g. two UDLs claiming the same extension) — matching the
+/// previous linear-scan-returns-first behavior over the name-sorted array.
+- (void)_rebuildIndexes {
+    [_nameIndex removeAllObjects];
+    [_extIndex removeAllObjects];
+    for (UserDefinedLang *udl in _languages) {
+        if (udl.name.length && !_nameIndex[udl.name])
+            _nameIndex[udl.name] = udl;
+        for (NSString *e in [udl.extensions componentsSeparatedByString:@" "]) {
+            NSString *ext = e.lowercaseString;
+            if (ext.length && !_extIndex[ext])
+                _extIndex[ext] = udl;
+        }
+    }
 }
 
 - (void)_loadFromDirectory:(NSString *)dir {
@@ -194,21 +219,11 @@ extern "C" Scintilla::ILexer5 *CreateLexer(const char *name);
 #pragma mark - Lookup
 
 - (nullable UserDefinedLang *)languageNamed:(NSString *)name {
-    for (UserDefinedLang *udl in _languages) {
-        if ([udl.name isEqualToString:name]) return udl;
-    }
-    return nil;
+    return name.length ? _nameIndex[name] : nil;
 }
 
 - (nullable UserDefinedLang *)languageForExtension:(NSString *)ext {
-    ext = ext.lowercaseString;
-    for (UserDefinedLang *udl in _languages) {
-        NSArray *exts = [udl.extensions componentsSeparatedByString:@" "];
-        for (NSString *e in exts) {
-            if ([e.lowercaseString isEqualToString:ext]) return udl;
-        }
-    }
-    return nil;
+    return ext.length ? _extIndex[ext.lowercaseString] : nil;
 }
 
 #pragma mark - Import / Export / Delete
@@ -229,6 +244,7 @@ extern "C" Scintilla::ILexer5 *CreateLexer(const char *name);
     NSUInteger countBefore = _languages.count;
     [self _loadFromFile:destPath];
     if (_languages.count > countBefore) {
+        [self _rebuildIndexes];
         return _languages.lastObject;
     }
     return nil;
@@ -250,6 +266,7 @@ extern "C" Scintilla::ILexer5 *CreateLexer(const char *name);
     BOOL ok = [[NSFileManager defaultManager] removeItemAtPath:lang.xmlPath error:&error];
     if (ok) {
         [_languages removeObject:lang];
+        [self _rebuildIndexes];
     }
     return ok;
 }
