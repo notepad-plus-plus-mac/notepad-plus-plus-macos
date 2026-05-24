@@ -149,7 +149,13 @@ static NSDictionary<NSString *, NSString *> *extensionLanguageMap() {
             @"go"   : @"go",
             @"d"    : @"d",
             // Markup / Config
-            @"md"   : @"markdown", @"markdown": @"markdown",
+            // .md/.markdown intentionally NOT mapped here — markdown is no
+            // longer a built-in language; the preinstalled Markdown UDL
+            // (~/.nextpad++/userDefineLangs/markdown._preinstalled.udl.xml)
+            // claims these extensions and is resolved via the UDL fallback
+            // in loadFileAtPath:. Mapping them to "markdown" here would
+            // shadow that fallback and leave the file plain (issue #130
+            // follow-up to the Windows-table menu overhaul).
             @"tex"  : @"latex",   @"latex": @"latex",
             @"yml"  : @"yaml",    @"yaml" : @"yaml",
             @"toml" : @"toml",

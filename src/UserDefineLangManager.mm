@@ -1,4 +1,5 @@
 #import "UserDefineLangManager.h"
+#import "NppThemeManager.h"
 #import "ScintillaView.h"
 #import "Scintilla.h"
 #import "ScintillaMessages.h"
@@ -16,9 +17,13 @@ extern "C" Scintilla::ILexer5 *CreateLexer(const char *name);
 @implementation UserDefineLangManager {
     NSMutableArray<UserDefinedLang *> *_languages;
     // O(1) lookup indices, rebuilt whenever _languages changes (issue #130).
-    // _nameIndex is keyed by exact name; _extIndex by lowercased extension.
+    // _nameIndex is keyed by exact name. _extIndex is keyed by lowercased
+    // extension and maps to ALL UDLs claiming that extension (issue #130
+    // follow-up): the markdown UDL ships as a light + dark pair, so a single
+    // ext can have multiple variants. languageForExtension: picks the
+    // theme-matching one (Windows: Parameters.cpp:1921 behavior).
     NSMutableDictionary<NSString *, UserDefinedLang *> *_nameIndex;
-    NSMutableDictionary<NSString *, UserDefinedLang *> *_extIndex;
+    NSMutableDictionary<NSString *, NSMutableArray<UserDefinedLang *> *> *_extIndex;
 }
 
 + (instancetype)shared {
@@ -81,9 +86,10 @@ extern "C" Scintilla::ILexer5 *CreateLexer(const char *name);
     [self _rebuildIndexes];
 }
 
-/// Rebuild the name/extension lookup indices from _languages. First entry wins
-/// on a collision (e.g. two UDLs claiming the same extension) — matching the
-/// previous linear-scan-returns-first behavior over the name-sorted array.
+/// Rebuild the name/extension lookup indices from _languages.
+/// _nameIndex is unique-by-name (first entry wins). _extIndex aggregates ALL
+/// UDLs that claim a given extension into an array, so languageForExtension:
+/// can pick the theme-matching variant (e.g. the markdown light/dark pair).
 - (void)_rebuildIndexes {
     [_nameIndex removeAllObjects];
     [_extIndex removeAllObjects];
@@ -92,8 +98,13 @@ extern "C" Scintilla::ILexer5 *CreateLexer(const char *name);
             _nameIndex[udl.name] = udl;
         for (NSString *e in [udl.extensions componentsSeparatedByString:@" "]) {
             NSString *ext = e.lowercaseString;
-            if (ext.length && !_extIndex[ext])
-                _extIndex[ext] = udl;
+            if (!ext.length) continue;
+            NSMutableArray<UserDefinedLang *> *bucket = _extIndex[ext];
+            if (!bucket) {
+                bucket = [NSMutableArray array];
+                _extIndex[ext] = bucket;
+            }
+            [bucket addObject:udl];
         }
     }
 }
@@ -223,7 +234,22 @@ extern "C" Scintilla::ILexer5 *CreateLexer(const char *name);
 }
 
 - (nullable UserDefinedLang *)languageForExtension:(NSString *)ext {
-    return ext.length ? _extIndex[ext.lowercaseString] : nil;
+    if (!ext.length) return nil;
+    NSArray<UserDefinedLang *> *bucket = _extIndex[ext.lowercaseString];
+    if (!bucket.count) return nil;
+    if (bucket.count == 1) return bucket[0];
+
+    // Multiple UDLs claim this extension — prefer the one whose
+    // darkModeTheme flag matches the current dark-mode state. Mirrors
+    // Windows NPP behaviour (NppParameters::getUserDefinedLangNameFromExt,
+    // Parameters.cpp:1921): the markdown UDL ships as a light + dark pair,
+    // and Windows auto-picks the right one based on dark-mode state.
+    // Falls back to the first match if no theme-specific variant exists.
+    BOOL wantDark = [NppThemeManager shared].isDark;
+    for (UserDefinedLang *udl in bucket) {
+        if (udl.isDarkModeTheme == wantDark) return udl;
+    }
+    return bucket[0];
 }
 
 #pragma mark - Import / Export / Delete
