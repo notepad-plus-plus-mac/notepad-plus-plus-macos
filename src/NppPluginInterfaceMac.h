@@ -127,6 +127,7 @@ typedef intptr_t           (*PMESSAGEPROC)(uint32_t, uintptr_t, intptr_t);
 #define NPPM_GETCURRENTLANGTYPE          (NPPMSG + 5)
 #define NPPM_SETCURRENTLANGTYPE          (NPPMSG + 6)
 #define NPPM_GETNBOPENFILES              (NPPMSG + 7)
+#define NPPM_GETOPENFILENAMES            (NPPMSG + 8)
 #define NPPM_MODELESSDIALOG              (NPPMSG + 12)
 #define NPPM_GETNBSESSIONFILES           (NPPMSG + 13)
 #define NPPM_GETSESSIONFILES             (NPPMSG + 14)
