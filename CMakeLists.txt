@@ -28,16 +28,28 @@ set(SCI_COCOA_SRCS
     "${SCI_ROOT}/cocoa/InfoBar.mm"
 )
 
-add_library(scintilla STATIC ${SCI_CORE_SRCS} ${SCI_COCOA_SRCS})
+# regex/  is this repo's SCI_OWNREGEX implementation — see regex/NppRegexSearch.cxx.
+# Mirrors Notepad++ Windows's `boostregex/` sibling-directory pattern (but uses
+# std::regex from libc++ instead of Boost.Regex). With SCI_OWNREGEX defined,
+# Scintilla's built-in CreateRegexSearch() compiles out and the linker picks up
+# the one in this folder.
+set(NPP_REGEX_ROOT "${CMAKE_SOURCE_DIR}/regex")
+set(NPP_REGEX_SRCS "${NPP_REGEX_ROOT}/NppRegexSearch.cxx")
+
+add_library(scintilla STATIC ${SCI_CORE_SRCS} ${SCI_COCOA_SRCS} ${NPP_REGEX_SRCS})
 
 target_include_directories(scintilla PUBLIC
     "${SCI_ROOT}/include"
     "${SCI_ROOT}/src"
     "${SCI_ROOT}/cocoa"
 )
+target_include_directories(scintilla PRIVATE
+    "${NPP_REGEX_ROOT}"
+)
 
 target_compile_definitions(scintilla PRIVATE
     SCI_NAMESPACE
+    SCI_OWNREGEX
     SCINTILLA_QT=0
 )
 
