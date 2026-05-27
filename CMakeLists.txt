@@ -172,11 +172,15 @@ set(APP_HEADERS
 
 add_executable(NotepadPlusPlusMac MACOSX_BUNDLE ${APP_SRCS} ${APP_HEADERS})
 
-# Copy icons at BUILD time so updated PNGs are picked up on every make, not just cmake re-run
+# Copy icons at BUILD time so updated PNGs are picked up on every make.
+# IMPORTANT: rsync -a (not `cmake -E copy_directory`) — copy_directory does NOT
+# overwrite existing files in the destination, so a refreshed PNG sitting next
+# to a stale copy in the bundle was silently skipped on incremental builds.
+# rsync -a archive-mirrors the source tree, overwriting any older bundle copy.
 add_custom_command(TARGET NotepadPlusPlusMac POST_BUILD
-    COMMAND ${CMAKE_COMMAND} -E copy_directory
-        "${CMAKE_SOURCE_DIR}/resources/icons"
-        "$<TARGET_BUNDLE_DIR:NotepadPlusPlusMac>/Contents/Resources/icons"
+    COMMAND /usr/bin/rsync -a
+        "${CMAKE_SOURCE_DIR}/resources/icons/"
+        "$<TARGET_BUNDLE_DIR:NotepadPlusPlusMac>/Contents/Resources/icons/"
     COMMENT "Syncing icons into app bundle")
 
 add_custom_command(TARGET NotepadPlusPlusMac POST_BUILD
@@ -212,9 +216,9 @@ add_custom_command(TARGET NotepadPlusPlusMac POST_BUILD
     COMMENT "Copying langs.model.xml into bundle")
 
 add_custom_command(TARGET NotepadPlusPlusMac POST_BUILD
-    COMMAND ${CMAKE_COMMAND} -E copy_directory
-        "${CMAKE_SOURCE_DIR}/resources/themes"
-        "$<TARGET_BUNDLE_DIR:NotepadPlusPlusMac>/Contents/Resources/themes"
+    COMMAND /usr/bin/rsync -a
+        "${CMAKE_SOURCE_DIR}/resources/themes/"
+        "$<TARGET_BUNDLE_DIR:NotepadPlusPlusMac>/Contents/Resources/themes/"
     COMMENT "Copying theme XML files into bundle")
 
 # Bundle localization XML files (Windows NPP format, unmodified).
@@ -223,23 +227,23 @@ add_custom_command(TARGET NotepadPlusPlusMac POST_BUILD
 #   ~/Library/Application Support/Nextpad++/localization/
 # to add languages without touching the app bundle.
 add_custom_command(TARGET NotepadPlusPlusMac POST_BUILD
-    COMMAND ${CMAKE_COMMAND} -E copy_directory
-        "${CMAKE_SOURCE_DIR}/resources/localization"
-        "$<TARGET_BUNDLE_DIR:NotepadPlusPlusMac>/Contents/Resources/localization"
+    COMMAND /usr/bin/rsync -a
+        "${CMAKE_SOURCE_DIR}/resources/localization/"
+        "$<TARGET_BUNDLE_DIR:NotepadPlusPlusMac>/Contents/Resources/localization/"
     COMMENT "Copying localization XML files into bundle")
 
 # Function List parser definitions (XML, same format as Windows NPP)
 add_custom_command(TARGET NotepadPlusPlusMac POST_BUILD
-    COMMAND ${CMAKE_COMMAND} -E copy_directory
-        "${CMAKE_SOURCE_DIR}/resources/functionList"
-        "$<TARGET_BUNDLE_DIR:NotepadPlusPlusMac>/Contents/Resources/functionList"
+    COMMAND /usr/bin/rsync -a
+        "${CMAKE_SOURCE_DIR}/resources/functionList/"
+        "$<TARGET_BUNDLE_DIR:NotepadPlusPlusMac>/Contents/Resources/functionList/"
     COMMENT "Copying function list parser XMLs into bundle")
 
 # Pre-installed User Defined Language files
 add_custom_command(TARGET NotepadPlusPlusMac POST_BUILD
-    COMMAND ${CMAKE_COMMAND} -E copy_directory
-        "${CMAKE_SOURCE_DIR}/resources/userDefineLangs"
-        "$<TARGET_BUNDLE_DIR:NotepadPlusPlusMac>/Contents/Resources/userDefineLangs"
+    COMMAND /usr/bin/rsync -a
+        "${CMAKE_SOURCE_DIR}/resources/userDefineLangs/"
+        "$<TARGET_BUNDLE_DIR:NotepadPlusPlusMac>/Contents/Resources/userDefineLangs/"
     COMMENT "Copying pre-installed UDL files into bundle")
 
 # Default shortcuts.xml (copied to ~/.nextpad++/ on first run if missing)
