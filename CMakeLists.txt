@@ -111,6 +111,8 @@ set(APP_SRCS
     src/DocumentMapPanel.mm
     src/ProjectPanel.mm
     src/SearchEngine.mm
+    src/NPPBatchRunner.mm
+    src/NPPBatchDialog.mm
     src/SearchResultsPanel.mm
     src/FindWindow.mm
     src/StyleConfiguratorWindowController.mm

@@ -803,6 +803,7 @@ static NSMenu *buildLanguageMenu() {
     [macroMenu addItem:item(@"Save Current Recorded Macro…", @selector(saveCurrentMacro:), @"")];
     addSep(macroMenu);
     [macroMenu addItem:item(@"Run a Macro Multiple Times…", @selector(runMacroMultipleTimes:), @"")];
+    [macroMenu addItem:item(@"Run Macro on Files…", @selector(showBatchRunDialog:), @"")];
     addSep(macroMenu);
     {
         NSMenuItem *trimItem = item(@"Trim Trailing Space and Save", @selector(trimTrailingSpaceAndSave:), @"");

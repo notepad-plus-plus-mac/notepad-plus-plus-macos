@@ -30,6 +30,8 @@
         @"runMacro:",
         @"runMacroMultiple:",
         @"runMacroMultipleTimes:",
+        @"showBatchRunDialog:",
+        @"showBatchRunDialogForFolder:",
         @"saveCurrentMacro:",
         @"runSavedMacro:",
 

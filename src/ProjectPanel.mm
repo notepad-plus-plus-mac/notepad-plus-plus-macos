@@ -294,6 +294,36 @@ typedef NS_ENUM(NSInteger, PPNodeType) {
 static NSString * const kTreeviewSubdir = @"icons/standard/panels/treeview";
 static NSString * const kPrefWSPath     = @"ProjectPanelWorkspace%ld";  // format with tab index
 
+// Walk a _ProjectItem subtree, appending every PPNodeFile's filePath to `out`.
+// File-private (workspaces are virtual XML trees — the items are file-private
+// to this TU). Used by "Run Macro on Files…" handlers.
+//
+// Dedup pass: workspaces can legally reference the same file from multiple
+// virtual folders (one physical file appearing twice in the project view).
+// Without dedup the batch runner would process the file twice — the first
+// pass saves+closes it, the second reopens fresh and runs the macro on the
+// just-modified content. Stable order (first-seen wins).
+static void _PPCollectFilesInto(_ProjectItem *item, NSMutableArray<NSString *> *out, NSMutableSet<NSString *> *seen) {
+    if (!item) return;
+    if (item.type == PPNodeFile) {
+        NSString *p = item.filePath;
+        if (p.length) {
+            NSString *canon = p.stringByStandardizingPath;
+            if (![seen containsObject:canon]) {
+                [seen addObject:canon];
+                [out addObject:p];
+            }
+        }
+        return;
+    }
+    for (_ProjectItem *child in item.children) _PPCollectFilesInto(child, out, seen);
+}
+
+static void _PPCollectFiles(_ProjectItem *item, NSMutableArray<NSString *> *out) {
+    NSMutableSet *seen = [NSMutableSet set];
+    _PPCollectFilesInto(item, out, seen);
+}
+
 // ── ProjectPanel ─────────────────────────────────────────────────────────────
 
 @implementation ProjectPanel {
@@ -575,6 +605,7 @@ static NSString * const kPrefWSPath     = @"ProjectPanelWorkspace%ld";  // forma
     [m addItemWithTitle:[loc translate:@"Add New Project"]   action:@selector(_addProject:)       keyEquivalent:@""];
     [m addItem:[NSMenuItem separatorItem]];
     [m addItemWithTitle:[loc translate:@"Find in Projects..."] action:@selector(_findInProjects:) keyEquivalent:@""];
+    [m addItemWithTitle:[loc translate:@"Run Macro on Files..."] action:@selector(_runMacroOnWorkspace:) keyEquivalent:@""];
     for (NSMenuItem *mi in m.itemArray) mi.target = self;
     return m;
 }
@@ -590,13 +621,16 @@ static NSString * const kPrefWSPath     = @"ProjectPanelWorkspace%ld";  // forma
     [m addItemWithTitle:[loc translate:@"Add Files..."]  action:@selector(_addFiles:)       keyEquivalent:@""];
     [m addItemWithTitle:[loc translate:@"Add Files from Directory..."] action:@selector(_addFilesFromDir:) keyEquivalent:@""];
     [m addItem:[NSMenuItem separatorItem]];
+    [m addItemWithTitle:[loc translate:@"Run Macro on Files..."] action:@selector(_runMacroOnSubtree:) keyEquivalent:@""];
+    [m addItem:[NSMenuItem separatorItem]];
     [m addItemWithTitle:[loc translate:@"Remove"]        action:@selector(_removeItem:)     keyEquivalent:@""];
     for (NSMenuItem *mi in m.itemArray) mi.target = self;
     return m;
 }
 
 - (NSMenu *)_folderMenu {
-    // Same as project menu
+    // Same as project menu — _runMacroOnSubtree: handles both by collecting
+    // files under whichever node is currently selected.
     return [self _projectMenu];
 }
 
@@ -918,6 +952,39 @@ static NSString * const kPrefWSPath     = @"ProjectPanelWorkspace%ld";  // forma
     // Use the workspace file's directory, or home if none
     NSString *dir = ws.filePath.stringByDeletingLastPathComponent ?: NSHomeDirectory();
     [_delegate projectPanel:self findInFilesAtPath:dir];
+}
+
+// ── Run Macro on Files (Project Panel) ───────────────────────────────────
+// Workspaces are *virtual* XML trees — files inside one project can live in
+// completely different directories on disk, so we can't hand the dialog a
+// folder path. Instead we walk the selected subtree, flatten it to a list
+// of absolute paths, and present the dialog in fixed-file-list mode. The
+// dialog's extension filter still narrows the list (handy when a project
+// contains both .cpp and .png and you only want the .cpp files).
+
+- (void)_runMacroOnWorkspace:(id)sender {
+    if (![_delegate respondsToSelector:@selector(projectPanel:runMacroOnFiles:sourceDescription:)]) return;
+    _ProjectWorkspace *ws = _workspaces[_activeTab];
+    NSMutableArray *files = [NSMutableArray array];
+    _PPCollectFiles(ws.rootItem, files);
+    NSString *desc = [NSString stringWithFormat:@"%@: %@",
+                       [[NppLocalizer shared] translate:@"Workspace"],
+                       ws.rootItem.name ?: @""];
+    [_delegate projectPanel:self runMacroOnFiles:files sourceDescription:desc];
+}
+
+- (void)_runMacroOnSubtree:(id)sender {
+    if (![_delegate respondsToSelector:@selector(projectPanel:runMacroOnFiles:sourceDescription:)]) return;
+    _ProjectItem *item = [self _selectedItem];
+    if (!item) return;
+    NSMutableArray *files = [NSMutableArray array];
+    _PPCollectFiles(item, files);
+
+    NppLocalizer *loc = [NppLocalizer shared];
+    NSString *kind = (item.type == PPNodeProject) ? [loc translate:@"Project"]
+                                                   : [loc translate:@"Folder"];
+    NSString *desc = [NSString stringWithFormat:@"%@: %@", kind, item.name ?: @""];
+    [_delegate projectPanel:self runMacroOnFiles:files sourceDescription:desc];
 }
 
 #pragma mark - Helpers

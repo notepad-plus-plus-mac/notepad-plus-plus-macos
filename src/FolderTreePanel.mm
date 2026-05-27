@@ -591,6 +591,15 @@ static _FTPanelButton *_panelBtn(NSString *iconName, NSString *tip, id target, S
         fif.representedObject = ft;
         [menu addItem:fif];
 
+        // Run Macro on Files (issue: BBEdit-style batch processing).
+        // representedObject carries the folder path; the menu action is on
+        // MainWindowController, reached via responder chain (nil target).
+        NSMenuItem *runMacro = [[NSMenuItem alloc] initWithTitle:@"Run Macro on Files…"
+                                                          action:@selector(showBatchRunDialogForFolder:)
+                                                   keyEquivalent:@""];
+        runMacro.representedObject = ft.url.path;
+        [menu addItem:runMacro];
+
         // Rename (non-root directories only)
         if (!ft.isRootFolder) {
             [menu addItem:[NSMenuItem separatorItem]];

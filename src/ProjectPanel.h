@@ -7,6 +7,12 @@ NS_ASSUME_NONNULL_BEGIN
 @protocol ProjectPanelDelegate <NSObject>
 - (void)projectPanel:(ProjectPanel *)panel openFileAtPath:(NSString *)path;
 - (void)projectPanel:(ProjectPanel *)panel findInFilesAtPath:(NSString *)path;
+@optional
+/// Open the "Run Macro on Files" dialog with the given (already-flattened) file
+/// list as the input set. `sourceDescription` is a user-facing label shown in
+/// the dialog where the folder field normally lives, e.g. "Project: MyApp".
+- (void)projectPanel:(ProjectPanel *)panel runMacroOnFiles:(NSArray<NSString *> *)files
+                                            sourceDescription:(NSString *)description;
 @end
 
 /// Project Panel — virtual workspace tree with projects, folders, and files.

@@ -8,6 +8,7 @@
 #import "FindWindow.h"
 #import "SearchResultsPanel.h"
 #import "SearchEngine.h"
+#import "NPPBatchDialog.h"
 #import "MenuBuilder.h"
 #import "ColumnEditorPanel.h"
 // FindInFilesPanel removed — all search goes through FindWindow
@@ -96,7 +97,9 @@ static NSString *nppSessionPath(void) {
 }
 // Forward declarations for shortcuts.xml functions (defined after @implementation)
 static NSString *nppShortcutsPath(void);
-static NSArray<NSDictionary *> *loadMacrosFromShortcutsXML(void);
+// Non-static so NPPBatchDialog can link against it. Forward-declared here for
+// in-file callers; NPPBatchDialog.mm extern-declares it.
+NSArray<NSDictionary *> *loadMacrosFromShortcutsXML(void);
 static void addMacroToShortcutsXML(NSString *name, NSArray<NSDictionary *> *actions,
                                    BOOL ctrl, BOOL alt, BOOL shift, BOOL cmd, NSUInteger keyCode);
 static void removeMacroFromShortcutsXML(NSString *name);
@@ -3312,7 +3315,7 @@ static NSString *nppShortcutsPath(void) {
 // ── shortcuts.xml macro read/write (Windows-compatible format) ────────────────
 
 /// Load macros from shortcuts.xml. Returns array of @{@"name":..., @"actions":...}
-static NSArray<NSDictionary *> *loadMacrosFromShortcutsXML(void) {
+NSArray<NSDictionary *> *loadMacrosFromShortcutsXML(void) {
     NSString *path = nppShortcutsPath();
     NSData *data = [NSData dataWithContentsOfFile:path];
     if (!data) return @[];
@@ -3735,6 +3738,23 @@ static void removeMacroFromShortcutsXML(NSString *name) {
 // same (non-nil) target+action selector — without an actual selector to
 // share, the mutual-exclusion behavior never engages.
 - (void)_macroDialogRadioClicked:(id)sender { (void)sender; }
+
+// "Run Macro on Files…" — open the batch dialog with no preselected folder.
+// User picks via Browse. See NPPBatchDialog / NPPBatchRunner / RFC_BATCH_MACRO_ON_FILES.md.
+- (void)showBatchRunDialog:(id)sender {
+    [NPPBatchDialog presentForWindow:self preselectedFolder:nil];
+}
+
+// Variant invoked from the Folder-as-Workspace right-click on a directory.
+// sender is the NSMenuItem whose representedObject is the absolute folder path.
+- (void)showBatchRunDialogForFolder:(id)sender {
+    NSString *folder = nil;
+    if ([sender isKindOfClass:[NSMenuItem class]]) {
+        id rep = ((NSMenuItem *)sender).representedObject;
+        if ([rep isKindOfClass:[NSString class]]) folder = rep;
+    }
+    [NPPBatchDialog presentForWindow:self preselectedFolder:folder];
+}
 
 - (void)runMacroMultipleTimes:(id)sender {
     EditorView *ed = [self currentEditor];
@@ -4972,6 +4992,10 @@ static NSArray<NSDictionary *> *convertRecordedToXmlFormat(NSArray<NSDictionary 
     if (action == @selector(stopMacroRecording:))  return ed && recording;
     if (action == @selector(runMacro:))             return ed && !recording && ed.macroActions.count > 0;
     if (action == @selector(runMacroMultipleTimes:)) return ed && !recording;  // can run saved macros
+    // "Run Macro on Files…" — works with no open tabs (it'll open them as needed).
+    // Disabled only during active per-buffer recording, to avoid the user
+    // starting a batch that races with their own keystroke recording.
+    if (action == @selector(showBatchRunDialog:))   return !recording;
     if (action == @selector(saveCurrentMacro:))     return ed && !recording && ed.macroActions.count > 0;
     if (action == @selector(runSavedMacro:))        return ed && !recording;
     if (action == @selector(trimTrailingSpaceAndSave:)) return _tabManager.allEditors.count > 0;
@@ -5980,6 +6004,18 @@ static NSArray<NSDictionary *> *convertRecordedToXmlFormat(NSArray<NSDictionary 
     FindWindow *fw = [FindWindow sharedWindow];
     [fw selectProjectPanel:panel.activeTab];
     [fw showTab:FindWindowTabFindInProjects];
+}
+
+- (void)projectPanel:(ProjectPanel *)panel runMacroOnFiles:(NSArray<NSString *> *)files
+                                            sourceDescription:(NSString *)description {
+    if (!files.count) {
+        NSAlert *a = [NSAlert new];
+        a.messageText = [[NppLocalizer shared] translate:@"No files to process"];
+        a.informativeText = [[NppLocalizer shared] translate:@"This project node contains no files."];
+        [a runModal];
+        return;
+    }
+    [NPPBatchDialog presentForWindow:self files:files source:description];
 }
 
 #pragma mark - GitPanelDelegate
