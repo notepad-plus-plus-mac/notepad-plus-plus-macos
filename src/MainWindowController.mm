@@ -2341,7 +2341,26 @@ static NSImage *_loadPluginIconFromDirs(NSArray<NSString *> *dirs, NSString *fil
 
 static NSToolbarItemIdentifier const kTBUserConfig = @"TB_UserConfig";
 
+// YES when the toolbar should render the Tahoe (Liquid Glass) profile. Read at
+// toolbar-build time; resolved by NppThemeManager.effectiveAppearanceStyle
+// (Classic by default — see Step 2 of the Liquid Glass RFC).
+- (BOOL)_toolbarUsesTahoe {
+    return [NppThemeManager shared].effectiveAppearanceStyle == NppAppearanceTahoe;
+}
+
 - (NSArray<NSToolbarItemIdentifier> *)toolbarDefaultItemIdentifiers:(NSToolbar *)tb {
+    if ([self _toolbarUsesTahoe]) return [self _tahoeDefaultItemIdentifiers:tb];
+    return [self _classicDefaultItemIdentifiers:tb];
+}
+
+// Tahoe profile (Step 3c). STUB — identical to Classic until the grouped/labeled
+// Liquid Glass toolbar is built. Keeps the appearance fork exercisable now.
+- (NSArray<NSToolbarItemIdentifier> *)_tahoeDefaultItemIdentifiers:(NSToolbar *)tb {
+    return [self _classicDefaultItemIdentifiers:tb];
+}
+
+// Classic profile (current default): today's group layout.
+- (NSArray<NSToolbarItemIdentifier> *)_classicDefaultItemIdentifiers:(NSToolbar *)tb {
     // When user has a custom toolbar config, use a single dynamic item
     // containing all standard + plugin buttons in XML order
     if ([_toolbarConfig[@"hasUserConfig"] boolValue]) {
@@ -2370,6 +2389,18 @@ static NSToolbarItemIdentifier const kTBUserConfig = @"TB_UserConfig";
 - (NSToolbarItem *)toolbar:(NSToolbar *)tb
      itemForItemIdentifier:(NSToolbarItemIdentifier)ident
  willBeInsertedIntoToolbar:(BOOL)flag {
+    if ([self _toolbarUsesTahoe]) return [self _tahoeToolbarItemForIdentifier:ident];
+    return [self _classicToolbarItemForIdentifier:ident];
+}
+
+// Tahoe profile (Step 3c). STUB — identical to Classic until the Liquid Glass
+// toolbar (per-button items + NSToolbarItemGroups) is built.
+- (NSToolbarItem *)_tahoeToolbarItemForIdentifier:(NSToolbarItemIdentifier)ident {
+    return [self _classicToolbarItemForIdentifier:ident];
+}
+
+// Classic profile (current default): today's group / plugin item builders.
+- (NSToolbarItem *)_classicToolbarItemForIdentifier:(NSToolbarItemIdentifier)ident {
     if ([ident isEqualToString:kTBTabControls])
         return [self makeTabControlsToolbarItem];
 

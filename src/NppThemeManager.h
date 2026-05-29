@@ -8,10 +8,22 @@ extern NSNotificationName const NPPDarkModeChangedNotification;
 /// Preference key for dark mode setting (Auto/Light/Dark).
 extern NSString *const kPrefDarkMode;
 
+/// Preference key for the UI appearance style (Auto/Classic/Tahoe). Default Auto.
+extern NSString *const kPrefAppearanceStyle;
+
 typedef NS_ENUM(NSInteger, NppDarkModeOption) {
     NppDarkModeAuto  = 0,  // Follow macOS system appearance
     NppDarkModeLight = 1,  // Always light
     NppDarkModeDark  = 2,  // Always dark
+};
+
+/// UI appearance profile — the "structure stays, chrome swaps" axis (orthogonal
+/// to light/dark). Classic = today's dense pro toolbar/chrome; Tahoe = native
+/// macOS "Liquid Glass" profile (in development). Auto follows the OS.
+typedef NS_ENUM(NSInteger, NppAppearanceStyle) {
+    NppAppearanceAuto    = 0,  // Follow OS (resolves to Classic for now; Tahoe-on-macOS-26 lands later)
+    NppAppearanceClassic = 1,  // Always the classic profile
+    NppAppearanceTahoe   = 2,  // Native Liquid Glass profile
 };
 
 /// Centralized theme manager. All UI components query this for colors and icon paths.
@@ -25,6 +37,16 @@ typedef NS_ENUM(NSInteger, NppDarkModeOption) {
 
 /// YES if the effective appearance is currently dark.
 @property (nonatomic, readonly) BOOL isDark;
+
+/// Raw user preference for the appearance profile (Auto/Classic/Tahoe). Setting
+/// this persists it. (Live switching / toolbar rebuild is wired in a later step;
+/// for now the value is read when the toolbar is built.)
+@property (nonatomic) NppAppearanceStyle appearanceStyle;
+
+/// The appearance profile the UI should actually render. Resolves Auto. Currently
+/// always Classic unless the user explicitly forces Tahoe; the Auto→Tahoe-on-
+/// macOS-26 resolution is enabled once the Tahoe profile is built.
+@property (nonatomic, readonly) NppAppearanceStyle effectiveAppearanceStyle;
 
 // ── UI Colors ────────────────────────────────────────────────────────────────
 
