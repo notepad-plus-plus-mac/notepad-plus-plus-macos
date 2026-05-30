@@ -44,6 +44,7 @@ extern NSString *const kPrefTabCloseButton;      // BOOL, default YES
 extern NSString *const kPrefDoubleClickTabClose; // BOOL, default NO
 extern NSString *const kPrefTabBarWrap;          // BOOL, default NO
 extern NSString *const kPrefVirtualSpace;        // BOOL, default NO
+extern NSString *const kPrefColumnSel2MultiEdit; // BOOL, default YES — column selection becomes multi-edit on Backspace/arrows
 extern NSString *const kPrefScrollBeyondLastLine;// BOOL, default NO
 extern NSString *const kPrefScrollSpeedGain;     // double, default 1.0 (1.0 = no mouse-wheel acceleration)
 extern NSString *const kPrefCaretBlinkRate;      // NSInteger ms, default 500

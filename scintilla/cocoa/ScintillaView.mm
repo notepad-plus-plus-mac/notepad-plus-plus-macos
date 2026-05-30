@@ -750,10 +750,64 @@ static NSCursor *cursorFromEnum(Window::Cursor cursor) {
  * handles shortcuts. The input is then forwarded to the Cocoa text input system, which in turn does
  * its own input handling (character composition via NSTextInputClient protocol):
  */
+// LOCAL CHANGE: Notepad++ "column selection to multi-editing" parity.
+//
+// Stock Scintilla refuses to delete a *rectangular* selection across the line
+// start: Editor::DelCharBack forces allowLineStartDeletion = false when
+// sel.IsRectangular(). So Backspace on a zero-width column selection sitting at
+// column 0 does nothing. Notepad++ works around this in its WM_KEYDOWN handler
+// (ScintillaEditView.cpp, setting "_columnSel2MultiEdit", enabled by default):
+// before the key is processed it converts the column selection into a stream
+// multi-selection, after which Backspace joins lines / deletes per caret as
+// users expect.
+//
+// On Windows that handler is naturally skipped while Alt is held, because
+// Alt+key arrives as WM_SYSKEYDOWN — which is what keeps keyboard column
+// extension (Alt+Shift+Arrow) working. macOS delivers Option+key through this
+// same keyDown:, so we must explicitly bypass the conversion while Option (the
+// rectangular-selection modifier, see SCI_SETRECTANGULARSELECTIONMODIFIER) is
+// held, otherwise Option+Shift+Arrow could no longer extend a column block.
+- (void) convertColumnSelectionToMultiEditForKey: (NSEvent *) theEvent {
+	if (!mOwner.columnSelToMultiEdit)
+		return;
+
+	// Leave column-selection extension (Option held) untouched.
+	if ((theEvent.modifierFlags & NSEventModifierFlagOption) != 0)
+		return;
+
+	const long selMode = mOwner.backend->WndProc(Message::GetSelectionMode, 0, 0);
+	if (selMode != static_cast<long>(SelectionMode::Rectangle) &&
+	    selMode != static_cast<long>(SelectionMode::Thin))
+		return;
+
+	switch (theEvent.keyCode) {
+		case 51:  // Backspace (Delete)
+		case 123: // Left
+		case 124: // Right
+		case 125: // Down
+		case 126: // Up
+		case 115: // Home
+		case 119: // End
+		case 36:  // Return
+		case 76:  // keypad Enter
+			break;
+		default:
+			return; // not a key that should collapse the column selection
+	}
+
+	// Switch to stream mode so the key acts on independent carets. The second
+	// call clears the lingering rectangular anchor so subsequent caret movement
+	// stays multi-caret (Neil Hodgson, https://sourceforge.net/p/scintilla/bugs/2412/).
+	mOwner.backend->WndProc(Message::SetSelectionMode, static_cast<uptr_t>(SelectionMode::Stream), 0);
+	mOwner.backend->WndProc(Message::SetSelectionMode, static_cast<uptr_t>(SelectionMode::Stream), 0);
+}
+
 - (void) keyDown: (NSEvent *) theEvent {
 	bool handled = false;
-	if (mMarkedTextRange.length == 0)
+	if (mMarkedTextRange.length == 0) {
+		[self convertColumnSelectionToMultiEditForKey: theEvent];
 		handled = mOwner.backend->KeyboardInput(theEvent);
+	}
 	if (!handled) {
 		NSArray *events = @[theEvent];
 		[self interpretKeyEvents: events];
@@ -1613,6 +1667,8 @@ static NSCursor *cursorFromEnum(Window::Cursor cursor) {
 	if (self) {
 		mContent = [[[[self class] contentViewClass] alloc] initWithFrame: NSZeroRect];
 		mContent.owner = self;
+
+		_columnSelToMultiEdit = YES; // Notepad++ default; overridden from prefs by EditorView
 
 		// Initialize the scrollers but don't show them yet.
 		// Pick an arbitrary size, just to make NSScroller selecting the proper scroller direction

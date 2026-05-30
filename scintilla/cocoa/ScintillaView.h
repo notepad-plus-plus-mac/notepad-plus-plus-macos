@@ -81,6 +81,13 @@ extern NSString *const SCIUpdateUINotification;
 @property(nonatomic, unsafe_unretained) id<ScintillaNotificationProtocol> delegate;
 @property(nonatomic, readonly) NSScrollView *scrollView;
 
+/// When YES (default), pressing an editing/navigation key (Backspace, arrows,
+/// Home/End, Return) on a column (rectangular) selection first converts it to a
+/// stream multi-selection — matching Notepad++'s "column selection to
+/// multi-editing" behavior, so e.g. Backspace at column 0 joins lines instead
+/// of doing nothing. Wired from the kPrefColumnSel2MultiEdit user default.
+@property(nonatomic) BOOL columnSelToMultiEdit;
+
 + (Class) contentViewClass;
 
 - (void) notify: (NotificationType) type message: (NSString *) message location: (NSPoint) location

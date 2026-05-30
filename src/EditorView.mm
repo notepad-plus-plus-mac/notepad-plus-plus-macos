@@ -2138,6 +2138,12 @@ static int vkToScintillaKey(int vk) {
     [sci message:SCI_SETBACKSPACEUNINDENTS wParam:bsUnindent ? 1 : 0];
     [sci message:SCI_SETTABINDENTS wParam:bsUnindent ? 1 : 0];
 
+    // Notepad++ "column selection to multi-editing": on Backspace/arrows a
+    // column (rectangular) selection is first converted to a stream
+    // multi-selection so the key acts per caret (e.g. Backspace at column 0
+    // joins lines). Handled in SCIContentView keyDown:.
+    sci.columnSelToMultiEdit = [ud boolForKey:kPrefColumnSel2MultiEdit];
+
     BOOL showLineNumbers = [ud boolForKey:kPrefShowLineNumbers];
     [sci message:SCI_SETMARGINWIDTHN wParam:0 lParam:showLineNumbers ? 44 : 0];
 
