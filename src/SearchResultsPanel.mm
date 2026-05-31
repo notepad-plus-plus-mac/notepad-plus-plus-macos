@@ -325,6 +325,8 @@ static sptr_t _srSciColor(NSColor *c) {
 - (void)_applyTheme {
     BOOL dark = [NppThemeManager shared].isDark;
     NPPStyleStore *store = [NPPStyleStore sharedStore];
+    NSAppearance *panelAppearance = [NSAppearance appearanceNamed:
+        dark ? NSAppearanceNameDarkAqua : NSAppearanceNameAqua];
 
     // Background & foreground from editor theme
     NSColor *bgColor = [store globalBg];
@@ -393,13 +395,19 @@ static sptr_t _srSciColor(NSColor *c) {
     }
 
     // ── Title bar and filter bar background ─────────────────────────────
-    NSColor *panelBg = [NppThemeManager shared].panelBackground;
+    // Use a concrete color here, not a dynamic NSColor bridged to CGColor:
+    // layer colors are resolved at assignment time and can otherwise pick up
+    // the system appearance instead of Nextpad++'s forced light/dark mode.
+    NSColor *panelBg = [NppThemeManager shared].statusBarBackground;
     _titleBar.layer.backgroundColor = panelBg.CGColor;
     _filterBar.layer.backgroundColor = panelBg.CGColor;
+    self.appearance = panelAppearance;
+    _titleBar.appearance = panelAppearance;
+    _filterBar.appearance = panelAppearance;
+    _filterField.appearance = panelAppearance;
 
     // ── Appearance for dark/light disclosure triangles ────────────────────
-    _sci.appearance = [NSAppearance appearanceNamed:
-        dark ? NSAppearanceNameDarkAqua : NSAppearanceNameAqua];
+    _sci.appearance = panelAppearance;
 
     // Re-colourise if we have content
     if ([_sci message:SCI_GETLENGTH] > 0)
