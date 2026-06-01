@@ -173,6 +173,29 @@ std::regex_constants::match_flag_type MatchFlags(const Document *doc, Sci::Posit
     return fl;
 }
 
+// Search a single [rangeStart, rangeEnd) subrange. Forward keeps the first
+// match, backward keeps the last. Returns false (leaving `out` untouched) for
+// an inverted range — which the per-line clamping below can legitimately
+// produce when the search start sits past a line's content end.
+template<typename Iterator, typename Regex>
+bool MatchInSubrange(const Document *doc, const Regex &regexp,
+                     Sci::Position rangeStart, Sci::Position rangeEnd,
+                     std::regex_constants::match_flag_type fm,
+                     bool forward, std::match_results<Iterator> &out) {
+    if (rangeStart > rangeEnd) return false;   // inverted; zero-width (==) is fine
+    const Iterator itStart(doc, rangeStart);
+    const Iterator itEnd  (doc, rangeEnd);
+    std::regex_iterator<Iterator> it(itStart, itEnd, regexp, fm);
+    const std::regex_iterator<Iterator> last;
+    bool any = false;
+    for (; it != last; ++it) {
+        out = *it;
+        any = true;
+        if (forward) break;   // forward: first match; backward: keep the last
+    }
+    return any;
+}
+
 template<typename Iterator, typename Regex>
 bool FirstMatchOnLines(const Document *doc, const Regex &regexp,
                        const RESearchRange &resr,
@@ -180,23 +203,74 @@ bool FirstMatchOnLines(const Document *doc, const Regex &regexp,
                        std::array<Sci::Position, 10> &bopat,
                        std::array<Sci::Position, 10> &eopat,
                        size_t &nGroups) {
+    const bool forward = resr.increment > 0;
     std::match_results<Iterator> match;
     bool matched = false;
     for (Sci::Line line = resr.lineRangeStart; line != resr.lineRangeBreak; line += resr.increment) {
-        const Sci::Position lineStartPos = doc->LineStart(line);
-        const Sci::Position lineEndPos   = doc->LineEnd(line);
-        const Range lineRange = resr.LineRange(line, lineStartPos, lineEndPos);
-        const Iterator itStart(doc, lineRange.start);
-        const Iterator itEnd  (doc, lineRange.end);
-        const auto fm = MatchFlags(doc, lineRange.start, lineRange.end, lineStartPos, lineEndPos);
-        std::regex_iterator<Iterator> it(itStart, itEnd, regexp, fm);
-        for (const std::regex_iterator<Iterator> last; it != last; ++it) {
-            match = *it;
-            matched = true;
-            if (resr.increment > 0) break;   // forward: first match
-            // backward: keep iterating to find the LAST one in this line
+        const Sci::Position lineStartPos  = doc->LineStart(line);
+        const Sci::Position contentEndPos = doc->LineEnd(line);          // before EOL
+        const Sci::Position termEndPos    = doc->LineStart(line + 1);    // includes EOL
+
+        // Pass 1 — content range. Identical to upstream BuiltinRegex: anchors
+        // ^/$ and word boundaries \b at the true line-content edges (EOL
+        // excluded), so `foo$`, `^foo`, `.$`, `\bword\b` keep matching exactly
+        // as before.
+        const Range contentRange = resr.LineRange(line, lineStartPos, contentEndPos);
+        const auto fmContent = MatchFlags(doc, contentRange.start, contentRange.end,
+                                          lineStartPos, contentEndPos);
+        std::match_results<Iterator> mc;
+        const bool hasC = MatchInSubrange<Iterator>(doc, regexp, contentRange.start,
+                                                    contentRange.end, fmContent, forward, mc);
+
+        // Pass 2 — terminator range. Extends the search to include this line's
+        // EOL bytes so literal \r / \n / \r\n (and patterns running into them,
+        // e.g. `foo\r\n`) can match — exactly what the content-only pass cannot
+        // do, and the root of macOS issue #167. Passing contentEndPos as the
+        // line end makes MatchFlags raise match_not_eol for this pass, so `$`
+        // never matches at the post-EOL range end (the correct `$` always comes
+        // from pass 1). std::regex's multiline mode would obviate the per-line
+        // split but is not honored across the libc++/libstdc++ runtimes this
+        // ships on (see Scintilla's own BuiltinRegex note), so we search per
+        // line and stitch the terminator in here.
+        std::match_results<Iterator> mt;
+        bool hasT = false;
+        const Range termRange = resr.LineRange(line, lineStartPos, termEndPos);
+        if (termRange.end > contentRange.end) {
+            const auto fmTerm = MatchFlags(doc, termRange.start, termRange.end,
+                                           lineStartPos, contentEndPos);
+            hasT = MatchInSubrange<Iterator>(doc, regexp, termRange.start,
+                                             termRange.end, fmTerm, forward, mt);
         }
-        if (matched) break;
+
+        // Reconcile the two candidates by START position: forward keeps the
+        // leftmost, backward the rightmost. On an exact tie the CONTENT match
+        // wins. That tie rule gives a strong guarantee: at every position where
+        // the old content-only search produced a match, this returns the very
+        // same match (same length, same capture groups) — the terminator pass
+        // can only ADD matches at positions the content pass left empty (the
+        // literal \r / \n / \r\n cases of issue #167). It deliberately does not
+        // try to out-rank a content match with a longer terminator-extended one
+        // (e.g. `foo\r?` stays "foo", as it always has): the two passes lose the
+        // pattern's alternation order, so any "longer wins" rule would mis-pick
+        // the branch — and corrupt captures — for patterns that alternate an
+        // anchored branch with an EOL-literal one (`(foo$)|(foo\r\n)`). Matching
+        // a true line terminator inside a single match still requires the
+        // alternative to be unmatchable in the content range, which is exactly
+        // when the content pass is empty and the terminator pass wins outright.
+        if (hasC || hasT) {
+            if (!hasT) {
+                match = mc;
+            } else if (!hasC) {
+                match = mt;
+            } else {
+                const Sci::Position cs = mc[0].first.Pos();
+                const Sci::Position ts = mt[0].first.Pos();
+                const bool pickTerm = forward ? (ts < cs) : (ts > cs);
+                match = pickTerm ? mt : mc;
+            }
+            matched = true;
+            break;
+        }
     }
     if (!matched) return false;
 
